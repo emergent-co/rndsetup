@@ -31,21 +31,28 @@ def index():
     return send_from_directory(ROOT_DIR, 'index.html')
 
 
+@app.route('/_build/<path:filename>')
+def build_file(filename):
+    """_build/ 내부 일부 파일은 admin.html이 read 용도로 접근 (products.json 등).
+    이 라우트가 static_file보다 먼저 등록되어야 매칭 우선."""
+    allowed = {'products.json', 'categories.json'}
+    if filename not in allowed:
+        return ('Forbidden: _build/' + filename + ' not in whitelist', 403)
+    full_path = os.path.join(SCRIPT_DIR, filename)
+    if not os.path.exists(full_path):
+        return ('File not found: ' + full_path, 404)
+    return send_from_directory(SCRIPT_DIR, filename)
+
+
 @app.route('/<path:filename>')
 def static_file(filename):
     """워크스페이스 루트의 모든 정적 파일 서빙."""
-    if filename.startswith('_build/') or filename.startswith('crawler/'):
+    if filename.startswith('crawler/'):
         return ('Forbidden', 403)
+    full_path = os.path.join(ROOT_DIR, filename)
+    if not os.path.exists(full_path):
+        return ('File not found at ROOT: ' + filename, 404)
     return send_from_directory(ROOT_DIR, filename)
-
-
-@app.route('/_build/<path:filename>')
-def build_file(filename):
-    """_build/ 내부 일부 파일은 admin.html이 read 용도로 접근 (products.json 등)."""
-    allowed = {'products.json', 'categories.json'}
-    if filename not in allowed:
-        return ('Forbidden', 403)
-    return send_from_directory(SCRIPT_DIR, filename)
 
 
 @app.route('/api/save-products', methods=['POST'])

@@ -36,11 +36,48 @@ def append_utm(url, source_campaign):
     return url + sep + 'utm_source=cellab&utm_medium=catalog&utm_campaign=' + source_campaign
 
 
+# 올포랩 시리즈 페이지 매핑 — 모델명 패턴으로 자동 매핑
+# admin에서 buy_allforlab_url 직접 입력 안 한 모델도 정확한 시리즈 페이지로 송출
+ALLFORLAB_BASE_URL = 'https://www.allforlab.com/pdt/'
+SERIES_S = ALLFORLAB_BASE_URL + 'PDNN26050200003?keywords='   # BT*S, BQ*
+SERIES_FL = ALLFORLAB_BASE_URL + 'PDNN26050200005?keywords='  # BT*F, BT*L, BT600P, BT*-2J
+SERIES_CT = ALLFORLAB_BASE_URL + 'PDNN26050200006?keywords='  # CT*
+SERIES_TYD = ALLFORLAB_BASE_URL + 'PDNN26050200007?keywords=' # TYD*, TYS*
+SERIES_TFD = ALLFORLAB_BASE_URL + 'PDNN26050200008?keywords=' # TFD*
+
+
+def map_to_allforlab_series(model):
+    """모델명을 보고 해당 올포랩 시리즈 페이지 URL 반환. 매칭 안 되면 None."""
+    if not model:
+        return None
+    m = model.upper().strip()
+    if m.startswith('CT'):
+        return SERIES_CT
+    if m.startswith('TFD'):
+        return SERIES_TFD
+    if m.startswith('TYD') or m.startswith('TYS'):
+        return SERIES_TYD
+    if m.startswith('BQ'):
+        return SERIES_S
+    if m.startswith('BT'):
+        if '-2J' in m:
+            return SERIES_FL
+        if m.endswith('P'):
+            return SERIES_FL
+        if m.endswith('F') or m.endswith('L') or m.endswith('F-1') or m.endswith('L-1'):
+            return SERIES_FL
+        if m.endswith('S') or m.endswith('S-1'):
+            return SERIES_S
+    return None
+
+
 def build_market_urls(p):
     cat = p.get('category', 'pump')
     model = p.get('code') or p.get('id') or ''
     buy_a = (p.get('buy_allforlab_url') or '').strip()
     buy_n = (p.get('buy_navimro_url') or '').strip()
+    if not buy_a:
+        buy_a = map_to_allforlab_series(model)
     if not buy_a:
         buy_a = 'https://www.allforlab.com/search?k=' + quote(model)
     if not buy_n:
