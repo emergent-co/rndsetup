@@ -1,0 +1,16 @@
+{
+  "_comment": "블로그 글 메타데이터. 메인 페이지 카드 그리드·블로그 인덱스가 이 파일을 fetch해서 카드 렌더링.",
+  "posts": [
+    {
+      "slug": "bt101-ex-vivo-catheter",
+      "title": "정맥 카테터 코팅 ex vivo 시험 — Nature Communications 2024의 BT101 페리스탈틱 셋업이 흥미로운 이유",
+      "summary": "Liu et al. (Nat. Commun. 2024). 정맥 카테터 혈전 60% 감소·항균 효율 97%+를 ex vivo로 검증한 동맥정맥 션트 폐쇄 회로. 펌프·튜브·유체 디테일과 셋업의 결정적 3가지 포인트를 정리합니다.",
+      "date": "2026-05-07",
+      "tags": ["BT101", "카테터", "ex vivo", "항혈전", "항균", "Nature Communications"],
+      "setup_id": "bt101_ex_vivo_catheter",
+      "url": "/blog/bt101-ex-vivo-catheter.html",
+      "model_focus": "BT101",
+      "application": "카테터·의료기기"
+    }
+  ]
+}
