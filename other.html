@@ -399,4 +399,21 @@ document.querySelectorAll('.filter-title .clear').forEach(c => {
     else if (/(튜브|호스|tubing|hose|silicone|실리콘|tygon|pharmed|viton|chemical|#\d+|l\/s)/i.test(v)) nextCat = 'tubing';
     else if (/(정량펌프|연동펌프|페리스탈틱|기어펌프|시린지펌프|bt\d+|bq\d+|ct3001|tyd|tys|tfd|leadfluid|리드플루이드)/i.test(v)) nextCat = 'pump';
     if (/^bt101s/i.test(v))           { location.href = 'series_bt101s_sample.html?q=' + encodeURIComponent(v); return; }
-    if (/mast
+    if (/masterflex|마스터플렉스/i.test(v)) { location.href = 'compatibility_matrix_sample.html?q=' + encodeURIComponent(v); return; }
+    location.href = nextCat + '.html?q=' + encodeURIComponent(v);
+  };
+})();
+
+/* 카드 액션 버튼 — 임시 핸들러 */
+window.addToCart = function(name) {
+  alert('"' + name + '"\n\n장바구니 기능은 준비중입니다.\n빠른 견적이 필요하시면 카톡·이메일 또는 상담 문의로 부탁드립니다.');
+};
+window.orderNow = function(name) {
+  if (confirm('"' + name + '"\n\n주문 기능은 준비중입니다.\n상담 문의 페이지로 이동할까요?')) {
+    location.href = 'index.html#contact';
+  }
+};
+</script>
+
+</body>
+</html>
