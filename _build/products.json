@@ -55,7 +55,9 @@
         "기본 모델",
         "L/S #16 호환",
         "대학·연구실"
-      ]
+      ],
+      "buy_allforlab_url": "https://www.allforlab.com/pdt/PDNN26050200003?keywords=",
+      "buy_navimro_url": ""
     },
     {
       "category": "pump",
@@ -72,7 +74,9 @@
         "초저유량",
         "μL 단위",
         "HPLC·분석"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     },
     {
       "category": "pump",
@@ -89,7 +93,9 @@
         "자동 분주",
         "대유량",
         "PC 연동"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     },
     {
       "category": "pump",
@@ -106,7 +112,9 @@
         "맥동 없음",
         "고점도",
         "연속 흐름"
-      ]
+      ],
+      "buy_allforlab_url": "https://www.allforlab.com/pdt/PDNN26050200006?keywords=",
+      "buy_navimro_url": ""
     },
     {
       "category": "pump",
@@ -123,7 +131,9 @@
         "μL 분주",
         "세포배양",
         "전자동"
-      ]
+      ],
+      "buy_allforlab_url": "https://www.allforlab.com/pdt/PDNN26050200007?keywords=",
+      "buy_navimro_url": ""
     },
     {
       "category": "pump",
@@ -140,7 +150,9 @@
         "다채널",
         "자동화 셋업",
         "병렬 분주"
-      ]
+      ],
+      "buy_allforlab_url": "https://www.allforlab.com/pdt/PDNN26050200008?keywords=",
+      "buy_navimro_url": ""
     },
     {
       "category": "tubing",
@@ -157,7 +169,9 @@
         "고청정",
         "무독성",
         "L/S #16 호환"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     },
     {
       "category": "tubing",
@@ -174,7 +188,9 @@
         "대유량",
         "YT25 호환",
         "고청정"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     },
     {
       "category": "tubing",
@@ -191,7 +207,9 @@
         "USP Class VI",
         "장수명",
         "멸균 가능"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     },
     {
       "category": "syringe",
@@ -208,7 +226,9 @@
         "내약품",
         "~204°C",
         "강산 대응"
-      ]
+      ],
+      "buy_allforlab_url": "",
+      "buy_navimro_url": ""
     }
   ]
 }

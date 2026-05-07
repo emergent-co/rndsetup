@@ -216,14 +216,17 @@
   .breadcrumb a:hover{color:#1a6e56;text-decoration:underline}
   .breadcrumb .sep{margin:0 6px;color:#bbb}
   .breadcrumb .bc-current{color:#2a2a2a;font-weight:600}
-  /* 카드 래퍼 + 액션 버튼 */
+  /* 카드 래퍼 + 액션 버튼 — 80% 마켓 송출 / 20% 자사몰 견적·문의 */
   .prod-card{display:flex;flex-direction:column}
   .prod-actions{display:flex;gap:6px;margin-top:6px}
-  .prod-actions button{flex:1;padding:8px 6px;border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;border:1px solid #d2dae5;transition:all .15s}
-  .prod-actions .btn-cart{background:#fff;color:#2a2a2a}
-  .prod-actions .btn-cart:hover{border-color:#1a6e56;color:#1a6e56;background:#f5f9f7}
-  .prod-actions .btn-order{background:#1a6e56;color:#fff;border-color:#1a6e56}
-  .prod-actions .btn-order:hover{background:#155b48;border-color:#155b48}
+  .prod-actions .btn-buy{flex:1;padding:9px 6px;border-radius:6px;font-size:12px;font-weight:700;text-align:center;text-decoration:none;font-family:inherit;border:1px solid;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;line-height:1.2}
+  .prod-actions .btn-buy-primary{background:#1a6e56;color:#fff;border-color:#1a6e56}
+  .prod-actions .btn-buy-primary:hover{background:#155b48;border-color:#155b48}
+  .prod-actions .btn-buy-secondary{background:#fff;color:#1a6e56;border-color:#1a6e56}
+  .prod-actions .btn-buy-secondary:hover{background:#f5f9f7;border-color:#155b48;color:#155b48}
+  .prod-actions-inquiry{margin-top:5px;text-align:center}
+  .prod-actions-inquiry .btn-inquiry{font-size:11px;color:#5a6779;text-decoration:none;display:inline-block;padding:3px 8px;border-radius:4px;transition:color .15s}
+  .prod-actions-inquiry .btn-inquiry:hover{color:#1a6e56;text-decoration:underline}
   @media(max-width:720px){.cellab-container{flex-wrap:wrap}.cellab-search{order:3;max-width:none;flex-basis:100%}}
   .cat-prep{background:#fff;border:1px solid #d2dae5;border-radius:10px;padding:32px 28px;margin:24px 0;text-align:center}
   .cat-prep h2{font-size:20px;font-weight:600;color:#2a2a2a;margin:0 0 8px}
@@ -570,14 +573,4 @@ document.querySelectorAll('.filter-title .clear').forEach(c => {
     else if (/(튜브|호스|tubing|hose|silicone|실리콘|tygon|pharmed|viton|chemical|#\d+|l\/s)/i.test(v)) nextCat = 'tubing';
     else if (/(정량펌프|연동펌프|페리스탈틱|기어펌프|시린지펌프|bt\d+|bq\d+|ct3001|tyd|tys|tfd|leadfluid|리드플루이드)/i.test(v)) nextCat = 'pump';
     if (/^bt101s/i.test(v))           { location.href = 'series_bt101s_sample.html?q=' + encodeURIComponent(v); return; }
-    if (/masterflex|마스터플렉스/i.test(v)) { location.href = 'compatibility_matrix_sample.html?q=' + encodeURIComponent(v); return; }
-    location.href = nextCat + '.html?q=' + encodeURIComponent(v);
-  };
-})();
-
-/* 카드 액션 버튼 — 임시 핸들러 */
-window.addToCart = function(name) {
-  alert('"' + name + '"\n\n장바구니 기능은 준비중입니다.\n빠른 견적이 필요하시면 카톡·이메일 또는 상담 문의로 부탁드립니다.');
-};
-window.orderNow = function(name) {
-  if (conf
+    if (/mast

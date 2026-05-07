@@ -1302,7 +1302,7 @@ const PRODUCTS = [
     control: ["digital"],
     tubeCompat: ["silicone", "pharmed", "tygon-chem"],
     price: "문의",
-    allforlabUrl: "[ALLFORLAB_URL_BT101S]",
+    allforlabUrl: "https://www.allforlab.com/pdt/PDNN26050200003?keywords=",
     specs: [
       "가격 합리적 기본 모델",
       "박테리아·세포배양용",
@@ -2011,14 +2011,26 @@ function findMatches(sel) {
   .slice(0, 3);
 }
 
-// 외부 구매처 URL — 모델명을 검색어로 전달
+// 외부 구매처 URL — 직접 상품 URL 있으면 우선, 없으면 검색 URL fallback
+// UTM 추적: cellab.kr → 마켓 송출 클릭을 GA4에서 채널별로 분리 측정
 const ALLFORLAB_BASE = 'https://www.allforlab.com/search?k=';
 const NAVIMRO_BASE = 'https://www.navimro.com/search?q=';
-function buildAllforlabUrl(model) {
-  return ALLFORLAB_BASE + encodeURIComponent(model);
+
+function appendUtm(url, source) {
+  if (!url) return url;
+  const sep = url.includes('?') ? '&' : '?';
+  // ?keywords= 같은 빈 query는 그대로 두고 utm 추가
+  return url + (url.endsWith('?') || url.endsWith('=') ? '' : sep) + 'utm_source=cellab&utm_medium=wizard&utm_campaign=' + source;
 }
-function buildNavimroUrl(model) {
-  return NAVIMRO_BASE + encodeURIComponent(model);
+
+function buildAllforlabUrl(model, directUrl) {
+  // 직접 상품 URL 우선 (시리즈/카테고리 페이지 포함)
+  const url = directUrl || (ALLFORLAB_BASE + encodeURIComponent(model));
+  return appendUtm(url, 'allforlab_pump');
+}
+function buildNavimroUrl(model, directUrl) {
+  const url = directUrl || (NAVIMRO_BASE + encodeURIComponent(model));
+  return appendUtm(url, 'navimro_pump');
 }
 
 function matchFlow(product, flowCategory) {
@@ -2048,8 +2060,9 @@ function renderResults(matches) {
   const n = matches.length;
   const gridCols = n === 1 ? '1fr' : (n === 2 ? '1fr 1fr' : '1fr 1fr 1fr');
   const cardsHtml = matches.map((p, i) => {
-    const allforlab = buildAllforlabUrl(p.model);
-    const navimro = buildNavimroUrl(p.model);
+    // 직접 URL(p.allforlabUrl, p.navimroUrl)이 있으면 우선, 없으면 검색 URL fallback
+    const allforlab = buildAllforlabUrl(p.model, (p.allforlabUrl && !p.allforlabUrl.startsWith('[')) ? p.allforlabUrl : null);
+    const navimro = buildNavimroUrl(p.model, (p.navimroUrl && !p.navimroUrl.startsWith('[')) ? p.navimroUrl : null);
     // 이미지: PRODUCTS의 image_url 있으면 사용, 없으면 placeholder
     const imageUrl = p.image_url || '';
     const imgHtml = imageUrl

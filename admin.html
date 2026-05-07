@@ -164,8 +164,8 @@
 
 <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
 <script>
-const COLS = ['category','id','name','code','spec1','spec2','spec3','spec4','price','catalog_page','kw1','kw2','kw3','image_url'];
-const HEADERS_KO = ['카테고리','id','모델명','코드','스펙1','스펙2','스펙3','스펙4','가격','카탈로그페이지','키워드1','키워드2','키워드3','이미지URL'];
+const COLS = ['category','id','name','code','spec1','spec2','spec3','spec4','price','catalog_page','kw1','kw2','kw3','image_url','buy_allforlab_url','buy_navimro_url'];
+const HEADERS_KO = ['카테고리','id','모델명','코드','스펙1','스펙2','스펙3','스펙4','가격','카탈로그페이지','키워드1','키워드2','키워드3','이미지URL','올포랩URL','나비엠알오URL'];
 const CATEGORIES = ['pump','tubing','syringe','pumphead','fitting','other'];
 const CAT_LABEL_KO = {pump:'펌프', tubing:'튜브', syringe:'시린지', pumphead:'펌프헤드', fitting:'피팅', other:'기타'};
 const SPEC_LABELS = {
@@ -205,6 +205,8 @@ function rowHtml(d){
     <td class="col-kw"><input type="text" value="${escapeAttr(d.kw2)}"></td>
     <td class="col-kw"><input type="text" value="${escapeAttr(d.kw3)}"></td>
     <td><input type="text" value="${escapeAttr(d.image_url)}" placeholder="https://..." style="width:200px"></td>
+    <td><input type="text" value="${escapeAttr(d.buy_allforlab_url)}" placeholder="https://www.allforlab.com/pdt/..." style="width:240px"></td>
+    <td><input type="text" value="${escapeAttr(d.buy_navimro_url)}" placeholder="https://www.navimro.com/..." style="width:240px"></td>
     <td class="col-action"><button onclick="this.closest('tr').remove();applyFilters()">삭제</button></td>
   </tr>`;
 }
@@ -232,7 +234,7 @@ function readSheet(){
     const inputs = tr.querySelectorAll('input');
     const r = {category: sel ? sel.value : 'pump'};
     // category는 첫 컬럼이지만 select라 inputs[0]이 id부터 시작
-    ['id','name','code','spec1','spec2','spec3','spec4','price','catalog_page','kw1','kw2','kw3','image_url'].forEach((c, i) => {
+    ['id','name','code','spec1','spec2','spec3','spec4','price','catalog_page','kw1','kw2','kw3','image_url','buy_allforlab_url','buy_navimro_url'].forEach((c, i) => {
       r[c] = inputs[i] ? inputs[i].value.trim() : '';
     });
     rows.push(r);
@@ -253,7 +255,9 @@ function rowsToProductsJson(rows){
     price: parseInt(r.price) || 0,
     catalog_page: parseInt(r.catalog_page) || 1,
     keywords: [r.kw1, r.kw2, r.kw3].filter(k => k),
-    image_url: r.image_url || ''
+    image_url: r.image_url || '',
+    buy_allforlab_url: r.buy_allforlab_url || '',
+    buy_navimro_url: r.buy_navimro_url || ''
   }));
   return {
     "_comment": "전 카테고리 통합 제품 데이터. admin.html에서 편집 → JSON 다운로드 → _build/products.json 덮어쓰기 → build.bat 실행.",
@@ -278,7 +282,9 @@ function productsJsonToRows(json){
     kw1: (p.keywords || [])[0] || '',
     kw2: (p.keywords || [])[1] || '',
     kw3: (p.keywords || [])[2] || '',
-    image_url: p.image_url || ''
+    image_url: p.image_url || '',
+    buy_allforlab_url: p.buy_allforlab_url || '',
+    buy_navimro_url: p.buy_navimro_url || ''
   }));
 }
 
@@ -396,7 +402,9 @@ function importXlsx(event){
         '키워드1':'kw1','kw1':'kw1',
         '키워드2':'kw2','kw2':'kw2',
         '키워드3':'kw3','kw3':'kw3',
-        '이미지URL':'image_url','이미지':'image_url','image_url':'image_url','이미지url':'image_url'
+        '이미지URL':'image_url','이미지':'image_url','image_url':'image_url','이미지url':'image_url',
+        '올포랩URL':'buy_allforlab_url','올포랩url':'buy_allforlab_url','올포랩':'buy_allforlab_url','allforlab':'buy_allforlab_url','buy_allforlab_url':'buy_allforlab_url',
+        '나비엠알오URL':'buy_navimro_url','나비엠알오url':'buy_navimro_url','나비엠알오':'buy_navimro_url','navimro':'buy_navimro_url','buy_navimro_url':'buy_navimro_url'
       };
       const colMap = {};
       headers.forEach((h, i) => { if (aliases[h]) colMap[aliases[h]] = i; });

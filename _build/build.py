@@ -22,6 +22,31 @@
 import json
 import os
 from html import escape
+from urllib.parse import quote
+
+
+# 80% 마켓 송출 / 20% 자사몰 (PSYS 카드결제 = 견적 후 안내)
+KAKAO_INQUIRY_URL = 'http://pf.kakao.com/_GCsjX'
+
+
+def append_utm(url, source_campaign):
+    if not url:
+        return url
+    sep = '&' if '?' in url else '?'
+    return url + sep + 'utm_source=cellab&utm_medium=catalog&utm_campaign=' + source_campaign
+
+
+def build_market_urls(p):
+    cat = p.get('category', 'pump')
+    model = p.get('code') or p.get('id') or ''
+    buy_a = (p.get('buy_allforlab_url') or '').strip()
+    buy_n = (p.get('buy_navimro_url') or '').strip()
+    if not buy_a:
+        buy_a = 'https://www.allforlab.com/search?k=' + quote(model)
+    if not buy_n:
+        buy_n = 'https://www.navimro.com/search?q=' + quote(model)
+    return append_utm(buy_a, 'allforlab_' + cat), append_utm(buy_n, 'navimro_' + cat)
+
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SCRIPT_DIR)
@@ -82,6 +107,9 @@ def render_product_card(p, spec_labels):
     else:
         img_html = f'<span class="ph-code">{code}</span><span class="ph-series">{escape(spec1)}</span>'
 
+    # 마켓 송출 URL (메인) — buy URL 우선, 없으면 검색 URL fallback. UTM 자동.
+    buy_a, buy_n = build_market_urls(p)
+
     return f'''<div class="prod-card">
         <a class="prod" href="Leadfluid-2025-Catalog.pdf#page={cat_page}" target="_blank" rel="noopener">
           <div class="prod-img">{img_html}</div>
@@ -98,8 +126,11 @@ def render_product_card(p, spec_labels):
           </div>
         </a>
         <div class="prod-actions">
-          <button type="button" class="btn-cart" onclick="addToCart('{pid}')">장바구니</button>
-          <button type="button" class="btn-order" onclick="orderNow('{pid}')">주문하기</button>
+          <a href="{escape(buy_a)}" target="_blank" rel="noopener" class="btn-buy btn-buy-primary">올포랩에서 구매</a>
+          <a href="{escape(buy_n)}" target="_blank" rel="noopener" class="btn-buy btn-buy-secondary">나비엠알오</a>
+        </div>
+        <div class="prod-actions-inquiry">
+          <a href="{KAKAO_INQUIRY_URL}" target="_blank" rel="noopener" class="btn-inquiry">견적·직접문의 (카카오톡)</a>
         </div>
       </div>'''
 
