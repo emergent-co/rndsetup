@@ -56,10 +56,51 @@
   .site-nav a:hover{color:var(--teal);text-decoration:none}
   .site-nav .active{color:var(--teal)}
 
-  /* 글 본문 */
-  .article{max-width:760px;margin:0 auto;padding:32px 24px 60px}
+  /* 글 본문 — 2-col grid (main + sticky sidebar) */
+  .article-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+  .article-grid{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
+  .article-main{min-width:0}
+  .article-aside{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto}
+  .article{max-width:760px;margin:0 auto;padding:0}
   .breadcrumb{font-size:12px;color:var(--muted);margin-bottom:16px}
   .breadcrumb a{color:var(--muted)}
+
+  /* 사이드바 카드 */
+  .aside-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 18px 16px;margin-bottom:14px}
+  .aside-title{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:.02em;text-transform:uppercase}
+  .aside-pre{background:#f0f4f9;border:1px solid var(--border);border-radius:6px;padding:10px 12px;font-family:'SF Mono','Roboto Mono',monospace;font-size:10.5px;color:var(--text);overflow-x:auto;line-height:1.55;margin:0;white-space:pre}
+  .aside-table{border-collapse:collapse;width:100%;font-size:11.5px;background:#fff;border:none}
+  .aside-table th{background:#f5f7fa;color:var(--navy);font-weight:700;padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);font-size:10.5px;letter-spacing:.02em}
+  .aside-table td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+  .aside-table tr:last-child td{border-bottom:none}
+  .aside-cta{margin-top:12px}
+  .aside-cta button{width:100%;padding:11px 14px;background:var(--teal);color:#fff;border:none;border-radius:6px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;transition:background .15s}
+  .aside-cta button:hover{background:#155b48}
+  .aside-cta-note{font-size:11.5px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.5}
+
+  /* 관련 글 (3-col) */
+  .related-section{max-width:1200px;margin:50px auto 0;padding:0 24px}
+  .related-section h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:18px;letter-spacing:-.01em}
+  .related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .related-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .15s}
+  .related-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,37,64,.06);text-decoration:none}
+  .related-card .rc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+  .related-card .rc-tag{font-size:10.5px;color:var(--teal);background:#f5f9f7;padding:2px 7px;border-radius:8px;font-weight:600}
+  .related-card h3{font-size:15px;font-weight:800;color:var(--navy);line-height:1.4;margin:0 0 8px;letter-spacing:-.005em}
+  .related-card .rc-summary{font-size:12.5px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:10px}
+  .related-card .rc-meta{font-size:11.5px;color:var(--muted);border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between}
+  .related-card .rc-meta .rc-app{color:var(--teal);font-weight:600}
+  .related-empty{background:#fff;border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  /* 모바일 — 사이드바 본문 아래로 스택, sticky 해제 */
+  @media(max-width:960px){
+    .article-grid{grid-template-columns:1fr;gap:24px}
+    .article-aside{position:static;max-height:none;overflow:visible}
+    .related-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    .related-grid{grid-template-columns:1fr}
+  }
 
   h1{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px}
   .meta{font-size:12px;color:var(--muted);margin-bottom:24px;display:flex;gap:14px;flex-wrap:wrap}
@@ -117,17 +158,20 @@
   <div class="site-header-inner">
     <a class="site-logo" href="/index.html"><span>Cellab</span> 셀렙</a>
     <nav class="site-nav">
-      <a href="/index.html" class="active">펌프셋업 리뷰</a>
+      <a href="/reviews.html" class="active">펌프셋업 리뷰</a>
       <a href="/recommend.html">펌프 추천</a>
-      <a href="/pump.html">제품 카탈로그</a>
+      <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
     </nav>
   </div>
 </header>
 
+<div class="article-wrap">
+<div class="article-grid">
+<main class="article-main">
 <article class="article">
 
   <div class="breadcrumb">
-    <a href="/index.html">홈</a> &nbsp;›&nbsp; <a href="/index.html">펌프셋업 리뷰</a> &nbsp;›&nbsp; BT101 ex vivo 카테터
+    <a href="/index.html">홈</a> &nbsp;›&nbsp; <a href="/reviews.html">펌프셋업 리뷰</a> &nbsp;›&nbsp; BT101 ex vivo 카테터
   </div>
 
   <h1>정맥 카테터 코팅 ex vivo 시험 — Nature Communications 2024의 BT101 페리스탈틱 셋업이 흥미로운 이유</h1>
@@ -193,19 +237,6 @@
     <tr><td>검증 항목</td><td>혈전 부착·균막 형성·카테터 무게 변화·면역형광</td></tr>
   </table>
 
-  <h3>흐름 구성</h3>
-
-<pre>
-[Saline reservoir]
-        |
-        v
-[BT101 페리스탈틱 펌프] --- 38.4 mL/min ---+
-        |                                  |
-        v                                  |
-[실리콘 튜브 ID 3mm] --> [카테터 5cm] -----+
-        (closed loop)
-</pre>
-
   <p>샘플 절편 인접 5cm 튜빙 구간에서 별도 colony counting을 수행해 균 부착·증식을 정량합니다. 카테터 무게 변화로 혈전 부착량을 측정합니다.</p>
 
   <h2>3. 셋업 변형 응용</h2>
@@ -255,29 +286,63 @@
     <li>균막 형성 동역학 (biofilm dynamics)</li>
   </ul>
 
-  <h2>6. 셋업에 필요한 부품</h2>
+</article>
+</main>
 
-  <table>
-    <tr><th>분류</th><th>부품</th><th>사양</th></tr>
-    <tr><td>정량펌프</td><td>BT101 페리스탈틱 펌프 본체</td><td>0.00011~750 mL/min, 단일 채널</td></tr>
-    <tr><td>펌프헤드</td><td>YZ15 펌프헤드</td><td>단일 채널, 실리콘·PharMed·Tygon 호환</td></tr>
-    <tr><td>펌프헤드</td><td>카세트·클램프</td><td>YZ15 호환, 튜브 고정</td></tr>
-    <tr><td>튜브</td><td>실리콘 튜브 (메인)</td><td>의료등급 ID 3.0mm × OD 5.0mm</td></tr>
-    <tr><td>튜브</td><td>실리콘 튜브 (대체)</td><td>의료등급 ID 1.6mm</td></tr>
-    <tr><td>피팅</td><td>Y 커넥터 (분기·샘플링)</td><td>1/4-28 또는 luer-lock</td></tr>
-    <tr><td>피팅</td><td>직선 커넥터</td><td>1/4-28 SS316L 또는 PP</td></tr>
-    <tr><td>피팅</td><td>Luer-lock 어댑터</td><td>F-루어, 카테터 연결</td></tr>
-    <tr><td>기타</td><td>액체 저장 용기</td><td>멸균 PP/유리 250~500mL</td></tr>
-    <tr><td>외부 조달</td><td>Normal saline</td><td>USP-grade 0.9% NaCl</td></tr>
-  </table>
-
-  <div class="cta">
-    <div class="ct-title">필요한 부품만 골라 견적</div>
-    <div class="ct-desc">위 셋업의 부품 중 필요한 것을 선택해 한 번에 견적 받으실 수 있습니다.</div>
-    <button class="btn" type="button" onclick="openInquiry('bt101_ex_vivo_catheter')" style="border:none;cursor:pointer;font-family:inherit">견적 문의 →</button>
+<aside class="article-aside">
+  <!-- 흐름 구성 -->
+  <div class="aside-card">
+    <div class="aside-title">흐름 구성</div>
+<pre class="aside-pre">[Saline reservoir]
+       |
+       v
+[BT101 페리스탈틱 펌프]
+       | 38.4 mL/min
+       v
+[실리콘 ID 3mm 튜브]
+       |
+       v
+[카테터 5cm] ──┐
+               |
+   (closed loop)
+</pre>
   </div>
 
-</article>
+  <!-- 셋업에 필요한 부품 -->
+  <div class="aside-card">
+    <div class="aside-title">셋업에 필요한 부품</div>
+    <table class="aside-table">
+      <tr><th>부품</th><th>사양</th></tr>
+      <tr><td>BT101 펌프 본체</td><td>0.00011~750 mL/min</td></tr>
+      <tr><td>YZ15 펌프헤드</td><td>단일 채널</td></tr>
+      <tr><td>카세트·클램프</td><td>YZ15 호환</td></tr>
+      <tr><td>실리콘 튜브 (메인)</td><td>의료 ID 3.0mm × OD 5.0mm</td></tr>
+      <tr><td>실리콘 튜브 (대체)</td><td>의료 ID 1.6mm</td></tr>
+      <tr><td>Y 커넥터</td><td>1/4-28 / Luer-lock</td></tr>
+      <tr><td>직선 커넥터</td><td>SS316L / PP</td></tr>
+      <tr><td>Luer-lock 어댑터</td><td>F-루어</td></tr>
+      <tr><td>저장 용기</td><td>멸균 PP/유리 250~500mL</td></tr>
+      <tr><td>Normal saline</td><td>USP-grade 0.9% NaCl</td></tr>
+    </table>
+
+    <div class="aside-cta">
+      <button type="button" onclick="openInquiry('bt101_ex_vivo_catheter')">견적 문의 →</button>
+      <div class="aside-cta-note">필요한 부품만 골라 한 번에 견적</div>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /.article-grid -->
+
+<!-- 관련 있는 글 -->
+<section class="related-section">
+  <h2>관련 있는 글</h2>
+  <div class="related-grid" id="relatedGrid">
+    <div class="related-empty" style="grid-column:1/-1">관련 글을 불러오는 중...</div>
+  </div>
+</section>
+
+</div><!-- /.article-wrap -->
 
 
 <!-- 견적 문의 모달 -->
@@ -313,15 +378,57 @@ window.addEventListener('message', e => {
     setTimeout(closeInquiry, 1800);
   }
 });
+
+// ===== 관련 글 자동 로딩 =====
+(async function loadRelated(){
+  const CURRENT_SLUG = 'bt101-ex-vivo-catheter';
+  const CURRENT_APP  = '카테터·의료기기';
+  const grid = document.getElementById('relatedGrid');
+  if(!grid) return;
+  try {
+    const res = await fetch('/_build/posts.json', {cache:'no-store'});
+    const data = await res.json();
+    const posts = (data.posts || []).filter(p => !(p.url||'').includes(CURRENT_SLUG));
+
+    // 우선순위: 같은 응용 분야 → 그 외 최신순
+    const sameApp  = posts.filter(p => p.application === CURRENT_APP);
+    const others   = posts.filter(p => p.application !== CURRENT_APP)
+                          .sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+    const related  = sameApp.concat(others).slice(0, 3);
+
+    if (related.length === 0) {
+      grid.innerHTML = `
+        <div class="related-empty">곧 발행 예정</div>
+        <div class="related-empty">곧 발행 예정</div>
+        <div class="related-empty">곧 발행 예정</div>`;
+      return;
+    }
+
+    const esc = s => String(s||'').replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+    grid.innerHTML = related.map(p => {
+      const tags = (p.tags||[]).slice(0,2).map(t=>`<span class="rc-tag">${esc(t)}</span>`).join('');
+      return `<a class="related-card" href="${esc(p.url)}">
+        <div class="rc-tags">${tags}</div>
+        <h3>${esc(p.title)}</h3>
+        <div class="rc-summary">${esc(p.summary)}</div>
+        <div class="rc-meta"><span>${esc(p.date)}</span><span class="rc-app">${esc(p.application||'')}</span></div>
+      </a>`;
+    }).join('') + Array(Math.max(0, 3 - related.length)).fill('<div class="related-empty">곧 발행 예정</div>').join('');
+  } catch(err) {
+    grid.innerHTML = '<div class="related-empty" style="grid-column:1/-1">관련 글을 불러올 수 없습니다.</div>';
+  }
+})();
 </script>
 
 <footer class="site-foot">
   <div>
     <a href="/index.html">홈</a> ·
     <a href="/recommend.html">펌프 추천</a> ·
-    <a href="/pump.html">정량펌프</a> ·
-    <a href="/tubing.html">튜브</a> ·
-    <a href="/syringe.html">시린지</a>
+    <a href="/reviews.html">펌프셋업 리뷰</a> ·
+    <a href="/recommend.html">펌프 추천</a> ·
+    <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
   </div>
   <div style="margin-top:8px">© Cellab — R&amp;D Pumps and Consumables</div>
 </footer>
