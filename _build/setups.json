@@ -1,0 +1,20 @@
+{
+  "_comment": "블로그 글별 셋업 부품 리스트. 글의 [견적문의] 버튼이 setup ID로 inquiry.html?setup=ID 형식으로 연결됨. 글 1편 = setup 1개. items 안의 부품은 글 6번 섹션 부품 표와 1:1 매칭.",
+  "setups": {
+    "bt101_ex_vivo_catheter": {
+      "title": "BT101 ex vivo 카테터 코팅 셋업 (Nat. Comm. 2024)",
+      "post_url": "",
+      "items": [
+        {"category": "pump",      "name": "BT101 페리스탈틱 펌프 본체",     "spec": "0.00011~750 mL/min, 단일 채널"},
+        {"category": "pumphead",  "name": "YZ15 펌프헤드",                   "spec": "단일 채널, 실리콘·PharMed·Tygon 호환"},
+        {"category": "pumphead",  "name": "카세트·클램프",                  "spec": "YZ15 호환, 튜브 고정"},
+        {"category": "tubing",    "name": "실리콘 튜브 (메인)",              "spec": "의료등급 ID 3.0mm × OD 5.0mm"},
+        {"category": "tubing",    "name": "실리콘 튜브 (대체)",              "spec": "의료등급 ID 1.6mm"},
+        {"category": "fitting",   "name": "Y 커넥터 (분기·샘플링)",          "spec": "1/4-28 또는 luer-lock"},
+        {"category": "fitting",   "name": "직선 커넥터",                     "spec": "1/4-28 SS316L 또는 PP"},
+        {"category": "fitting",   "name": "Luer-lock 어댑터",                "spec": "F-루어, 카테터 연결"},
+        {"category": "other",     "name": "액체 저장 용기",                  "spec": "멸균 PP/유리 250~500mL"}
+      ]
+    }
+  }
+}

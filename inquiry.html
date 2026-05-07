@@ -27,38 +27,34 @@
   a{color:var(--teal);text-decoration:none}
   .container{max-width:720px;margin:0 auto;padding:32px 20px}
 
-  /* 헤더 */
   .head{padding:18px 0;border-bottom:1px solid var(--border);margin-bottom:24px}
   .head a{font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
   .head a span{color:var(--teal)}
   .head .sub{font-size:12px;color:var(--muted);margin-top:2px}
 
-  /* 진행 표시 */
   .progress{display:flex;gap:8px;margin-bottom:20px;font-size:12px;color:var(--muted)}
   .progress .step{padding:6px 12px;border-radius:14px;background:#fff;border:1px solid var(--border)}
   .progress .step.active{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:700}
 
   h1{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:8px}
-  .lead{font-size:13px;color:var(--muted);margin-bottom:20px}
+  .lead{font-size:13px;color:var(--muted);margin-bottom:6px}
+  .setup-title{font-size:14px;font-weight:700;color:var(--teal);margin-bottom:18px}
 
-  /* 폼 */
   .form{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px}
 
-  /* Step 1 — 부품 리스트 */
-  .cat-group{margin-bottom:20px}
-  .cat-name{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.05em;margin-bottom:8px;text-transform:uppercase}
-  .item{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;transition:all .15s;background:#fff}
+  /* 부품 리스트 */
+  .item{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--border);border-radius:6px;margin-bottom:6px;transition:all .15s;background:#fff;cursor:pointer}
   .item:hover{border-color:var(--teal);background:#f5f9f7}
-  .item input[type=checkbox]{width:16px;height:16px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
+  .item input[type=checkbox]{width:18px;height:18px;accent-color:var(--teal);flex-shrink:0;cursor:pointer}
   .item .info{flex:1;min-width:0}
-  .item .info .name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px}
+  .item .info .name{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:2px}
   .item .info .spec{font-size:11.5px;color:var(--muted);line-height:1.4}
-  .item .qty{display:flex;align-items:center;gap:4px;flex-shrink:0}
-  .item .qty label{font-size:11px;color:var(--muted)}
-  .item .qty input{width:54px;padding:5px 7px;border:1px solid var(--border);border-radius:4px;font:inherit;font-size:13px;text-align:center}
+  .item .qty{display:flex;align-items:center;gap:5px;flex-shrink:0}
+  .item .qty span{font-size:11px;color:var(--muted)}
+  .item .qty input{width:54px;padding:6px 8px;border:1px solid var(--border);border-radius:4px;font:inherit;font-size:13px;text-align:center}
   .item.checked{border-color:var(--teal);background:#f5f9f7}
 
-  /* Step 2 — 연락처 */
+  /* 연락처 폼 */
   .row{margin-bottom:14px}
   .row label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px}
   .row .req{color:#b94545;margin-left:3px}
@@ -70,25 +66,24 @@
   .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media(max-width:560px){.grid{grid-template-columns:1fr}}
 
-  /* 선택된 부품 요약 (Step 2) */
-  .summary{background:#f5f9f7;border:1px solid var(--teal);border-radius:6px;padding:12px;margin-bottom:18px}
+  .summary{background:#f5f9f7;border:1px solid var(--teal);border-radius:6px;padding:12px 14px;margin-bottom:18px}
   .summary .title{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.05em;margin-bottom:6px;text-transform:uppercase}
   .summary ul{list-style:none;font-size:13px;color:var(--text)}
   .summary li{padding:3px 0}
   .summary .empty{color:var(--muted);font-size:12px}
 
-  /* 버튼 */
   .btn{padding:11px 18px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text);font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:all .15s}
   .btn:hover{border-color:var(--teal);color:var(--teal)}
   .btn-primary{background:var(--teal);color:#fff;border-color:var(--teal)}
   .btn-primary:hover{background:#155b48;color:#fff}
   .btn-row{display:flex;justify-content:space-between;gap:8px;margin-top:18px}
-  .btn-full{width:100%}
 
   .err{color:#b94545;font-size:12px;margin-top:6px;display:none}
   .err.show{display:block}
 
-  /* 푸터 */
+  .no-setup{padding:32px;text-align:center;color:var(--muted);font-size:13px}
+  .no-setup a{color:var(--teal);font-weight:700}
+
   .foot{margin-top:32px;padding-top:14px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);text-align:center}
   .foot a{margin:0 6px}
 </style>
@@ -103,6 +98,7 @@
 
   <h1>견적 문의</h1>
   <p class="lead" id="lead">필요한 부품을 선택하고 수량을 입력하세요.</p>
+  <div class="setup-title" id="setupTitle"></div>
 
   <div class="progress">
     <span class="step active" id="prog1">1. 부품 선택</span>
@@ -131,6 +127,8 @@
         <ul id="summaryList"><li class="empty">선택 없음</li></ul>
       </div>
 
+      <input type="hidden" name="setup_id" id="setupIdHidden">
+      <input type="hidden" name="setup_title" id="setupTitleHidden">
       <input type="hidden" name="items_selected" id="itemsSelected">
 
       <div class="grid">
@@ -188,81 +186,56 @@
 </div>
 
 <script>
-const SPEC_LABELS = {
-  pump: ['시리즈','유량','회전수·무게','용도'],
-  pumphead: ['시리즈','채널','유량','호환튜브'],
-  tubing: ['재질','내경','외경','길이'],
-  syringe: ['시리즈','채널','시린지 범위','용도'],
-  fitting: ['종류','사이즈','재질','용도'],
-  other: ['종류','스펙1','스펙2','스펙3'],
-};
+const params = new URLSearchParams(location.search);
+const setupId = params.get('setup');
+let setupData = null;
 
-const CAT_NAMES = {
-  pump: '정량펌프',
-  pumphead: '펌프헤드',
-  tubing: '튜브',
-  syringe: '시린지',
-  fitting: '피팅',
-  other: '기타',
-};
-
-let allProducts = [];
-
-async function loadProducts() {
+async function loadSetup() {
   try {
-    const res = await fetch('_build/products.json', {cache:'no-store'});
+    const res = await fetch('_build/setups.json', {cache:'no-store'});
     const data = await res.json();
-    allProducts = data.products || [];
-    renderItems();
+    if (!setupId || !data.setups[setupId]) {
+      // setup 없거나 잘못된 ID
+      document.getElementById('itemsList').innerHTML =
+        '<div class="no-setup">견적 문의는 블로그 글의 [견적문의] 버튼을 통해 접속해 주세요.<br><br>' +
+        '<a href="/index.html">홈으로</a></div>';
+      document.querySelector('.btn-row').style.display = 'none';
+      return;
+    }
+    setupData = data.setups[setupId];
+    document.getElementById('setupTitle').textContent = setupData.title;
+    document.getElementById('setupIdHidden').value = setupId;
+    document.getElementById('setupTitleHidden').value = setupData.title;
+    renderItems(setupData.items);
   } catch (e) {
-    document.getElementById('itemsList').innerHTML = '<p style="color:#b94545;font-size:13px">제품 목록을 불러올 수 없습니다. 새로고침 시도해 주세요.</p>';
+    document.getElementById('itemsList').innerHTML =
+      '<p style="color:#b94545;font-size:13px">셋업 데이터를 불러올 수 없습니다.</p>';
   }
 }
 
-function renderItems() {
-  // URL parameter로 prefilled — items=BT101S,YZ15,...
-  const p = new URLSearchParams(location.search);
-  const presetIds = (p.get('items') || '').split(',').map(s=>s.trim()).filter(Boolean);
-  const presetMap = {};
-  presetIds.forEach(id => { presetMap[id] = true; });
-
-  // 카테고리별 그룹
-  const groups = {};
-  allProducts.forEach(prod => {
-    if (prod.visible === false) return;
-    const cat = prod.category || 'other';
-    if (!groups[cat]) groups[cat] = [];
-    groups[cat].push(prod);
-  });
-
-  const order = ['pump','pumphead','tubing','syringe','fitting','other'];
+function renderItems(items) {
   let html = '';
-  order.forEach(cat => {
-    if (!groups[cat]) return;
-    html += `<div class="cat-group"><div class="cat-name">${CAT_NAMES[cat]||cat}</div>`;
-    groups[cat].forEach(prod => {
-      const isChecked = presetMap[prod.id] || presetMap[prod.code] ? 'checked' : '';
-      const checkedClass = isChecked ? ' checked' : '';
-      const labels = SPEC_LABELS[cat] || [];
-      const specBits = [prod.spec1, prod.spec2, prod.spec3, prod.spec4]
-        .filter(Boolean).slice(0,2).join(' · ');
-      html += `
-        <label class="item${checkedClass}" data-id="${prod.id}">
-          <input type="checkbox" name="item_${prod.id}" value="${prod.code||prod.id}" ${isChecked} onchange="toggleItem(this)">
-          <div class="info">
-            <div class="name">${prod.name||prod.code||prod.id}</div>
-            <div class="spec">${specBits||''}</div>
-          </div>
-          <div class="qty">
-            <label>수량</label>
-            <input type="number" name="qty_${prod.id}" min="1" value="1">
-          </div>
-        </label>
-      `;
-    });
-    html += `</div>`;
+  items.forEach((it, i) => {
+    html += `
+      <label class="item" data-index="${i}">
+        <input type="checkbox" name="item_${i}" value="${escapeHtml(it.name)}" onchange="toggleItem(this)">
+        <div class="info">
+          <div class="name">${escapeHtml(it.name)}</div>
+          <div class="spec">${escapeHtml(it.spec)}</div>
+        </div>
+        <div class="qty">
+          <span>수량</span>
+          <input type="number" name="qty_${i}" min="1" value="1">
+        </div>
+      </label>
+    `;
   });
-  document.getElementById('itemsList').innerHTML = html || '<p style="color:var(--muted);font-size:13px">제품이 없습니다.</p>';
+  document.getElementById('itemsList').innerHTML = html;
+}
+
+function escapeHtml(s) {
+  return String(s||'').replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
 function toggleItem(cb) {
@@ -276,9 +249,9 @@ function getSelected() {
   document.querySelectorAll('.item input[type=checkbox]:checked').forEach(cb => {
     const item = cb.closest('.item');
     const name = item.querySelector('.name').textContent;
-    const id = item.dataset.id;
+    const spec = item.querySelector('.spec').textContent;
     const qty = item.querySelector('input[type=number]').value || '1';
-    items.push({id, name, qty});
+    items.push({name, spec, qty});
   });
   return items;
 }
@@ -291,15 +264,14 @@ function goStep2() {
   }
   document.getElementById('step1Err').classList.remove('show');
 
-  // 요약 렌더
   const sumList = document.getElementById('summaryList');
-  sumList.innerHTML = selected.map(s => `<li>• ${s.name} <span style="color:var(--muted)">× ${s.qty}</span></li>`).join('');
+  sumList.innerHTML = selected.map(s =>
+    `<li>• ${escapeHtml(s.name)} <span style="color:var(--muted)">— ${escapeHtml(s.spec)} × ${s.qty}</span></li>`
+  ).join('');
 
-  // hidden input에 요약 텍스트
-  const txt = selected.map(s => `${s.name} × ${s.qty}`).join('\n');
+  const txt = selected.map(s => `${s.name} (${s.spec}) × ${s.qty}`).join('\n');
   document.getElementById('itemsSelected').value = txt;
 
-  // 단계 전환
   document.getElementById('step1Section').style.display = 'none';
   document.getElementById('step2Section').style.display = 'block';
   document.getElementById('prog1').classList.remove('active');
@@ -317,17 +289,16 @@ function goStep1() {
   window.scrollTo(0,0);
 }
 
-// 폼 제출 GA4 이벤트
 document.getElementById('inquiryForm').addEventListener('submit', function(){
   if (typeof gtag === 'function') {
     gtag('event', 'inquiry_submit', {
+      setup_id: setupId,
       items: document.getElementById('itemsSelected').value
     });
   }
 });
 
-// 시작
-loadProducts();
+loadSetup();
 </script>
 
 </body>
