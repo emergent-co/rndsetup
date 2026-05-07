@@ -5,8 +5,8 @@
     "pump": [
       "시리즈",
       "유량",
-      "회전수·무게",
-      "추천 용도"
+      "헤드",
+      "제어"
     ],
     "tubing": [
       "재질",
@@ -15,10 +15,10 @@
       "길이"
     ],
     "syringe": [
-      "시리즈",
-      "채널",
-      "시린지 범위",
-      "추천 용도"
+      "용량",
+      "재질",
+      "타입",
+      "용도"
     ],
     "pumphead": [
       "시리즈",
@@ -54,8 +54,7 @@
       "keywords": [
         "분주",
         "F시리즈",
-        "150rpm",
-        "표준"
+        "150rpm"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -75,8 +74,7 @@
       "keywords": [
         "분주",
         "F시리즈",
-        "350rpm",
-        "중대용량"
+        "350rpm"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -96,8 +94,7 @@
       "keywords": [
         "분주",
         "F시리즈",
-        "600rpm",
-        "대용량"
+        "600rpm"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -117,8 +114,7 @@
       "keywords": [
         "유량",
         "L시리즈",
-        "150rpm",
-        "표준"
+        "150rpm"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -178,8 +174,7 @@
       "keywords": [
         "프로그램",
         "터치",
-        "자동화",
-        "600rpm"
+        "자동화"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -199,8 +194,7 @@
       "keywords": [
         "정밀",
         "마이크로",
-        "BQ",
-        "80rpm"
+        "BQ"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -220,8 +214,7 @@
       "keywords": [
         "표준",
         "S시리즈",
-        "TFF",
-        "물질이송"
+        "TFF"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -241,10 +234,9 @@
       "keywords": [
         "표준",
         "S시리즈",
-        "세포배양",
-        "실험실"
+        "세포배양"
       ],
-      "image_url": "",
+      "image_url": "https://example.com/test.png",
       "buy_allforlab_url": "",
       "buy_navimro_url": ""
     },
@@ -262,8 +254,7 @@
       "keywords": [
         "대용량",
         "S시리즈",
-        "코팅",
-        "과립화"
+        "코팅"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -283,8 +274,7 @@
       "keywords": [
         "대용량",
         "S시리즈",
-        "600rpm",
-        "공급"
+        "600rpm"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -304,8 +294,7 @@
       "keywords": [
         "기어펌프",
         "CT",
-        "PEEK",
-        "정량토출"
+        "PEEK"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -325,9 +314,7 @@
       "keywords": [
         "기어펌프",
         "CT",
-        "PEEK",
-        "터치",
-        "자동분주"
+        "PEEK"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -347,8 +334,7 @@
       "keywords": [
         "분리형",
         "TFD",
-        "ZX01",
-        "마이크로"
+        "ZX01"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -368,8 +354,7 @@
       "keywords": [
         "분리형",
         "TFD",
-        "ZX02",
-        "표준"
+        "ZX02"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -389,8 +374,7 @@
       "keywords": [
         "분리형",
         "TFD",
-        "ZX03",
-        "초정밀"
+        "ZX03"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -410,8 +394,7 @@
       "keywords": [
         "분리형",
         "TFD",
-        "멀티",
-        "8ch"
+        "멀티"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -431,8 +414,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "1ch",
-        "인퓨전"
+        "1ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -452,8 +434,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "2ch",
-        "인퓨전"
+        "2ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -473,8 +454,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "장스트로크",
-        "대용량"
+        "장스트로크"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -494,8 +474,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "2ch",
-        "대용량"
+        "2ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -515,8 +494,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "4ch",
-        "멀티시료"
+        "4ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -536,8 +514,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "6ch",
-        "고처리량"
+        "6ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -557,8 +534,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "10ch",
-        "병렬"
+        "10ch"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -578,8 +554,7 @@
       "keywords": [
         "일체형",
         "TYD",
-        "초고정밀",
-        "0.03125um"
+        "초고정밀"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -599,8 +574,7 @@
       "keywords": [
         "TYS",
         "2ch",
-        "DualRate",
-        "독립동시"
+        "DualRate"
       ],
       "image_url": "",
       "buy_allforlab_url": "",
@@ -622,6 +596,7 @@
         "무독성",
         "L/S #16 호환"
       ],
+      "image_url": "",
       "buy_allforlab_url": "",
       "buy_navimro_url": ""
     },
@@ -641,6 +616,7 @@
         "YT25 호환",
         "고청정"
       ],
+      "image_url": "",
       "buy_allforlab_url": "",
       "buy_navimro_url": ""
     },
@@ -660,6 +636,7 @@
         "장수명",
         "멸균 가능"
       ],
+      "image_url": "",
       "buy_allforlab_url": "",
       "buy_navimro_url": ""
     }
