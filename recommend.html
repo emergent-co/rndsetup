@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>정량펌프 선택 가이드 — Cellab</title>
+<title>정량펌프, 어떤 걸 골라야 하나요? — Cellab</title>
 <link rel="canonical" href="https://cellab.kr/recommend.html">
-<meta name="description" content="이송, 분주, 미량 주입, 대용량 공급까지 사용 목적에 맞는 정량펌프를 선택하세요. 선택 기준, 용도별 분류, 기본 구성, 헤드·채널, 튜브 규격, 적용 분야, 상담 체크 정리.">
-<meta name="keywords" content="정량펌프, 정량펌프 선택, 페리스탈틱 펌프, 시린지펌프, 기어펌프, OEM 펌프, 분주펌프, 다중채널, Lead Fluid, Cellab">
+<meta name="description" content="셀렙이 현장에서 자주 받는 정량펌프 선택 질문을 30초 위저드 + 펼침형 가이드로 정리했습니다. 작업·액체·강도 3가지만 답하면 적합한 제품군을 안내드립니다.">
+<meta name="keywords" content="정량펌프 선택, 정량펌프 추천, 페리스탈틱 펌프, 시린지펌프, 기어펌프, OEM 펌프, 분주펌프, Lead Fluid, Cellab">
 <meta name="google-site-verification" content="Rmsvu2bCzPOi66nb9epKw-gbrb07Hyem6hM5uNu71ss" />
 <meta name="naver-site-verification" content="388fb33540d49f5adf6912da9cc3f089163002b6" />
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="정량펌프 선택 가이드 — Cellab">
-<meta property="og:description" content="사용 목적·유량·액체 특성·헤드·채널·튜브 기준으로 정량펌프를 고르는 방법.">
+<meta property="og:title" content="정량펌프, 어떤 걸 골라야 하나요? — Cellab">
+<meta property="og:description" content="3-질문 미니 위저드로 적합한 제품군부터 빠르게. 자세한 기준·구성·튜브·적용 분야는 펼쳐서 확인.">
 <meta property="og:url" content="https://cellab.kr/recommend.html">
 
 <!-- Google tag (gtag.js) — GA4 -->
@@ -28,14 +28,14 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#0a2540;--teal:#1a6e56;--text:#1a2332;--muted:#5a6779;
-  --border:#e3e8ef;--bg:#f7f9fc;--soft:#f5f9f7;
+  --border:#e3e8ef;--bg:#f7f9fc;--soft:#f5f9f7;--soft-blue:#eaf1f9;
 }
 html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:var(--teal);text-decoration:none}
 a:hover{text-decoration:underline}
-.container{max-width:960px;margin:0 auto;padding:0 24px}
+.container{max-width:920px;margin:0 auto;padding:0 24px}
 
-/* ===== 헤더·푸터 (index 동일) ===== */
+/* ===== 헤더·푸터 ===== */
 .site-header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
 .site-header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px}
 .site-logo{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.02em;text-decoration:none}
@@ -50,118 +50,154 @@ a:hover{text-decoration:underline}
 .site-foot a:hover{color:var(--teal)}
 
 /* ===== Hero ===== */
-.hero{background:linear-gradient(135deg,#e6f1fb 0%,#fff 100%);padding:60px 0 30px;border-bottom:1px solid var(--border)}
-.hero h1{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.25;margin-bottom:14px}
-.hero .lead{font-size:17px;color:var(--text);margin-bottom:14px;font-weight:600}
-.hero .desc{font-size:14.5px;color:var(--muted);max-width:780px;margin-bottom:8px}
-.hero .desc + .desc{margin-bottom:24px}
+.hero{background:linear-gradient(135deg,var(--soft-blue) 0%,#fff 100%);padding:56px 0 40px;border-bottom:1px solid var(--border)}
+.hero h1{font-size:32px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3;margin-bottom:12px}
+.hero .lead{font-size:16px;color:var(--muted);max-width:760px;line-height:1.7}
+.hero .lead b{color:var(--text);font-weight:600}
 
-/* TOC pills */
-.toc{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.toc a{display:inline-block;padding:7px 13px;background:#fff;border:1px solid var(--border);border-radius:18px;font-size:12.5px;font-weight:600;color:var(--navy);transition:all .15s;text-decoration:none}
-.toc a:hover{border-color:var(--teal);color:var(--teal);background:var(--soft)}
+/* ===== 위저드 카드 ===== */
+.wizard-wrap{padding:36px 0 24px;background:#fff;border-bottom:1px solid var(--border)}
+.wizard-card{max-width:920px;margin:0 auto;padding:0 24px}
+.wz-head{margin-bottom:18px}
+.wz-mark{display:inline-block;font-size:11.5px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;background:var(--soft);padding:4px 10px;border-radius:4px;margin-bottom:10px}
+.wz-head h2{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.wz-head p{font-size:14px;color:var(--muted)}
 
-/* ===== 일반 섹션 ===== */
-.section{padding:56px 0;border-top:1px solid var(--border);background:#fff}
-.section.alt{background:var(--bg)}
-.section .label{font-size:12px;color:var(--teal);font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
-.section h2{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin-bottom:14px}
-.section .intro{font-size:14.5px;color:var(--muted);max-width:780px;margin-bottom:28px}
+.wz-form{background:#fff;border:1px solid var(--border);border-radius:12px;padding:6px}
+.wz-q{padding:18px 22px;border-bottom:1px solid var(--border)}
+.wz-q:last-of-type{border-bottom:none}
+.wz-q legend{display:block;font-size:13.5px;font-weight:700;color:var(--navy);margin-bottom:12px;padding:0}
+.wz-q legend .num{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:11.5px;font-weight:800;text-align:center;line-height:22px;margin-right:8px}
+.wz-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wz-options label{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:all .15s;color:var(--text)}
+.wz-options label:hover{border-color:var(--teal);background:#fafdfc}
+.wz-options input{accent-color:var(--teal);flex-shrink:0}
+.wz-options label:has(input:checked){border-color:var(--teal);background:var(--soft);font-weight:600;color:var(--navy)}
 
-/* 번호 카드 (4-item) */
-.num-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.num-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 22px 20px;display:flex;gap:14px}
-.section.alt .num-card{background:#fff}
-.num-circle{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-size:15px;font-weight:800;display:grid;place-items:center}
-.num-card h3{font-size:15.5px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.num-card p{font-size:13.5px;color:var(--muted);line-height:1.65;margin:0}
+.wz-actions{padding:16px 22px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.wz-btn{padding:11px 22px;background:var(--teal);color:#fff;border:none;border-radius:6px;font:inherit;font-weight:700;font-size:14px;cursor:pointer;transition:background .15s}
+.wz-btn:hover{background:#155b48}
+.wz-btn.alt{background:#fff;color:var(--muted);border:1px solid var(--border)}
+.wz-btn.alt:hover{background:#fafdfc;color:var(--text)}
+.wz-hint{font-size:12px;color:var(--muted);margin-left:auto}
 
-/* 카테고리 카드 (10-item) */
-.cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-.cat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;flex-direction:column;transition:all .15s}
-.cat-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,37,64,.06)}
-.cat-num{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:1.5px}
-.cat-card h3{font-size:18px;font-weight:800;color:var(--navy);margin:4px 0 4px;letter-spacing:-.005em}
-.cat-tag{display:inline-block;font-size:11px;color:var(--teal);background:var(--soft);padding:3px 10px;border-radius:10px;font-weight:700;align-self:flex-start;margin-bottom:12px}
-.cat-card p{font-size:13px;color:var(--text);margin-bottom:10px;line-height:1.65}
-.cat-card .fit-title{font-size:11.5px;color:var(--navy);font-weight:800;letter-spacing:.5px;margin:6px 0 4px;text-transform:uppercase}
-.cat-card ul{margin:0 0 14px 18px;padding:0;font-size:12.5px;color:var(--muted);line-height:1.6}
-.cat-card ul li{margin-bottom:4px}
-.cat-card .note{background:#fff8e6;border:1px solid #f0d976;border-radius:6px;padding:9px 12px;font-size:12px;color:#6c5005;margin-bottom:12px;line-height:1.55}
-.cat-card .note b{color:#5a3f00}
-.cat-cta{margin-top:auto;display:inline-block;padding:9px 14px;border:1px solid var(--teal);color:var(--teal);font-size:12.5px;font-weight:700;border-radius:6px;text-align:center;text-decoration:none;transition:all .15s}
-.cat-cta:hover{background:var(--teal);color:#fff;text-decoration:none}
+.wz-result{margin-top:16px;padding:22px;background:linear-gradient(135deg,var(--soft) 0%,#fff 100%);border:1px solid #c5e0d5;border-radius:10px;display:none}
+.wz-result.show{display:block;animation:fadeUp .35s ease-out both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.wz-result .res-label{font-size:11.5px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:6px}
+.wz-result .res-cat{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.005em;margin-bottom:6px}
+.wz-result .res-why{font-size:13.5px;color:var(--text);margin-bottom:14px;line-height:1.65}
+.wz-result .res-actions{display:flex;gap:10px;flex-wrap:wrap}
+.wz-result .res-actions a{padding:9px 16px;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none}
+.wz-result .res-primary{background:var(--teal);color:#fff}
+.wz-result .res-primary:hover{background:#155b48;text-decoration:none}
+.wz-result .res-sec{background:#fff;color:var(--navy);border:1px solid var(--border)}
+.wz-result .res-sec:hover{border-color:var(--teal);color:var(--teal);text-decoration:none}
 
-/* 4-item 기본 구성 */
-.basic-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px}
-.basic-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px;display:flex;flex-direction:column}
-.basic-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.basic-card h3{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:10px}
-.basic-card p{font-size:13px;color:var(--muted);flex:1;line-height:1.65;margin-bottom:14px}
-.basic-link{font-size:12px;font-weight:700;color:var(--teal);text-decoration:none}
-.basic-link:hover{text-decoration:underline}
+/* ===== 가이드 (FAQ 아코디언) ===== */
+.guide{padding:48px 0 64px}
+.guide-head{margin-bottom:18px}
+.guide-head .label{font-size:11.5px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:8px}
+.guide-head h2{font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.01em;margin-bottom:6px}
+.guide-head p{font-size:14px;color:var(--muted)}
 
-/* 헤드·채널 (2-col) */
-.split-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
-.split-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px}
-.split-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.split-card h3{font-size:17px;font-weight:800;color:var(--navy);margin-bottom:10px}
-.split-card p{font-size:13.5px;color:var(--muted);line-height:1.65;margin:0}
+.faq-list{display:flex;flex-direction:column;gap:10px}
 
-/* 콜아웃 박스 */
-.callout{background:var(--soft);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:16px 20px}
-.callout h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.callout p{font-size:13px;color:var(--text);margin:0 0 8px;line-height:1.65}
+details.faq{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s}
+details.faq[open]{border-color:#c5d3e2;box-shadow:0 2px 6px rgba(10,37,64,.04)}
+details.faq summary{cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:14px;list-style:none;font-size:15px;font-weight:700;color:var(--navy);transition:background .15s}
+details.faq summary::-webkit-details-marker{display:none}
+details.faq summary:hover{background:#fafbfd}
+.faq-q-mark{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--soft);color:var(--teal);font-weight:800;font-size:13px;display:grid;place-items:center}
+.faq-q-text{flex:1;letter-spacing:-.005em}
+.faq-q-icon{flex-shrink:0;width:24px;height:24px;border-radius:50%;background:#f0f4f9;color:var(--navy);font-size:18px;font-weight:600;display:grid;place-items:center;line-height:1;transition:transform .25s}
+details.faq[open] .faq-q-icon{transform:rotate(45deg);background:var(--teal);color:#fff}
+.faq-body{padding:4px 22px 22px;border-top:1px solid var(--border);background:#fafbfd}
+.faq-body > *:first-child{margin-top:14px}
+
+/* 본문 공용 */
+.faq-body p{font-size:14px;color:var(--text);margin-bottom:12px;line-height:1.7}
+.faq-body p:last-child{margin-bottom:0}
+.faq-body strong{color:var(--navy);font-weight:700}
+
+/* 4-기준 numbered */
+.num-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.num-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:12px}
+.num-circle{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;font-weight:800;display:grid;place-items:center}
+.num-card h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:5px}
+.num-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+/* 카테고리 카드 (10) */
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;flex-direction:column}
+.cat-card .cat-tag{display:inline-block;font-size:10.5px;color:var(--teal);background:var(--soft);padding:2px 8px;border-radius:8px;font-weight:700;align-self:flex-start;margin-bottom:8px;letter-spacing:.3px}
+.cat-card h4{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:6px;letter-spacing:-.005em}
+.cat-card p{font-size:13px;color:var(--text);margin-bottom:8px;line-height:1.6}
+.cat-card .fit{font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:0}
+.cat-card .fit b{color:var(--navy);font-weight:700;display:block;margin-bottom:2px}
+.cat-card .note{background:#fff8e6;border:1px solid #f0d976;border-radius:6px;padding:8px 11px;font-size:11.5px;color:#6c5005;margin-top:8px;line-height:1.55}
+
+/* 4-구성 */
+.basic-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.basic-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.basic-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.basic-card h4{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.basic-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+/* 헤드·채널 split */
+.split-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.split-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.split-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.split-card h4{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.split-card p{font-size:13px;color:var(--muted);line-height:1.6;margin:0}
+
+.callout{background:var(--soft);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:12px 16px}
+.callout h5{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:5px}
+.callout p{font-size:12.5px;color:var(--text);line-height:1.6;margin:0 0 6px}
 .callout p:last-child{margin-bottom:0}
 
-/* 튜브 규격 4-item */
-.tube-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px}
-.tube-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px}
-.tube-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px}
-.tube-card h3{font-size:15.5px;font-weight:800;color:var(--navy);margin-bottom:8px}
-.tube-card p{font-size:13px;color:var(--text);line-height:1.65;margin-bottom:8px}
+/* 튜브 4 */
+.tube-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.tube-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px}
+.tube-en{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:5px}
+.tube-card h4{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.tube-card p{font-size:12.5px;color:var(--text);line-height:1.6;margin-bottom:6px}
 .tube-card p:last-child{margin-bottom:0}
-.tube-formula{display:inline-block;background:#f0f4f9;border:1px solid var(--border);border-radius:6px;padding:6px 12px;font-family:'SF Mono','Roboto Mono',monospace;font-size:12.5px;color:var(--navy);margin:4px 0}
+.tube-formula{display:inline-block;background:#f0f4f9;border:1px solid var(--border);border-radius:5px;padding:4px 10px;font-family:'SF Mono','Roboto Mono',monospace;font-size:12px;color:var(--navy);margin:3px 0}
 
-/* 적용 분야 6-item */
-.app-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.app-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:20px}
-.app-card h3{font-size:14.5px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.app-card p{font-size:13px;color:var(--muted);margin:0;line-height:1.6}
+/* 적용 분야 6 */
+.app-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.app-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.app-card h4{font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:5px}
+.app-card p{font-size:12.5px;color:var(--muted);margin:0;line-height:1.55}
 
-/* 상담 체크 리스트 */
-.check-list{background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin-bottom:18px}
+/* 체크리스트 */
 .check-list ul{margin:0;padding:0;list-style:none}
-.check-list li{padding:9px 0;border-bottom:1px dashed #eef1f5;font-size:13.5px;color:var(--text);display:flex;gap:10px;line-height:1.6}
+.check-list li{padding:8px 0;border-bottom:1px dashed #eef1f5;font-size:13.5px;color:var(--text);display:flex;gap:10px;line-height:1.6}
 .check-list li:last-child{border-bottom:none}
 .check-list li::before{content:'';flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-top:9px}
-.check-list li b{color:var(--navy);font-weight:700}
+.check-list li b{color:var(--navy);font-weight:700;margin-right:4px}
 
-/* 문의 CTA */
-.cta-block{background:linear-gradient(135deg,var(--navy) 0%,#163b5f 100%);color:#fff;border-radius:12px;padding:32px;text-align:center}
-.cta-block h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
-.cta-block p{font-size:14px;color:#c8d3e0;margin-bottom:20px}
-.cta-btn{display:inline-block;padding:13px 28px;background:#fff;color:var(--navy);font-size:14px;font-weight:800;border-radius:6px;text-decoration:none;transition:transform .15s}
+/* 하단 문의 CTA */
+.contact-cta{margin-top:32px;background:linear-gradient(135deg,var(--navy) 0%,#163b5f 100%);color:#fff;border-radius:12px;padding:30px 28px;text-align:center}
+.contact-cta h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:6px;letter-spacing:-.005em}
+.contact-cta p{font-size:13.5px;color:#c8d3e0;margin-bottom:18px}
+.cta-btn{display:inline-block;padding:12px 26px;background:#fff;color:var(--navy);font-size:13.5px;font-weight:800;border-radius:6px;text-decoration:none;transition:transform .15s}
 .cta-btn:hover{transform:translateY(-1px);text-decoration:none}
 
-/* 관련 가이드 링크 */
-.related-link{background:var(--soft);border:1px solid #d3e6dd;border-radius:8px;padding:14px 18px;font-size:13.5px;color:var(--text);margin-top:12px}
-.related-link a{font-weight:700}
-
 /* 반응형 */
-@media(max-width:880px){
-  .num-grid{grid-template-columns:1fr}
-  .cat-grid{grid-template-columns:1fr 1fr}
-  .basic-grid{grid-template-columns:1fr 1fr}
+@media(max-width:760px){
+  .hero h1{font-size:24px}
+  .wz-options{grid-template-columns:1fr}
+  .num-grid,.cat-grid,.basic-grid,.split-2,.tube-grid{grid-template-columns:1fr}
   .app-grid{grid-template-columns:1fr 1fr}
-  .tube-grid{grid-template-columns:1fr}
-  .split-2{grid-template-columns:1fr}
-  .hero h1{font-size:26px}
+  details.faq summary{padding:14px 16px;font-size:14px}
+  .faq-body{padding:4px 16px 18px}
+  .wz-q{padding:14px 16px}
+  .wz-actions{padding:14px 16px}
 }
-@media(max-width:560px){
-  .cat-grid,.basic-grid,.app-grid{grid-template-columns:1fr}
-  .section{padding:40px 0}
-  .hero{padding:40px 0 22px}
+@media(max-width:480px){
+  .app-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -181,387 +217,363 @@ a:hover{text-decoration:underline}
 <!-- ===== Hero ===== -->
 <section class="hero">
   <div class="container">
-    <h1>정량펌프 선택 가이드</h1>
-    <p class="lead">이송, 분주, 미량 주입, 대용량 공급까지 사용 목적에 맞는 펌프를 선택하세요.</p>
-    <p class="desc">정량펌프는 액체를 일정한 속도 또는 정해진 양으로 이송·분주하기 위한 장비입니다. 같은 정량펌프라도 연속 이송, 반복 분주, 미량 주입, 대용량 공급, 장비 내장용 등 사용 목적에 따라 적합한 제품군이 달라집니다.</p>
-    <p class="desc">제품을 고를 때는 모델명만 보기보다 사용 목적, 필요한 유량, 액체 특성, 헤드와 채널 구성, 튜브 규격과 재질을 함께 확인해야 합니다. 아래 내용을 기준으로 먼저 제품군을 좁힌 뒤 세부 모델을 비교해보세요.</p>
-
-    <div class="toc">
-      <a href="#sec1">선택 기준</a>
-      <a href="#sec2">펌프 종류</a>
-      <a href="#sec3">기본 구성</a>
-      <a href="#sec3-1">헤드·채널</a>
-      <a href="#sec3-2">튜브 기준</a>
-      <a href="#sec4">적용 분야</a>
-      <a href="#sec5">상담 체크</a>
-      <a href="#sec6">문의하기</a>
-    </div>
+    <h1>정량펌프, 어떤 걸 골라야 하나요?</h1>
+    <p class="lead">셀렙이 현장에서 가장 자주 받는 질문 3개에 답하시면 적합한 <b>제품군</b>을 먼저 좁혀드립니다. 그 아래는 자주 헷갈리는 부분만 펼쳐서 확인할 수 있는 가이드입니다.</p>
   </div>
 </section>
 
-<!-- ===== 01. 선택 기준 ===== -->
-<section class="section" id="sec1">
-  <div class="container">
-    <div class="label">01. SELECTION CRITERIA</div>
-    <h2>정량펌프 선택 전 확인할 기준</h2>
-    <p class="intro">정량펌프는 본체만 보고 결정하기 어렵습니다. 아래 4가지를 먼저 정리하면 제품군과 구성품을 빠르게 좁힐 수 있습니다.</p>
+<!-- ===== 위저드 ===== -->
+<section class="wizard-wrap">
+  <div class="wizard-card">
+    <div class="wz-head">
+      <span class="wz-mark">30초 추천</span>
+      <h2>3가지만 답해주세요</h2>
+      <p>응답에 따라 적합한 제품군을 안내합니다. 정확한 모델 비교는 추천 결과의 링크에서 이어집니다.</p>
+    </div>
 
-    <div class="num-grid">
-      <div class="num-card">
-        <div class="num-circle">1</div>
-        <div>
-          <h3>사용 목적</h3>
-          <p>연속 이송인지, 반복 분주인지, 미량 주입인지 먼저 구분합니다. 대용량 공급, 장비 내장, 방폭 환경처럼 특수 조건이 있으면 처음부터 별도 제품군으로 구분하는 것이 좋습니다.</p>
+    <form class="wz-form" id="wzForm">
+      <fieldset class="wz-q">
+        <legend><span class="num">1</span>어떤 작업이 필요하신가요?</legend>
+        <div class="wz-options">
+          <label><input type="radio" name="work" value="continuous"> 연속으로 흘려보내기</label>
+          <label><input type="radio" name="work" value="dispense"> 정해진 양 반복 분주</label>
+          <label><input type="radio" name="work" value="micro"> μL 단위 미량 주입</label>
+          <label><input type="radio" name="work" value="large"> 대용량 (L/min 이상)</label>
+          <label><input type="radio" name="work" value="oem"> 장비 내장(OEM)</label>
         </div>
-      </div>
-      <div class="num-card">
-        <div class="num-circle">2</div>
-        <div>
-          <h3>필요한 유량 범위</h3>
-          <p>필요한 이송량을 mL/min 또는 L/min 기준으로 정리합니다. 최소 유량과 최대 유량을 함께 확인하면 본체, 헤드, 튜브 조합을 고르기 쉽습니다.</p>
+      </fieldset>
+
+      <fieldset class="wz-q">
+        <legend><span class="num">2</span>다루는 액체에 가까운 건?</legend>
+        <div class="wz-options">
+          <label><input type="radio" name="fluid" value="aqueous"> 수용액·배지·일반 시약</label>
+          <label><input type="radio" name="fluid" value="medical"> 의료·멸균 등급(혈액·세포·약액)</label>
+          <label><input type="radio" name="fluid" value="viscous"> 점성·기름·코팅·수지</label>
+          <label><input type="radio" name="fluid" value="flammable"> 인화성·휘발성·부식성</label>
         </div>
-      </div>
-      <div class="num-card">
-        <div class="num-circle">3</div>
-        <div>
-          <h3>액체 특성</h3>
-          <p>점도, 부식성, 휘발성, 인화성, 침전물 포함 여부, 멸균 필요 여부를 확인합니다. 특히 튜브와 액체가 직접 접촉하는 경우에는 튜브 재질 호환성이 중요합니다.</p>
+      </fieldset>
+
+      <fieldset class="wz-q">
+        <legend><span class="num">3</span>사용 빈도는 어느 정도인가요?</legend>
+        <div class="wz-options">
+          <label><input type="radio" name="freq" value="occasional"> 실험할 때만 가끔</label>
+          <label><input type="radio" name="freq" value="daily"> 매일 몇 시간</label>
+          <label><input type="radio" name="freq" value="continuous"> 24시간 연속·장시간</label>
+          <label><input type="radio" name="freq" value="multi"> 여러 라인 동시 운전</label>
         </div>
+      </fieldset>
+
+      <div class="wz-actions">
+        <button type="button" class="wz-btn" id="wzRun">추천 받기 →</button>
+        <button type="button" class="wz-btn alt" id="wzReset">처음부터</button>
+        <span class="wz-hint">3개 모두 선택 후 클릭</span>
       </div>
-      <div class="num-card">
-        <div class="num-circle">4</div>
-        <div>
-          <h3>제어 방식과 설치 환경</h3>
-          <p>수동 조작만 필요한지, 외부 신호나 PLC 연동이 필요한지 확인합니다. 생산라인, 분석장비 내장, 방폭 구역에서는 제어 방식과 설치 조건을 함께 확인해야 합니다.</p>
+    </form>
+
+    <div class="wz-result" id="wzResult" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- ===== 가이드 (FAQ 아코디언) ===== -->
+<section class="guide">
+  <div class="container">
+    <div class="guide-head">
+      <div class="label">SELECTION GUIDE</div>
+      <h2>자주 헷갈리는 부분, 펼쳐서 확인하세요</h2>
+      <p>전체를 한 번에 읽지 않고, 본인 상황에 맞는 항목만 펼쳐 보시면 됩니다.</p>
+    </div>
+
+    <div class="faq-list">
+
+      <!-- FAQ 1. 선택 전 기준 -->
+      <details class="faq" id="faq-criteria">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">선택 전, 무엇을 먼저 정리해두어야 하나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>본체 모델명만 보고 결정하기는 어렵습니다. 셀렙에 문의 주실 때 아래 4가지가 정리돼 있으면 제품군과 구성품을 빠르게 좁힐 수 있습니다.</p>
+          <div class="num-grid">
+            <div class="num-card">
+              <div class="num-circle">1</div>
+              <div>
+                <h4>사용 목적</h4>
+                <p>연속 이송인지, 반복 분주인지, μL 단위 미량 주입인지부터 구분합니다. 대용량 공급·장비 내장·방폭 환경처럼 특수 조건이 있다면 처음부터 별도 라인으로 분리해 보는 게 좋습니다.</p>
+              </div>
+            </div>
+            <div class="num-card">
+              <div class="num-circle">2</div>
+              <div>
+                <h4>유량 범위</h4>
+                <p>최소·최대 유량을 mL/min 또는 L/min으로 함께 잡아두면 본체·헤드·튜브 조합을 결정하기 쉽습니다. 한쪽만 정해두면 헤드 호환에서 막히는 경우가 많습니다.</p>
+              </div>
+            </div>
+            <div class="num-card">
+              <div class="num-circle">3</div>
+              <div>
+                <h4>액체 특성</h4>
+                <p>점도·부식성·휘발성·인화성·침전물·멸균 필요 여부를 확인합니다. 액체가 튜브와 직접 닿는 페리스탈틱 방식에서는 튜브 재질 호환성이 모델 선택보다 먼저 검토되어야 합니다.</p>
+              </div>
+            </div>
+            <div class="num-card">
+              <div class="num-circle">4</div>
+              <div>
+                <h4>제어 방식·설치 환경</h4>
+                <p>수동 다이얼이면 충분한지, 외부 신호·PLC 연동이 필요한지, 또는 장비 내부에 들어가야 하는지에 따라 본체급이 달라집니다. 방폭 구역은 별도 인증된 라인으로 검토합니다.</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </details>
 
-<!-- ===== 02. 용도별 분류 ===== -->
-<section class="section alt" id="sec2">
-  <div class="container">
-    <div class="label">02. CATEGORIES</div>
-    <h2>용도별 정량펌프 분류</h2>
-    <p class="intro">주요 제품군을 용도별로 정리했습니다. 먼저 필요한 작업 방식에 가까운 제품군을 고른 뒤, 세부 유량과 구성품을 비교하는 방식이 효율적입니다.</p>
+      <!-- FAQ 2. 종류 -->
+      <details class="faq" id="faq-types">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">정량펌프에는 어떤 종류가 있나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>크게 페리스탈틱 계열(롤러로 튜브를 압착) · 시린지 · 기어 · 분주 자동화로 나뉩니다. 같은 페리스탈틱이라도 RPM 기준이냐 유량 기준이냐, 1채널이냐 다중채널이냐에 따라 운전 감이 꽤 달라집니다.</p>
 
-    <div class="cat-grid">
+          <div class="cat-grid">
+            <div class="cat-card">
+              <span class="cat-tag">기본 이송</span>
+              <h4>스피드 정량펌프</h4>
+              <p>드라이버 RPM을 직접 조절해 액체를 보내는 가장 기본형. 정확한 1회 분주량보다 안정적인 연속 이송이 우선일 때.</p>
+              <p class="fit"><b>이런 경우</b>배지·완충액·세척액 일반 이송 / 수조·반응조 보조 라인 / 여러 용도 겸용 펌프</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">01</div>
-        <h3>스피드 정량펌프</h3>
-        <span class="cat-tag">기본 이송</span>
-        <p>드라이버의 회전 속도(RPM)를 조절해 액체를 이송하는 기본형 펌프. 정확한 1회 분주량보다 안정적인 연속 이송과 속도 조절이 중요한 작업에 적합합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>배지·완충액·세척액을 일정 속도로 이송</li>
-          <li>수조·반응조·소형 장비 사이 보조 이송 라인</li>
-          <li>여러 용도로 함께 쓰는 범용 액체 이송</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">스피드 정량펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">유량 기준</span>
+              <h4>유량조절 정량펌프</h4>
+              <p>RPM이 아니라 mL/min 단위로 운전 조건을 잡습니다. 작업자별 편차를 줄이고 표준화가 필요한 라인에 적합합니다.</p>
+              <p class="fit"><b>이런 경우</b>세포배양·발효 일정 공급 / 분석 전처리 라인 / 운전 조건 표준화</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">02</div>
-        <h3>유량조절 정량펌프</h3>
-        <span class="cat-tag">유량 기준 제어</span>
-        <p>목표 유량(mL/min, L/min)을 기준으로 운전 조건을 설정하는 타입. RPM보다 유량값 관리가 중요한 실험·공정에 적합합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>세포배양·발효·반응 실험에서 일정 유량 공급</li>
-          <li>분석 장비 전처리 라인의 유량 조건 일치</li>
-          <li>유량 기준으로 운전 조건을 표준화해야 할 때</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">유량 조절 정량펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">반복 분주</span>
+              <h4>디스펜스 정량펌프</h4>
+              <p>1회 분주량·반복 횟수·간격을 미리 입력해 반복 작업하는 타입. 흘려보내는 작업과 다른 원리입니다.</p>
+              <p class="fit"><b>이런 경우</b>바이알·튜브 소분 / QC 샘플·키트 충진 / 피펫팅 시간·편차 감소</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">03</div>
-        <h3>디스펜스 정량펌프</h3>
-        <span class="cat-tag">반복 분주</span>
-        <p>정해진 양의 액체를 반복적으로 나누어 공급하기 위한 펌프. 연속 이송보다 1회 분주량·반복 횟수·간격이 중요한 경우에 사용합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>바이알·튜브·소형 용기에 시약 반복 소분</li>
-          <li>QC 샘플 준비, 키트 구성, 소량 충진</li>
-          <li>피펫팅 작업 편차·시간을 줄이고 싶을 때</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">디스펜스 정량펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">복수 라인</span>
+              <h4>다중채널 디스펜스</h4>
+              <p>여러 라인을 같은 조건으로 동시에 운전. 채널마다 다른 유량을 원할 경우는 독립 제어 가능 모델인지 별도 확인이 필요합니다.</p>
+              <p class="fit"><b>이런 경우</b>플레이트·바이알 동시 분주 / 병렬 반응 / 자동화 라인 처리량 향상</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">04</div>
-        <h3>다중채널 디스펜스펌프</h3>
-        <span class="cat-tag">복수 라인</span>
-        <p>여러 개의 채널을 동시에 사용해 액체를 분주·이송하는 장비. 하나의 라인이 아닌 여러 샘플·공급 라인을 같은 조건으로 운전할 때 선택합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>여러 바이알·튜브·플레이트에 동시 분주</li>
-          <li>병렬 반응 실험, 다중 시료 동일 조건 공급</li>
-          <li>자동화·검사 공정에서 처리량 향상</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">다중 채널 디스펜스 펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">분주 자동화</span>
+              <h4>자동분주기</h4>
+              <p>분주 작업 자체를 자동화한 형태. 분주 대상 용기·횟수에 따라 본체 구성이 달라집니다.</p>
+              <p class="fit"><b>이런 경우</b>시약병·키트 반복 충진 / 작업자 피로 감소 / 소량 배치 생산·전처리</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">05</div>
-        <h3>자동분주기</h3>
-        <span class="cat-tag">분주 자동화</span>
-        <p>일정량의 액체를 반복 공급하는 작업을 자동화한 장비. 분주 대상 용기·분주량·반복 횟수·작업 속도에 따라 적합한 구성이 달라집니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>시약병·소형 용기·키트에 액체 반복 충진</li>
-          <li>분주량 편차·작업자 피로도 감소</li>
-          <li>샘플 제조·소량 배치 생산·검사 전처리</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">자동 분주기 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">미량 주입</span>
+              <h4>시린지펌프</h4>
+              <p>시린지를 직접 밀어 μL 단위로 정밀 주입. 튜브를 계속 회전시키는 방식이 아닌, 정해진 부피만 정확히 보내는 용도.</p>
+              <p class="fit"><b>이런 경우</b>마이크로플루이딕스·전기화학 / 분석기 시료 주입 / 약물 반응 재현성</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">06</div>
-        <h3>시린지펌프</h3>
-        <span class="cat-tag">미량 주입</span>
-        <p>시린지를 이용해 매우 적은 양의 액체를 정밀하게 주입·배출하는 장비. μL 단위 미량 주입과 일정 속도 주입이 중요한 조건에 적합합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>마이크로플루이딕스·반응속도·전기화학 실험</li>
-          <li>분석 장비에 일정 속도 시료·시약 주입</li>
-          <li>세포·바이오, 합성, 약액 반응 재현성</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">시린지 펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">점성·압력</span>
+              <h4>기어펌프</h4>
+              <p>기어 회전으로 액체를 밀어내는 방식. 점도가 높거나 자연압·배관 압력 때문에 페리스탈틱만으로 토출이 흔들릴 때 같이 검토합니다.</p>
+              <p class="fit"><b>이런 경우</b>오일·수지·코팅액 / 자연압 환경 / 정량 도포·소량 충진</p>
+              <div class="note"><b>안전 체크.</b> 인화성 액체를 쓸 때는 펌프 방식 외에 방폭 등급·재질 호환성·현장 안전 기준도 같이 보셔야 합니다.</div>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">07</div>
-        <h3>기어펌프</h3>
-        <span class="cat-tag">점성·압력 조건</span>
-        <p>기어 회전을 이용해 액체를 밀어내는 펌프. 점도, 토출 압력, 배관 저항, 자연압이 중요한 조건에 적합합니다. 자연압·배관 압력으로 튜브펌프 압착만으로 토출 제어가 불안정한 경우에 비교 검토.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>오일·연료·수지·코팅액 등 점성 액체 이송</li>
-          <li>자연압·배관 압력으로 튜브펌프 제어 불안정 시</li>
-          <li>정량 도포·소량 충진·원료 공급</li>
-        </ul>
-        <div class="note"><b>확인 사항:</b> 연료·용매·인화성 액체 취급 시 펌프 방식뿐 아니라 방폭 여부, 재질 호환성, 현장 안전 기준을 함께 확인합니다.</div>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">기어 펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">장비 내장</span>
+              <h4>OEM 정량펌프</h4>
+              <p>완성 장비 안에 들어가는 모듈형. 사양뿐 아니라 장착 공간·전원·통신 방식까지 같이 맞춰야 해서 초기 검토 항목이 더 많습니다.</p>
+              <p class="fit"><b>이런 경우</b>분석·세척·전처리기 내장 / PLC 연동 / 장비 개발 단계</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">08</div>
-        <h3>OEM 정량펌프</h3>
-        <span class="cat-tag">장비 내장</span>
-        <p>분석장비·자동화 장비·생산 설비 등에 내장해 사용하는 펌프. 제품 사양뿐 아니라 장착 공간·전원·외부 제어·통신 방식을 함께 확인합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>분석·세척·전처리 장비 내부 모듈 장착</li>
-          <li>외부 신호·통신 제어·PLC 연동 필요</li>
-          <li>완제품 장비 개발(크기·소음·제어 방식 일치)</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">OEM 정량펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">대량 이송</span>
+              <h4>대용량 정량펌프</h4>
+              <p>실험실용 소형 펌프 한계를 넘는 처리량이 필요할 때. 헤드·튜브 내구성, 장시간 운전 조건이 핵심입니다.</p>
+              <p class="fit"><b>이런 경우</b>파일럿·배치 공정 / 폐수처리·약품 주입 / 식품·화장품 원료</p>
+            </div>
 
-      <div class="cat-card">
-        <div class="cat-num">09</div>
-        <h3>대용량 정량펌프</h3>
-        <span class="cat-tag">대량 이송</span>
-        <p>일반 실험실용 소형 펌프보다 큰 유량 범위가 필요한 조건. 장시간 운전, 처리량, 설치 공간, 헤드·튜브 내구성을 함께 확인합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>파일럿·배치·생산라인 액체 원료 공급</li>
-          <li>폐수처리·약품 주입·세척 공정</li>
-          <li>배지·용매·식품·화장품 원료 장시간 이송</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">대용량 정량펌프 보기</a>
-      </div>
+            <div class="cat-card">
+              <span class="cat-tag">안전 환경</span>
+              <h4>방폭 정량펌프</h4>
+              <p>인화·휘발성 액체 또는 방폭 구역에서 사용하는 인증 라인. 액체 성질뿐 아니라 설치 구역·방폭 등급을 함께 확인합니다.</p>
+              <p class="fit"><b>이런 경우</b>알코올·용매 취급 화학·석유화학 / 방폭 구역 설치 / 위험물 이송</p>
+            </div>
+          </div>
+        </div>
+      </details>
 
-      <div class="cat-card">
-        <div class="cat-num">10</div>
-        <h3>방폭 정량펌프</h3>
-        <span class="cat-tag">안전 환경</span>
-        <p>인화성·휘발성 액체 취급 또는 방폭 기준이 요구되는 환경에서 사용하는 제품군. 액체 성질뿐 아니라 설치 구역·방폭 등급·현장 안전 기준을 함께 확인합니다.</p>
-        <div class="fit-title">적합한 사용 상황</div>
-        <ul>
-          <li>알코올·용매 취급 화학·석유화학·코팅 공정</li>
-          <li>방폭 구역·안전 기준 확인 필요 현장</li>
-          <li>휘발성 액체·약품·위험물 이송</li>
-        </ul>
-        <a class="cat-cta" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">방폭 정량펌프 보기</a>
-      </div>
+      <!-- FAQ 3. 구성 -->
+      <details class="faq" id="faq-structure">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">정량펌프는 무엇으로 구성되나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>본체 하나만 사면 끝이 아닙니다. 같은 본체라도 어떤 헤드·튜브를 끼우느냐에 따라 가능 유량과 적합한 액체가 달라집니다. 셀렙에서 구성을 안내드릴 때도 보통 다음 4가지를 묶어서 제안드립니다.</p>
+          <div class="basic-grid">
+            <div class="basic-card">
+              <div class="basic-en">Driver</div>
+              <h4>드라이버 (본체)</h4>
+              <p>회전 속도·운전 조건을 제어합니다. 디지털 표시·분주 모드·외부 제어 입력 가능 여부가 본체급을 가르는 포인트.</p>
+            </div>
+            <div class="basic-card">
+              <div class="basic-en">Pump Head</div>
+              <h4>펌프 헤드</h4>
+              <p>실제로 튜브가 장착되어 동작하는 부품. 호환 튜브 규격·채널 수·유량 범위가 헤드에서 결정됩니다.</p>
+            </div>
+            <div class="basic-card">
+              <div class="basic-en">Tubing</div>
+              <h4>튜브</h4>
+              <p>액체와 직접 닿는 소모품. 화학 호환성·점도·멸균 가능 여부에 맞춰 재질을 고릅니다. 가장 자주 교체되는 부품.</p>
+            </div>
+            <div class="basic-card">
+              <div class="basic-en">Accessory</div>
+              <h4>액세서리</h4>
+              <p>커넥터·풋스위치·외부 제어 케이블 등. 운전 환경에 따라 필요 여부가 갈리는 보조 구성품입니다.</p>
+            </div>
+          </div>
+        </div>
+      </details>
 
-    </div>
-  </div>
-</section>
+      <!-- FAQ 4. 헤드와 채널 -->
+      <details class="faq" id="faq-channel">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">헤드와 채널, 어떻게 다른가요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>다중채널 펌프 문의에서 가장 자주 헷갈리는 부분입니다. 같은 본체라도 어떤 헤드를 다는지에 따라 사용 가능한 채널 수와 튜브 규격이 바뀝니다.</p>
+          <div class="split-2">
+            <div class="split-card">
+              <div class="split-en">Head</div>
+              <h4>헤드</h4>
+              <p>튜브를 잡고 롤러로 압착해 이송하는 부품. 헤드 종류에 따라 들어가는 튜브 사이즈, 동시 채널 수, 유량 한계가 달라집니다.</p>
+            </div>
+            <div class="split-card">
+              <div class="split-en">Channel</div>
+              <h4>채널</h4>
+              <p>동시에 굴러가는 튜브 라인의 수. 1채널은 한 줄, 2채널은 두 줄, 다중채널은 여러 줄을 같은 회전 조건에서 함께 운전합니다.</p>
+            </div>
+          </div>
+          <div class="callout">
+            <h5>채널별 독립 유량 제어가 가능한지 별도로 확인하세요</h5>
+            <p>대부분의 다중채널 모델은 모터 하나가 여러 채널을 같이 돌리는 구조입니다. 채널마다 속도를 따로 설정하기보다 같은 회전에서 여러 라인을 동시에 운전한다고 보시는 게 정확합니다.</p>
+            <p>채널마다 다른 유량이 필요하면 <strong>채널별 독립 제어 모델</strong>인지 사양에서 확인이 필요합니다. 같은 RPM이어도 튜브 규격·장착 상태·점도에 따라 채널 간 실제 유량 편차는 항상 약간 발생합니다.</p>
+          </div>
+        </div>
+      </details>
 
-<!-- ===== 03. 기본 구성 ===== -->
-<section class="section" id="sec3">
-  <div class="container">
-    <div class="label">03. STRUCTURE</div>
-    <h2>정량펌프의 기본 구성</h2>
-    <p class="intro">정량펌프는 일반적으로 드라이버, 펌프 헤드, 튜브의 조합으로 구성됩니다. 같은 본체라도 헤드와 튜브 조합에 따라 유량 범위와 사용 적합성이 달라질 수 있습니다.</p>
+      <!-- FAQ 5. 튜브 규격 -->
+      <details class="faq" id="faq-tubing">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">튜브 번호와 유량표, 어떻게 봐야 하나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>튜브는 가격이 작아 보여도 실제 유량과 안정성에 가장 직접적으로 영향을 주는 부품입니다. 셀렙에 견적 문의 주실 때 튜브 사양이 빠져 있는 경우가 많아, 자주 헷갈리는 포인트만 정리했습니다.</p>
+          <div class="tube-grid">
+            <div class="tube-card">
+              <div class="tube-en">Tube Size</div>
+              <h4>튜브 번호 = 직경 숫자가 아닙니다</h4>
+              <p>#13, #14, #16 같은 표기는 튜브 직경이 아닌 <strong>사이즈 코드</strong>입니다. 즉 #13이 내경 13mm를 뜻하지 않습니다.</p>
+              <p>실제 내경·외경·벽 두께는 사용 펌프헤드와 제조사 규격표에서 별도로 확인해야 합니다.</p>
+            </div>
 
-    <div class="basic-grid">
-      <div class="basic-card">
-        <div class="basic-en">Driver</div>
-        <h3>드라이버</h3>
-        <p>펌프의 회전 속도와 운전 조건을 제어하는 본체. 속도 조절, 유량 표시, 분주 기능, 외부 제어 가능 여부를 확인합니다.</p>
-      </div>
-      <div class="basic-card">
-        <div class="basic-en">Pump Head</div>
-        <h3>정량펌프 헤드</h3>
-        <p>튜브를 장착하고 실제 이송 동작이 이루어지는 부품. 장착 가능한 튜브 규격, 채널 수, 유량 범위에 맞춰 선택합니다.</p>
-        <a class="basic-link" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">헤드 보기 →</a>
-      </div>
-      <div class="basic-card">
-        <div class="basic-en">Tubing</div>
-        <h3>튜브</h3>
-        <p>액체가 실제로 지나가는 소모성 부품. 화학적 특성·점도·멸균 필요 여부·내구성에 맞춰 재질·규격을 선택합니다.</p>
-        <a class="basic-link" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">튜브 보기 →</a>
-      </div>
-      <div class="basic-card">
-        <div class="basic-en">Accessory</div>
-        <h3>정량펌프 액세서리</h3>
-        <p>제어·연결·설치·운전 편의성을 보조하는 부속품. 커넥터·케이블·풋스위치 등 사용 환경에 따라 필요한 구성이 달라집니다.</p>
-        <a class="basic-link" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">액세서리 보기 →</a>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="tube-card">
+              <div class="tube-en">ID / OD</div>
+              <h4>ID, OD, 벽 두께</h4>
+              <p>ID는 내경(Inner), OD는 외경(Outer). 벽 두께를 알면 두 값은 서로 환산 가능합니다.</p>
+              <div class="tube-formula">외경 = 내경 + 벽 두께 × 2</div>
+              <p>유량은 주로 내경에 좌우되고, 헤드 장착 가능 여부는 외경·벽 두께에 좌우됩니다.</p>
+            </div>
 
-<!-- ===== 04. 헤드와 채널 ===== -->
-<section class="section alt" id="sec3-1">
-  <div class="container">
-    <div class="label">04. HEAD &amp; CHANNEL</div>
-    <h2>헤드와 채널은 어떻게 다를까요?</h2>
-    <p class="intro">다중채널 펌프를 문의할 때 가장 많이 헷갈리는 부분이 헤드와 채널입니다. 같은 드라이버라도 어떤 헤드를 장착하느냐에 따라 사용할 수 있는 채널 수와 튜브 규격이 달라질 수 있습니다.</p>
+            <div class="tube-card">
+              <div class="tube-en">Flow Rate</div>
+              <h4>유량표는 물 기준 참고값</h4>
+              <p>대부분의 유량표는 물처럼 점성이 낮은 액체로 측정한 값입니다. 실제 유량은 점도·온도·튜브 재질·압착 상태·흡입/토출 높이·배관 저항에 따라 달라집니다.</p>
+              <p>점성이 있는 액체는 같은 RPM·같은 튜브여도 토출량이 줄어드는 경우가 많습니다.</p>
+            </div>
 
-    <div class="split-2">
-      <div class="split-card">
-        <div class="split-en">Head</div>
-        <h3>헤드</h3>
-        <p>튜브를 고정하고 롤러가 튜브를 눌러 액체를 이송하는 부품. 헤드 종류에 따라 장착 가능한 튜브 사이즈, 채널 수, 유량 범위가 달라집니다.</p>
-      </div>
-      <div class="split-card">
-        <div class="split-en">Channel</div>
-        <h3>채널</h3>
-        <p>동시에 운전할 수 있는 튜브 라인의 수. 1채널은 하나의 튜브 라인, 2채널은 두 개의 라인, 다중채널은 여러 라인을 동시에 운전하는 구조입니다.</p>
-      </div>
-    </div>
+            <div class="tube-card">
+              <div class="tube-en">Calibration</div>
+              <h4>정량성이 중요하면 보정 필수</h4>
+              <p>유량표 값은 절대 수치가 아니라 기준 조건의 측정값입니다. 튜브 공차·장착·사용 시간·점도에 따라 편차가 생기기 마련입니다.</p>
+              <p>정확한 분주가 필요한 작업이면 사양표만 믿지 말고 실제 액체·튜브 조합으로 한 번 캘리브레이션해두는 걸 권장합니다.</p>
+            </div>
+          </div>
+          <div class="callout">
+            <h5>실제 셋업이 궁금하시면</h5>
+            <p>특정 응용에 어떤 튜브·유량을 쓰는지 논문 기반으로 정리한 <a href="/reviews.html">펌프셋업 리뷰</a>에서 케이스를 확인하실 수 있습니다.</p>
+          </div>
+        </div>
+      </details>
 
-    <div class="callout">
-      <h4>채널별 유량 제어를 확인해야 합니다</h4>
-      <p>일반적인 다중채널 정량펌프는 하나의 모터가 여러 채널을 함께 회전시키는 구조가 많습니다. 이 경우 채널마다 속도를 각각 다르게 설정하기보다는, 같은 회전 조건에서 여러 라인을 동시에 운전한다고 이해하는 것이 좋습니다.</p>
-      <p>채널별로 유량을 다르게 설정해야 한다면 <b>채널별 독립 제어가 가능한 제품인지 별도로 확인</b>해야 합니다. 또한 같은 RPM으로 운전하더라도 튜브 규격, 장착 상태, 액체 점도에 따라 실제 유량은 차이가 날 수 있습니다.</p>
-    </div>
-  </div>
-</section>
+      <!-- FAQ 6. 적용 분야 -->
+      <details class="faq" id="faq-applications">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">어떤 분야에서 사용되나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>액체를 일정하게 보내거나 나누어야 하는 거의 모든 산업에서 쓰입니다. 같은 분야 안에서도 액체와 유량 조건에 따라 적합한 제품군이 달라집니다.</p>
+          <div class="app-grid">
+            <div class="app-card"><h4>바이오·생명공학</h4><p>배지·시약·완충액 이송, 발효·세포배양 공정 일정 공급.</p></div>
+            <div class="app-card"><h4>의료·분석</h4><p>시료 주입, 약액 공급, 분석 장비 연동 등 정밀 제어 라인.</p></div>
+            <div class="app-card"><h4>화학·화장품</h4><p>시약·용매 혼합, 소량 충진, 점성 원료 이송.</p></div>
+            <div class="app-card"><h4>식품·농업</h4><p>액상 원료, 첨가물·향료, 양액·비료 자동 공급.</p></div>
+            <div class="app-card"><h4>폐수처리·세제</h4><p>약품 주입, 처리액 이송, 계면활성제 공급.</p></div>
+            <div class="app-card"><h4>섬유·석유화학</h4><p>첨가제·처리액·공정 액체 연속 공급 라인.</p></div>
+          </div>
+        </div>
+      </details>
 
-<!-- ===== 05. 튜브 규격과 유량표 ===== -->
-<section class="section" id="sec3-2">
-  <div class="container">
-    <div class="label">05. TUBING &amp; FLOW</div>
-    <h2>튜브 규격과 유량표를 보는 기준</h2>
-    <p class="intro">튜브는 액체와 직접 접촉하는 부품이며, 실제 유량에 큰 영향을 줍니다. 튜브 번호, 내경, 두께, 재질, 점도 조건을 함께 확인해야 합니다.</p>
+      <!-- FAQ 7. 상담 체크 -->
+      <details class="faq" id="faq-checklist">
+        <summary>
+          <span class="faq-q-mark">Q</span>
+          <span class="faq-q-text">상담 전, 어떤 정보를 미리 알려주시면 도움이 되나요?</span>
+          <span class="faq-q-icon">+</span>
+        </summary>
+        <div class="faq-body">
+          <p>모델명을 모르셔도 괜찮습니다. 아래 항목 중 알고 계신 것만 알려주셔도 제품군과 구성을 훨씬 빠르게 좁혀드릴 수 있습니다.</p>
+          <div class="check-list">
+            <ul>
+              <li><span><b>액체 종류 —</b> 물·배지·시약·용매·점성액·부식성·인화성 등</span></li>
+              <li><span><b>유량 범위 —</b> 예: 10 mL/min, 500 mL/min, 2 L/min</span></li>
+              <li><span><b>사용 방식 —</b> 연속 이송 / 반복 분주 / 미량 주입 / 대용량</span></li>
+              <li><span><b>분주 조건 —</b> 1회 분주량, 반복 횟수, 분주 간격</span></li>
+              <li><span><b>사용 시간 —</b> 단시간 사용 / 장시간 연속 운전</span></li>
+              <li><span><b>채널 수 —</b> 1·2·다중 + 채널별 독립 제어 필요 여부</span></li>
+              <li><span><b>제어 방식 —</b> 수동 / 외부 신호 / PLC·장비 연동</span></li>
+              <li><span><b>설치 환경 —</b> 실험실 / 생산라인 / 장비 내장 / 방폭 구역</span></li>
+              <li><span><b>압력 조건 —</b> 자연압·배관 저항·토출/흡입 높이</span></li>
+              <li><span><b>튜브 조건 —</b> 번호·내경·외경·재질·멸균·교체 주기</span></li>
+              <li><span><b>정확도 요구 —</b> 단순 이송 / 정량 분주 보정 필요</span></li>
+              <li><span><b>필요한 구성 —</b> 본체·헤드·튜브·액세서리·예비 소모품</span></li>
+            </ul>
+          </div>
+        </div>
+      </details>
 
-    <div class="tube-grid">
-      <div class="tube-card">
-        <div class="tube-en">Tube Size</div>
-        <h3>튜브 번호는 직경 숫자가 아닙니다</h3>
-        <p>정량펌프 튜브는 #13, #14, #16처럼 번호로 표시되는 경우가 많습니다. 이 번호는 튜브 직경을 그대로 의미하는 숫자가 아니라, 규격표에서 내경·외경·벽 두께를 확인하기 위한 사이즈 코드로 보는 것이 안전합니다.</p>
-        <p>따라서 #13이라고 해서 내경이 13mm라는 뜻은 아닙니다. 사용하는 펌프 헤드와 제조사 규격표에서 해당 번호의 실제 치수를 반드시 확인합니다.</p>
-      </div>
+    </div><!-- /.faq-list -->
 
-      <div class="tube-card">
-        <div class="tube-en">ID / OD</div>
-        <h3>ID, OD, 벽 두께</h3>
-        <p>ID는 Inner Diameter(내경), OD는 Outer Diameter(외경)입니다. 벽 두께는 튜브 벽의 두께이며, 일반적으로 외경은 내경에 벽 두께를 양쪽으로 더한 값으로 계산할 수 있습니다.</p>
-        <div class="tube-formula">외경 = 내경 + 벽 두께 × 2</div>
-        <p>유량은 주로 내경의 영향을 크게 받지만, 실제 장착 가능 여부는 외경과 벽 두께까지 함께 확인합니다.</p>
-      </div>
-
-      <div class="tube-card">
-        <div class="tube-en">Flow Rate</div>
-        <h3>튜브 유량표는 기준값입니다</h3>
-        <p>제품 상세나 튜브 규격표에 표시된 유량은 보통 물처럼 점성이 낮은 액체를 기준으로 제시되는 경우가 많습니다. 실제 유량은 액체의 점도, 온도, 튜브 재질, 튜브 압착 상태, 흡입·토출 높이, 배관 저항에 따라 달라질 수 있습니다.</p>
-        <p>특히 점성이 있는 액체는 물처럼 쉽게 흐르지 않기 때문에 같은 RPM과 같은 튜브를 사용하더라도 실제 토출량이 줄어들 수 있습니다.</p>
-      </div>
-
-      <div class="tube-card">
-        <div class="tube-en">Calibration</div>
-        <h3>정확한 정량은 보정이 필요합니다</h3>
-        <p>튜브 유량표의 값은 절대값이라기보다 기준 조건에서 측정한 참고 유량으로 보는 것이 좋습니다. 실제 사용 환경에서는 튜브 제조 공차, 장착 상태, 액체 점도, 사용 시간, 캘리브레이션 여부에 따라 유량 편차가 발생할 수 있습니다.</p>
-        <p>정확한 정량 분주가 필요한 경우에는 사양표의 유량 범위만으로 판단하지 말고, 실제 사용하는 액체와 튜브 조합으로 유량 보정을 진행하는 것이 안전합니다.</p>
-      </div>
-    </div>
-
-    <div class="related-link">
-      튜브 번호별 내경·외경, 재질별 특징, 유량표 확인 방법은 별도 가이드에서 더 자세히 정리할 예정입니다. 튜브 선택·교체가 필요한 경우 먼저 <a href="/reviews.html">펌프셋업 리뷰</a>에서 셋업별 튜브 조합을 확인해보세요.
-    </div>
-  </div>
-</section>
-
-<!-- ===== 06. 적용 분야 ===== -->
-<section class="section alt" id="sec4">
-  <div class="container">
-    <div class="label">06. APPLICATIONS</div>
-    <h2>정량펌프 적용 분야</h2>
-    <p class="intro">정량펌프는 액체를 일정하게 이송하거나 반복 분주해야 하는 다양한 분야에서 사용됩니다. 같은 분야라도 취급 액체와 유량 조건에 따라 제품군이 달라질 수 있습니다.</p>
-
-    <div class="app-grid">
-      <div class="app-card">
-        <h3>바이오·생명공학</h3>
-        <p>배지, 시약, 완충액 이송 및 실험 공정의 일정 공급에 사용됩니다.</p>
-      </div>
-      <div class="app-card">
-        <h3>의료·분석</h3>
-        <p>시료 주입, 약액 공급, 분석 장비 연동 등 정밀 제어가 필요한 조건에 사용됩니다.</p>
-      </div>
-      <div class="app-card">
-        <h3>화학·화장품</h3>
-        <p>시약, 용매, 원료 혼합, 소량 충진, 점성 액체 이송에 활용됩니다.</p>
-      </div>
-      <div class="app-card">
-        <h3>식품·농업</h3>
-        <p>액상 원료, 첨가물, 향료, 양액, 비료, 첨가제 공급에 사용됩니다.</p>
-      </div>
-      <div class="app-card">
-        <h3>폐수처리·세제</h3>
-        <p>약품 주입, 처리액 이송, 액상 원료 및 계면활성제 공급에 적합합니다.</p>
-      </div>
-      <div class="app-card">
-        <h3>섬유·석유화학</h3>
-        <p>첨가제, 처리액, 공정용 액체 공급처럼 연속성과 안정성이 필요한 환경에 사용됩니다.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== 07. 상담 체크 + 문의 ===== -->
-<section class="section" id="sec5">
-  <div class="container">
-    <div class="label">07. CONSULT CHECKLIST</div>
-    <h2>상담 전 확인하면 좋은 내용</h2>
-    <p class="intro">정확한 모델을 모르는 경우에도 아래 조건을 알려주시면 제품군과 구성품을 더 빠르게 안내받을 수 있습니다.</p>
-
-    <div class="check-list">
-      <ul>
-        <li><span><b>이송할 액체의 종류</b> — 물, 배지, 시약, 용매, 점성액, 부식성 액체, 인화성 액체 등</span></li>
-        <li><span><b>필요한 유량 범위</b> — 예: 10 mL/min, 500 mL/min, 2 L/min</span></li>
-        <li><span><b>사용 방식</b> — 연속 이송, 반복 분주, 미량 주입, 대용량 이송</span></li>
-        <li><span><b>분주 조건</b> — 1회 분주량, 반복 횟수, 분주 간격</span></li>
-        <li><span><b>사용 시간</b> — 단시간 사용 / 장시간 연속 운전</span></li>
-        <li><span><b>채널 수</b> — 1채널 / 2채널 / 다중채널 + 채널별 독립 제어 필요 여부</span></li>
-        <li><span><b>제어 방식</b> — 수동 조작 / 외부 신호 / PLC·장비 연동</span></li>
-        <li><span><b>설치 환경</b> — 실험실, 생산라인, 장비 내장, 방폭 구역</span></li>
-        <li><span><b>압력 조건</b> — 자연압, 배관 저항, 토출·흡입 높이</span></li>
-        <li><span><b>튜브 조건</b> — 튜브 번호, 내경, 외경, 재질, 멸균 가능 여부, 교체 주기</span></li>
-        <li><span><b>정확도 요구</b> — 단순 이송 / 정량 분주 보정 필요</span></li>
-        <li><span><b>필요한 구성품</b> — 본체, 헤드, 튜브, 액세서리, 예비 소모품</span></li>
-      </ul>
-    </div>
-
-    <div class="cta-block" id="sec6">
-      <h3>위 조건을 정리해 문의 주세요</h3>
+    <!-- 하단 CTA -->
+    <div class="contact-cta">
+      <h3>위 조건이 정리되셨다면 바로 문의 주세요</h3>
       <p>해당 정보가 있으면 셋업에 맞는 제품군·구성품을 더 빠르게 안내드립니다.</p>
       <a class="cta-btn" href="/index.html#contact">문의하기 →</a>
     </div>
@@ -577,6 +589,91 @@ a:hover{text-decoration:underline}
   </div>
   <div style="margin-top:8px">© Cellab — R&amp;D Pumps and Consumables</div>
 </footer>
+
+<script>
+// ===== 30초 위저드 추천 로직 =====
+(function(){
+  const FAQ_ID = {
+    cat:'#faq-types',
+    criteria:'#faq-criteria',
+    tubing:'#faq-tubing'
+  };
+
+  function recommend(work, fluid, freq){
+    // 우선순위: 작업 특수성 > 액체 특수성 > 빈도
+    if (work === 'micro')
+      return {cat:'시린지펌프', why:'μL 단위 미량 주입은 시린지 직접 구동 방식이 가장 정확합니다. 분석기 시료 주입·미세 약물 반응 등에 적합합니다.'};
+    if (work === 'oem')
+      return {cat:'OEM 정량펌프', why:'장비 내부에 들어가는 모듈은 사양 외에 장착 공간·전원·통신 인터페이스를 함께 검토합니다.'};
+    if (work === 'large' || (freq === 'continuous' && fluid === 'aqueous' && work === 'continuous'))
+      return {cat:'대용량 정량펌프', why:'L/min급 처리량과 장시간 운전을 위해 헤드·튜브 내구성을 우선합니다.'};
+    if (fluid === 'flammable')
+      return {cat:'방폭 정량펌프', why:'인화·휘발성 액체와 방폭 구역은 일반 펌프 사용이 어렵습니다. 인증 등급 라인으로 검토합니다.'};
+    if (fluid === 'viscous')
+      return {cat:'기어펌프', why:'점성이 있거나 자연압·배관 압력이 큰 조건에서는 페리스탈틱보다 토출 안정성이 좋습니다.'};
+    if (work === 'dispense'){
+      if (freq === 'multi') return {cat:'다중채널 디스펜스', why:'여러 라인 동시 분주가 필요한 경우. 채널별 독립 유량 제어가 필요하면 별도 확인이 필요합니다.'};
+      if (freq === 'continuous') return {cat:'자동분주기', why:'반복 분주를 장시간·자동으로 운영해야 할 때 작업자 피로와 편차를 줄일 수 있습니다.'};
+      return {cat:'디스펜스 정량펌프', why:'1회 분주량과 반복 횟수가 정해진 작업에 적합합니다.'};
+    }
+    // 기본 = 연속 이송
+    if (freq === 'multi') return {cat:'다중채널 디스펜스', why:'여러 라인을 같은 조건으로 동시에 운전할 때 적합합니다.'};
+    if (freq === 'continuous') return {cat:'유량조절 정량펌프', why:'장시간 운전·표준화된 유량 관리가 중요한 라인은 RPM보다 유량 기준 운전이 유리합니다.'};
+    return {cat:'스피드 정량펌프', why:'일반 수용액·시약을 가끔~매일 흘려보내는 범용 작업에 가장 무난한 기본형입니다.'};
+  }
+
+  const $form  = document.getElementById('wzForm');
+  const $res   = document.getElementById('wzResult');
+  const $run   = document.getElementById('wzRun');
+  const $reset = document.getElementById('wzReset');
+
+  function getVal(name){
+    const el = $form.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : null;
+  }
+
+  $run.addEventListener('click', () => {
+    const work = getVal('work'), fluid = getVal('fluid'), freq = getVal('freq');
+    if (!work || !fluid || !freq){
+      $res.classList.remove('show');
+      $res.innerHTML = '<div class="res-label">알림</div><div class="res-cat" style="font-size:16px">3개 모두 선택해 주세요</div>';
+      requestAnimationFrame(() => $res.classList.add('show'));
+      return;
+    }
+    const r = recommend(work, fluid, freq);
+    $res.innerHTML = `
+      <div class="res-label">추천 제품군</div>
+      <div class="res-cat">${r.cat}</div>
+      <div class="res-why">${r.why}</div>
+      <div class="res-actions">
+        <a class="res-primary" href="/index.html#contact">이 조건으로 문의하기 →</a>
+        <a class="res-sec" href="${FAQ_ID.cat}" data-open="faq-types">제품군 비교 보기</a>
+      </div>
+    `;
+    requestAnimationFrame(() => $res.classList.add('show'));
+
+    if (typeof gtag === 'function') {
+      gtag('event','wizard_recommend',{work, fluid, freq, recommended: r.cat});
+    }
+
+    // 추천 결과 클릭 시 해당 FAQ 자동 펼침
+    const secLink = $res.querySelector('[data-open]');
+    if (secLink){
+      secLink.addEventListener('click', e => {
+        const id = secLink.dataset.open;
+        const el = document.getElementById(id);
+        if (el && !el.open) el.open = true;
+      });
+    }
+  });
+
+  $reset.addEventListener('click', () => {
+    $form.reset();
+    $res.classList.remove('show');
+    $res.innerHTML = '';
+  });
+})();
+</script>
 
 </body>
 </html>
