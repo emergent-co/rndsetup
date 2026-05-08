@@ -1,0 +1,41 @@
+# Cellab 저장소 줄바꿈·바이너리 정책
+# 저장소 안에는 LF, Windows 워킹트리에선 CRLF (autocrlf=true 보조)
+
+# 기본: 텍스트 파일 자동 감지 후 LF로 정규화
+* text=auto eol=lf
+
+# 명시적 텍스트 (혹시 자동 감지 실패해도 강제)
+*.html      text eol=lf
+*.css       text eol=lf
+*.js        text eol=lf
+*.json      text eol=lf
+*.md        text eol=lf
+*.txt       text eol=lf
+*.xml       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.svg       text eol=lf
+*.py        text eol=lf
+
+# Windows 전용 스크립트 — CRLF 유지
+*.bat       text eol=crlf
+*.cmd       text eol=crlf
+*.ps1       text eol=crlf
+
+# 바이너리 — diff·머지·줄바꿈 변환 모두 차단
+*.pdf       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.webp      binary
+*.zip       binary
+*.woff      binary
+*.woff2     binary
+*.ttf       binary
+*.eot       binary
+*.otf       binary
+*.mp4       binary
+*.mp3       binary
+*.wav       binary
