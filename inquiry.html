@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://cellab.kr/inquiry.html">
 <meta name="description" content="Cellab 정량펌프·소모품 견적 문의. 셀렙이 직접 답변합니다.">
 <meta name="google-site-verification" content="Rmsvu2bCzPOi66nb9epKw-gbrb07Hyem6hM5uNu71ss" />
-<meta name="naver-site-verification" content="388fb33540d49f5adf6912da9cc3f089163002b6" />
+<meta name="naver-site-verification" content="82636349d93e7dcacc819bd0780336585cf7fe2f" />
 
 <!-- Google tag (gtag.js) — GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN3E3PVQVD"></script>
@@ -288,8 +288,9 @@ function renderItems(items) {
   let html = '';
   items.forEach((it, i) => {
     const naviUrl = getMarketUrl(it.url_group);
+    const partKey = it.id || it.name || '';
     const marketBtn = naviUrl
-      ? `<a class="market-link" href="${escapeHtml(naviUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">나비엠알오에서 보기 →</a>`
+      ? `<a class="market-link" href="${escapeHtml(naviUrl)}" target="_blank" rel="noopener" data-part="${escapeHtml(partKey)}" data-url-group="${escapeHtml(it.url_group||'')}" onclick="event.stopPropagation()">나비엠알오에서 보기 →</a>`
       : `<span class="market-link disabled" title="마켓 URL 미등록">마켓 등록 예정</span>`;
     html += `
       <label class="item" data-index="${i}">
@@ -309,6 +310,21 @@ function renderItems(items) {
   document.getElementById('itemsList').innerHTML = html;
 }
 
+// 마켓 송출 클릭 GA4 이벤트 (event delegation)
+document.addEventListener('click', e => {
+  const link = e.target.closest('.market-link');
+  if (!link || link.classList.contains('disabled')) return;
+  if (typeof gtag === 'function'){
+    gtag('event','market_click',{
+      part: link.dataset.part || '',
+      url_group: link.dataset.urlGroup || '',
+      market: 'navimro',
+      setup_id: setupId || 'general',
+      from: 'inquiry'
+    });
+  }
+});
+
 function escapeHtml(s) {
   return String(s||'').replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -322,95 +338,4 @@ function toggleItem(cb) {
 
 function getSelected() {
   const items = [];
-  document.querySelectorAll('.item input[type=checkbox]:checked').forEach(cb => {
-    const item = cb.closest('.item');
-    const name = item.querySelector('.name').textContent;
-    const spec = item.querySelector('.spec').textContent;
-    const qty = item.querySelector('input[type=number]').value || '1';
-    items.push({name, spec, qty});
-  });
-  return items;
-}
-
-function goStep2() {
-  const selected = getSelected();
-  if (selected.length === 0) {
-    document.getElementById('step1Err').classList.add('show');
-    return;
-  }
-  document.getElementById('step1Err').classList.remove('show');
-
-  const sumList = document.getElementById('summaryList');
-  sumList.innerHTML = selected.map(s =>
-    `<li>• ${escapeHtml(s.name)} <span style="color:var(--muted)">— ${escapeHtml(s.spec)} × ${s.qty}</span></li>`
-  ).join('');
-
-  const txt = selected.map(s => `${s.name} (${s.spec}) × ${s.qty}`).join('\n');
-  document.getElementById('itemsSelected').value = txt;
-
-  document.getElementById('step1Section').style.display = 'none';
-  document.getElementById('step2Section').style.display = 'block';
-  document.getElementById('prog1').classList.remove('active');
-  document.getElementById('prog2').classList.add('active');
-  document.getElementById('lead').textContent = '연락처 정보를 입력해 주세요.';
-  window.scrollTo(0,0);
-}
-
-function goStep1() {
-  document.getElementById('step1Section').style.display = 'block';
-  document.getElementById('step2Section').style.display = 'none';
-  document.getElementById('prog2').classList.remove('active');
-  document.getElementById('prog1').classList.add('active');
-  document.getElementById('lead').textContent = '필요한 부품을 선택하고 수량을 입력하세요.';
-  window.scrollTo(0,0);
-}
-
-document.getElementById('inquiryForm').addEventListener('submit', async function(e){
-  e.preventDefault();
-  const form = e.target;
-  const submitBtn = form.querySelector('button[type=submit]');
-  const origText = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = '전송 중...';
-
-  // GA4 이벤트
-  if (typeof gtag === 'function') {
-    gtag('event', 'inquiry_submit', {
-      setup_id: setupId,
-      items: document.getElementById('itemsSelected').value
-    });
-  }
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      headers: {'Accept': 'application/json'},
-      body: new FormData(form)
-    });
-    if (res.ok) {
-      // 성공 — Thank you 표시
-      document.getElementById('step1Section').style.display = 'none';
-      document.getElementById('step2Section').style.display = 'none';
-      document.querySelector('.progress').style.display = 'none';
-      document.getElementById('thankYou').classList.add('show');
-      // 부모(iframe 모달)에 알림
-      if (window.parent !== window) {
-        try { window.parent.postMessage({type:'inquiry_submitted'}, '*'); } catch(_){}
-      }
-    } else {
-      alert('전송 실패. 다시 시도해 주세요.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = origText;
-    }
-  } catch(err) {
-    alert('오류: ' + err.message);
-    submitBtn.disabled = false;
-    submitBtn.textContent = origText;
-  }
-});
-
-loadSetup();
-</script>
-
-</body>
-</html>
+  document.querySelectorAll('.item input[type=checkbox]:checked').

@@ -8,7 +8,7 @@
 <meta name="description" content="페리스탈틱·시린지·기어 펌프 셋업을 논문 기반으로 분석한 리뷰 전체 목록. 응용 분야로 검색·필터·정렬.">
 <meta name="keywords" content="펌프셋업 리뷰, 정량펌프 응용, 논문 리뷰, 셋업 가이드, BT101, Lead Fluid">
 <meta name="google-site-verification" content="Rmsvu2bCzPOi66nb9epKw-gbrb07Hyem6hM5uNu71ss" />
-<meta name="naver-site-verification" content="388fb33540d49f5adf6912da9cc3f089163002b6" />
+<meta name="naver-site-verification" content="82636349d93e7dcacc819bd0780336585cf7fe2f" />
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="펌프셋업 리뷰 — 전체 글 | Cellab">
@@ -98,6 +98,8 @@
   .site-foot{background:#fff;border-top:1px solid var(--border);padding:24px;font-size:12px;color:var(--muted);text-align:center}
   .site-foot a{margin:0 6px;color:var(--muted)}
   .site-foot a:hover{color:var(--teal)}
+  .site-foot .trust-line{font-size:13px;color:var(--navy);font-weight:600;margin-bottom:12px;letter-spacing:.2px}
+  .site-foot .trust-line .sep{color:#c5d3e2;margin:0 6px}
 
   @media(max-width:600px){
     .page-head{padding:24px 18px 18px}
@@ -170,6 +172,7 @@
 </main>
 
 <footer class="site-foot">
+  <div class="trust-line">Lead Fluid 한국 공식 총판<span class="sep">·</span>3년 무상 보증<span class="sep">·</span>국내 A/S 직접 응대</div>
   <div>
     <a href="/index.html">홈</a> ·
     <a href="/reviews.html">펌프셋업 리뷰</a> ·
@@ -212,64 +215,4 @@ function renderPosts() {
   }
 
   // 3) 정렬
-  const sort = document.getElementById('sortSelect').value;
-  if (sort === 'date_desc') filtered.sort((a,b) => (b.date||'').localeCompare(a.date||''));
-  else if (sort === 'date_asc') filtered.sort((a,b) => (a.date||'').localeCompare(b.date||''));
-  else if (sort === 'title_asc') filtered.sort((a,b) => (a.title||'').localeCompare(b.title||''));
-
-  document.getElementById('totalCount').textContent = filtered.length;
-
-  if (filtered.length === 0) {
-    document.getElementById('postGrid').innerHTML =
-      '<div class="empty" style="grid-column:1/-1">조건에 맞는 글이 없습니다.</div>';
-    return;
-  }
-
-  const html = filtered.map(p => {
-    const tagsHtml = (p.tags || []).slice(0, 2).map(t =>
-      `<span class="tag">${escapeHtml(t)}</span>`
-    ).join('');
-    const journalChip = p.journal ? `<span class="tag journal">${escapeHtml(p.journal)}</span>` : '';
-    const citeChip    = (p.citations != null) ? `<span class="tag cite">cite ${escapeHtml(p.citations)}</span>` : '';
-    const imgHtml = p.image
-      ? `<div class="card-img"><img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.title)}" loading="lazy"></div>`
-      : `<div class="card-img placeholder">Setup Diagram</div>`;
-    return `
-      <a class="card" href="${escapeHtml(p.url)}">
-        ${imgHtml}
-        <div class="card-body">
-          <div class="card-tags">${journalChip}${citeChip}${tagsHtml}</div>
-          <h3>${escapeHtml(p.title)}</h3>
-          <div class="summary">${escapeHtml(p.summary)}</div>
-          <div class="meta">
-            <span>${escapeHtml(p.date)}</span>
-            <span class="application">${escapeHtml(p.application || '')}</span>
-          </div>
-        </div>
-      </a>
-    `;
-  }).join('');
-  document.getElementById('postGrid').innerHTML = html;
-}
-
-function filterCat(cat) {
-  activeCat = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => {
-    b.classList.toggle('active', b.dataset.cat === cat);
-  });
-  renderPosts();
-  if (typeof gtag === 'function') {
-    gtag('event', 'filter_application', {category: cat, page: 'reviews'});
-  }
-}
-
-function escapeHtml(s) {
-  return String(s||'').replace(/[&<>"']/g, c =>
-    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-}
-
-loadPosts();
-</script>
-
-</body>
-</html>
+  const sort 
