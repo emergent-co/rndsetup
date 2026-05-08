@@ -377,12 +377,34 @@ def main():
         print(f'  [{cat_id:<10}] {cat_id}.html  ({size_kb:5.1f} KB · {kind} · {n_prod}개)')
         written.append(cat_id)
 
+    # sitemap.xml 생성 — 신 사이트 정체성 (논문 리뷰 블로그) 우선
+    # posts.json에서 블로그 글 목록 자동 합산. deprecated 카테고리는 sitemap에서 제외.
     sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
                      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    sitemap_lines.append(f'  <url><loc>{base_url}</loc><priority>1.0</priority></url>')
-    sitemap_lines.append(f'  <url><loc>{base_url}index.html</loc><priority>1.0</priority></url>')
-    for cat_id in written:
-        sitemap_lines.append(f'  <url><loc>{base_url}{cat_id}.html</loc><priority>0.8</priority></url>')
+
+    # 메인 페이지·리뷰·추천
+    sitemap_lines.append(f'  <url>\n    <loc>{base_url}</loc>\n    <priority>1.0</priority>\n    <changefreq>weekly</changefreq>\n  </url>')
+    sitemap_lines.append(f'  <url>\n    <loc>{base_url}reviews.html</loc>\n    <priority>0.9</priority>\n    <changefreq>weekly</changefreq>\n  </url>')
+    sitemap_lines.append(f'  <url>\n    <loc>{base_url}recommend.html</loc>\n    <priority>0.7</priority>\n    <changefreq>monthly</changefreq>\n  </url>')
+
+    # posts.json에서 블로그 글 합산
+    posts_json = os.path.join(BUILD_DIR, 'posts.json')
+    if os.path.exists(posts_json):
+        try:
+            with open(posts_json, 'r', encoding='utf-8') as f:
+                posts_data = json.load(f)
+            for p in posts_data.get('posts', []):
+                url = p.get('url', '')
+                date = p.get('date', '')
+                if url:
+                    full_url = base_url.rstrip('/') + url
+                    lastmod_line = f'\n    <lastmod>{date}</lastmod>' if date else ''
+                    sitemap_lines.append(
+                        f'  <url>\n    <loc>{full_url}</loc>{lastmod_line}\n    <priority>0.9</priority>\n    <changefreq>monthly</changefreq>\n  </url>'
+                    )
+        except Exception as e:
+            print(f'  [warn] posts.json 읽기 실패 (블로그 글 sitemap 누락): {e}')
+
     sitemap_lines.append('</urlset>')
     write(os.path.join(ROOT_DIR, 'sitemap.xml'), '\n'.join(sitemap_lines) + '\n')
 
