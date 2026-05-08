@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="BT101 solar droplet feeding setup with electronic balance feedback">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff5e6"/>
+      <stop offset="100%" stop-color="#f5f9f7"/>
+    </linearGradient>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd84a"/>
+      <stop offset="100%" stop-color="#ff9a26"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offset"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.16"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1a6e56"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ff9a26"/>
+    </marker>
+    <marker id="arrow-dashed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5a6779"/>
+    </marker>
+  </defs>
+
+  <rect width="800" height="400" fill="url(#bg)"/>
+
+  <!-- 농축 태양광 (6 sun) — 오른쪽 위에서 샘플로 수렴 -->
+  <g>
+    <circle cx="630" cy="55" r="22" fill="url(#sun)"/>
+    <text x="630" y="60" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="11" font-weight="800" fill="#ffffff">6 sun</text>
+    <!-- 광선 6개 -->
+    <g stroke="#ff9a26" stroke-width="2" stroke-linecap="round" opacity="0.7" fill="none">
+      <line x1="610" y1="80"  x2="500" y2="220" marker-end="url(#arrow-orange)"/>
+      <line x1="620" y1="82"  x2="510" y2="220" marker-end="url(#arrow-orange)"/>
+      <line x1="630" y1="83"  x2="520" y2="220" marker-end="url(#arrow-orange)"/>
+      <line x1="640" y1="82"  x2="530" y2="220" marker-end="url(#arrow-orange)"/>
+      <line x1="650" y1="80"  x2="540" y2="220" marker-end="url(#arrow-orange)"/>
+      <line x1="660" y1="76"  x2="550" y2="220" marker-end="url(#arrow-orange)"/>
+    </g>
+  </g>
+
+  <!-- Reservoir (왼쪽 상단) -->
+  <g filter="url(#soft)">
+    <rect x="50" y="55" width="100" height="80" rx="8" fill="#ffffff" stroke="#0a2540" stroke-width="2"/>
+    <rect x="58" y="85" width="84" height="46" rx="3" fill="#dbe7f5"/>
+    <text x="100" y="50" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="11" font-weight="700" fill="#0a2540">Reservoir</text>
+    <text x="100" y="78" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="10" fill="#5a6779">증류수</text>
+  </g>
+
+  <!-- BT101 Pump (왼쪽 하단 → 이어지는 위치) -->
+  <g filter="url(#soft)">
+    <rect x="50" y="190" width="160" height="120" rx="10" fill="#0a2540"/>
+    <circle cx="130" cy="250" r="32" fill="none" stroke="#1a6e56" stroke-width="3"/>
+    <circle cx="130" cy="226" r="5" fill="#1a6e56"/>
+    <circle cx="151" cy="262" r="5" fill="#1a6e56"/>
+    <circle cx="109" cy="262" r="5" fill="#1a6e56"/>
+    <text x="130" y="210" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="0.5">BT101 + YZ15</text>
+    <text x="130" y="298" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="10" fill="#a9b8cc">Pulse 모드</text>
+  </g>
+
+  <!-- 튜빙: Reservoir → Pump -->
+  <path d="M 100 135 L 100 175 Q 100 190 115 190" fill="none" stroke="#1a6e56" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- 튜빙: Pump → Nozzle (위로 갔다가 곡선) -->
+  <path d="M 210 230 Q 320 230 380 200 Q 440 170 510 175" fill="none" stroke="#1a6e56" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- Nozzle (샘플 위) -->
+  <g>
+    <rect x="505" y="170" width="14" height="22" rx="2" fill="#0a2540"/>
+    <polygon points="505,192 519,192 514,202 510,202" fill="#0a2540"/>
+    <!-- droplet 떨어지는 모습 -->
+    <ellipse cx="512" cy="216" rx="3" ry="4" fill="#3a7bd5" opacity="0.85"/>
+    <ellipse cx="512" cy="226" rx="3.5" ry="5" fill="#3a7bd5" opacity="0.5"/>
+  </g>
+
+  <!-- 샘플 (rGO-SSA, holder, balance) -->
+  <g filter="url(#soft)">
+    <!-- 샘플 surface (rGO 검은 코팅) -->
+    <rect x="450" y="245" width="120" height="14" rx="2" fill="#1a2332"/>
+    <rect x="455" y="244" width="110" height="3" fill="#3a3a3a"/>
+    <text x="510" y="240" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="10" font-weight="700" fill="#0a2540">rGO-SSA</text>
+
+    <!-- Holder (단열재) -->
+    <polygon points="465,259 555,259 545,295 475,295" fill="#e6d3b3" stroke="#8b6c3e" stroke-width="1.5"/>
+    <text x="510" y="282" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="9" fill="#5a3f00">단열 holder</text>
+
+    <!-- Electronic balance -->
+    <rect x="430" y="295" width="160" height="50" rx="4" fill="#ffffff" stroke="#0a2540" stroke-width="2"/>
+    <rect x="445" y="305" width="50" height="20" rx="2" fill="#0a2540"/>
+    <text x="470" y="320" text-anchor="middle" font-family="'SF Mono',monospace" font-size="11" font-weight="700" fill="#1a6e56">9.42 mg</text>
+    <text x="565" y="318" text-anchor="end" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="9.5" font-weight="700" fill="#0a2540">ME104E</text>
+    <text x="565" y="332" text-anchor="end" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="8.5" fill="#5a6779">0.1 mg 분해능</text>
+  </g>
+
+  <!-- Closed-loop feedback (balance → pump, 점선) -->
+  <path d="M 430 320 Q 320 350 220 320 Q 180 305 175 280" fill="none" stroke="#5a6779" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" marker-end="url(#arrow-dashed)"/>
+  <text x="300" y="368" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="10.5" fill="#5a6779" font-weight="700">Closed-loop feedback (mass → RPM)</text>
+
+  <!-- Camera 아이콘 (오른쪽 아래) -->
+  <g opacity="0.85">
+    <rect x="650" y="240" width="60" height="36" rx="4" fill="#ffffff" stroke="#5a6779" stroke-width="1.5"/>
+    <circle cx="680" cy="258" r="9" fill="none" stroke="#5a6779" stroke-width="1.5"/>
+    <circle cx="680" cy="258" r="5" fill="#5a6779"/>
+    <text x="680" y="290" text-anchor="middle" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="9" fill="#5a6779">High-speed + IR cam</text>
+  </g>
+
+  <!-- Title overlay -->
+  <text x="40" y="35" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="11" font-weight="700" fill="#ff9a26" letter-spacing="2">PUMP SETUP</text>
+  <text x="40" y="170" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="14" font-weight="800" fill="#0a2540">광열 변환 droplet 공급</text>
+  <text x="40" y="186" font-family="-apple-system,'Apple SD Gothic Neo',sans-serif" font-size="10.5" fill="#5a6779">Advanced Science · 2020</text>
+</svg>

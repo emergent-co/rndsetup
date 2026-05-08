@@ -14,6 +14,20 @@
       "image": "/blog/img/bt101-ex-vivo-catheter.svg",
       "journal": "Nature Communications",
       "citations": null
+    },
+    {
+      "slug": "bt101-solar-droplet-feedback",
+      "title": "농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답",
+      "summary": "솔라 스팀·광열 변환 실험에서 droplet 공급이 흔들리면 펌프 선택이 원인입니다. Adv. Sci. 2020가 6 sun 농축광 하에서 0.94 mg/cm²/s 증발 속도를 안정 측정한 BT101 + 전자저울 피드백 셋업의 3가지 디테일을 본인 실험에 그대로 이식할 수 있습니다.",
+      "date": "2026-05-08",
+      "tags": ["BT101", "솔라 스팀", "광열 변환", "rGO", "Advanced Science"],
+      "setup_id": "bt101_solar_droplet",
+      "url": "/blog/bt101-solar-droplet-feedback.html",
+      "model_focus": "BT101",
+      "application": "연료전지·에너지",
+      "image": "/blog/img/bt101-solar-droplet-feedback.svg",
+      "journal": "Advanced Science",
+      "citations": null
     }
   ]
 }

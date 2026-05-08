@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답 | Cellab</title>
+<link rel="canonical" href="https://cellab.kr/blog/bt101-solar-droplet-feedback.html">
+<meta name="description" content="솔라 스팀·광열 변환 실험에서 droplet 공급이 흔들리면 펌프 선택이 원인입니다. Adv. Sci. 2020가 6 sun 농축광 하에서 0.94 mg/cm²/s 증발 속도를 안정 측정한 BT101 페리스탈틱 + 전자저울 피드백 셋업의 3가지 디테일을 본인 실험에 그대로 이식할 수 있습니다.">
+<meta name="keywords" content="BT101, 솔라 스팀, 광열 변환, rGO, 분광 선택 흡수체, droplet boiling, Lead Fluid, Cellab">
+<meta name="google-site-verification" content="Rmsvu2bCzPOi66nb9epKw-gbrb07Hyem6hM5uNu71ss" />
+<meta name="naver-site-verification" content="388fb33540d49f5adf6912da9cc3f089163002b6" />
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답">
+<meta property="og:description" content="6 sun 광 환경에서 droplet 일정 공급, 어떻게 잡나? Adv. Sci. 2020 BT101 + 저울 피드백 셋업 분석.">
+<meta property="og:url" content="https://cellab.kr/blog/bt101-solar-droplet-feedback.html">
+<meta property="og:image" content="https://cellab.kr/blog/img/bt101-solar-droplet-feedback.svg">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답",
+  "datePublished": "2026-05-08",
+  "author": {"@type": "Organization", "name": "Cellab"},
+  "publisher": {"@type": "Organization", "name": "Cellab", "url": "https://cellab.kr"},
+  "mainEntityOfPage": "https://cellab.kr/blog/bt101-solar-droplet-feedback.html"
+}
+</script>
+
+<!-- Google tag (gtag.js) — GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CN3E3PVQVD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CN3E3PVQVD');
+</script>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --navy:#0a2540;--teal:#1a6e56;--text:#1a2332;--muted:#5a6779;--border:#e3e8ef;--bg:#f7f9fc;--accent:#3a7bd5;
+  }
+  html,body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Apple SD Gothic Neo','Malgun Gothic',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+
+  /* 헤더 */
+  .site-header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+  .site-header-inner{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:16px}
+  .site-logo{font-size:20px;font-weight:800;color:var(--navy);letter-spacing:-.02em;flex:1}
+  .site-logo span{color:var(--teal)}
+  .site-nav{flex:1;display:flex;justify-content:center;gap:22px;font-size:13.5px;font-weight:600;color:var(--muted)}
+  .site-nav a{color:var(--muted)}
+  .site-nav a:hover{color:var(--teal);text-decoration:none}
+  .site-nav .active{color:var(--teal)}
+  .site-actions{flex:1;display:flex;justify-content:flex-end}
+  .site-login{padding:7px 14px;background:#f5f9f7;color:var(--navy);font-size:12.5px;font-weight:700;border-radius:6px;border:1px solid var(--border);text-decoration:none;transition:all .15s}
+  .site-login:hover{background:var(--teal);color:#fff;border-color:var(--teal);text-decoration:none}
+  @media(max-width:760px){.site-nav{flex:none;gap:14px;font-size:12.5px}.site-logo{flex:none}.site-actions{flex:none;margin-left:auto}.site-header-inner{flex-wrap:wrap}}
+
+  /* 글 본문 — 2-col grid (main + sticky sidebar) */
+  .article-wrap{max-width:1200px;margin:0 auto;padding:32px 24px 60px}
+  .article-grid{display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start}
+  .article-main{min-width:0}
+  .article-aside{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow-y:auto}
+  .article{max-width:760px;margin:0 auto;padding:0}
+  .breadcrumb{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .breadcrumb a{color:var(--muted)}
+
+  h1{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1.3;margin-bottom:14px}
+
+  /* 논문 인용 박스 (h1 바로 아래) */
+  .paper-cite{font-size:13px;color:var(--muted);background:#f5f7fa;border-left:3px solid var(--navy);border-radius:0 6px 6px 0;padding:11px 16px;margin:14px 0 18px;line-height:1.65}
+  .paper-cite .pc-label{display:inline-block;font-size:10.5px;color:var(--navy);background:#fff;padding:2px 8px;border-radius:3px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-right:8px;border:1px solid var(--border)}
+  .paper-cite a{color:var(--teal);text-decoration:none}
+  .paper-cite a:hover{text-decoration:underline}
+
+  .meta{font-size:12px;color:var(--muted);margin-bottom:18px;display:flex;gap:14px;flex-wrap:wrap}
+  .meta .tag{padding:2px 8px;background:#f0f4f9;border-radius:10px;color:var(--navy);font-weight:600}
+
+  /* 본문 상단 대표 이미지 */
+  .article-hero-img{margin:8px 0 22px;background:linear-gradient(135deg,#fff5e6 0%,#f5f9f7 100%);border:1px solid var(--border);border-radius:12px;overflow:hidden;aspect-ratio:2/1}
+  .article-hero-img img{width:100%;height:100%;object-fit:contain;display:block}
+
+  .lead{font-size:15px;color:var(--text);background:#fff;border-left:3px solid var(--teal);padding:14px 18px;margin-bottom:30px;border-radius:0 6px 6px 0}
+
+  h2{font-size:22px;font-weight:800;color:var(--navy);margin-top:36px;margin-bottom:14px;letter-spacing:-.01em}
+  h3{font-size:17px;font-weight:700;color:var(--navy);margin-top:24px;margin-bottom:10px}
+
+  p{font-size:15px;margin-bottom:14px}
+  ul,ol{margin-left:22px;margin-bottom:16px;font-size:15px}
+  li{margin-bottom:6px}
+  strong{color:var(--navy)}
+  em{color:#444}
+
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:13.5px;background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  table th{background:#f5f7fa;color:var(--navy);font-weight:700;padding:9px 12px;text-align:left;border-bottom:1px solid var(--border);font-size:12.5px;letter-spacing:.02em}
+  table td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+  table tr:last-child td{border-bottom:none}
+
+  /* 사이드바 카드 */
+  .aside-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 18px 16px;margin-bottom:14px}
+  .aside-title{font-size:13px;font-weight:800;color:var(--navy);margin-bottom:10px;letter-spacing:.02em;text-transform:uppercase}
+  .aside-table{border-collapse:collapse;width:100%;font-size:11.5px;background:#fff;border:none}
+  .aside-table th{background:#f5f7fa;color:var(--navy);font-weight:700;padding:6px 8px;text-align:left;border-bottom:1px solid var(--border);font-size:10.5px;letter-spacing:.02em}
+  .aside-table td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+  .aside-table tr:last-child td{border-bottom:none}
+  .aside-cta{margin-top:12px}
+  .aside-cta button{width:100%;padding:11px 14px;background:var(--teal);color:#fff;border:none;border-radius:6px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;transition:background .15s}
+  .aside-cta button:hover{background:#155b48}
+  .aside-cta-note{font-size:11.5px;color:var(--muted);margin-top:8px;text-align:center;line-height:1.5}
+
+  /* 관련 글 (3-col) */
+  .related-section{max-width:1200px;margin:50px auto 0;padding:0 24px}
+  .related-section h2{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:18px;letter-spacing:-.01em}
+  .related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+  .related-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;transition:all .15s}
+  .related-card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,37,64,.06);text-decoration:none}
+  .related-card .rc-img{aspect-ratio:2/1;background:linear-gradient(135deg,#eaf1f9 0%,#f5f9f7 100%);overflow:hidden;border-bottom:1px solid var(--border)}
+  .related-card .rc-img img{width:100%;height:100%;object-fit:contain;display:block}
+  .related-card .rc-img.placeholder{display:grid;place-items:center;color:#a9b8cc;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+  .related-card .rc-body{padding:14px 16px;display:flex;flex-direction:column;flex:1}
+  .related-card .rc-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
+  .related-card .rc-tag{font-size:10px;color:var(--teal);background:#f5f9f7;padding:2px 7px;border-radius:8px;font-weight:600}
+  .related-card .rc-tag.journal{background:#fff4e6;color:#a05a00;border:1px solid #ffd9a8}
+  .related-card .rc-tag.cite{background:#eef1f5;color:var(--navy)}
+  .related-card h3{font-size:14px;font-weight:800;color:var(--navy);line-height:1.4;margin:0 0 6px;letter-spacing:-.005em}
+  .related-card .rc-summary{font-size:12px;color:var(--muted);line-height:1.55;flex:1;margin-bottom:8px}
+  .related-card .rc-meta{font-size:11px;color:var(--muted);border-top:1px solid var(--border);padding-top:7px;display:flex;justify-content:space-between}
+  .related-card .rc-meta .rc-app{color:var(--teal);font-weight:600}
+  .related-empty{background:#fff;border:1px dashed var(--border);border-radius:10px;padding:18px;text-align:center;color:var(--muted);font-size:12.5px}
+
+  /* 푸터 */
+  .site-foot{background:#fff;border-top:1px solid var(--border);padding:24px;font-size:12px;color:var(--muted);text-align:center;margin-top:50px}
+  .site-foot a{margin:0 6px;color:var(--muted)}
+  .site-foot a:hover{color:var(--teal)}
+
+  /* 견적 문의 모달 */
+  .iq-overlay{position:fixed;inset:0;background:rgba(10,37,64,.55);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}
+  .iq-overlay.open{display:flex}
+  .iq-box{background:#fff;border-radius:12px;width:100%;max-width:760px;height:90vh;max-height:780px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden}
+  .iq-close{position:absolute;top:10px;right:14px;width:34px;height:34px;border:none;background:rgba(0,0,0,.06);border-radius:50%;font-size:20px;color:var(--text);cursor:pointer;z-index:2;display:grid;place-items:center;transition:background .15s}
+  .iq-close:hover{background:rgba(0,0,0,.12)}
+  .iq-frame{width:100%;height:100%;border:none;background:#fff}
+  body.iq-locked{overflow:hidden}
+
+  /* 모바일 — 사이드바 본문 아래로 스택 */
+  @media(max-width:960px){
+    .article-grid{grid-template-columns:1fr;gap:24px}
+    .article-aside{position:static;max-height:none;overflow:visible}
+    .related-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:600px){
+    h1{font-size:24px}
+    h2{font-size:19px}
+    .article{padding:0}
+    .related-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-logo" href="/index.html"><span>Cellab</span> 셀렙</a>
+    <nav class="site-nav">
+      <a href="/reviews.html" class="active">펌프셋업 리뷰</a>
+      <a href="/recommend.html">펌프 추천</a>
+      <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
+    </nav>
+    <div class="site-actions">
+      <a class="site-login" href="/login.html">로그인</a>
+    </div>
+  </div>
+</header>
+
+<div class="article-wrap">
+<div class="article-grid">
+<main class="article-main">
+<article class="article">
+
+  <div class="breadcrumb">
+    <a href="/index.html">홈</a> &nbsp;›&nbsp; <a href="/reviews.html">펌프셋업 리뷰</a> &nbsp;›&nbsp; BT101 솔라 droplet
+  </div>
+
+  <h1>농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답</h1>
+
+  <div class="paper-cite">
+    <span class="pc-label">Citation</span>
+    Liao, Q., Zhang, P., Yao, H., Cheng, H., Li, C., &amp; Qu, L. (2020). <em>Reduced Graphene Oxide–Based Spectrally Selective Absorber with an Extremely Low Thermal Emittance and High Solar Absorptance.</em> <strong>Advanced Science</strong>, 7(8), 1903125. DOI: <a href="https://doi.org/10.1002/advs.201903125" target="_blank" rel="noopener">10.1002/advs.201903125</a>
+  </div>
+
+  <div class="meta">
+    <span>2026-05-08</span>
+    <span class="tag">BT101</span>
+    <span class="tag">솔라 스팀</span>
+    <span class="tag">광열 변환</span>
+    <span class="tag">rGO</span>
+    <span class="tag">Advanced Science</span>
+  </div>
+
+  <div class="article-hero-img">
+    <img src="/blog/img/bt101-solar-droplet-feedback.svg" alt="BT101 solar droplet feeding setup with electronic balance feedback">
+  </div>
+
+  <div class="lead">
+    솔라 스팀·droplet 증발 실험에서 데이터가 매번 다르다면, 코팅이 아니라 <strong>펌프 선택</strong>의 문제일 가능성이 큽니다. 농축 태양광 6 sun 환경에서 droplet 크기·간격을 일정하게 공급하는 건 의외로 어렵고, 시린지 dripping이나 수동 적가로는 boiling 동역학을 잡지 못합니다. Adv. Sci. 2020 저자들이 0.94 mg/cm²/s의 증발 속도를 안정적으로 측정한 비결은 <strong>BT101 페리스탈틱 펌프 + 전자저울 피드백</strong> 조합이었습니다. 이 셋업의 3가지 디테일을 알면 본인의 광열 변환·SSA 평가 실험에 그대로 이식할 수 있습니다.
+  </div>
+
+  <h2>1. 이 셋업이 광열 변환 데이터를 살리는 3가지 디테일</h2>
+
+  <p>광열 변환·솔라 스팀 실험에서 데이터가 흔들리는 원인은 거의 droplet 공급 쪽에 있습니다. 시린지 부피 한계로 장시간 측정이 끊기거나, 모터 펌프가 미세 RPM 영역에서 토크 한계로 흔들리거나, 수동 적가로는 droplet 크기·간격 통제가 안 됩니다. 본 논문 저자들이 이 3가지를 어떻게 회피했는지 보면, 자기 실험에서 무엇을 바꿔야 할지 바로 보입니다.</p>
+
+  <h3>1) 페리스탈틱 펌프로 미세 유량을 안정화한 것</h3>
+
+  <p>분광 선택 흡수체(SSA) 평가는 표면당 mg/s 단위 증발 속도를 측정해야 의미가 있습니다. 즉 펌프는 <strong>mL/min 미만의 미세 유량에서 RPM이 안 흔들려야</strong> 합니다. 시린지 펌프는 시린지 부피 한계로 장시간 운전이 끊기고, 모터·기어 펌프는 미세 RPM 영역에서 토크 한계로 정밀 제어가 어렵습니다.</p>
+
+  <p>이 논문은 <strong>BT101 + YZ15 헤드</strong>를 선택. 페리스탈틱이 mL/min 미만에서도 RPM 안정성이 확보되고, 튜브 외부 압착 방식이라 농축광 환경의 진동·복사열을 본체가 받지 않습니다. 광원에 노출되는 부분은 튜브와 노즐 끝뿐.</p>
+
+  <h3>2) 전자저울 피드백으로 closed-loop을 만든 것</h3>
+
+  <p>펌프 RPM이 일정해도 실제 토출량은 튜브 압착 상태·노즐·표면장력·온도에 따라 달라집니다. 펌프 단독 운전은 "설정 RPM"이지 "실측 droplet mass"가 아닙니다. 농축광 환경에서 표면 온도가 200~300°C로 오르면 droplet 증발 속도도 빠르게 변동합니다.</p>
+
+  <p>이 논문은 <strong>METTLER TOLEDO ME104E 전자저울</strong>(0.1mg 분해능)을 셋업에 통합. 저울이 실시간 mass를 측정하고, 그 데이터로 펌프 feeding rate를 조정하는 closed-loop 구조입니다. 즉 "이번에 떨어진 droplet의 실제 무게"가 다음 droplet 공급 시점·양을 결정합니다. 이게 0.94 mg/cm²/s 안정 측정의 핵심입니다.</p>
+
+  <h3>3) Pulse 모드 droplet 공급으로 boiling 동역학을 잡은 것</h3>
+
+  <p>광열 변환 평가에서 continuous 흐름은 표면이 항상 젖어있어 boiling 동역학(droplet 형성 → 증발 → 다음 droplet)이 측정 불가합니다. 시간 분해된 데이터를 얻으려면 <strong>간헐적(intermittent) droplet 공급</strong>이 필요한데, 이는 펌프를 짧은 펄스로 운전해야 한다는 뜻입니다.</p>
+
+  <p>BT101은 디지털 분주 모드를 지원해 정해진 시간 간격으로 정해진 양만 토출 가능. 고속 카메라(PHANTOM V611)가 boiling 과정을 시간 분해 기록하고 IR 카메라가 표면 온도를 동시 추적합니다. 이 셋업이 만들어낸 <strong>데이터 분해능이 곧 논문의 측정 분해능</strong>입니다.</p>
+
+  <h3>다른 펌프 형식과의 비교</h3>
+
+  <table>
+    <tr><th>펌프 형식</th><th>한계 (광열 변환·droplet 셋업에서)</th></tr>
+    <tr><td>시린지 펌프</td><td>시린지 부피 한계, 장시간 안정 운전 어려움</td></tr>
+    <tr><td>모터·기어 펌프</td><td>미세 RPM 영역 토크 한계, 미세 유량 정밀도 부족</td></tr>
+    <tr><td>수동 dripping</td><td>droplet 크기·간격 통제 불가, 재현성 0</td></tr>
+    <tr><td><strong>페리스탈틱 + 저울 피드백</strong></td><td><strong>미세 유량 안정 + closed-loop + 펄스 모드</strong></td></tr>
+  </table>
+
+  <h2>2. 실험 셋업 사양</h2>
+
+  <table>
+    <tr><th>구성</th><th>사양</th></tr>
+    <tr><td>페리스탈틱 펌프</td><td>BT101 (Lead Fluid)</td></tr>
+    <tr><td>펌프헤드</td><td>YZ15 (단일 채널)</td></tr>
+    <tr><td>튜빙</td><td>실리콘 튜브 (소구경, 미세 droplet 통제)</td></tr>
+    <tr><td>유체</td><td>증류수 (boiling 시험), 응용 따라 변경</td></tr>
+    <tr><td>광원</td><td>6 sun 농축 태양광 시뮬레이터</td></tr>
+    <tr><td>시험 표면</td><td>rGO-SSA (Al | GO | TEOS → 300°C 열환원 → Al | rGO | ARC)</td></tr>
+    <tr><td>표면 흡수율</td><td>α<sub>solar</sub> ≈ 0.92</td></tr>
+    <tr><td>표면 열방사율</td><td>ε<sub>100</sub> ≈ 0.04 (95.8% 감소)</td></tr>
+    <tr><td>측정 mass</td><td>전자저울 ME104E (METTLER TOLEDO), 0.1mg 분해능</td></tr>
+    <tr><td>측정 영상</td><td>고속 카메라 PHANTOM V611 + IR 카메라</td></tr>
+    <tr><td>평가 지표</td><td>droplet 증발 속도 (mg/cm²/s)</td></tr>
+    <tr><td>핵심 결과</td><td><strong>0.94 mg/cm²/s 안정 증발</strong> (6 sun 환경)</td></tr>
+  </table>
+
+  <h2>3. 셋업 변형 응용</h2>
+
+  <p>본 셋업은 펌프·저울 조합은 그대로 두고 표면·유체·광 농도만 바꿔서 다양한 광열 변환 실험에 응용됩니다.</p>
+
+  <table>
+    <tr><th>응용</th><th>변경 사항</th></tr>
+    <tr><td>다른 SSA 코팅 평가 (W-Ni-YSZ, TiNOX 등)</td><td>표면만 교체, 셋업 동일</td></tr>
+    <tr><td>광 농도 변경 (1~10 sun)</td><td>광원 출력 + 펌프 feeding rate 비례 조정</td></tr>
+    <tr><td>해수·고염 액체</td><td>튜브를 PharMed로 변경 (염분 호환성)</td></tr>
+    <tr><td>에탄올·휘발성 액체</td><td>인화성 주의 (방폭 환경 검토)</td></tr>
+    <tr><td>다공성 흡수체 (aerogel·foam)</td><td>droplet 공급 + 모세관 흡수 동시 측정</td></tr>
+    <tr><td>시간 분해능 향상</td><td>더 짧은 펄스, 더 작은 droplet (펌프 정밀도 한계 검증)</td></tr>
+    <tr><td>광촉매 + 광열 결합 평가</td><td>같은 셋업에 UV 광원 추가</td></tr>
+  </table>
+
+  <h2>4. 호환성 자주 묻는 부분 (FAQ)</h2>
+
+  <p><strong>Q1. 시린지 펌프로 대체 가능한가요?</strong><br>
+  미량 주입은 시린지 펌프 강점이지만, 본 셋업처럼 장시간(분~시간 단위) 펄스 모드로 droplet 공급이 필요하면 부피 한계로 끊깁니다. 시린지 50mL × 분당 5방울(50μL/방울 가정) → 약 3시간 후 재충전 필요. BT101 + 저장 용기 조합은 연속 운전 시간 제약이 없습니다.</p>
+
+  <p><strong>Q2. 전자저울 ME104E가 필수인가요?</strong><br>
+  0.1mg 분해능 이상이면 동급 OK. droplet 1방울이 약 5~20mg이라 1% 이내 분해능 확보가 핵심. RS232·USB 출력으로 PC·컨트롤러에 실시간 mass 전송이 가능한 모델이면 closed-loop 자동화가 가능합니다.</p>
+
+  <p><strong>Q3. 펌프 RPM이 droplet 사이즈에 직접 비례하나요?</strong><br>
+  비례하지 않습니다. droplet 사이즈는 노즐 직경 + 표면장력 + 튜브 ID + 유체 점도의 조합. 같은 RPM이라도 노즐 끝의 표면장력이 droplet을 잡고 있는 시간에 따라 사이즈가 달라집니다. 실제 셋업에서는 펌프 + 저울로 mass 캘리브레이션 진행 후 RPM-사이즈 그래프를 미리 잡아둡니다.</p>
+
+  <p><strong>Q4. 농축광 6 sun이 펌프 본체에 영향을 주나요?</strong><br>
+  펌프 본체는 광원 외부에 있어 직접 영향이 없습니다. 튜브와 노즐 끝만 광 노출 영역에 들어가는데, 이 부분은 단열재로 감싸거나 튜브 길이를 길게 빼서 펌프와 광원을 물리적으로 분리합니다.</p>
+
+  <p><strong>Q5. closed-loop 자동화는 어떻게 구현하나요?</strong><br>
+  BT101 외부 신호 입력 모델(RS485 또는 4-20mA 지원) + 저울 RS232 출력 + 사이에 컨트롤러(PLC 또는 PC)를 두는 구조입니다. 본 논문은 구체적 구현은 명시 안 했으나 일반적인 방식입니다. 셋업을 단순화하려면 매뉴얼 모드로 5~10분마다 RPM 조정도 충분합니다.</p>
+
+  <h2>5. 관련 응용 분야 키워드</h2>
+
+  <ul>
+    <li>분광 선택 흡수체 (Spectrally Selective Absorber, SSA)</li>
+    <li>솔라 스팀 발생 (solar steam generation, photothermal evaporation)</li>
+    <li>광열 변환 (light-to-heat conversion)</li>
+    <li>환원 그래핀 산화물 코팅 (rGO film, sol-gel deposition)</li>
+    <li>droplet boiling 동역학 / 시간 분해 측정</li>
+    <li>농축 태양광 시뮬레이션 (concentrated solar)</li>
+    <li>closed-loop pump-balance feedback</li>
+    <li>다공성 광흡수체 (aerogel, foam evaporator)</li>
+  </ul>
+
+</article>
+</main>
+
+<aside class="article-aside">
+  <!-- 셋업에 필요한 부품 -->
+  <div class="aside-card">
+    <div class="aside-title">셋업에 필요한 부품</div>
+    <table class="aside-table">
+      <tr><th>부품</th><th>사양</th></tr>
+      <tr><td>BT101 펌프 본체</td><td>0.00011~750 mL/min</td></tr>
+      <tr><td>YZ15 펌프헤드</td><td>단일 채널</td></tr>
+      <tr><td>카세트·클램프</td><td>YZ15 호환</td></tr>
+      <tr><td>실리콘 튜브 (소구경)</td><td>의료등급 ID 1.6mm</td></tr>
+      <tr><td>Luer-lock 어댑터</td><td>노즐 연결용</td></tr>
+      <tr><td>저장 용기</td><td>멸균 PP/유리 250~500mL</td></tr>
+    </table>
+    <p style="font-size:11px;color:var(--muted);margin:10px 0 0;line-height:1.5">외부 조달: 전자저울 (0.1mg급), 광원 시뮬레이터, 카메라</p>
+
+    <div class="aside-cta">
+      <button type="button" onclick="openInquiry('bt101_solar_droplet')">견적 문의 →</button>
+      <div class="aside-cta-note">필요한 부품만 골라 한 번에 견적</div>
+    </div>
+  </div>
+</aside>
+
+</div><!-- /.article-grid -->
+
+<!-- 관련 있는 글 -->
+<section class="related-section">
+  <h2>관련 있는 글</h2>
+  <div class="related-grid" id="relatedGrid">
+    <div class="related-empty" style="grid-column:1/-1">관련 글을 불러오는 중...</div>
+  </div>
+</section>
+
+</div><!-- /.article-wrap -->
+
+
+<!-- 견적 문의 모달 -->
+<div class="iq-overlay" id="iqOverlay" onclick="if(event.target===this)closeInquiry()">
+  <div class="iq-box">
+    <button class="iq-close" type="button" onclick="closeInquiry()" aria-label="닫기">×</button>
+    <iframe class="iq-frame" id="iqFrame" src="" title="견적 문의"></iframe>
+  </div>
+</div>
+
+<script>
+function openInquiry(setupId){
+  const url = '/inquiry.html?setup=' + encodeURIComponent(setupId) + '&modal=1';
+  document.getElementById('iqFrame').src = url;
+  document.getElementById('iqOverlay').classList.add('open');
+  document.body.classList.add('iq-locked');
+  if (typeof gtag === 'function') {
+    gtag('event', 'inquiry_open', { setup_id: setupId });
+  }
+}
+function closeInquiry(){
+  document.getElementById('iqOverlay').classList.remove('open');
+  document.body.classList.remove('iq-locked');
+  setTimeout(() => { document.getElementById('iqFrame').src = ''; }, 200);
+}
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && document.getElementById('iqOverlay').classList.contains('open')) {
+    closeInquiry();
+  }
+});
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'inquiry_submitted') {
+    setTimeout(closeInquiry, 1800);
+  }
+});
+
+// ===== 관련 글 자동 로딩 =====
+(async function loadRelated(){
+  const CURRENT_SLUG = 'bt101-solar-droplet-feedback';
+  const CURRENT_APP  = '연료전지·에너지';
+  const grid = document.getElementById('relatedGrid');
+  if(!grid) return;
+  try {
+    const res = await fetch('/_build/posts.json', {cache:'no-store'});
+    const data = await res.json();
+    const posts = (data.posts || []).filter(p => !(p.url||'').includes(CURRENT_SLUG));
+
+    const sameApp = posts.filter(p => p.application === CURRENT_APP);
+    const others  = posts.filter(p => p.application !== CURRENT_APP)
+                         .sort((a,b)=> (b.date||'').localeCompare(a.date||''));
+    const related = sameApp.concat(others).slice(0, 3);
+
+    if (related.length === 0) {
+      grid.innerHTML = `
+        <div class="related-empty">곧 발행 예정</div>
+        <div class="related-empty">곧 발행 예정</div>
+        <div class="related-empty">곧 발행 예정</div>`;
+      return;
+    }
+
+    const esc = s => String(s||'').replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+    grid.innerHTML = related.map(p => {
+      const tags = (p.tags||[]).slice(0,2).map(t=>`<span class="rc-tag">${esc(t)}</span>`).join('');
+      const journal = p.journal ? `<span class="rc-tag journal">${esc(p.journal)}</span>` : '';
+      const cite    = (p.citations != null) ? `<span class="rc-tag cite">cite ${esc(p.citations)}</span>` : '';
+      const img = p.image
+        ? `<div class="rc-img"><img src="${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"></div>`
+        : `<div class="rc-img placeholder">Setup Diagram</div>`;
+      return `<a class="related-card" href="${esc(p.url)}">
+        ${img}
+        <div class="rc-body">
+          <div class="rc-tags">${journal}${cite}${tags}</div>
+          <h3>${esc(p.title)}</h3>
+          <div class="rc-summary">${esc(p.summary)}</div>
+          <div class="rc-meta"><span>${esc(p.date)}</span><span class="rc-app">${esc(p.application||'')}</span></div>
+        </div>
+      </a>`;
+    }).join('') + Array(Math.max(0, 3 - related.length)).fill('<div class="related-empty">곧 발행 예정</div>').join('');
+  } catch(err) {
+    grid.innerHTML = '<div class="related-empty" style="grid-column:1/-1">관련 글을 불러올 수 없습니다.</div>';
+  }
+})();
+</script>
+
+<footer class="site-foot">
+  <div>
+    <a href="/index.html">홈</a> ·
+    <a href="/reviews.html">펌프셋업 리뷰</a> ·
+    <a href="/recommend.html">펌프 추천</a> ·
+    <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
+  </div>
+  <div style="margin-top:8px">© Cellab — R&amp;D Pumps and Consumables</div>
+</footer>
+
+</body>
+</html>

@@ -15,6 +15,18 @@
         "luer_lock_adapter",
         "media_500ml"
       ]
+    },
+    "bt101_solar_droplet": {
+      "title": "BT101 솔라 droplet 공급 셋업 (Adv. Sci. 2020)",
+      "post_url": "/blog/bt101-solar-droplet-feedback.html",
+      "items": [
+        "bt101_body",
+        "yz15_head",
+        "yz15_clamp",
+        "silicone_id1.6mm",
+        "luer_lock_adapter",
+        "media_500ml"
+      ]
     }
   }
 }
