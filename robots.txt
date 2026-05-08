@@ -5,6 +5,8 @@ User-agent: *
 Allow: /
 Disallow: /_build/
 Disallow: /crawler/
+Disallow: /blog/naver/
+Disallow: /_naver_drafts/
 
 # AI 크롤러 명시적 허용 (ASEO)
 User-agent: GPTBot

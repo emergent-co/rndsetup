@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>네이버 cellab01 — ex vivo 카테터 회로 설계 — 발행용 HTML</title>
+<style>
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; line-height: 1.7; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+  h1 { font-size: 24px; line-height: 1.4; margin: 0 0 24px; }
+  h2 { font-size: 20px; margin: 36px 0 14px; padding-top: 10px; border-top: 1px solid #ddd; }
+  h3 { font-size: 17px; margin: 24px 0 10px; }
+  p { margin: 12px 0; }
+  blockquote { background: #f5f5f5; border-left: 4px solid #03c75a; padding: 14px 18px; margin: 18px 0; font-size: 14px; color: #555; }
+  table { border-collapse: collapse; width: 100%; margin: 18px 0; font-size: 14px; }
+  th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f0f7ff; font-weight: 600; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+  .img-placeholder { background: #fafafa; border: 1px dashed #bbb; padding: 30px; text-align: center; color: #999; font-size: 13px; margin: 18px 0; }
+  .footer-link { background: #f8f9fa; padding: 18px; border-radius: 6px; margin: 24px 0; font-size: 14px; }
+  .tags { color: #03c75a; font-size: 13px; margin-top: 30px; }
+  .note { background: #fffbe6; border: 1px solid #ffe58f; padding: 12px 16px; font-size: 13px; color: #876800; margin: 16px 0; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <strong>📋 발행 안내</strong> — 이 페이지를 Chrome에서 열고 <strong>아래 가로선(─) 다음부터 끝까지 드래그 → 복사 → 네이버 글쓰기에 붙여넣기</strong>하세요.
+  자동으로 인식되는 서식: 제목·굵게·표·인용·링크.<br>
+  추가 작업: ① 대표 이미지 업로드 (<code>C:\dev\cellab\blog\img\png\bt101-ex-vivo-catheter.png</code>) ② 해시태그 입력 (본문 끝에 따로 적어둠) ③ 임시저장·미리보기·발행
+</div>
+
+<hr>
+
+<h1>ex vivo 카테터 시험에서 데이터가 매번 흔들린다면 — 회로 설계가 답일 수 있습니다</h1>
+
+<div class="img-placeholder">[ 여기에 대표 이미지 업로드: bt101-ex-vivo-catheter.png ]</div>
+
+<p>안녕하세요, 셀렙입니다.</p>
+
+<p>오늘은 ex vivo 카테터 시험을 진행하시면서 데이터가 매번 다르게 나와서 고민이신 분들께 드릴 답을 가져왔습니다.</p>
+
+<p>혹시 같은 코팅을 썼는데도 재현이 안 되거나, 28일 누적 데이터를 못 뽑고 계신가요?</p>
+
+<p>그렇다면 문제는 <strong>코팅이 아니라 회로 설계</strong>일 가능성이 큽니다.</p>
+
+<p>Nat. Commun. 2024 논문 저자들이 균막·혈전 데이터를 흔들림 없이 28일 동안 누적할 수 있었던 비결은 의외로 단순했습니다.</p>
+
+<p>→ <strong>BT101 페리스탈틱 펌프 + YZ15 헤드 + 실리콘 튜브(ID 3mm) + 폐쇄 회로</strong>, 이 4가지 조합이었습니다.</p>
+
+<p>오늘은 이 셋업의 3가지 핵심 디테일을 풀어드리겠습니다. 본인 실험에 바로 이식할 수 있도록요.</p>
+
+<blockquote>
+<strong>Citation</strong><br>
+Liu, L., Yu, H., Wang, L., Zhou, D., Duan, X., Zhang, X., Yin, J., Luan, S., &amp; Shi, H. (2024).<br>
+<em>Heparin-network-mediated long-lasting coatings on intravascular catheters for adaptive antithrombosis and antibacterial infection.</em><br>
+<strong>Nature Communications</strong>, 15, 107.<br>
+DOI: 10.1038/s41467-023-44478-3
+</blockquote>
+
+<h2>1. 이 셋업이 ex vivo 데이터를 살리는 3가지 디테일</h2>
+
+<p>균막·혈전·코팅 박리 시험에서 데이터가 흔들리는 원인은 거의 <strong>회로 쪽</strong>에 있습니다.</p>
+
+<p>펌프가 오염원이 되거나, 회로 밖으로 균·단백질이 빠지면서 누적 효과가 측정 안 되거나, 유체 조성이 시간에 따라 변하거나.</p>
+
+<p>저자들이 이 3가지를 어떻게 회피했는지 보면, 자기 실험에서 무엇을 바꿔야 할지 바로 보입니다.</p>
+
+<h3>1) 펌프 내부가 유체와 안 닿게 한 것</h3>
+
+<p>ex vivo 항균·혈전 시험에서 가장 큰 함정은 <strong>펌프 자체가 오염원이 되는 것</strong>입니다.</p>
+
+<p>모터·기어·시린지 펌프는 임펠러나 플런저가 유체와 직접 접촉합니다. 펌프 내부에 균이 자라기 시작하면 데이터 신뢰도가 무너지죠.</p>
+
+<p>이 논문은 <strong>페리스탈틱 펌프(BT101)</strong>를 선택했습니다. 튜브 외부를 롤러로 압축해서 유체를 밀어내는 방식이라, 펌프 내부와 유체가 한 번도 만나지 않습니다.</p>
+
+<p>균막·혈전 분석 셋업에서 다른 펌프 형식이 사실상 못 쓰이는 이유입니다.</p>
+
+<h3>2) 폐쇄 회로로 효과를 누적시킨 것</h3>
+
+<p>일반 흐름 회로는 균·혈장 단백질이 회로 밖으로 빠져나가서 누적 효과 측정이 불가능합니다.</p>
+
+<p>코팅이 시간에 따라 어떻게 박리되거나 작동하는지 보려면, <strong>같은 부피의 유체가 카테터와 반복 접촉</strong>해야 합니다.</p>
+
+<p>논문 구성: saline reservoir → 펌프 → 카테터 → 다시 reservoir로 폐쇄 회로.</p>
+
+<p>균을 접종하거나 혈장 인자를 추가해도 손실 없이 누적 효과·내구성을 측정 가능합니다. 시간 경과에 따른 코팅 안정성 데이터가 의미 있어지는 결정적 디테일입니다.</p>
+
+<h3>3) 정맥 환경 유속·전단 응력을 그대로 모방한 것</h3>
+
+<p>카테터 표면이 받는 마찰·응력은 코팅의 박리·내구성을 결정하는 핵심 변수입니다.</p>
+
+<p>정맥 평균 유속·카테터 내경을 그대로 모방해야 in vivo와 비교 가능한 데이터가 나옵니다.</p>
+
+<p>셋업 값: <strong>유량 38.4 mL/min × 실리콘 튜브 내경 3.0mm</strong>.</p>
+
+<p>이 두 숫자는 우연이 아니라 정맥 평균 전단 응력 영역을 의도적으로 노린 값입니다.</p>
+
+<h2>2. 다른 셋업과 비교 — 왜 페리스탈틱 폐쇄 회로가 답인가</h2>
+
+<table>
+<thead>
+<tr><th>셋업 형식</th><th>한계</th></tr>
+</thead>
+<tbody>
+<tr><td>정적 침지 (static immersion)</td><td>흐름·전단 응력 0 → 정맥 환경 모방 실패</td></tr>
+<tr><td>시린지 펌프 closed loop</td><td>시린지 부피 한계로 장시간 안정 유량 어려움</td></tr>
+<tr><td>모터·기어 펌프</td><td>유체와 펌프 내부 직접 접촉 → 오염원</td></tr>
+<tr><td><strong>페리스탈틱 + 실리콘 closed loop</strong></td><td>장시간 안정 유량 + 멸균 재현 + 비접촉 무오염</td></tr>
+</tbody>
+</table>
+
+<p>페리스탈틱 펌프 + 실리콘 튜브 + 폐쇄 회로 조합이 결국 ex vivo 카테터 시험의 골든 스탠더드입니다.</p>
+
+<h2>3. 실험 셋업 사양</h2>
+
+<table>
+<thead>
+<tr><th>구성</th><th>사양</th></tr>
+</thead>
+<tbody>
+<tr><td>페리스탈틱 펌프</td><td>BT101 시리즈 (단일 채널)</td></tr>
+<tr><td>펌프헤드</td><td>YZ15</td></tr>
+<tr><td>튜빙</td><td>실리콘 튜브, 내경 3.0mm</td></tr>
+<tr><td>유체</td><td>Normal saline (생리식염수, 의료 등급)</td></tr>
+<tr><td>유량</td><td>38.4 mL/min</td></tr>
+<tr><td>시스템</td><td>Closed loop (폐쇄 순환)</td></tr>
+<tr><td>시험 샘플</td><td>카테터 절편 5cm</td></tr>
+<tr><td>검증 항목</td><td>혈전 부착·균막 형성·카테터 무게 변화·면역형광</td></tr>
+</tbody>
+</table>
+
+<p>샘플 절편 인접 5cm 튜빙 구간에서 별도 colony counting을 수행해 균 부착·증식을 정량합니다.</p>
+
+<h2>4. 셋업 변형 응용</h2>
+
+<p>본 셋업은 다음 응용에도 그대로 적용됩니다 — 펌프·튜브 조합은 동일, 유량·내경만 조정합니다.</p>
+
+<table>
+<thead>
+<tr><th>응용</th><th>변경 사항</th></tr>
+</thead>
+<tbody>
+<tr><td>정맥 혈류 모방 (전단 응력 ↑)</td><td>유량 50~80 mL/min, 같은 ID</td></tr>
+<tr><td>동맥 혈류 모방</td><td>유량 200~400 mL/min, ID 4~5mm 튜브</td></tr>
+<tr><td>모세혈관 모방</td><td>유량 0.1~1 mL/min, ID 1mm 미만</td></tr>
+<tr><td>약물 방출 시험</td><td>Saline → 시험 배지로 교체</td></tr>
+<tr><td>균막 형성 동역학</td><td>회로에 균 접종 + 시간 경과 샘플링</td></tr>
+<tr><td>코팅 박리 가속 시험</td><td>유량 ↑, 온도 ↑ (37°C) 조합</td></tr>
+</tbody>
+</table>
+
+<h2>5. 자주 묻는 질문 (FAQ)</h2>
+
+<h3>Q1. 실리콘 튜브 ID는 정확히 3.0mm가 필요한가요?</h3>
+<p>정맥 혈류 모방의 전단 응력을 같게 유지하려면 <strong>ID + 유량 조합</strong>이 핵심입니다. ID 1.6mm로 변경하면 같은 전단 응력을 위해 유량을 약 0.27배(≈10.4 mL/min)로 조정해야 합니다.</p>
+
+<h3>Q2. Closed loop에서 펌프 회전 방향이 영향을 주나요?</h3>
+<p>회전 방향 자체는 평균 유량에 영향을 주지 않습니다. 다만 카테터 샘플 위치·튜브 굴곡과 결합하면 국소 와류 패턴이 다를 수 있어, 재현성 확보를 위해 회전 방향·튜브 굴곡 형태를 실험 간 고정합니다.</p>
+
+<h3>Q3. Normal saline 등급은 어떻게 되나요?</h3>
+<p>ex vivo 의료기기 시험은 USP-grade 또는 동등 의료 등급이 권장됩니다. 일반 실험 등급은 미량 입자가 코팅 표면 분석에 영향을 줄 수 있습니다.</p>
+
+<h3>Q4. 멸균 절차는요?</h3>
+<p>실리콘 튜브·연결부는 오토클레이브 121°C·15min 표준입니다. 펌프헤드 카세트는 분리 후 멸균 또는 무균 알코올 wipe. 펌프 본체는 회로 외부에 있으므로 멸균 무관입니다.</p>
+
+<h3>Q5. 시료 채취·샘플링은 어떻게 하나요?</h3>
+<p>회로 중간에 Y 커넥터 + Luer-lock 포트를 추가하면 시간별 샘플링이 가능합니다. 단 샘플링이 회로 부피를 변동시키지 않도록 same-volume 보충 또는 작은 부피(전체의 1% 이하)로 제한합니다.</p>
+
+<h2>6. 정리하며</h2>
+
+<p>ex vivo 카테터 시험에서 가장 자주 무너지는 곳은 코팅이 아니라 <strong>회로 설계</strong>입니다.</p>
+
+<p>펌프가 유체와 안 닿고, 회로가 닫혀있고, 정맥 환경 유속·전단 응력을 모방하는 — 이 3가지가 갖춰지면 28일 누적 데이터도 흔들림 없이 측정됩니다.</p>
+
+<p>본인 실험에 바로 이식해보시고, 더 자세한 셋업 분석·부품 매트릭스·회로 다이어그램은 셀렙닷컴 원문에서 확인하실 수 있습니다.</p>
+
+<div class="footer-link">
+🔗 <strong>셀렙닷컴 원문 (전체 분석):</strong><br>
+<a href="https://cellab.kr/blog/bt101-ex-vivo-catheter.html">https://cellab.kr/blog/bt101-ex-vivo-catheter.html</a>
+<br><br>
+📩 <strong>장비 문의·셋업 컨설팅:</strong><br>
+- 이메일: <a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a> (셀렙 직접 답변, 평일 1시간 내)<br>
+- 또는 셀렙닷컴 inquiry: <a href="https://cellab.kr/inquiry.html">https://cellab.kr/inquiry.html</a>
+</div>
+
+<hr>
+
+<p class="tags">
+※ 해시태그 (네이버 글쓰기 본문 아래 태그란에 입력):<br>
+정량펌프, 페리스탈틱펌프, BT101, LeadFluid, ex_vivo, 카테터시험, 항혈전코팅, 항균코팅, 균막시험, 폐쇄회로, YZ15, 실리콘튜브, 의료기기시험, Cellab, 셀렙
+</p>
+
+</body>
+</html>

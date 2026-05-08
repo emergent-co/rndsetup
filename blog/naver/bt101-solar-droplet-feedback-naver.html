@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>네이버 cellab01 — solar droplet 펌프+저울 피드백 — 발행용 HTML</title>
+<style>
+  body { font-family: -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif; line-height: 1.7; max-width: 720px; margin: 40px auto; padding: 0 20px; color: #222; }
+  h1 { font-size: 24px; line-height: 1.4; margin: 0 0 24px; }
+  h2 { font-size: 20px; margin: 36px 0 14px; padding-top: 10px; border-top: 1px solid #ddd; }
+  h3 { font-size: 17px; margin: 24px 0 10px; }
+  p { margin: 12px 0; }
+  blockquote { background: #f5f5f5; border-left: 4px solid #03c75a; padding: 14px 18px; margin: 18px 0; font-size: 14px; color: #555; }
+  table { border-collapse: collapse; width: 100%; margin: 18px 0; font-size: 14px; }
+  th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; vertical-align: top; }
+  th { background: #f0f7ff; font-weight: 600; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 30px 0; }
+  .img-placeholder { background: #fafafa; border: 1px dashed #bbb; padding: 30px; text-align: center; color: #999; font-size: 13px; margin: 18px 0; }
+  .footer-link { background: #f8f9fa; padding: 18px; border-radius: 6px; margin: 24px 0; font-size: 14px; }
+  .tags { color: #03c75a; font-size: 13px; margin-top: 30px; }
+  .note { background: #fffbe6; border: 1px solid #ffe58f; padding: 12px 16px; font-size: 13px; color: #876800; margin: 16px 0; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <strong>📋 발행 안내</strong> — 이 페이지를 Chrome에서 열고 <strong>아래 가로선(─) 다음부터 끝까지 드래그 → 복사 → 네이버 글쓰기에 붙여넣기</strong>하세요.
+  자동으로 인식되는 서식: 제목·굵게·표·인용·링크.<br>
+  추가 작업: ① 대표 이미지 업로드 (<code>C:\dev\cellab\blog\img\png\bt101-solar-droplet-feedback.png</code>) ② 해시태그 입력 (본문 끝에 따로 적어둠) ③ 임시저장·미리보기·발행
+</div>
+
+<hr>
+
+<h1>농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답</h1>
+
+<div class="img-placeholder">[ 여기에 대표 이미지 업로드: bt101-solar-droplet-feedback.png ]</div>
+
+<p>안녕하세요, 셀렙입니다.</p>
+
+<p>오늘은 솔라 스팀·광열 변환 실험 중 droplet 공급이 매번 불안정해서 데이터가 흔들리는 분들께 드릴 답을 가져왔습니다.</p>
+
+<p>혹시 같은 흡수체를 썼는데도 증발 속도 측정값이 매번 다르거나, 농축광 6 sun 환경에서 droplet 사이즈를 일정하게 맞추기가 어렵지 않으신가요?</p>
+
+<p>그렇다면 문제는 <strong>코팅이 아니라 펌프 선택</strong>일 가능성이 큽니다.</p>
+
+<p>Adv. Sci. 2020 논문 저자들이 0.94 mg/cm²/s의 증발 속도를 안정적으로 측정한 비결은 의외로 단순했습니다.</p>
+
+<p>→ <strong>BT101 페리스탈틱 펌프 + YZ15 헤드 + 전자저울 피드백 closed-loop</strong>, 이 조합이었습니다.</p>
+
+<p>오늘은 이 셋업의 3가지 핵심 디테일을 풀어드리겠습니다. 본인의 광열 변환·SSA 평가 실험에 바로 이식할 수 있도록요.</p>
+
+<blockquote>
+<strong>Citation</strong><br>
+Liao, Q., Zhang, P., Yao, H., Cheng, H., Li, C., &amp; Qu, L. (2020).<br>
+<em>Reduced Graphene Oxide–Based Spectrally Selective Absorber with an Extremely Low Thermal Emittance and High Solar Absorptance.</em><br>
+<strong>Advanced Science</strong>, 7(8), 1903125.<br>
+DOI: 10.1002/advs.201903125
+</blockquote>
+
+<h2>1. 이 셋업이 광열 변환 데이터를 살리는 3가지 디테일</h2>
+
+<p>광열 변환·솔라 스팀 실험에서 데이터가 흔들리는 원인은 거의 <strong>droplet 공급 쪽</strong>에 있습니다.</p>
+
+<p>시린지 부피 한계로 장시간 측정이 끊기거나, 모터 펌프가 미세 RPM 영역에서 토크 한계로 흔들리거나, 수동 적가로는 droplet 크기·간격 통제가 안 됩니다.</p>
+
+<p>저자들이 이 3가지를 어떻게 회피했는지 보면, 자기 실험에서 무엇을 바꿔야 할지 바로 보입니다.</p>
+
+<h3>1) 페리스탈틱 펌프로 미세 유량을 안정화한 것</h3>
+
+<p>분광 선택 흡수체(SSA) 평가는 <strong>표면당 mg/s 단위 증발 속도</strong>를 측정해야 의미가 있습니다.</p>
+
+<p>즉 펌프는 mL/min 미만의 미세 유량에서 RPM이 안 흔들려야 합니다.</p>
+
+<p>시린지 펌프는 시린지 부피 한계로 장시간 운전이 끊기고, 모터·기어 펌프는 미세 RPM 영역에서 토크 한계로 정밀 제어가 어렵습니다.</p>
+
+<p>이 논문은 <strong>BT101 + YZ15 헤드</strong>를 선택했습니다. 페리스탈틱이 mL/min 미만에서도 RPM 안정성이 확보되고, 튜브 외부 압착 방식이라 농축광 환경의 진동·복사열을 본체가 받지 않습니다.</p>
+
+<p>광원에 노출되는 부분은 <strong>튜브와 노즐 끝뿐</strong>입니다.</p>
+
+<h3>2) 전자저울 피드백으로 closed-loop을 만든 것</h3>
+
+<p>펌프 RPM이 일정해도 실제 토출량은 튜브 압착 상태·노즐·표면장력·온도에 따라 달라집니다.</p>
+
+<p>펌프 단독 운전은 "설정 RPM"이지 "실측 droplet mass"가 아닙니다.</p>
+
+<p>농축광 환경에서 표면 온도가 200~300°C로 오르면 droplet 증발 속도도 빠르게 변동합니다.</p>
+
+<p>이 논문은 <strong>METTLER TOLEDO ME104E 전자저울</strong>(0.1mg 분해능)을 셋업에 통합했습니다.</p>
+
+<p>저울이 실시간 mass를 측정하고, 그 데이터로 펌프 feeding rate를 조정하는 closed-loop 구조입니다. 즉 <strong>"이번에 떨어진 droplet의 실제 무게"가 다음 droplet 공급 시점·양을 결정</strong>합니다.</p>
+
+<p>이게 0.94 mg/cm²/s 안정 측정의 핵심입니다.</p>
+
+<h3>3) Pulse 모드 droplet 공급으로 boiling 동역학을 잡은 것</h3>
+
+<p>광열 변환 평가에서 continuous 흐름은 표면이 항상 젖어있어 boiling 동역학(droplet 형성 → 증발 → 다음 droplet)이 측정 불가합니다.</p>
+
+<p>시간 분해된 데이터를 얻으려면 <strong>간헐적(intermittent) droplet 공급</strong>이 필요한데, 이는 펌프를 짧은 펄스로 운전해야 한다는 뜻입니다.</p>
+
+<p>BT101은 <strong>디지털 분주 모드</strong>를 지원해 정해진 시간 간격으로 정해진 양만 토출 가능합니다.</p>
+
+<p>고속 카메라(PHANTOM V611)가 boiling 과정을 시간 분해 기록하고 IR 카메라가 표면 온도를 동시 추적합니다. 이 셋업이 만들어낸 <strong>데이터 분해능이 곧 논문의 측정 분해능</strong>입니다.</p>
+
+<h2>2. 다른 펌프 형식과의 비교 — 왜 페리스탈틱 + 저울 피드백이 답인가</h2>
+
+<table>
+<thead>
+<tr><th>펌프 형식</th><th>한계 (광열 변환·droplet 셋업에서)</th></tr>
+</thead>
+<tbody>
+<tr><td>시린지 펌프</td><td>시린지 부피 한계, 장시간 안정 운전 어려움</td></tr>
+<tr><td>모터·기어 펌프</td><td>미세 RPM 영역 토크 한계, 미세 유량 정밀도 부족</td></tr>
+<tr><td>수동 dripping</td><td>droplet 크기·간격 통제 불가, 재현성 0</td></tr>
+<tr><td><strong>페리스탈틱 + 저울 피드백</strong></td><td>미세 유량 안정 + closed-loop + 펄스 모드</td></tr>
+</tbody>
+</table>
+
+<p>페리스탈틱 + 전자저울 closed-loop이 결국 광열 변환 droplet 시험의 골든 스탠더드입니다.</p>
+
+<h2>3. 실험 셋업 사양</h2>
+
+<table>
+<thead>
+<tr><th>구성</th><th>사양</th></tr>
+</thead>
+<tbody>
+<tr><td>페리스탈틱 펌프</td><td>BT101 (Lead Fluid)</td></tr>
+<tr><td>펌프헤드</td><td>YZ15 (단일 채널)</td></tr>
+<tr><td>튜빙</td><td>실리콘 튜브 (소구경, 미세 droplet 통제)</td></tr>
+<tr><td>유체</td><td>증류수 (boiling 시험), 응용 따라 변경</td></tr>
+<tr><td>광원</td><td>6 sun 농축 태양광 시뮬레이터</td></tr>
+<tr><td>시험 표면</td><td>rGO-SSA (Al / GO / TEOS → 300°C 열환원 → Al / rGO / ARC)</td></tr>
+<tr><td>표면 흡수율</td><td>α solar ≈ 0.92</td></tr>
+<tr><td>표면 열방사율</td><td>ε 100 ≈ 0.04 (95.8% 감소)</td></tr>
+<tr><td>측정 mass</td><td>전자저울 ME104E (METTLER TOLEDO), 0.1mg 분해능</td></tr>
+<tr><td>측정 영상</td><td>고속 카메라 PHANTOM V611 + IR 카메라</td></tr>
+<tr><td>평가 지표</td><td>droplet 증발 속도 (mg/cm²/s)</td></tr>
+<tr><td>핵심 결과</td><td><strong>0.94 mg/cm²/s 안정 증발 (6 sun 환경)</strong></td></tr>
+</tbody>
+</table>
+
+<h2>4. 셋업 변형 응용</h2>
+
+<p>본 셋업은 펌프·저울 조합은 그대로 두고 표면·유체·광 농도만 바꿔서 다양한 광열 변환 실험에 응용됩니다.</p>
+
+<table>
+<thead>
+<tr><th>응용</th><th>변경 사항</th></tr>
+</thead>
+<tbody>
+<tr><td>다른 SSA 코팅 평가 (W-Ni-YSZ, TiNOX 등)</td><td>표면만 교체, 셋업 동일</td></tr>
+<tr><td>광 농도 변경 (1~10 sun)</td><td>광원 출력 + 펌프 feeding rate 비례 조정</td></tr>
+<tr><td>해수·고염 액체</td><td>튜브를 PharMed로 변경 (염분 호환성)</td></tr>
+<tr><td>에탄올·휘발성 액체</td><td>인화성 주의 (방폭 환경 검토)</td></tr>
+<tr><td>다공성 흡수체 (aerogel·foam)</td><td>droplet 공급 + 모세관 흡수 동시 측정</td></tr>
+<tr><td>시간 분해능 향상</td><td>더 짧은 펄스, 더 작은 droplet (펌프 정밀도 한계 검증)</td></tr>
+<tr><td>광촉매 + 광열 결합 평가</td><td>같은 셋업에 UV 광원 추가</td></tr>
+</tbody>
+</table>
+
+<h2>5. 자주 묻는 질문 (FAQ)</h2>
+
+<h3>Q1. 시린지 펌프로 대체 가능한가요?</h3>
+<p>미량 주입은 시린지 펌프 강점이지만, 본 셋업처럼 장시간(분~시간 단위) 펄스 모드로 droplet 공급이 필요하면 부피 한계로 끊깁니다.</p>
+<p>시린지 50mL × 분당 5방울(50μL/방울 가정) → 약 3시간 후 재충전 필요합니다.</p>
+<p>BT101 + 저장 용기 조합은 <strong>연속 운전 시간 제약이 없습니다</strong>.</p>
+
+<h3>Q2. 전자저울 ME104E가 필수인가요?</h3>
+<p>0.1mg 분해능 이상이면 동급 OK입니다. droplet 1방울이 약 5~20mg이라 1% 이내 분해능 확보가 핵심.</p>
+<p>RS232·USB 출력으로 PC·컨트롤러에 실시간 mass 전송이 가능한 모델이면 closed-loop 자동화가 가능합니다.</p>
+
+<h3>Q3. 펌프 RPM이 droplet 사이즈에 직접 비례하나요?</h3>
+<p>비례하지 않습니다. droplet 사이즈는 <strong>노즐 직경 + 표면장력 + 튜브 ID + 유체 점도</strong>의 조합입니다.</p>
+<p>같은 RPM이라도 노즐 끝의 표면장력이 droplet을 잡고 있는 시간에 따라 사이즈가 달라집니다.</p>
+<p>실제 셋업에서는 펌프 + 저울로 mass 캘리브레이션 진행 후 RPM-사이즈 그래프를 미리 잡아둡니다.</p>
+
+<h3>Q4. 농축광 6 sun이 펌프 본체에 영향을 주나요?</h3>
+<p>펌프 본체는 광원 외부에 있어 직접 영향이 없습니다.</p>
+<p>튜브와 노즐 끝만 광 노출 영역에 들어가는데, 이 부분은 단열재로 감싸거나 튜브 길이를 길게 빼서 펌프와 광원을 물리적으로 분리합니다.</p>
+
+<h3>Q5. closed-loop 자동화는 어떻게 구현하나요?</h3>
+<p>BT101 외부 신호 입력 모델(RS485 또는 4-20mA 지원) + 저울 RS232 출력 + 사이에 컨트롤러(PLC 또는 PC)를 두는 구조입니다.</p>
+<p>본 논문은 구체적 구현은 명시 안 했으나 일반적인 방식입니다.</p>
+<p>셋업을 단순화하려면 <strong>매뉴얼 모드로 5~10분마다 RPM 조정</strong>도 충분합니다.</p>
+
+<h2>6. 정리하며</h2>
+
+<p>광열 변환·솔라 스팀 실험에서 가장 자주 무너지는 곳은 흡수체가 아니라 <strong>droplet 공급 시스템</strong>입니다.</p>
+
+<p>미세 유량이 안정되고, 저울 피드백으로 closed-loop을 만들고, 펄스 모드로 boiling 동역학을 잡는 — 이 3가지가 갖춰지면 0.94 mg/cm²/s 같은 정밀한 데이터도 안정적으로 측정됩니다.</p>
+
+<p>본인 실험에 바로 이식해보시고, 더 자세한 셋업 분석·부품 매트릭스·closed-loop 회로 다이어그램은 셀렙닷컴 원문에서 확인하실 수 있습니다.</p>
+
+<div class="footer-link">
+🔗 <strong>셀렙닷컴 원문 (전체 분석):</strong><br>
+<a href="https://cellab.kr/blog/bt101-solar-droplet-feedback.html">https://cellab.kr/blog/bt101-solar-droplet-feedback.html</a>
+<br><br>
+📩 <strong>장비 문의·셋업 컨설팅:</strong><br>
+- 이메일: <a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a> (셀렙 직접 답변, 평일 1시간 내)<br>
+- 또는 셀렙닷컴 inquiry: <a href="https://cellab.kr/inquiry.html">https://cellab.kr/inquiry.html</a>
+</div>
+
+<hr>
+
+<p class="tags">
+※ 해시태그 (네이버 글쓰기 본문 아래 태그란에 입력):<br>
+정량펌프, 페리스탈틱펌프, BT101, LeadFluid, 솔라스팀, 광열변환, SSA, 분광선택흡수체, droplet증발, closedloop, 저울피드백, YZ15, rGO, AdvancedScience, Cellab, 셀렙
+</p>
+
+</body>
+</html>
