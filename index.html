@@ -75,7 +75,7 @@
   .filter-btn.active{background:var(--teal);color:#fff;border-color:var(--teal)}
 
   /* 카드 그리드 */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px} @media(max-width:1080px){.grid{grid-template-columns:repeat(3,1fr)}} @media(max-width:780px){.grid{grid-template-columns:repeat(2,1fr)}} @media(max-width:520px){.grid{grid-template-columns:1fr}}
   .card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .15s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
   .card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,37,64,.06);text-decoration:none}
   .card .card-img{aspect-ratio:2/1;background:linear-gradient(135deg,#eaf1f9 0%,#f5f9f7 100%);overflow:hidden;display:block;border-bottom:1px solid var(--border)}
@@ -187,7 +187,6 @@
       <a href="/leadfluid.html">LEADFLUID</a>
       <a href="/reviews.html">펌프셋업 리뷰</a>
       <a href="/recommend.html">펌프 추천</a>
-      <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
     </nav>
     <div class="site-actions">
       <a class="site-login" href="/login.html">로그인</a>
@@ -344,7 +343,6 @@
     <a href="/index.html">홈</a> ·
     <a href="/reviews.html">펌프셋업 리뷰</a> ·
     <a href="/recommend.html">펌프 추천</a> ·
-    <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
   </div>
   <div style="margin-top:8px">© Cellab — R&amp;D Pumps and Consumables</div>
   <div style="margin-top:6px"><a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a> · 평일 1시간 내 답변</div>
