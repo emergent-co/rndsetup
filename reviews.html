@@ -106,6 +106,14 @@
     .total-count{margin-left:0;width:100%}
     .grid{grid-template-columns:1fr}
   }
+  .site-footer{background:#fff;border-top:1px solid var(--border);padding:28px 24px;margin-top:48px}
+  .site-footer-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+  .ft-brand{font-size:14px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+  .ft-brand span{color:var(--teal)}
+  .ft-links{font-size:13px;color:var(--muted)}
+  .ft-links a{color:var(--muted);text-decoration:none}
+  .ft-links a:hover{color:var(--teal)}
+  .ft-meta{font-size:12px;color:#a9b8cc}
 </style>
 </head>
 <body>
@@ -114,9 +122,9 @@
   <div class="site-header-inner">
     <a class="site-logo" href="/index.html"><span>Cellab</span> 셀렙</a>
     <nav class="site-nav">
-      <a href="/reviews.html" class="active">펌프셋업 리뷰</a>
+      <a href="/leadfluid.html">LEADFLUID</a>
       <a href="/recommend.html">펌프 추천</a>
-      <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
+      <a href="/reviews.html">펌프셋업 리뷰</a>
     </nav>
     <div class="site-actions">
       <a class="site-login" href="/login.html">로그인</a>
@@ -272,5 +280,19 @@ function escapeHtml(s) {
 loadPosts();
 </script>
 
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="ft-brand"><span>Cellab</span> 셀렙</div>
+    <div class="ft-links">
+      <a href="/leadfluid.html">LEADFLUID</a> ·
+      <a href="/recommend.html">펌프 추천</a> ·
+      <a href="/reviews.html">펌프셋업 리뷰</a> ·
+      <a href="/inquiry.html?setup=general">일반 문의</a>
+    </div>
+    <div class="ft-meta">
+      이머전트(emergent co.) · emgt.yhlee@gmail.com · Lead Fluid 한국 공식 파트너
+    </div>
+  </div>
+</footer>
 </body>
 </html>

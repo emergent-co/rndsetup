@@ -105,6 +105,14 @@
   .thank-you h2{font-size:22px;color:var(--navy);font-weight:800;margin-bottom:8px}
   .thank-you p{font-size:13.5px;color:var(--muted)}
 
+  .site-footer{background:#fff;border-top:1px solid var(--border);padding:28px 24px;margin-top:48px}
+  .site-footer-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+  .ft-brand{font-size:14px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+  .ft-brand span{color:var(--teal)}
+  .ft-links{font-size:13px;color:var(--muted)}
+  .ft-links a{color:var(--muted);text-decoration:none}
+  .ft-links a:hover{color:var(--teal)}
+  .ft-meta{font-size:12px;color:#a9b8cc}
 </style>
 </head>
 <body>
@@ -219,6 +227,7 @@
 const params = new URLSearchParams(location.search);
 const setupId = params.get('setup');
 const productParam = params.get('product'); // Lead Fluid 모델 prefill (예: ?product=BT101S)
+const wizParam     = params.get('wiz');     // 펌프 추천 위저드 자연어 요약
 let setupData = null;
 let partsLib  = null; // parts.json 마스터 부품 라이브러리
 
@@ -238,6 +247,16 @@ async function loadSetup() {
       document.getElementById('lead').textContent = 'Lead Fluid ' + productParam + ' 견적을 문의해주셔서 감사합니다. 아래 양식을 작성해주시면 셀렙이 직접 답변드립니다.';
       const ta = document.querySelector('textarea[name="message"]');
       if (ta && !ta.value) ta.value = '[Lead Fluid ' + productParam + '] 견적 문의드립니다.\n\n· 희망 수량:\n· 희망 납기:\n· 사용 용도:\n· 기타 요청:';
+    } else if (wizParam){
+      // 펌프 추천 위저드 결과 → 자연어 요약 prefill
+      document.getElementById('setupIdHidden').value = setupId || 'wizard:general';
+      document.getElementById('setupTitleHidden').value = '펌프 추천 위저드 결과';
+      document.getElementById('lead').textContent = '펌프 추천 위저드를 완료해주셔서 감사합니다. 답변이 자동 입력되어 있으니 필요시 수정하시고 견적 문의를 보내주세요.';
+      const ta = document.querySelector('textarea[name="message"]');
+      if (ta && !ta.value) ta.value = wizParam + '\n\n· 희망 수량:\n· 희망 납기:\n· 추가 요청:';
+      // 응용 분야 자동 매칭 (선택)
+      const app = document.querySelector('select[name="application"]');
+      if (app && /세포|cell culture|bioreactor/i.test(wizParam)) app.value = '세포배양';
     } else if (setupId){
       document.getElementById('setupIdHidden').value = setupId;
       document.getElementById('setupTitleHidden').value = setupId.startsWith('wizard:') ? '펌프 추천 위저드 결과' : (setupId === 'general' ? '일반 문의' : setupId);
@@ -246,8 +265,8 @@ async function loadSetup() {
     if (prevBtn) prevBtn.style.display = 'none';
   }
 
-  // product 파라미터가 있으면 setups 로딩 건너뛰고 바로 general 모드 + prefill
-  if (productParam){
+  // product 또는 wiz 파라미터가 있으면 setups 로딩 건너뛰고 바로 general 모드 + prefill
+  if (productParam || wizParam){
     showGeneralMode();
     return;
   }
@@ -393,39 +412,4 @@ document.getElementById('inquiryForm').addEventListener('submit', async function
     gtag('event', 'inquiry_submit', {
       setup_id: setupId,
       items: document.getElementById('itemsSelected').value
-    });
-  }
-
-  try {
-    const res = await fetch(form.action, {
-      method: 'POST',
-      headers: {'Accept': 'application/json'},
-      body: new FormData(form)
-    });
-    if (res.ok) {
-      // 성공 — Thank you 표시
-      document.getElementById('step1Section').style.display = 'none';
-      document.getElementById('step2Section').style.display = 'none';
-      document.querySelector('.progress').style.display = 'none';
-      document.getElementById('thankYou').classList.add('show');
-      // 부모(iframe 모달)에 알림
-      if (window.parent !== window) {
-        try { window.parent.postMessage({type:'inquiry_submitted'}, '*'); } catch(_){}
-      }
-    } else {
-      alert('전송 실패. 다시 시도해 주세요.');
-      submitBtn.disabled = false;
-      submitBtn.textContent = origText;
-    }
-  } catch(err) {
-    alert('오류: ' + err.message);
-    submitBtn.disabled = false;
-    submitBtn.textContent = origText;
-  }
-});
-
-loadSetup();
-</script>
-
-</body>
-</html>
+   

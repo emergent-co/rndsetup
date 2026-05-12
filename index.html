@@ -74,8 +74,11 @@
   .filter-btn:hover{border-color:var(--teal);color:var(--teal)}
   .filter-btn.active{background:var(--teal);color:#fff;border-color:var(--teal)}
 
-  /* 카드 그리드 */
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+  /* 카드 그리드 — 데스크탑 4열, 반응형 단계 축소 */
+  .grid{display:grid;grid-template-columns:repeat(4, 1fr);gap:14px}
+  @media(max-width:1080px){.grid{grid-template-columns:repeat(3, 1fr)}}
+  @media(max-width:780px){.grid{grid-template-columns:repeat(2, 1fr)}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}}
   .card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .15s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
   .card:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,37,64,.06);text-decoration:none}
   .card .card-img{aspect-ratio:2/1;background:linear-gradient(135deg,#eaf1f9 0%,#f5f9f7 100%);overflow:hidden;display:block;border-bottom:1px solid var(--border)}
@@ -176,6 +179,14 @@
     .section{padding:32px 18px}
     .grid{grid-template-columns:1fr}
   }
+  .site-footer{background:#fff;border-top:1px solid var(--border);padding:28px 24px;margin-top:48px}
+  .site-footer-inner{max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:8px;align-items:center;text-align:center}
+  .ft-brand{font-size:14px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+  .ft-brand span{color:var(--teal)}
+  .ft-links{font-size:13px;color:var(--muted)}
+  .ft-links a{color:var(--muted);text-decoration:none}
+  .ft-links a:hover{color:var(--teal)}
+  .ft-meta{font-size:12px;color:#a9b8cc}
 </style>
 </head>
 <body>
@@ -185,9 +196,8 @@
     <a class="site-logo" href="/index.html"><span>Cellab</span> 셀렙</a>
     <nav class="site-nav">
       <a href="/leadfluid.html">LEADFLUID</a>
-      <a href="/reviews.html">펌프셋업 리뷰</a>
       <a href="/recommend.html">펌프 추천</a>
-      <a href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">제품 카탈로그</a>
+      <a href="/reviews.html">펌프셋업 리뷰</a>
     </nav>
     <div class="site-actions">
       <a class="site-login" href="/login.html">로그인</a>
@@ -202,7 +212,30 @@
   </div>
 </section>
 
-<!-- 1. 펌프셋업 리뷰 -->
+<!-- 1. 펌프 추천 위저드 + LEADFLUID -->
+<section class="section" style="background:#fff;border-bottom:1px solid var(--border)">
+  <div class="section-inner">
+    <div class="cta-row">
+
+      <!-- 펌프 추천 위저드 -->
+      <div class="cta-box">
+        <h3>어떤 펌프가 맞는지 모르겠다면</h3>
+        <div class="ct-desc">응용 분야·유량 조건·튜브 호환을 입력하면 30+ 모델 라인업에서 적합한 펌프를 추천합니다. 페리스탈틱·기어·시린지 통합.</div>
+        <a class="btn" href="/recommend.html">펌프 추천 받기 →</a>
+      </div>
+
+      <!-- LEADFLUID 제품 검색 -->
+      <div class="cta-box dark">
+        <h3>Lead Fluid 전 제품 검색</h3>
+        <div class="ct-desc">한국 공식 파트너로서 Lead Fluid 페리스탈틱·시린지·기어 펌프 전 모델을 한 번에 검색. 유량·시리즈·응용분야로 필터링.</div>
+        <a class="btn" href="/leadfluid.html">제품 검색 페이지 →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 2. 펌프셋업 리뷰 -->
 <section class="section" id="reviews">
   <div class="section-inner">
     <div class="section-head">
@@ -227,29 +260,6 @@
 
     <div class="grid" id="postGrid">
       <div class="empty" style="grid-column:1/-1">불러오는 중...</div>
-    </div>
-  </div>
-</section>
-
-<!-- 2. 펌프 추천 + 카탈로그 -->
-<section class="section" style="background:#fff;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
-  <div class="section-inner">
-    <div class="cta-row">
-
-      <!-- 펌프 추천 -->
-      <div class="cta-box">
-        <h3>어떤 펌프가 맞는지 모르겠다면</h3>
-        <div class="ct-desc">응용 분야·유량 조건·튜브 호환을 입력하면 30+ 모델 라인업에서 적합한 펌프를 추천합니다. 페리스탈틱·기어·시린지 통합.</div>
-        <a class="btn" href="/recommend.html">펌프 추천 받기 →</a>
-      </div>
-
-      <!-- 카탈로그 -->
-      <div class="cta-box dark">
-        <h3>전체 제품 카탈로그</h3>
-        <div class="ct-desc">Cellab이 취급하는 정량펌프·펌프헤드·튜브·피팅·시린지 풀 라인업 PDF. 사양·호환·응용 정리.</div>
-        <a class="btn" href="/Leadfluid-2025-Catalog.pdf" target="_blank" rel="noopener">카탈로그 PDF 다운로드 →</a>
-      </div>
-
     </div>
   </div>
 </section>
@@ -441,16 +451,4 @@ document.getElementById('contactForm').addEventListener('submit', async function
       document.getElementById('contactThanks').classList.add('show');
     } else {
       alert('전송 실패. 다시 시도해 주세요.');
-      btn.disabled = false; btn.textContent = orig;
-    }
-  } catch(err) {
-    alert('오류: ' + err.message);
-    btn.disabled = false; btn.textContent = orig;
-  }
-});
-
-loadPosts();
-</script>
-
-</body>
-</html>
+ 
