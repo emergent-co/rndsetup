@@ -310,9 +310,15 @@ body.iq-locked{overflow:hidden}
 @media(max-width:480px){
   .app-grid{grid-template-columns:1fr}
 }
+
+  /* embed 모드 — iframe 안에서 사용 시 헤더·푸터 숨김 */
+  body.embed-mode .site-header, body.embed-mode .site-footer, body.embed-mode .guide{display:none !important}
+  body.embed-mode{background:#fff}
+  body.embed-mode .wizard-wrap{padding-top:0}
 </style>
 </head>
 <body>
+<script>if(new URLSearchParams(location.search).get('embed')==='1'){document.documentElement.classList.add('embed-mode');document.body&&document.body.classList.add('embed-mode');setTimeout(function(){document.body.classList.add('embed-mode')},0);}</script>
 
 <header class="site-header">
   <div class="site-header-inner">
