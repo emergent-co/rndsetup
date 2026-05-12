@@ -311,10 +311,17 @@ body.iq-locked{overflow:hidden}
   .app-grid{grid-template-columns:1fr}
 }
 
-  /* embed 모드 — iframe 안에서 사용 시 헤더·푸터 숨김 */
-  body.embed-mode .site-header, body.embed-mode .site-footer, body.embed-mode .guide{display:none !important}
-  body.embed-mode{background:#fff}
-  body.embed-mode .wizard-wrap{padding-top:0}
+  /* embed 모드 — iframe 안에서 사용 시 위저드 외 모든 영역 숨김 + 스크롤 제거 */
+  body.embed-mode .site-header,
+  body.embed-mode .site-footer,
+  body.embed-mode .guide,
+  body.embed-mode .page-intro,
+  body.embed-mode .iq-overlay,
+  body.embed-mode footer,
+  body.embed-mode .foot{display:none !important}
+  body.embed-mode{background:#fff;overflow:hidden;margin:0;padding:0}
+  body.embed-mode .wizard-wrap{padding:0;min-height:auto}
+  body.embed-mode .wizard-card{box-shadow:none;border:none;padding:14px 16px 8px}
 </style>
 </head>
 <body>
