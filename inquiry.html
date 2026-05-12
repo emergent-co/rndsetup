@@ -105,6 +105,15 @@
   .thank-you h2{font-size:22px;color:var(--navy);font-weight:800;margin-bottom:8px}
   .thank-you p{font-size:13.5px;color:var(--muted)}
 
+
+  /* 위저드 응답 칩 박스 */
+  .wiz-summary{background:#f5f9f7;border:1px solid var(--teal);border-radius:8px;padding:14px 16px;margin-bottom:18px;display:none}
+  .wiz-summary.show{display:block}
+  .wiz-summary .ws-title{font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.05em;margin-bottom:10px;text-transform:uppercase}
+  .wiz-summary .ws-row{display:flex;flex-wrap:wrap;gap:6px 8px;margin-bottom:6px;align-items:center}
+  .wiz-summary .ws-k{font-size:11px;font-weight:700;color:var(--muted);min-width:64px;text-transform:uppercase;letter-spacing:.04em}
+  .wiz-summary .ws-chip{font-size:12.5px;padding:4px 10px;background:#fff;border:1px solid #d9ead5;border-radius:14px;color:var(--navy);font-weight:600}
+  .wiz-summary .ws-chip.rec{background:var(--teal);color:#fff;border-color:var(--teal)}
 </style>
 </head>
 <body>
@@ -120,6 +129,11 @@
   <p class="lead" id="lead">필요한 부품을 선택하고 수량을 입력하세요.</p>
   <p style="font-size:13px;color:var(--muted);margin:6px 0 18px">또는 직접 이메일: <a href="mailto:emgt.yhlee@gmail.com" style="color:var(--teal);font-weight:600">emgt.yhlee@gmail.com</a> (셀렙이 직접 답변, 평일 1시간 내)</p>
   <div class="setup-title" id="setupTitle"></div>
+
+  <div class="wiz-summary" id="wizSummary">
+    <div class="ws-title">펌프 추천 위저드 응답</div>
+    <div id="wizSummaryBody"></div>
+  </div>
 
   <div class="progress">
     <span class="step active" id="prog1">1. 부품 선택</span>
@@ -242,9 +256,11 @@ async function loadSetup() {
     } else if (wizParam){
       document.getElementById('setupIdHidden').value = setupId || 'wizard:general';
       document.getElementById('setupTitleHidden').value = '펌프 추천 위저드 결과';
-      document.getElementById('lead').textContent = '펌프 추천 위저드 응답이 자동 입력되어 있습니다. 수정 후 보내주세요.';
+      document.getElementById('lead').textContent = '아래 응답이 자동 입력되어 있습니다. 연락처만 입력하시고 보내주세요.';
       const ta = document.querySelector('textarea[name="message"]');
       if (ta && !ta.value) ta.value = wizParam + '\n\n· 희망 수량:\n· 희망 납기:\n· 추가 요청:';
+      // 칩 박스 렌더링
+      renderWizSummary(wizParam);
     } else if (setupId){
       document.getElementById('setupIdHidden').value = setupId;
       document.getElementById('setupTitleHidden').value = setupId.startsWith('wizard:') ? '펌프 추천 위저드 결과' : (setupId === 'general' ? '일반 문의' : setupId);
