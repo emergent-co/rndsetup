@@ -363,7 +363,7 @@ body.iq-locked{overflow:hidden}
     <form class="wz-form" id="wzForm">
       <div class="wz-progress">
         <div class="wz-progress-bar"><div class="wz-progress-fill" id="wzProgressFill"></div></div>
-        <div class="wz-progress-text" id="wzProgressText">1 / 6</div>
+        <div class="wz-progress-text" id="wzProgressText">1 / 7</div>
       </div>
 
       <fieldset class="wz-q active" data-step="1">
@@ -422,12 +422,32 @@ body.iq-locked{overflow:hidden}
       </fieldset>
 
       <fieldset class="wz-q" data-step="6">
-        <legend><span class="num">6</span>현재 사용 중이거나 대체 검토 중인 펌프 모델 (선택)</legend>
+        <legend><span class="num">6</span>필요한 채널 수는 몇 개인가요?</legend>
         <div class="wz-options">
-          <label style="display:block">
-            <input type="text" name="current_model" placeholder="예: Eyela MP-2000, Cole-Parmer Masterflex (없으면 비워두세요)" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:14px;margin-top:4px">
+          <label><input type="checkbox" name="channels" value="1"> 1채널 (단일 라인)</label>
+          <label><input type="checkbox" name="channels" value="2"> 2채널</label>
+          <label><input type="checkbox" name="channels" value="4"> 4채널</label>
+          <label><input type="checkbox" name="channels" value="multi"> 다중 채널 (8/12/16/24)</label>
+          <label><input type="checkbox" name="channels" value="unsure"> 모르겠음 / 미정</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="wz-q" data-step="7">
+        <legend><span class="num">7</span>현재 사용 중인 튜브 / 펌프 모델 (선택)</legend>
+        <div class="wz-options">
+          <label style="display:block;margin-bottom:10px">
+            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">튜브 내경 (mm) — 없으면 비워두세요</span>
+            <input type="text" name="tube_id" placeholder="예: 3.17, 4.8, 6.4" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
           </label>
-          <div style="font-size:12px;color:var(--muted);margin-top:8px">동일/유사 사양 대체 제품 추천에 활용됩니다.</div>
+          <label style="display:block;margin-bottom:10px">
+            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">튜브 외경 (mm) — 없으면 비워두세요</span>
+            <input type="text" name="tube_od" placeholder="예: 6.4, 9.6, 12.7" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
+          </label>
+          <label style="display:block;margin-bottom:6px">
+            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">현재/대체 검토 중인 펌프 모델 — 없으면 비워두세요</span>
+            <input type="text" name="current_model" placeholder="예: Eyela MP-2000, Cole-Parmer Masterflex" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
+          </label>
+          <div style="font-size:12px;color:var(--muted);margin-top:8px">동일/유사 사양 대체 제품과 호환 튜브·헤드 추천에 활용됩니다.</div>
         </div>
       </fieldset>
 
@@ -877,7 +897,7 @@ window.addEventListener('message', e=>{
     criteria:'#faq-criteria',
     tubing:'#faq-tubing'
   };
-  const TOTAL = 6;
+  const TOTAL = 7;
   let currentStep = 1;
 
   function showStep(n){
@@ -983,13 +1003,22 @@ window.addEventListener('message', e=>{
     const flowAll = getVals('flow').join(', ') || flow;
     const ctrlAll = getVals('ctrl').join(', ') || ctrl;
     const freqAll = getVals('freq').join(', ') || freq;
-    const wizSummary = '[펌프 추천 위저드 응답]\n· 작업: ' + workAll + '\n· 액체: ' + fluidAll + '\n· 유량: ' + flowAll + '\n· 제어/통신: ' + ctrlAll + '\n· 빈도: ' + freqAll + (currentModel ? '\n· 현재 모델: ' + currentModel : '') + '\n\n추천: ' + r.cat + '\n사유: ' + r.why;
+    const channelsAll = getVals('channels').join(', ') || '';
+    const tubeIdEl = $form.querySelector('input[name="tube_id"]');
+    const tubeOdEl = $form.querySelector('input[name="tube_od"]');
+    const tubeId = tubeIdEl ? tubeIdEl.value.trim() : '';
+    const tubeOd = tubeOdEl ? tubeOdEl.value.trim() : '';
+    let tubeStr = '';
+    if (tubeId || tubeOd) {
+      tubeStr = '내경 ' + (tubeId || '?') + 'mm × 외경 ' + (tubeOd || '?') + 'mm';
+    }
+    const wizSummary = '[펌프 추천 위저드 응답]\n· 작업: ' + workAll + '\n· 액체: ' + fluidAll + '\n· 유량: ' + flowAll + '\n· 제어/통신: ' + ctrlAll + '\n· 빈도: ' + freqAll + (channelsAll ? '\n· 채널 수: ' + channelsAll : '') + (tubeStr ? '\n· 현재 튜브: ' + tubeStr : '') + (currentModel ? '\n· 현재 모델: ' + currentModel : '') + '\n\n추천: ' + r.cat + '\n사유: ' + r.why;
     $res.innerHTML = `
       <div class="res-label">추천 제품군</div>
       <div class="res-cat">${r.cat}</div>
       <div class="res-why">${r.why}</div>
       <div class="res-actions">
-        <button type="button" class="res-primary" onclick="openInquiry('wizard:${work}_${fluid}_${flow}_${ctrl}_${freq}', window.__wizSummary)" style="border:none;cursor:pointer;font-family:inherit">이 조건으로 문의하기 →</button>
+        <button type="button" class="res-primary" onclick="openInquiry('wizard:${work}_${fluid}_${flow}_${ctrl}_${freq}_${(getVals('channels').join('-')||'na')}', window.__wizSummary)" style="border:none;cursor:pointer;font-family:inherit">이 조건으로 문의하기 →</button>
         <a class="res-sec" href="${FAQ_ID.cat}" data-open="faq-types">제품군 비교 보기</a>
       </div>
     `;
