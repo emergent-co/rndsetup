@@ -44,7 +44,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT103S",
@@ -88,7 +100,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT101S",
@@ -219,7 +243,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT601S",
@@ -264,7 +300,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT100S",
@@ -308,7 +356,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT300S",
@@ -353,7 +413,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT600S",
@@ -398,7 +470,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT100S-1",
@@ -442,7 +526,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "WT300S",
@@ -487,7 +583,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "WT600S",
@@ -532,7 +640,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BT101L",
@@ -576,7 +696,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT301L",
@@ -621,7 +753,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT601L",
@@ -666,7 +810,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT100L",
@@ -710,7 +866,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT300L",
@@ -755,7 +923,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT600L",
@@ -800,7 +980,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13#·14#",
+          "flow": "~64mL/min"
+        }
+      ]
     },
     {
       "id": "BT101F",
@@ -846,7 +1038,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT301F",
@@ -893,7 +1097,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT601F",
@@ -940,7 +1156,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT100F",
@@ -986,7 +1214,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT300F",
@@ -1033,7 +1273,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT600F",
@@ -1080,7 +1332,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "BT100F-1",
@@ -1127,7 +1391,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "WT300F",
@@ -1174,7 +1450,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "WT600F",
@@ -1221,7 +1509,19 @@
           "multi"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "DG/DS (다채널)",
+          "tube": "wall 0.8~1mm",
+          "flow": "~49mL/min"
+        },
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        }
+      ]
     },
     {
       "id": "WG600S",
@@ -1265,7 +1565,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~3000mL/min"
+        },
+        {
+          "name": "YZ35",
+          "tube": "73#·82#",
+          "flow": "~13L/min"
+        }
+      ]
     },
     {
       "id": "WG600F",
@@ -1310,7 +1622,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~3000mL/min"
+        },
+        {
+          "name": "YZ35",
+          "tube": "73#·82#",
+          "flow": "~13L/min"
+        }
+      ]
     },
     {
       "id": "JP301S",
@@ -1351,7 +1675,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "JY-Series 대구경 헤드",
+          "tube": "25# 36# 73#",
+          "flow": "~33L/min"
+        }
+      ]
     },
     {
       "id": "JP300S",
@@ -1392,7 +1723,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "JY-Series 대구경 헤드",
+          "tube": "25# 36# 73#",
+          "flow": "~33L/min"
+        }
+      ]
     },
     {
       "id": "BT600P",
@@ -1437,7 +1775,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "BX600S",
@@ -1481,7 +1831,19 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15/YZ15T",
+          "tube": "13#~18#",
+          "flow": "~641mL/min"
+        },
+        {
+          "name": "YT25",
+          "tube": "114#~36#",
+          "flow": "~750mL/min"
+        }
+      ]
     },
     {
       "id": "DS600",
@@ -1525,7 +1887,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "YZ15T 다채널",
+          "tube": "13#~18#",
+          "flow": "분주용"
+        }
+      ]
     },
     {
       "id": "MF-Series",
@@ -1568,7 +1937,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "IP66 호환 헤드 (YT25/YZ35)",
+          "tube": "wash-down",
+          "flow": "~7800mL/min"
+        }
+      ]
     },
     {
       "id": "MS-Series",
@@ -1611,7 +1987,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "IP66 호환 헤드 (YT25/YZ35)",
+          "tube": "wash-down",
+          "flow": "~7800mL/min"
+        }
+      ]
     },
     {
       "id": "EF800",
@@ -1656,7 +2039,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 헤드 (YT25/YZ35)",
+          "tube": "ATEX",
+          "flow": "~7800mL/min"
+        }
+      ]
     },
     {
       "id": "EF900",
@@ -1702,7 +2092,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 헤드 (YT25/YZ35)",
+          "tube": "ATEX",
+          "flow": "~7800mL/min"
+        }
+      ]
     },
     {
       "id": "FP300S-A3",
@@ -1746,7 +2143,14 @@
           "4"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 헤드 (YT25/YZ35)",
+          "tube": "ATEX",
+          "flow": "~7800mL/min"
+        }
+      ]
     },
     {
       "id": "TYD01-01",
@@ -1790,7 +2194,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD01-02",
@@ -1835,7 +2246,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD02-01",
@@ -1880,7 +2298,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD02-02",
@@ -1925,7 +2350,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD02-04",
@@ -1969,7 +2401,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD02-06",
@@ -2013,7 +2452,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD02-10",
@@ -2057,7 +2503,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TYD03-01",
@@ -2101,7 +2554,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ]
     },
     {
       "id": "TFD01-01",
@@ -2143,7 +2603,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ]
     },
     {
       "id": "TFD02-01",
@@ -2186,7 +2653,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ]
     },
     {
       "id": "TFD03-01",
@@ -2228,7 +2702,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ]
     },
     {
       "id": "TFD04",
@@ -2270,7 +2751,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ]
     },
     {
       "id": "TYS01-02",
@@ -2311,7 +2799,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "1~3000μL 시린지 (Dual)",
+          "tube": "시린지 직접",
+          "flow": "분주용"
+        }
+      ]
     },
     {
       "id": "TGD01-01",
@@ -2354,7 +2849,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "0.5μL~140mL 스테인리스 시린지",
+          "tube": "시린지 직접",
+          "flow": "pL~mL/min"
+        }
+      ]
     },
     {
       "id": "TSD01-01",
@@ -2397,7 +2899,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "Push-Pull 시린지 (2개)",
+          "tube": "시린지 직접",
+          "flow": "연속"
+        }
+      ]
     },
     {
       "id": "G3030-1S",
@@ -2439,7 +2948,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "50μL~5mL 글래스 시린지",
+          "tube": "시린지 직접",
+          "flow": "정밀 미량"
+        }
+      ]
     },
     {
       "id": "G6060-1S",
@@ -2482,7 +2998,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "50μL~5mL 글래스 시린지",
+          "tube": "시린지 직접",
+          "flow": "정밀 미량"
+        }
+      ]
     },
     {
       "id": "CT3001S",
@@ -2525,7 +3048,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "MG209/MG213/MS209 (PEEK)",
+          "tube": "관 연결",
+          "flow": "15~2700mL/min"
+        }
+      ]
     },
     {
       "id": "CT3000S",
@@ -2568,7 +3098,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "MG209/MG213/MS209 (PEEK)",
+          "tube": "관 연결",
+          "flow": "15~2700mL/min"
+        }
+      ]
     },
     {
       "id": "CT3001F",
@@ -2611,7 +3148,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "MG209/MG213/MS209 (PEEK)",
+          "tube": "관 연결",
+          "flow": "15~2700mL/min"
+        }
+      ]
     },
     {
       "id": "CT3000F",
@@ -2654,7 +3198,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "MG209/MG213/MS209 (PEEK)",
+          "tube": "관 연결",
+          "flow": "15~2700mL/min"
+        }
+      ]
     },
     {
       "id": "FG601S-A3",
@@ -2698,7 +3249,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ]
     },
     {
       "id": "FG600S-A3",
@@ -2742,7 +3300,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ]
     },
     {
       "id": "FG601S-W3",
@@ -2785,7 +3350,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ]
     },
     {
       "id": "FG600S-W3",
@@ -2829,7 +3401,14 @@
           "1"
         ]
       },
-      "navimro_url": ""
+      "navimro_url": "",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ]
     }
   ]
 }
