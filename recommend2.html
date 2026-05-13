@@ -108,6 +108,9 @@ a:hover{text-decoration:underline}
 .wz-options.single{display:block}
 .wz-options.single > *{width:100%;margin-bottom:12px}
 .wz-options.single > *:last-child{margin-bottom:0}
+.opt-inline{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;padding-bottom:4px}
+.opt-inline label{white-space:nowrap;flex-shrink:0}
+@media(max-width:780px){.opt-inline{flex-wrap:wrap;overflow-x:visible}.opt-inline label{flex-shrink:1}}
 .wz-options label{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:all .15s;color:var(--text)}
 .wz-options label:hover{border-color:var(--teal);background:#fafdfc}
 .wz-options input{accent-color:var(--teal);flex-shrink:0}
@@ -406,7 +409,7 @@ body.iq-locked{overflow:hidden}
             <input type="text" name="current_model" placeholder="예: EYELA MP-2000, Watson-Marlow 313, Cole-Parmer Masterflex L/S" style="width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
           </div>
           <div style="margin:14px 0 8px;font-size:12.5px;color:var(--muted);font-weight:600">교체·업그레이드 이유 <span style="font-weight:400">(복수 선택 가능)</span></div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px">
+          <div class="opt-inline" style="font-size:13px">
             <label><input type="checkbox" name="reason" value="flow_up"> 유량 증가 필요</label>
             <label><input type="checkbox" name="reason" value="control"> 제어 강화</label>
             <label><input type="checkbox" name="reason" value="pressure"> 압력 부족</label>
@@ -424,7 +427,7 @@ body.iq-locked{overflow:hidden}
             <label style="display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:13px"><input type="checkbox" name="tube_size_unknown" value="1"> 튜브 치수 모름</label>
           </div>
           <div style="margin:14px 0 8px;font-size:12.5px;color:var(--muted);font-weight:600">튜브 재질 <span style="font-weight:400">(복수 선택 가능)</span></div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px">
+          <div class="opt-inline" style="font-size:13px">
             <label><input type="checkbox" name="tube_mat" value="silicone"> 실리콘</label>
             <label><input type="checkbox" name="tube_mat" value="pharmed"> PharMed BPT</label>
             <label><input type="checkbox" name="tube_mat" value="tygon"> Tygon</label>
@@ -443,7 +446,7 @@ body.iq-locked{overflow:hidden}
         <legend><span class="num">2</span>이송 유체와 필요 유량</legend>
         <div class="wz-options single">
           <div style="margin-bottom:8px;font-size:12.5px;color:var(--muted)">이송 유체 (복수 선택)</div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px;margin-bottom:14px">
+          <div class="opt-inline" style="font-size:13px;margin-bottom:14px">
             <label><input type="checkbox" name="fluid" value="aqueous"> 물·수용액·일반 시약</label>
             <label><input type="checkbox" name="fluid" value="acid"> 산·알칼리</label>
             <label><input type="checkbox" name="fluid" value="organic"> 유기용매</label>
@@ -1057,15 +1060,17 @@ window.addEventListener('message', e=>{
 
   // 옵션 선택 시
   $form.addEventListener('change', e => {
-    // Q1 (radio, situation) 선택 시 자동 다음 단계
-    if (e.target.matches('input[type=radio][name="situation"]')){
-      setTimeout(()=> showStep(2), 220);
-      return;
-    }
-    // Q5 (radio, channels) 선택 시 추천받기 버튼 노출
-    if (e.target.matches('input[type=radio][name="channels"]')){
-      $run.style.display = '';
-      document.getElementById('wzHint').textContent = '추천 받기 버튼을 눌러주세요';
+    // radio 선택 시에도 [다음] 버튼 사용 (자동 진행 제거 — 일관성)
+    if (e.target.matches('input[type=radio]')){
+      const stepEl = e.target.closest('.wz-q');
+      const step = parseInt(stepEl.dataset.step);
+      if (step < TOTAL){
+        document.getElementById('wzNext').style.display = '';
+        document.getElementById('wzHint').textContent = '[다음] 버튼을 눌러주세요';
+      } else {
+        $run.style.display = '';
+        document.getElementById('wzHint').textContent = '[추천 받기] 버튼을 눌러주세요';
+      }
       return;
     }
     // Q2~Q5 (checkbox) — [다음] 버튼 노출
@@ -1086,9 +1091,31 @@ window.addEventListener('message', e=>{
     }
   });
   
-  // 다음 버튼
+  // 다음 버튼 — 검증 + alert
+  function validateCurrentStep(){
+    const activeFs = document.querySelector('.wz-q.active');
+    if (!activeFs) return false;
+    // Q2 교체 분기: 현재 펌프 모델명 필수
+    if (currentStep === 2 && getVal('situation') === 'replace'){
+      const cm = $form.querySelector('input[name="current_model"]');
+      if (!cm || !cm.value.trim()){
+        alert('현재 펌프 모델명은 필수 입력 항목입니다.');
+        if (cm) cm.focus();
+        return false;
+      }
+    }
+    const hasCheck = activeFs.querySelectorAll('input[type=checkbox]:checked, input[type=radio]:checked').length > 0;
+    const textInputs = Array.from(activeFs.querySelectorAll('input[type=text]'));
+    const hasText = textInputs.some(i => i.value.trim().length > 0);
+    if (!hasCheck && !hasText){
+      alert('하나 이상 선택 또는 입력해주세요.');
+      return false;
+    }
+    return true;
+  }
   const $next = document.getElementById('wzNext');
   if ($next) $next.addEventListener('click', () => {
+    if (!validateCurrentStep()) return;
     if (currentStep < TOTAL){
       showStep(currentStep + 1);
       $next.style.display = 'none';
