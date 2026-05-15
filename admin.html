@@ -81,6 +81,14 @@
   .ft-links a{color:var(--muted);text-decoration:none}
   .ft-links a:hover{color:var(--teal)}
   .ft-meta{font-size:12px;color:#a9b8cc}
+
+  /* ===== 탭 (2026-05-15 Phase 2) ===== */
+  .tabs{display:flex;gap:0;border-bottom:2px solid #e3e8ef;margin:14px 0 18px}
+  .tab-btn{padding:10px 22px;background:#f5f7fa;color:#5a6779;border:none;border-bottom:2px solid transparent;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;transition:all .15s;margin-bottom:-2px}
+  .tab-btn:hover{color:#1a6e56;background:#fff}
+  .tab-btn.active{color:#0a2540;background:#fff;border-bottom-color:#1a6e56}
+  .tab-pane{display:none}
+  .tab-pane.active{display:block}
 </style>
 </head>
 <body>
@@ -101,6 +109,68 @@
       <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" style="color:#1a6e56">PAT 발급</a> → emergent-co/cellab · Contents (Read & Write). 브라우저 localStorage 저장.
     </div>
   </div>
+
+  <!-- ===== 탭 네비게이션 (Phase 2 — 2026-05-15) ===== -->
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="catalog" onclick="switchTab('catalog')">펌프 카탈로그 (catalog.json) — 주</button>
+    <button class="tab-btn" data-tab="products" onclick="switchTab('products')">기타 제품 (products.json) — 구버전</button>
+  </div>
+
+  <!-- ===== 탭 1: 펌프 카탈로그 (catalog.json) ===== -->
+  <div class="tab-pane active" id="tab-catalog">
+    <div class="panel">
+      <div class="btn-row">
+        <button class="btn primary" onclick="catalogLoad()">현재 카탈로그 불러오기 (catalog.json)</button>
+        <button class="btn primary" onclick="catalogSaveAndBuild()" style="background:#1a6e56;border-color:#1a6e56">GitHub에 저장 + 빌드 (cellab.kr 자동 반영)</button>
+        <button class="btn" onclick="catalogAddRow()">+ 펌프 추가</button>
+        <button class="btn danger" onclick="catalogClearAll()">전체 삭제</button>
+        <span style="font-size:12px;color:#5a6779;margin-left:auto">표시 <span id="catalogCount">0</span></span>
+      </div>
+      <div id="catalogStatus" class="status"></div>
+    </div>
+
+    <div class="panel" style="padding:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px;flex-wrap:wrap;gap:10px">
+        <div class="filter-bar">
+          <label>카테고리:</label>
+          <select id="catalogCatFilter" onchange="catalogApplyFilters()">
+            <option value="">전체</option>
+            <option value="peristaltic">페리스탈틱</option>
+            <option value="syringe">시린지</option>
+            <option value="gear">기어</option>
+          </select>
+          <label>시리즈:</label>
+          <select id="catalogSeriesFilter" onchange="catalogApplyFilters()">
+            <option value="">전체</option>
+          </select>
+          <label>검색:</label>
+          <input type="text" id="catalogSearchFilter" placeholder="id·모델명·부제" oninput="catalogApplyFilters()">
+        </div>
+        <div style="font-size:11.5px;color:#5a6779">Phase 2 기본 필드만 (매칭·헤드·사양은 Phase 3·4에서 확장)</div>
+      </div>
+      <div class="sheet-wrap">
+        <table class="sheet">
+          <thead>
+            <tr>
+              <th style="width:90px">id</th>
+              <th style="width:140px">모델명</th>
+              <th>부제 (sub)</th>
+              <th style="width:100px">시리즈</th>
+              <th style="width:110px">카테고리</th>
+              <th>이미지 URL</th>
+              <th style="width:200px">유량 표시</th>
+              <th style="width:150px">통신 (comm)</th>
+              <th style="width:42px"></th>
+            </tr>
+          </thead>
+          <tbody id="catalogSheetBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 탭 2: 기타 제품 (products.json) — 구버전 ===== -->
+  <div class="tab-pane" id="tab-products">
 
   <!-- 데이터 입출력 -->
   <div class="panel">
@@ -164,6 +234,8 @@
       </table>
     </div>
   </div>
+
+  </div><!-- /tab-products -->
 
 </div>
 
@@ -416,7 +488,6 @@ async function saveAndBuildGithub() {
 }
 
 // 페이지 로드 시 토큰 상태 표시
-window.addEventListener('DOMContentLoaded', refreshTokenStatus);
 
 
 async function saveAndBuild(){
@@ -555,7 +626,202 @@ function applyFilters(){
     CATEGORIES.map(c => `<span class="cat-tag ${c}">${CAT_LABEL_KO[c]} ${counts[c]}</span>`).join('');
 }
 
-window.addEventListener('DOMContentLoaded', () => loadFromJson());
+// ===== Phase 2 (2026-05-15) — 펌프 카탈로그 (catalog.json) 편집 =====
+function switchTab(tab){
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'tab-' + tab));
+  // 구버전 탭 첫 진입 시 products.json 로드
+  if (tab === 'products' && !window.__productsLoaded){
+    window.__productsLoaded = true;
+    loadFromJson();
+  }
+}
+
+const CATALOG_CATS = [
+  {id:'peristaltic', label:'페리스탈틱'},
+  {id:'syringe',     label:'시린지'},
+  {id:'gear',        label:'기어'}
+];
+// 자주 쓰이는 시리즈 (필요 시 자동 학습 가능)
+const CATALOG_SERIES = ['S','L','F','Industrial','Batch','Filling','HighProt','EX','TYD','TFD','TYS','TGD','TSD','G-Ind','CT-Gear'];
+
+function catalogSetStatus(msg, kind){
+  const el = document.getElementById('catalogStatus');
+  el.className = 'status show ' + (kind || 'info');
+  el.textContent = msg;
+  if (kind === 'ok') setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+function catalogRowHtml(d){
+  d = d || {category:'peristaltic'};
+  const catOpts = CATALOG_CATS.map(c =>
+    `<option value="${c.id}"${d.category===c.id?' selected':''}>${c.label}</option>`).join('');
+  const serOpts = ['<option value="">-</option>'].concat(
+    CATALOG_SERIES.map(s => `<option value="${s}"${d.series===s?' selected':''}>${s}</option>`)
+  ).join('');
+  return `<tr data-cat="${escapeAttr(d.category||'peristaltic')}" data-ser="${escapeAttr(d.series||'')}">
+    <td class="col-id"><input type="text" value="${escapeAttr(d.id)}" placeholder="BT101S"></td>
+    <td><input type="text" value="${escapeAttr(d.name)}" placeholder="BT101S"></td>
+    <td><input type="text" value="${escapeAttr(d.sub)}" placeholder="Speed Variable Peristaltic Pump"></td>
+    <td><select onchange="this.closest('tr').dataset.ser=this.value;catalogApplyFilters()">${serOpts}</select></td>
+    <td><select onchange="this.closest('tr').dataset.cat=this.value;catalogApplyFilters()">${catOpts}</select></td>
+    <td><input type="text" value="${escapeAttr(d.image||'')}" placeholder="/img/leadfluid/BT101S.png"></td>
+    <td><input type="text" value="${escapeAttr(d.flow_display)}" placeholder="0.005 ~ 1000 mL/min"></td>
+    <td><input type="text" value="${escapeAttr(d.comm)}" placeholder="RS485 / MODBUS"></td>
+    <td class="col-action"><button onclick="this.closest('tr').remove();catalogApplyFilters()">삭제</button></td>
+  </tr>`;
+}
+
+function catalogAddRow(data){
+  const body = document.getElementById('catalogSheetBody');
+  body.insertAdjacentHTML('beforeend', catalogRowHtml(data));
+  if (!data) body.lastElementChild.classList.add('row-new');
+  catalogApplyFilters();
+}
+
+function catalogClearAll(){
+  if (!confirm('카탈로그 시트 전체 삭제. 진행할까요?')) return;
+  document.getElementById('catalogSheetBody').innerHTML = '';
+  catalogApplyFilters();
+  catalogSetStatus('시트를 비웠습니다.', 'info');
+}
+
+function catalogReadSheet(){
+  const rows = [];
+  document.querySelectorAll('#catalogSheetBody tr').forEach(tr => {
+    const inputs = tr.querySelectorAll('input');
+    const selects = tr.querySelectorAll('select');
+    const r = {
+      id: inputs[0].value.trim(),
+      name: inputs[1].value.trim(),
+      sub: inputs[2].value.trim(),
+      series: selects[0].value,
+      category: selects[1].value || 'peristaltic',
+      image: inputs[3].value.trim() || null,
+      flow_display: inputs[4].value.trim(),
+      comm: inputs[5].value.trim()
+    };
+    // 보존된 추가 필드(applications, heads 등)는 메타 보관소에서 합성
+    if (window.__catalogExtras && window.__catalogExtras[r.id]){
+      const extra = window.__catalogExtras[r.id];
+      Object.keys(extra).forEach(k => { if (!(k in r)) r[k] = extra[k]; });
+    }
+    if (r.id || r.name) rows.push(r);
+  });
+  return rows;
+}
+
+async function catalogLoad(){
+  try {
+    const res = await fetch('_build/catalog.json', {cache:'no-store'});
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+    window.__catalogMeta = {
+      _comment: data._comment,
+      _base_url: data._base_url,
+      version: data.version,
+      source: data.source
+    };
+    // 시리즈 dropdown 학습 (실제 데이터 기반)
+    const pumps = data.pumps || [];
+    const seriesSet = new Set();
+    pumps.forEach(p => { if (p.series) seriesSet.add(p.series); });
+    const serSel = document.getElementById('catalogSeriesFilter');
+    serSel.innerHTML = '<option value="">전체</option>' +
+      Array.from(seriesSet).sort().map(s => `<option value="${s}">${s}</option>`).join('');
+    // 행 미포함 필드 (applications, heads, flow_min/max, series_label, category_label 등) 보존
+    window.__catalogExtras = {};
+    pumps.forEach(p => {
+      const extras = {};
+      Object.keys(p).forEach(k => {
+        if (!['id','name','sub','series','category','image','flow_display','comm'].includes(k)){
+          extras[k] = p[k];
+        }
+      });
+      if (Object.keys(extras).length && p.id) window.__catalogExtras[p.id] = extras;
+    });
+    const body = document.getElementById('catalogSheetBody');
+    body.innerHTML = '';
+    pumps.forEach(p => catalogAddRow(p));
+    catalogApplyFilters();
+    catalogSetStatus(`catalog.json에서 ${pumps.length}개 펌프를 불러왔습니다. (사양·매칭·헤드 등 추가 필드는 보존되어 저장 시 함께 기록)`, 'ok');
+  } catch(e) {
+    catalogSetStatus('불러오기 실패: ' + e.message + ' — 로컬 file:// 환경에서는 GitHub Pages에 push 후 admin.html을 직접 cellab.kr에서 열어야 fetch 가능합니다.', 'err');
+  }
+}
+
+function catalogApplyFilters(){
+  const cat = document.getElementById('catalogCatFilter').value;
+  const ser = document.getElementById('catalogSeriesFilter').value;
+  const q = (document.getElementById('catalogSearchFilter').value || '').toLowerCase().trim();
+  const rows = document.querySelectorAll('#catalogSheetBody tr');
+  let visible = 0;
+  const total = rows.length;
+  rows.forEach(tr => {
+    const trCat = tr.dataset.cat || '';
+    const trSer = tr.dataset.ser || '';
+    const text = tr.textContent.toLowerCase();
+    const ok = (!cat || trCat === cat) && (!ser || trSer === ser) && (!q || text.includes(q));
+    tr.classList.toggle('row-hidden', !ok);
+    if (ok) visible++;
+  });
+  document.getElementById('catalogCount').textContent = `${visible} / ${total}개`;
+}
+
+async function catalogSaveAndBuild(){
+  const token = getToken();
+  if (!token){ catalogSetStatus('GitHub 토큰을 먼저 입력해주세요 (위 패널)', 'err'); return; }
+  catalogSetStatus('GitHub에 catalog.json 저장 중...', 'info');
+  try {
+    const apiUrl = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/_build/catalog.json`;
+    const getRes = await fetch(apiUrl, {
+      headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json' }
+    });
+    if (!getRes.ok){
+      const err = await getRes.text();
+      throw new Error(`파일 조회 실패 (HTTP ${getRes.status}): ${err.substring(0,200)}`);
+    }
+    const meta = await getRes.json();
+    const rows = catalogReadSheet();
+    const today = new Date().toISOString().slice(0,10);
+    const base = window.__catalogMeta || {};
+    const json = {
+      _comment: base._comment || 'Cellab 통합 펌프 카탈로그 (SSOT). STRATEGY.md § 6 참조.',
+      _base_url: base._base_url || 'https://cellab.kr/',
+      version: base.version || '1.0',
+      updated_at: today,
+      source: 'admin.html (Phase 2 editor)',
+      count: rows.length,
+      pumps: rows
+    };
+    const content = JSON.stringify(json, null, 2) + '\n';
+    const contentB64 = utf8Btoa(content);
+    const putRes = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: `Update catalog.json (admin Phase 2) ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
+        content: contentB64,
+        sha: meta.sha
+      })
+    });
+    if (!putRes.ok){
+      const err = await putRes.text();
+      throw new Error(`저장 실패 (HTTP ${putRes.status}): ${err.substring(0,300)}`);
+    }
+    const result = await putRes.json();
+    const commitUrl = result.commit && result.commit.html_url;
+    catalogSetStatus(`저장 완료 (${rows.length}개 펌프). cellab.kr/leadfluid.html에 1~3분 내 반영. ${commitUrl ? '커밋: ' + commitUrl : ''}`, 'ok');
+  } catch(e) {
+    catalogSetStatus('실패: ' + e.message, 'err');
+  }
+}
+
+// ===== 초기 로드 =====
+window.addEventListener('DOMContentLoaded', () => {
+  refreshTokenStatus();
+  catalogLoad();  // catalog가 default 탭
+});
 </script>
 
 <footer class="site-footer">
