@@ -261,15 +261,44 @@ function renderGroupResult(box, scored){
   const naviUrl = (__catalogNavGroupUrls && __catalogNavGroupUrls[topGroup]) || '';
   // 2순위 그룹 (있으면 보조 안내)
   const secondGroup = sortedGroups[1] ? (NAV_GROUP_LABELS[sortedGroups[1][0]] || sortedGroups[1][0]) : '';
+  // 그룹 대표 applications — 그룹 전체 펌프에서 빈도순 7개 (SSOT: catalog.json 그대로 사용)
+  const appFreq = {};
+  (__catalogPumps||[]).forEach(p => {
+    if (p.nav_group !== topGroup) return;
+    (p.applications||[]).forEach(a => { appFreq[a] = (appFreq[a]||0) + 1; });
+  });
+  const topApps = Object.entries(appFreq).sort((a,b) => b[1] - a[1]).slice(0, 7).map(x => x[0]);
 
   let html = '<div class="group-result">';
   html += '<div class="gr-label">추천 그룹</div>';
   html += '<div class="gr-name">' + escapeHtml(groupLabel) + '</div>';
   html += '<div class="gr-why">위저드 응답 기준 가장 적합한 그룹</div>';
+  // 그룹 대표 applications (catalog.json applications 합산)
+  if (topApps.length){
+    html += '<div class="gr-apps-h">이 그룹이 자주 쓰이는 곳</div>';
+    html += '<div class="gr-apps">';
+    topApps.forEach(a => { html += '<span class="gr-app-chip">' + escapeHtml(a) + '</span>'; });
+    html += '</div>';
+  }
+  // 그룹 내 참고 모델 + 헤드/rpm/유량/채널
   if (topPumpsInGroup.length){
     html += '<div class="gr-pumps"><div class="gr-pumps-h">이 그룹의 적합 모델 (참고)</div><ul class="gr-pumps-list">';
     topPumpsInGroup.forEach(({pump, ratio}) => {
-      html += '<li><strong>' + escapeHtml(pump.name) + '</strong><span class="gr-score">매칭 ' + Math.round(ratio*100) + '%</span></li>';
+      // 메타: 대표 헤드 / rpm / 유량 / 채널
+      const headName = (pump.heads && pump.heads[0] && pump.heads[0].name) ? pump.heads[0].name : '';
+      const rpm = pump.speed_display || '';
+      const flow = pump.flow_display || '';
+      const channels = (pump.matching && pump.matching.channels && pump.matching.channels.length)
+        ? pump.matching.channels.join('·') + '채널' : '';
+      const metaParts = [];
+      if (headName) metaParts.push('<span>헤드 <b>' + escapeHtml(headName) + '</b></span>');
+      if (rpm)      metaParts.push('<span>' + escapeHtml(rpm) + '</span>');
+      if (flow)     metaParts.push('<span>' + escapeHtml(flow) + '</span>');
+      if (channels) metaParts.push('<span>' + escapeHtml(channels) + '</span>');
+      html += '<li>';
+      html += '<div class="gr-pump-row1"><strong>' + escapeHtml(pump.name) + '</strong><span class="gr-score">매칭 ' + Math.round(ratio*100) + '%</span></div>';
+      if (metaParts.length) html += '<div class="gr-pump-meta">' + metaParts.join('') + '</div>';
+      html += '</li>';
     });
     html += '</ul></div>';
   }
@@ -280,6 +309,8 @@ function renderGroupResult(box, scored){
     html += '<div class="no-match" style="margin:0">나비엠알오 URL이 아직 등록되지 않은 그룹입니다. 셀렙에 직접 문의해주세요.</div>';
   }
   html += '<button type="button" class="gr-btn" onclick="openInquiry(\'wizard:group_' + escapeAttr(topGroup) + '\', window.__wizSummary||\'\')">셀렙에 직접 문의</button>';
+  // "처음부터" — 위저드 form reset + Q1로
+  html += '<button type="button" class="gr-btn" onclick="if(document.getElementById(\'wzReset\'))document.getElementById(\'wzReset\').click();">처음부터 다시</button>';
   html += '</div>';
   if (secondGroup) html += '<div class="gr-second">두 번째로 검토할만한 그룹: <strong>' + escapeHtml(secondGroup) + '</strong></div>';
   html += '</div>';
@@ -713,6 +744,19 @@ body.iq-locked{overflow:hidden}
   .wz-q label.opt-disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
   .wz-q label.opt-disabled input{cursor:not-allowed}
   .opt-suffix{font-size:11.5px;color:#b94545;font-weight:600;margin-left:4px}
+  /* Q1 보조 설명 (라디오 라벨 아래 1줄) */
+  .opt-hint{display:block;font-size:11.5px;color:var(--muted);font-weight:400;margin-top:2px;margin-left:24px;line-height:1.4}
+  /* 결과 카드 — applications chip */
+  .gr-apps{margin:10px 0 6px;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+  .gr-app-chip{display:inline-block;font-size:11px;background:var(--soft-blue);color:#0c447c;padding:3px 9px;border-radius:10px;font-weight:600}
+  .gr-app-h{font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;text-align:center}
+  /* 결과 카드 — 모델 한 줄당 2줄(이름·매칭% + 헤드·rpm·유량·채널) */
+  .gr-pumps-list li{display:block !important;padding:6px 0;border-bottom:1px solid var(--border)}
+  .gr-pumps-list li:last-child{border-bottom:none}
+  .gr-pump-row1{display:flex;justify-content:space-between;align-items:baseline}
+  .gr-pump-meta{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.5}
+  .gr-pump-meta span{display:inline-block;margin-right:6px}
+  .gr-pump-meta b{color:var(--text);font-weight:600}
 </style>
 </head>
 <body>
@@ -758,14 +802,22 @@ body.iq-locked{overflow:hidden}
       <fieldset class="wz-q active" data-step="1">
         <legend><span class="num">1</span>이 펌프를 어디에 쓰실 건가요? <span style="color:#b94545">*</span></legend>
         <div class="wz-options">
-          <label><input type="radio" name="use_case" value="S"> 일반 실험실 펌핑 (배지·시약 연속 이송)</label>
-          <label><input type="radio" name="use_case" value="L"> 정확한 유량 제어·측정 (유량 디스플레이)</label>
-          <label><input type="radio" name="use_case" value="F"> 정해진 양 반복 분주 (충진·dispensing)</label>
-          <label><input type="radio" name="use_case" value="ef-fg"> 방폭·세척 환경 (인화성·휘발성·식품)</label>
-          <label><input type="radio" name="use_case" value="syringe-integrated"> 정밀 미량 분주 (μL~mL · 다채널 가능)</label>
-          <label><input type="radio" name="use_case" value="syringe-split"> 초미량 분주 (pL~μL) 또는 시린지·본체 분리</label>
-          <label><input type="radio" name="use_case" value="gear"> 점성액·기름·고압 연속 정량</label>
-          <label><input type="radio" name="use_case" value="unsure"> 잘 모르겠음 — 사장님께 직접 상담</label>
+          <label><input type="radio" name="use_case" value="S"> 일반 실험실 펌핑 (배지·시약 연속 이송)
+            <span class="opt-hint">가장 무난한 기본형 — 세포배양·시약 이송</span></label>
+          <label><input type="radio" name="use_case" value="L"> 정확한 유량 제어·측정 (유량 디스플레이)
+            <span class="opt-hint">유량 디스플레이 + 통신 — 정확한 유량 추적</span></label>
+          <label><input type="radio" name="use_case" value="F"> 정해진 양 반복 분주 (충진·dispensing)
+            <span class="opt-hint">분주 모드 내장 — 충진·dispensing 자동화</span></label>
+          <label><input type="radio" name="use_case" value="ef-fg"> 방폭·세척 환경 (인화성·휘발성·식품)
+            <span class="opt-hint">방폭/세척 인증 — 인화성·휘발성 환경</span></label>
+          <label><input type="radio" name="use_case" value="syringe-integrated"> 정밀 미량 분주 (μL~mL · 다채널 가능)
+            <span class="opt-hint">본체 일체형 — 1·2·4·6·10 채널</span></label>
+          <label><input type="radio" name="use_case" value="syringe-split"> 초미량 분주 (pL~μL) 또는 시린지·본체 분리
+            <span class="opt-hint">시린지/본체 분리 — cleanroom·microfluidics</span></label>
+          <label><input type="radio" name="use_case" value="gear"> 점성액·기름·고압 연속 정량
+            <span class="opt-hint">산업용 정밀 — 점성·고압에 강함</span></label>
+          <label><input type="radio" name="use_case" value="unsure"> 잘 모르겠음 — 사장님께 직접 상담
+            <span class="opt-hint">사장님이 사용 사례 듣고 추천</span></label>
         </div>
       </fieldset>
 
@@ -785,8 +837,8 @@ body.iq-locked{overflow:hidden}
       <!-- Q3: 추가 정보 (펼침형, 선택) -->
       <fieldset class="wz-q" data-step="3">
         <legend><span class="num">3</span>추가 정보 <span style="font-size:12px;font-weight:400;color:var(--muted)">(선택 — 더 정확한 추천에 도움)</span></legend>
-        <details class="wz-extra-inline" style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:#fafbfd">
-          <summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--teal);user-select:none">옵션 펼치기 (채널·유체·제어·메모) ▾</summary>
+        <details class="wz-extra-inline" open style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:#fafbfd">
+          <summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--teal);user-select:none">옵션 (채널·유체·제어·메모) — 답해주시면 추천 정밀도 ↑</summary>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px">
             <div>
               <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">동시 라인 수 (채널)</div>

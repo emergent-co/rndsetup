@@ -215,7 +215,7 @@
 |---|---|---|---|---|
 | 1 | `admin.html` `NAV_GROUPS` + `recommend2/recommend.html` `NAV_GROUP_LABELS` | 7개 그룹 정의 + 한글 라벨 (중복!) | catalog.json `groups` 또는 settings.json | **높음** |
 | 2 | `recommend2/recommend.html` `USE_CASE_INFO` | 그룹별 위저드 라벨·사유 텍스트 | settings.json `wizard.use_cases` | **높음** |
-| 3 | `recommend2/recommend.html` 위저드 Q1·Q2 옵션 HTML | 8 용도·6 유량 옵션 | settings.json `wizard.questions` | 중간 |
+| 3 | `recommend2/recommend.html` 위저드 Q1·Q2 옵션 HTML + Q1 보조 설명 텍스트 | 8 용도·6 유량 옵션 + 그룹별 1줄 설명 | settings.json `wizard.questions` | 중간 |
 | 4 | `recommend2/recommend.html` `FLOW_RANGE_BOUNDS` | 유량 경계값 (mL/min) | settings.json `flow_ranges` | 중간 |
 | 5 | `admin.html` `MATCHING_AXES` | 매칭 5축 옵션 어휘 | settings.json `matching_axes` | 중간 |
 | 6 | `admin.html` `CATALOG_SERIES` | 15개 시리즈명 (마이그레이션 잔재) | catalog.json에서 동적 추출 (상수 제거) | 낮음 |
