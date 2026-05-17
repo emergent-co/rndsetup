@@ -44,11 +44,11 @@ function onInquiryClick(){
 }
 // ===== catalog.json 매칭·렌더 (Phase 3: SSOT 통합 — 2026-05-15) =====
 let __catalogPumps = null;
-let __catalogSeriesUrls = null;
+let __catalogNavGroupUrls = null;
 function getNavimroUrl(p){
-  // 펌프별 navimro_url override 우선, 없으면 시리즈 URL fallback
+  // 펌프별 navimro_url override 우선, 없으면 그룹 URL fallback
   if (p && p.navimro_url) return p.navimro_url;
-  if (__catalogSeriesUrls && p && p.series && __catalogSeriesUrls[p.series]) return __catalogSeriesUrls[p.series];
+  if (__catalogNavGroupUrls && p && p.nav_group && __catalogNavGroupUrls[p.nav_group]) return __catalogNavGroupUrls[p.nav_group];
   return '';
 }
 async function fetchAndMatchPumps(wiz){
@@ -60,7 +60,8 @@ async function fetchAndMatchPumps(wiz){
       const res = await fetch('/_build/catalog.json', {cache:'no-store'});
       const data = await res.json();
       __catalogPumps = data.pumps || [];
-      __catalogSeriesUrls = data.series_urls || {};
+      // 신규: nav_group_urls (사장님 7개 그룹). 구버전 series_urls 호환도 유지.
+      __catalogNavGroupUrls = data.nav_group_urls || data.series_urls || {};
     }
     const matched = matchPumps(__catalogPumps, wiz);
     renderMatched(box, matched);

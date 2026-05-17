@@ -224,14 +224,14 @@
       <div id="catalogStatus" class="status"></div>
     </div>
 
-    <details class="series-urls-panel" id="seriesUrlsPanel" open>
-      <summary>시리즈별 나비엠알오 URL <span class="su-hint">★ funnel 종단 · 한 번 채우면 같은 시리즈 펌프 전체에 자동 적용</span></summary>
+    <details class="series-urls-panel" id="navGroupUrlsPanel" open>
+      <summary>그룹별 나비엠알오 URL <span class="su-hint">★ funnel 종단 · 한 번 채우면 같은 그룹 펌프 전체에 자동 적용</span></summary>
       <div class="su-body">
         <table class="su-table">
           <thead>
-            <tr><th>시리즈</th><th>나비엠알오 URL</th><th style="text-align:right">해당 펌프</th></tr>
+            <tr><th>그룹</th><th>나비엠알오 URL</th><th style="text-align:right">해당 펌프</th></tr>
           </thead>
-          <tbody id="seriesUrlsBody">
+          <tbody id="navGroupUrlsBody">
             <tr><td colspan="3" style="text-align:center;color:#a9b8cc;padding:18px">'현재 카탈로그 불러오기' 후 표시됩니다.</td></tr>
           </tbody>
         </table>
@@ -255,7 +255,7 @@
           <label>검색:</label>
           <input type="text" id="catalogSearchFilter" placeholder="id·모델명·부제" oninput="catalogApplyFilters()">
         </div>
-        <div style="font-size:11.5px;color:#5a6779">▶ 토글 → 매칭·헤드·사양 편집 (navimro URL은 위 시리즈 패널에서 일괄 입력 권장)</div>
+        <div style="font-size:11.5px;color:#5a6779">▶ 토글 → 매칭·헤드·사양 편집 (navimro URL은 위 그룹 패널에서 일괄 입력 권장)</div>
       </div>
       <div class="sheet-wrap">
         <table class="sheet">
@@ -763,37 +763,45 @@ function catalogSetStatus(msg, kind){
   if (kind === 'ok') setTimeout(() => el.classList.remove('show'), 4000);
 }
 
-// Phase 4 — 시리즈별 나비엠알오 URL 패널
-function catalogRenderSeriesUrls(urlsObj, pumps){
-  const tbody = document.getElementById('seriesUrlsBody');
+// Phase 4 — 그룹별 나비엠알오 URL 패널 (사장님 7개 그룹)
+const NAV_GROUPS = [
+  { key: 'S',                  label: 'S 시리즈' },
+  { key: 'L',                  label: 'L 시리즈' },
+  { key: 'F',                  label: 'F 시리즈' },
+  { key: 'ef-fg',              label: 'EF/FG 시리즈' },
+  { key: 'syringe-integrated', label: 'Syringe 일체형' },
+  { key: 'syringe-split',      label: 'Syringe 분리형' },
+  { key: 'gear',               label: 'Gear' }
+];
+
+function catalogRenderNavGroupUrls(urlsObj, pumps){
+  const tbody = document.getElementById('navGroupUrlsBody');
   if (!tbody) return;
   const urls = urlsObj || {};
-  // 시리즈별 펌프 카운트
+  // 그룹별 펌프 카운트 (p.nav_group 기반)
   const counts = {};
-  (pumps||[]).forEach(p => { if (p.series) counts[p.series] = (counts[p.series]||0) + 1; });
-  // CATALOG_SERIES 순서로 렌더 + catalog.json에만 있는 시리즈는 뒤에 추가
-  const known = new Set(CATALOG_SERIES);
-  const extra = Object.keys(urls).filter(k => !k.startsWith('_') && !known.has(k));
-  const ordered = CATALOG_SERIES.concat(extra);
-  const rows = ordered.map(s => {
-    const url = urls[s] || '';
-    const count = counts[s] || 0;
-    const countCell = count ? `<td class="su-count">${count}개</td>` : `<td class="su-empty">(미할당)</td>`;
+  (pumps||[]).forEach(p => { if (p.nav_group) counts[p.nav_group] = (counts[p.nav_group]||0) + 1; });
+  const rows = NAV_GROUPS.map(g => {
+    const url = urls[g.key] || '';
+    const count = counts[g.key] || 0;
+    const countCell = count
+      ? `<td class="su-count">${count}개</td>`
+      : `<td class="su-empty">(미할당)</td>`;
     return `<tr${count?'':' class="su-empty-row"'}>
-      <td class="su-series">${escapeHtml(s)}</td>
-      <td><input type="url" data-series="${escapeAttr(s)}" value="${escapeAttr(url)}" placeholder="https://www.navimro.com/product/..."></td>
+      <td class="su-series"><div>${escapeHtml(g.key)}</div><div style="font-size:10.5px;color:#5a6779;font-weight:400">${escapeHtml(g.label)}</div></td>
+      <td><input type="url" data-group="${escapeAttr(g.key)}" value="${escapeAttr(url)}" placeholder="https://www.navimro.com/product/..."></td>
       ${countCell}
     </tr>`;
   }).join('');
   tbody.innerHTML = rows;
 }
 
-function catalogReadSeriesUrls(){
+function catalogReadNavGroupUrls(){
   const out = {
-    _comment: "시리즈별 나비엠알오 URL. 카드 렌더 시 펌프의 series에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용."
+    _comment: "그룹별 나비엠알오 URL. 카드 렌더 시 펌프의 nav_group에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용."
   };
-  document.querySelectorAll('#seriesUrlsBody input[data-series]').forEach(inp => {
-    out[inp.dataset.series] = inp.value.trim();
+  document.querySelectorAll('#navGroupUrlsBody input[data-group]').forEach(inp => {
+    out[inp.dataset.group] = inp.value.trim();
   });
   return out;
 }
@@ -898,7 +906,7 @@ function catalogDetailRowHtml(d){
           <div class="detail-sec-body">
             <div class="spec-grid">
               <div class="spec-field spec-field-wide">
-                <label class="spec-label">나비엠알오 URL <span style="color:#5a6779;font-weight:400">(개별 override · 비워두면 위 시리즈 URL 자동 사용)</span></label>
+                <label class="spec-label">나비엠알오 URL <span style="color:#5a6779;font-weight:400">(개별 override · 비워두면 위 그룹 URL 자동 사용)</span></label>
                 <input type="url" data-field="navimro_url" value="${escapeAttr(d.navimro_url||'')}" placeholder="(보통 비워둠 — 예외적인 펌프만 입력)">
               </div>
               <div class="spec-field">
@@ -1061,9 +1069,11 @@ async function catalogLoad(){
     body.innerHTML = '';
     pumps.forEach(p => catalogAddRow(p));
     catalogApplyFilters();
-    // 시리즈 URL 패널 렌더 (data.series_urls + pumps 카운트)
-    catalogRenderSeriesUrls(data.series_urls, pumps);
-    catalogSetStatus(`catalog.json에서 ${pumps.length}개 펌프 + 시리즈 URL ${Object.keys(data.series_urls||{}).filter(k=>!k.startsWith('_')).length}개를 불러왔습니다.`, 'ok');
+    // 그룹 URL 패널 렌더 (data.nav_group_urls fallback data.series_urls — 마이그레이션 전 호환)
+    const urlsForPanel = data.nav_group_urls || data.series_urls || {};
+    catalogRenderNavGroupUrls(urlsForPanel, pumps);
+    const urlCount = Object.keys(urlsForPanel).filter(k=>!k.startsWith('_')).length;
+    catalogSetStatus(`catalog.json에서 ${pumps.length}개 펌프 + 그룹 URL ${urlCount}개를 불러왔습니다.`, 'ok');
   } catch(e) {
     catalogSetStatus('불러오기 실패: ' + e.message + ' — 로컬 file:// 환경에서는 GitHub Pages에 push 후 admin.html을 직접 cellab.kr에서 열어야 fetch 가능합니다.', 'err');
   }
@@ -1115,9 +1125,9 @@ async function catalogSaveAndBuild(){
       _base_url: base._base_url || 'https://cellab.kr/',
       version: base.version || '1.0',
       updated_at: today,
-      source: 'admin.html (Phase 4 editor — matching/heads/specs + series_urls)',
+      source: 'admin.html (Phase 4 editor — matching/heads/specs + nav_group_urls)',
       count: rows.length,
-      series_urls: catalogReadSeriesUrls(),
+      nav_group_urls: catalogReadNavGroupUrls(),
       pumps: rows
     };
     const content = JSON.stringify(json, null, 2) + '\n';
@@ -1126,7 +1136,7 @@ async function catalogSaveAndBuild(){
       method: 'PUT',
       headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Update catalog.json (admin Phase 4 — matching/heads/specs + series_urls) ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
+        message: `Update catalog.json (admin Phase 4 — matching/heads/specs + nav_group_urls) ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
         content: contentB64,
         sha: meta.sha
       })
