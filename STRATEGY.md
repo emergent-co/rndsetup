@@ -109,6 +109,30 @@
 
 ## 6. admin DB 관리 방향 (SSOT)
 
+### 6.0 절대 원칙 — admin DB가 모든 데이터의 기준 (2026-05-18 사장님 통보)
+
+**홈페이지의 모든 작업·결정은 admin에서 편집 가능한 데이터를 기준으로 한다.**
+
+사장님이 admin에 들어가 한 값을 바꾸면, 그 변경이 사이트 전체에 자동 반영되어야 한다. 이걸 만족시키지 못하는 작업은 "사장님이 관리·제작 어려워진다"고 명시적으로 알리고 사장님 승인 후 진행.
+
+#### SSOT에 포함되어야 할 것
+- 펌프 카탈로그 (catalog.json) — 펌프 사양·매칭·헤드·이미지·그룹·URL
+- 블로그 글 메타 (posts.json) · 셋업 리뷰 (setups.json + parts.json)
+- 그룹 정의·라벨·매칭 어휘·유량 경계값 등 메타 설정 (catalog.json 또는 settings.json)
+- 위저드 질문·답변 옵션 어휘 (settings.json 또는 catalog.json)
+
+#### 금지
+- HTML/JS의 변수·상수에 운영 가능한 데이터를 박지 말 것
+- "사장님이 운영 중 바꿀 수 있어야 하는 값"은 무조건 admin에서 편집 가능
+
+#### AI 에이전트 검증 체크리스트 (작업 전 매번)
+- [ ] 이 작업에 새 데이터를 코드에 박을 가능성이 있는가? 있으면 사장님 알림 후 진행
+- [ ] 기존 데이터를 코드에서 끌어 쓰는가? 그 데이터는 admin에서 편집 가능한가?
+- [ ] 데이터 구조 변경 시 admin UI도 같이 갱신했는가?
+- 위 셋 중 하나라도 NO면 사장님께 "관리·제작 어렵다"고 알릴 의무
+
+자세한 안전 규칙은 `CRITICAL_RULES.md § 7` 참조.
+
 ### 통합 우선순위
 
 | 우선 | 데이터 | 현 위치 | 통합 방향 |
@@ -183,6 +207,28 @@
 3. 라이브 확인
 4. 다음 Phase 진행
 
+### 7.1 SSOT 마이그레이션 큐 (2026-05-18 신설)
+
+§ 6.0 절대 원칙 통보 시점에 코드에 박혀 있던 데이터들의 마이그레이션 백로그. 사장님이 직접 admin에서 운영 가능하도록 단계적으로 settings.json (신설 예정) 또는 catalog.json으로 이전한다.
+
+| # | 박힌 위치 | 박힌 데이터 | 옮길 곳 | 우선순위 |
+|---|---|---|---|---|
+| 1 | `admin.html` `NAV_GROUPS` + `recommend2/recommend.html` `NAV_GROUP_LABELS` | 7개 그룹 정의 + 한글 라벨 (중복!) | catalog.json `groups` 또는 settings.json | **높음** |
+| 2 | `recommend2/recommend.html` `USE_CASE_INFO` | 그룹별 위저드 라벨·사유 텍스트 | settings.json `wizard.use_cases` | **높음** |
+| 3 | `recommend2/recommend.html` 위저드 Q1·Q2 옵션 HTML | 8 용도·6 유량 옵션 | settings.json `wizard.questions` | 중간 |
+| 4 | `recommend2/recommend.html` `FLOW_RANGE_BOUNDS` | 유량 경계값 (mL/min) | settings.json `flow_ranges` | 중간 |
+| 5 | `admin.html` `MATCHING_AXES` | 매칭 5축 옵션 어휘 | settings.json `matching_axes` | 중간 |
+| 6 | `admin.html` `CATALOG_SERIES` | 15개 시리즈명 (마이그레이션 잔재) | catalog.json에서 동적 추출 (상수 제거) | 낮음 |
+| 7 | `admin.html` `CATALOG_CATS` | 카테고리 정의 (peristaltic/syringe/gear) | catalog.json `categories` 또는 settings.json | 낮음 |
+
+각 항목 마이그레이션 시 4단계:
+1. settings.json (또는 catalog.json 확장)에 데이터 구조 추가
+2. admin.html에 편집 UI 추가
+3. recommend.html / recommend2.html이 fetch해서 사용
+4. 박혀 있던 상수 제거
+
+신규 작업 발생 시 본 큐도 함께 점검 — 같은 영역 작업이면 마이그레이션도 같이 진행.
+
 ---
 
 ## 8. 의사결정 체크리스트
@@ -192,7 +238,7 @@
 - [ ] 이 작업이 마스터 동선 어느 단계에 있는가? (검색·진입 → 의사결정 → 전환 → 직거래·송출)
 - [ ] 위저드·가이드·리뷰·블로그·견적 funnel을 강화하는가, 약화하는가?
 - [ ] 쇼핑몰형 패턴(가격강조·장바구니·평점 등)을 도입하지 않는가?
-- [ ] admin SSOT(catalog.json) 통합을 거스르지 않는가?
+- [ ] **admin SSOT 절대 원칙** (§ 6.0)을 거스르지 않는가? — 코드에 데이터 박는 형태면 NO
 - [ ] 단계가 너무 크지 않은가? (CRITICAL_RULES — 한 번에 큰 변경 금지)
 - [ ] GA4·네이버 통계·인콰이리 추세에 기반한 결정인가? (감 아님)
 
@@ -205,8 +251,8 @@
 본 문서를 작업의 **기준점**으로 삼습니다.
 
 - 새 페이지·기능 제안 시 → 본 문서 § 1·§ 3·§ 5에 비춰 정합 여부 먼저 확인
-- 데이터 구조 변경 시 → § 6 SSOT 방향과 일치 여부 확인
-- 작업 단계 크기 → § 7 Phase Plan대로 작게 쪼개기
+- **데이터 구조 변경 시 → § 6.0 SSOT 절대 원칙 우선 검토.** 코드에 데이터 박는 형태로 진행하면 사장님에게 "관리·제작 어렵다" 명시적으로 알릴 의무
+- 작업 단계 크기 → § 7 Phase Plan대로 작게 쪼개기. SSOT 위반 후보 발견 시 § 7.1 마이그레이션 큐에 기록
 - 본 문서와 충돌하는 사장님 요청 발생 시 → 충돌 사실을 명시적으로 알리고 본 문서 갱신 여부 의논
 - **멀티컴퓨터 전제**: 사장님은 여러 컴퓨터에서 작업하실 수 있음. 모든 PowerShell 명령 안내는 `cd → git pull → 작업 → git add/commit/push` 패턴이 기본. 상세는 `OPERATIONS.md` § 9 참조
 
