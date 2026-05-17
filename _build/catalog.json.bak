@@ -2,27 +2,9 @@
   "_comment": "Cellab 통합 펌프 카탈로그 (SSOT). leadfluid + admin_pumps 통합 완료. STRATEGY.md § 6 참조. 향후 모든 펌프 사양·매칭·이미지·헤드·마켓 URL은 본 파일에서 관리.",
   "_base_url": "https://cellab.kr/",
   "version": "1.0",
-  "updated_at": "2026-05-17",
-  "source": "admin.html (Phase 4 editor — matching)",
-  "count": 63,
-  "series_urls": {
-    "_comment": "시리즈별 나비엠알오 URL. 카드 렌더 시 펌프의 series에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용.",
-    "S": "",
-    "L": "",
-    "F": "",
-    "Industrial": "",
-    "Batch": "",
-    "Filling": "",
-    "HighProt": "",
-    "EX": "",
-    "TYD": "",
-    "TFD": "",
-    "TYS": "",
-    "TGD": "",
-    "TSD": "",
-    "G-Ind": "",
-    "CT-Gear": ""
-  },
+  "updated_at": "2026-05-18",
+  "source": "migrate_nav_groups.py (사장님 7개 그룹 적용 + 안 파는 라인 제거)",
+  "count": 52,
   "pumps": [
     {
       "id": "BQ80S",
@@ -77,7 +59,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT103S",
@@ -133,7 +116,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT101S",
@@ -219,7 +203,8 @@
           "flow": "0.024~750"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT301S",
@@ -276,7 +261,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT601S",
@@ -333,7 +319,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT100S",
@@ -389,7 +376,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT300S",
@@ -446,7 +434,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT600S",
@@ -503,7 +492,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT100S-1",
@@ -559,7 +549,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "WT300S",
@@ -616,7 +607,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "WT600S",
@@ -673,7 +665,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BT101L",
@@ -729,7 +722,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT301L",
@@ -786,7 +780,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT601L",
@@ -843,7 +838,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT100L",
@@ -899,7 +895,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT300L",
@@ -956,7 +953,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT600L",
@@ -1013,7 +1011,8 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "L"
     },
     {
       "id": "BT101F",
@@ -1071,7 +1070,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT301F",
@@ -1130,7 +1130,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT601F",
@@ -1189,7 +1190,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT100F",
@@ -1247,7 +1249,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT300F",
@@ -1306,7 +1309,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT600F",
@@ -1365,7 +1369,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT100F-1",
@@ -1424,7 +1429,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "WT300F",
@@ -1483,7 +1489,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "WT600F",
@@ -1542,216 +1549,8 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": ""
-    },
-    {
-      "id": "WG600S",
-      "name": "WG600S",
-      "sub": "Industrial Peristaltic Pump",
-      "series": "Industrial",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/WG600S.png",
-      "flow_display": "0.4 ~ 13.2 L/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "mid",
-          "high",
-          "xhigh"
-        ],
-        "fluid": [
-          "aqueous",
-          "acid",
-          "organic",
-          "viscous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Industrial WG",
-      "category_label": "페리스탈틱",
-      "flow_min": 400,
-      "flow_max": 13200,
-      "applications": [
-        "Industrial Transfer",
-        "Process Line"
-      ],
-      "heads": [
-        {
-          "name": "YT25",
-          "tube": "114#~36#",
-          "flow": "~3000mL/min"
-        },
-        {
-          "name": "YZ35",
-          "tube": "73#·82#",
-          "flow": "~13L/min"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "WG600F",
-      "name": "WG600F",
-      "sub": "Industrial Dispensing Peristaltic Pump",
-      "series": "Industrial",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/WG600F.png",
-      "flow_display": "0.0013 ~ 13.2 L/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "low",
-          "mid",
-          "high",
-          "xhigh"
-        ],
-        "fluid": [
-          "aqueous",
-          "acid",
-          "organic",
-          "viscous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Industrial WG",
-      "category_label": "페리스탈틱",
-      "flow_min": 1.3,
-      "flow_max": 13200,
-      "applications": [
-        "Industrial Transfer",
-        "Process Line"
-      ],
-      "heads": [
-        {
-          "name": "YT25",
-          "tube": "114#~36#",
-          "flow": "~3000mL/min"
-        },
-        {
-          "name": "YZ35",
-          "tube": "73#·82#",
-          "flow": "~13L/min"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "JP301S",
-      "name": "JP301S",
-      "sub": "Batch Transfer Peristaltic Pump",
-      "series": "Batch",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/JP301S.png",
-      "flow_display": "0.64 ~ 33 L/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "mid",
-          "high",
-          "xhigh"
-        ],
-        "fluid": [
-          "aqueous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Batch Transfer JP",
-      "category_label": "페리스탈틱",
-      "flow_min": 640,
-      "flow_max": 33000,
-      "applications": [
-        "Industrial Batch Transfer",
-        "Bulk Liquid"
-      ],
-      "heads": [
-        {
-          "name": "JY-Series 대구경 헤드",
-          "tube": "25# 36# 73#",
-          "flow": "~33L/min"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "JP300S",
-      "name": "JP300S",
-      "sub": "Batch Transfer Peristaltic Pump",
-      "series": "Batch",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/JP300S.png",
-      "flow_display": "0.64 ~ 33 L/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "mid",
-          "high",
-          "xhigh"
-        ],
-        "fluid": [
-          "aqueous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Batch Transfer JP",
-      "category_label": "페리스탈틱",
-      "flow_min": 640,
-      "flow_max": 33000,
-      "applications": [
-        "Industrial Batch Transfer",
-        "Bulk Liquid"
-      ],
-      "heads": [
-        {
-          "name": "JY-Series 대구경 헤드",
-          "tube": "25# 36# 73#",
-          "flow": "~33L/min"
-        }
-      ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "F"
     },
     {
       "id": "BT600P",
@@ -1808,7 +1607,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "BX600S",
@@ -1864,158 +1664,8 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": ""
-    },
-    {
-      "id": "DS600",
-      "name": "DS600",
-      "sub": "Filling System Pump",
-      "series": "Filling",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/DS600.png",
-      "flow_display": "0.005 ~ 3000 mL/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "micro",
-          "low",
-          "mid",
-          "high"
-        ],
-        "fluid": [
-          "aqueous"
-        ],
-        "func": [
-          "dispensing",
-          "filling"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Filling System",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 3000,
-      "applications": [
-        "Automated Filling",
-        "Bottling",
-        "Multi-channel"
-      ],
-      "heads": [
-        {
-          "name": "YZ15T 다채널",
-          "tube": "13#~18#",
-          "flow": "분주용"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "MF-Series",
-      "name": "MF-Series",
-      "sub": "High Protection Peristaltic Pump (MF)",
-      "series": "HighProt",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/MF-Series.png",
-      "flow_display": "0.006 ~ 7800 mL/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "micro",
-          "low",
-          "mid",
-          "high"
-        ],
-        "fluid": [
-          "aqueous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "High Protection",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.006,
-      "flow_max": 7800,
-      "applications": [
-        "Wash-down",
-        "IP66 Environment",
-        "Pharma"
-      ],
-      "heads": [
-        {
-          "name": "IP66 호환 헤드 (YT25/YZ35)",
-          "tube": "wash-down",
-          "flow": "~7800mL/min"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "MS-Series",
-      "name": "MS-Series",
-      "sub": "High Protection Peristaltic Pump (MS)",
-      "series": "HighProt",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/MS-Series.png",
-      "flow_display": "0.006 ~ 7800 mL/min",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "micro",
-          "low",
-          "mid",
-          "high"
-        ],
-        "fluid": [
-          "aqueous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "High Protection",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.006,
-      "flow_max": 7800,
-      "applications": [
-        "Wash-down",
-        "IP66 Environment",
-        "Pharma"
-      ],
-      "heads": [
-        {
-          "name": "IP66 호환 헤드 (YT25/YZ35)",
-          "tube": "wash-down",
-          "flow": "~7800mL/min"
-        }
-      ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "S"
     },
     {
       "id": "EF800",
@@ -2067,7 +1717,8 @@
           "flow": "~7800mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     },
     {
       "id": "EF900",
@@ -2120,58 +1771,8 @@
           "flow": "~7800mL/min"
         }
       ],
-      "navimro_url": ""
-    },
-    {
-      "id": "FP300S-A3",
-      "name": "FP300S-A3",
-      "sub": "Air-driven Explosion-proof Pump",
-      "series": "EX",
-      "category": "peristaltic",
-      "image": "/img/leadfluid/FP300S-A3.png",
-      "flow_display": "0.6 ~ 33 L/min",
-      "comm": "—",
-      "matching": {
-        "flow": [
-          "mid",
-          "high",
-          "xhigh"
-        ],
-        "fluid": [
-          "aqueous",
-          "acid",
-          "organic",
-          "viscous"
-        ],
-        "func": [
-          "metering"
-        ],
-        "ctrl": [
-          "local"
-        ],
-        "channels": [
-          "1",
-          "2",
-          "4"
-        ]
-      },
-      "series_label": "Explosion-proof",
-      "category_label": "페리스탈틱",
-      "flow_min": 600,
-      "flow_max": 33000,
-      "applications": [
-        "Explosion Zone",
-        "Solvent",
-        "ATEX/IECEx"
-      ],
-      "heads": [
-        {
-          "name": "방폭 헤드 (YT25/YZ35)",
-          "tube": "ATEX",
-          "flow": "~7800mL/min"
-        }
-      ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     },
     {
       "id": "TYD01-01",
@@ -2206,7 +1807,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 83.318,
       "applications": [
         "Microsphere Preparation",
@@ -2222,7 +1823,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD01-02",
@@ -2258,7 +1860,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -2274,7 +1876,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD02-01",
@@ -2310,7 +1913,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -2326,7 +1929,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD02-02",
@@ -2362,7 +1966,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -2378,7 +1982,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD02-04",
@@ -2413,7 +2018,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -2429,7 +2034,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD02-06",
@@ -2464,7 +2070,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -2480,7 +2086,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD02-10",
@@ -2515,7 +2122,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -2531,7 +2138,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TYD03-01",
@@ -2566,7 +2174,7 @@
       },
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "flow_min": 3.7e-8,
+      "flow_min": 3.7e-08,
       "flow_max": 16.663,
       "applications": [
         "Microsphere Preparation",
@@ -2582,7 +2190,8 @@
           "flow": "nL~mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-integrated"
     },
     {
       "id": "TFD01-01",
@@ -2616,7 +2225,7 @@
       },
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "flow_min": 2e-8,
+      "flow_min": 2e-08,
       "flow_max": 0.003048,
       "applications": [
         "Microfluidics",
@@ -2631,7 +2240,8 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-split"
     },
     {
       "id": "TFD02-01",
@@ -2666,7 +2276,7 @@
       },
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "flow_min": 1.63e-7,
+      "flow_min": 1.63e-07,
       "flow_max": 24.52,
       "applications": [
         "Microfluidics",
@@ -2681,7 +2291,8 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-split"
     },
     {
       "id": "TFD03-01",
@@ -2730,7 +2341,8 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-split"
     },
     {
       "id": "TFD04",
@@ -2779,155 +2391,8 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": ""
-    },
-    {
-      "id": "TYS01-02",
-      "name": "TYS01-02",
-      "sub": "Dual-Rate Industrial Syringe Pump",
-      "series": "TYS",
-      "category": "syringe",
-      "image": null,
-      "flow_display": "1 μL ~ 3000 μL",
-      "comm": "RS485 / MODBUS",
-      "matching": {
-        "flow": [
-          "micro",
-          "low"
-        ],
-        "fluid": [
-          "aqueous",
-          "organic"
-        ],
-        "func": [
-          "metering",
-          "dispensing"
-        ],
-        "ctrl": [
-          "local",
-          "comm"
-        ],
-        "channels": [
-          "1"
-        ]
-      },
-      "series_label": "Industrial TYS",
-      "category_label": "시린지",
-      "flow_min": 0.001,
-      "flow_max": 3,
-      "applications": [
-        "Filling",
-        "Pharma Dispensing",
-        "Sample Loading"
-      ],
-      "heads": [
-        {
-          "name": "1~3000μL 시린지 (Dual)",
-          "tube": "시린지 직접",
-          "flow": "분주용"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "TGD01-01",
-      "name": "TGD01-01",
-      "sub": "Precision High-Pressure Syringe Pump",
-      "series": "TGD",
-      "category": "syringe",
-      "image": null,
-      "flow_display": "3.000 pL/min ~ 214.915 mL/min",
-      "comm": "RS485 / MODBUS / WiFi",
-      "matching": {
-        "flow": [
-          "micro",
-          "low",
-          "mid"
-        ],
-        "fluid": [
-          "aqueous",
-          "organic"
-        ],
-        "func": [
-          "metering",
-          "dispensing"
-        ],
-        "ctrl": [
-          "local",
-          "comm",
-          "auto_sw"
-        ],
-        "channels": [
-          "1"
-        ]
-      },
-      "series_label": "Industrial TGD",
-      "category_label": "시린지",
-      "flow_min": 3e-9,
-      "flow_max": 214.915,
-      "applications": [
-        "High-pressure Coating",
-        "Corrosive Liquid",
-        "Continuous Injection"
-      ],
-      "heads": [
-        {
-          "name": "0.5μL~140mL 스테인리스 시린지",
-          "tube": "시린지 직접",
-          "flow": "pL~mL/min"
-        }
-      ],
-      "navimro_url": ""
-    },
-    {
-      "id": "TSD01-01",
-      "name": "TSD01-01",
-      "sub": "Two-way Push-pull Syringe Pump",
-      "series": "TSD",
-      "category": "syringe",
-      "image": null,
-      "flow_display": "Push-pull continuous mode",
-      "comm": "RS485 / MODBUS / WiFi",
-      "matching": {
-        "flow": [
-          "micro",
-          "low",
-          "mid"
-        ],
-        "fluid": [
-          "aqueous",
-          "organic"
-        ],
-        "func": [
-          "metering",
-          "dispensing"
-        ],
-        "ctrl": [
-          "local",
-          "comm",
-          "auto_sw"
-        ],
-        "channels": [
-          "1"
-        ]
-      },
-      "series_label": "Industrial TSD",
-      "category_label": "시린지",
-      "flow_min": 0.000001,
-      "flow_max": 100,
-      "applications": [
-        "Two-way Continuous",
-        "Pump Synchronization",
-        "Process R&D"
-      ],
-      "heads": [
-        {
-          "name": "Push-Pull 시린지 (2개)",
-          "tube": "시린지 직접",
-          "flow": "연속"
-        }
-      ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "syringe-split"
     },
     {
       "id": "G3030-1S",
@@ -2976,7 +2441,8 @@
           "flow": "정밀 미량"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "G6060-1S",
@@ -3026,7 +2492,8 @@
           "flow": "정밀 미량"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "CT3001S",
@@ -3076,7 +2543,8 @@
           "flow": "15~2700mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "CT3000S",
@@ -3126,7 +2594,8 @@
           "flow": "15~2700mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "CT3001F",
@@ -3176,7 +2645,8 @@
           "flow": "15~2700mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "CT3000F",
@@ -3226,7 +2696,8 @@
           "flow": "15~2700mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "gear"
     },
     {
       "id": "FG601S-A3",
@@ -3277,7 +2748,8 @@
           "flow": "4~13000mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     },
     {
       "id": "FG600S-A3",
@@ -3328,7 +2800,8 @@
           "flow": "4~13000mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     },
     {
       "id": "FG601S-W3",
@@ -3378,7 +2851,8 @@
           "flow": "4~13000mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     },
     {
       "id": "FG600S-W3",
@@ -3429,7 +2903,18 @@
           "flow": "4~13000mL/min"
         }
       ],
-      "navimro_url": ""
+      "navimro_url": "",
+      "nav_group": "ef-fg"
     }
-  ]
+  ],
+  "nav_group_urls": {
+    "_comment": "그룹별 나비엠알오 URL. 카드 렌더 시 펌프의 nav_group에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용.",
+    "S": "",
+    "L": "",
+    "F": "",
+    "ef-fg": "",
+    "syringe-integrated": "",
+    "syringe-split": "",
+    "gear": ""
+  }
 }
