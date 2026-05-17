@@ -45,26 +45,90 @@ function onInquiryClick(){
 // ===== catalog.json 매칭·렌더 (Phase 3: SSOT 통합 — 2026-05-15) =====
 let __catalogPumps = null;
 let __catalogNavGroupUrls = null;
+let __groupCapabilities = null;
+let __catalogLoadingPromise = null;
+
 function getNavimroUrl(p){
-  // 펌프별 navimro_url override 우선, 없으면 그룹 URL fallback
   if (p && p.navimro_url) return p.navimro_url;
   if (__catalogNavGroupUrls && p && p.nav_group && __catalogNavGroupUrls[p.nav_group]) return __catalogNavGroupUrls[p.nav_group];
   return '';
 }
+
+// 그룹별 capability 산출 — catalog.json만 기준 (SSOT 준수)
+function computeGroupCapabilities(pumps){
+  const ranges = ['micro','lt1','1-100','100-1000','gt1000'];
+  const caps = {};
+  (pumps||[]).forEach(p => {
+    const g = p.nav_group;
+    if (!g) return;
+    if (!caps[g]) caps[g] = { flowsAllowed: new Set() };
+    ranges.forEach(r => {
+      if (flowRangeOverlap(p, r)) caps[g].flowsAllowed.add(r);
+    });
+  });
+  return caps;
+}
+
+async function ensureCatalogLoaded(){
+  if (__catalogPumps) return;
+  if (__catalogLoadingPromise) return __catalogLoadingPromise;
+  __catalogLoadingPromise = (async () => {
+    try {
+      const res = await fetch('/_build/catalog.json', {cache:'no-store'});
+      const data = await res.json();
+      __catalogPumps = data.pumps || [];
+      __catalogNavGroupUrls = data.nav_group_urls || data.series_urls || {};
+      __groupCapabilities = computeGroupCapabilities(__catalogPumps);
+    } catch(e){
+      console.error('catalog load error:', e);
+      __catalogPumps = [];
+      __catalogNavGroupUrls = {};
+      __groupCapabilities = {};
+    } finally {
+      __catalogLoadingPromise = null;
+    }
+  })();
+  return __catalogLoadingPromise;
+}
+
+function updateQ2OptionsForUseCase(useCase){
+  const q2 = document.querySelector('fieldset[data-step="2"]');
+  if (!q2) return;
+  const isUnsure = (useCase === 'unsure');
+  const cap = (!isUnsure && __groupCapabilities) ? __groupCapabilities[useCase] : null;
+  // capability 없음 = 마이그레이션 미완료 등 → 안전책 모두 활성화
+  const allowAll = isUnsure || !cap;
+  const allowed = cap ? cap.flowsAllowed : null;
+  q2.querySelectorAll('input[name="flow_range"]').forEach(inp => {
+    const v = inp.value;
+    const label = inp.closest('label');
+    if (!label) return;
+    const alwaysOn = (v === 'unsure');
+    const ok = allowAll || alwaysOn || allowed.has(v);
+    inp.disabled = !ok;
+    label.classList.toggle('opt-disabled', !ok);
+    if (!ok && inp.checked) inp.checked = false;
+    let suffix = label.querySelector('.opt-suffix');
+    if (!ok){
+      if (!suffix){
+        suffix = document.createElement('span');
+        suffix.className = 'opt-suffix';
+        suffix.textContent = ' (해당 모델 없음)';
+        label.appendChild(suffix);
+      }
+    } else if (suffix){
+      suffix.remove();
+    }
+  });
+}
+
 async function fetchAndMatchPumps(wiz){
-  // 위저드 결과 컨테이너 = wzResult (.wz-result 스타일)
   const box = document.getElementById('wzResult');
   if (!box) return;
   box.innerHTML = '<div style="padding:14px;color:var(--muted);font-size:13px;text-align:center">매칭 중...</div>';
   box.classList.add('show');
   try {
-    if (!__catalogPumps){
-      const res = await fetch('/_build/catalog.json', {cache:'no-store'});
-      const data = await res.json();
-      __catalogPumps = data.pumps || [];
-      // 신규: nav_group_urls (사장님 7개 그룹). 구버전 series_urls 호환도 유지.
-      __catalogNavGroupUrls = data.nav_group_urls || data.series_urls || {};
-    }
+    await ensureCatalogLoaded();
     const matched = matchPumps(__catalogPumps, wiz);
     renderGroupResult(box, matched);
     requestAnimationFrame(() => box.classList.add('show'));
@@ -72,6 +136,13 @@ async function fetchAndMatchPumps(wiz){
     box.innerHTML = '<div class="no-match"><strong>카탈로그를 불러오지 못했습니다.</strong><br><button class="gr-btn primary" style="display:inline-block;margin-top:12px" onclick="openInquiry(\'wizard:fetch-error\', window.__wizSummary||\'\')">셀렙에 직접 문의 →</button></div>';
     console.error('fetchAndMatchPumps error:', e);
   }
+}
+
+// 페이지 로드 시 catalog.json prefetch
+if (typeof window !== 'undefined' && document.readyState !== 'loading'){
+  ensureCatalogLoaded();
+} else if (typeof window !== 'undefined'){
+  document.addEventListener('DOMContentLoaded', () => ensureCatalogLoaded());
 }
 const FLOW_RANGE_BOUNDS = {
   'micro':    { min: 0,        max: 0.001 },
@@ -616,6 +687,10 @@ body.iq-locked{overflow:hidden}
   .gr-btn.primary{background:var(--teal);color:#fff;border-color:var(--teal);font-size:15.5px;padding:14px 20px}
   .gr-btn.primary:hover{background:#155b48;color:#fff;border-color:#155b48}
   .gr-second{font-size:11.5px;color:var(--muted);margin-top:6px}
+  /* Q2 비활성화 옵션 */
+  .wz-q label.opt-disabled{opacity:.45;cursor:not-allowed;pointer-events:none}
+  .wz-q label.opt-disabled input{cursor:not-allowed}
+  .opt-suffix{font-size:11.5px;color:#b94545;font-weight:600;margin-left:4px}
 </style>
 </head>
 <body>
@@ -1237,6 +1312,8 @@ window.addEventListener('message', e=>{
   // 옵션 선택 시
   $form.addEventListener('change', e => {
     if (e.target.matches('input[type=radio][name="use_case"]')){
+      const useCase = e.target.value;
+      ensureCatalogLoaded().then(() => updateQ2OptionsForUseCase(useCase));
       setTimeout(() => showStep(2), 220);
       return;
     }
