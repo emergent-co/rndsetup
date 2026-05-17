@@ -75,6 +75,34 @@
   .chk-row{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12px}
   .chk-row label{display:inline-flex;align-items:center;gap:4px;cursor:pointer}
   .chk-row input{width:auto !important}
+  /* 헤드 미니 테이블 */
+  .head-table-wrap{margin-bottom:6px}
+  table.head-table{border-collapse:collapse;width:100%;font-size:12px;background:#fff;border:1px solid #e3e8ef;border-radius:4px;overflow:hidden}
+  table.head-table th,table.head-table td{border:1px solid #e3e8ef;padding:5px 8px;text-align:left}
+  table.head-table th{background:#f5f7fa;color:#5a6779;font-weight:700;font-size:11px}
+  table.head-table th.ht-action,table.head-table td.ht-action{width:36px;text-align:center}
+  table.head-table td input{width:100%;border:none;background:transparent;font:inherit;color:inherit;outline:none;padding:1px 0;font-size:12px}
+  table.head-table td input:focus{background:#eef5fb}
+  table.head-table td.ht-action button{padding:2px 5px;font-size:10.5px;color:#b94545;background:transparent;border:1px solid transparent;cursor:pointer;border-radius:3px;font-family:inherit}
+  table.head-table td.ht-action button:hover{border-color:#b94545;background:#fcecec}
+  .btn-mini{padding:4px 10px;border:1px solid #d2dae5;background:#fff;color:#1a2332;font-size:11.5px;border-radius:4px;cursor:pointer;font-family:inherit;font-weight:600}
+  .btn-mini:hover{border-color:#1a6e56;color:#1a6e56;background:#f5f9f7}
+  /* 사양 그리드 */
+  .spec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px}
+  .spec-field{display:flex;flex-direction:column;gap:3px}
+  .spec-field-wide{grid-column:1/-1}
+  .spec-label{font-size:11.5px;color:#5a6779;font-weight:700}
+  .spec-label .req{color:#b94545}
+  .spec-field input{border:1px solid #d2dae5;background:#fff;border-radius:4px;padding:5px 8px;font:inherit;font-size:12.5px;outline:none}
+  .spec-field input:focus{border-color:#1a6e56;background:#f5f9f7}
+  /* 칩 리스트 */
+  .chip-list{border:1px dashed #d2dae5;border-radius:4px;background:#fff;padding:6px;display:flex;flex-direction:column;gap:5px}
+  .chip-stack{display:flex;flex-wrap:wrap;gap:5px;min-height:0}
+  .chip{display:inline-flex;align-items:center;gap:3px;background:#e6f1fb;color:#0c447c;font-size:11.5px;padding:2px 4px 2px 8px;border-radius:10px;font-weight:600}
+  .chip-x{background:none;border:none;cursor:pointer;color:#0c447c;font-size:13px;line-height:1;padding:0 4px;border-radius:50%;font-family:inherit}
+  .chip-x:hover{background:rgba(255,255,255,.6);color:#b94545}
+  .chip-add-input{border:none;background:transparent;font:inherit;font-size:12px;outline:none;padding:3px 4px;color:#1a2332;width:100%}
+  .chip-add-input::placeholder{color:#a9b8cc}
 
   .status{padding:10px 14px;border-radius:6px;font-size:13px;margin-top:10px;display:none}
   .status.show{display:block}
@@ -196,7 +224,7 @@
           <label>검색:</label>
           <input type="text" id="catalogSearchFilter" placeholder="id·모델명·부제" oninput="catalogApplyFilters()">
         </div>
-        <div style="font-size:11.5px;color:#5a6779">▶ 토글로 매칭 키워드 편집 가능 (Phase 4 · 헤드·사양은 다음 commit에서)</div>
+        <div style="font-size:11.5px;color:#5a6779">▶ 토글 → 매칭·헤드·사양(나비엠알오 URL 포함) 편집 가능 (Phase 4 완성)</div>
       </div>
       <div class="sheet-wrap">
         <table class="sheet">
@@ -312,6 +340,7 @@ function setStatus(msg, kind){
   if (kind === 'ok') setTimeout(() => el.classList.remove('show'), 4000);
 }
 function escapeAttr(s){ return String(s ?? '').replace(/"/g, '&quot;'); }
+function escapeHtml(s){ return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 
 function rowHtml(d){
   d = d || {category:'pump'};
@@ -733,8 +762,38 @@ function catalogRowHtml(d){
   </tr>`;
 }
 
+function catalogHeadRowHtml(h){
+  h = h || {};
+  return `<tr>
+    <td><input type="text" data-head="name" value="${escapeAttr(h.name||'')}" placeholder="YZ15/YZ15T"></td>
+    <td><input type="text" data-head="tube" value="${escapeAttr(h.tube||'')}" placeholder="13#~18#"></td>
+    <td><input type="text" data-head="flow" value="${escapeAttr(h.flow||'')}" placeholder="~641mL/min"></td>
+    <td class="ht-action"><button type="button" onclick="this.closest('tr').remove()">×</button></td>
+  </tr>`;
+}
+
+function catalogAppChipHtml(text){
+  return `<span class="chip"><span class="chip-text">${escapeHtml(text)}</span><button type="button" class="chip-x" onclick="this.closest('.chip').remove()">×</button></span>`;
+}
+
+function catalogAddHead(btn){
+  const tbody = btn.previousElementSibling.querySelector('.head-tbody');
+  tbody.insertAdjacentHTML('beforeend', catalogHeadRowHtml());
+}
+
+function catalogChipKeydown(e){
+  if (e.key !== 'Enter') return;
+  e.preventDefault();
+  const v = e.target.value.trim();
+  if (!v) return;
+  const stack = e.target.parentElement.querySelector('.chip-stack');
+  stack.insertAdjacentHTML('beforeend', catalogAppChipHtml(v));
+  e.target.value = '';
+}
+
 function catalogDetailRowHtml(d){
   d = d || {};
+  // 매칭 섹션
   const m = d.matching || {};
   const axisHtml = MATCHING_AXES.map(a => {
     const sel = Array.isArray(m[a.key]) ? m[a.key] : [];
@@ -743,12 +802,56 @@ function catalogDetailRowHtml(d){
     ).join('');
     return `<div class="match-axis"><span class="axis-name">${a.label}</span><div class="chk-row">${opts}</div></div>`;
   }).join('');
+  // 헤드 섹션
+  const heads = Array.isArray(d.heads) ? d.heads : [];
+  const headRowsHtml = heads.map(h => catalogHeadRowHtml(h)).join('');
+  // 사양 섹션
+  const apps = Array.isArray(d.applications) ? d.applications : [];
+  const appsChipsHtml = apps.map(a => catalogAppChipHtml(a)).join('');
   return `<tr class="row-detail" style="display:none">
     <td colspan="10">
       <div class="detail-panel">
         <details class="detail-sec" open>
           <summary>매칭 키워드 (위저드 추천 기준)</summary>
           <div class="detail-sec-body"><div class="match-grid">${axisHtml}</div></div>
+        </details>
+        <details class="detail-sec">
+          <summary>헤드 (Heads · 펌프헤드/튜브/유량 조합)</summary>
+          <div class="detail-sec-body">
+            <div class="head-table-wrap">
+              <table class="head-table">
+                <thead><tr><th>name</th><th>tube</th><th>flow</th><th class="ht-action"></th></tr></thead>
+                <tbody class="head-tbody">${headRowsHtml}</tbody>
+              </table>
+            </div>
+            <button type="button" class="btn-mini" onclick="catalogAddHead(this)">+ 헤드 추가</button>
+          </div>
+        </details>
+        <details class="detail-sec">
+          <summary>사양 · 응용 · 나비엠알오 URL <span style="color:#b94545;font-weight:700">★</span></summary>
+          <div class="detail-sec-body">
+            <div class="spec-grid">
+              <div class="spec-field spec-field-wide">
+                <label class="spec-label">나비엠알오 URL <span class="req">★ funnel 종단</span></label>
+                <input type="url" data-field="navimro_url" value="${escapeAttr(d.navimro_url||'')}" placeholder="https://www.navimro.com/product/...">
+              </div>
+              <div class="spec-field">
+                <label class="spec-label">유량 최소 (mL/min)</label>
+                <input type="number" data-field="flow_min" value="${d.flow_min ?? ''}" step="any" placeholder="0.005">
+              </div>
+              <div class="spec-field">
+                <label class="spec-label">유량 최대 (mL/min)</label>
+                <input type="number" data-field="flow_max" value="${d.flow_max ?? ''}" step="any" placeholder="1000">
+              </div>
+              <div class="spec-field spec-field-wide">
+                <label class="spec-label">응용 (applications)</label>
+                <div class="chip-list">
+                  <div class="chip-stack">${appsChipsHtml}</div>
+                  <input type="text" class="chip-add-input" placeholder="새 응용 추가 후 Enter (예: Lab Transfer)" onkeydown="catalogChipKeydown(event)">
+                </div>
+              </div>
+            </div>
+          </div>
         </details>
       </div>
     </td>
@@ -806,18 +909,44 @@ function catalogReadSheet(){
       flow_display: inputs[4].value.trim(),
       comm: inputs[5].value.trim()
     };
-    // Phase 4 — 펼침 행의 matching 체크박스 수집
+    // Phase 4 — 펼침 행에서 matching/heads/사양 수집
     const detail = tr.nextElementSibling;
     if (detail && detail.classList.contains('row-detail')){
+      // (a) matching
       const matching = {};
       detail.querySelectorAll('input[type="checkbox"][data-axis]').forEach(cb => {
         const axis = cb.dataset.axis;
         if (!matching[axis]) matching[axis] = [];
         if (cb.checked) matching[axis].push(cb.value);
       });
-      // 빈 배열은 제거 (catalog.json 깨끗하게)
       Object.keys(matching).forEach(k => { if (!matching[k].length) delete matching[k]; });
       if (Object.keys(matching).length) r.matching = matching;
+      // (b) heads
+      const heads = [];
+      detail.querySelectorAll('tbody.head-tbody > tr').forEach(htr => {
+        const ins = htr.querySelectorAll('input[data-head]');
+        const h = {};
+        ins.forEach(inp => { const v = inp.value.trim(); if (v) h[inp.dataset.head] = v; });
+        if (Object.keys(h).length) heads.push(h);
+      });
+      if (heads.length) r.heads = heads;
+      // (c) 사양 — navimro_url, flow_min, flow_max
+      detail.querySelectorAll('input[data-field]').forEach(inp => {
+        const k = inp.dataset.field;
+        const v = inp.value.trim();
+        if (k === 'flow_min' || k === 'flow_max'){
+          if (v !== '') r[k] = parseFloat(v);
+        } else {
+          if (v !== '') r[k] = v;
+        }
+      });
+      // (d) applications 칩
+      const apps = [];
+      detail.querySelectorAll('.chip-stack .chip .chip-text').forEach(el => {
+        const t = el.textContent.trim();
+        if (t) apps.push(t);
+      });
+      if (apps.length) r.applications = apps;
     }
     // 보존된 추가 필드(applications, heads 등 — 아직 UI 없는 것)는 메타 보관소에서 합성
     // 단, matching은 이제 명시 편집이므로 extras로 덮어쓰지 않음
@@ -848,10 +977,11 @@ async function catalogLoad(){
     const serSel = document.getElementById('catalogSeriesFilter');
     serSel.innerHTML = '<option value="">전체</option>' +
       Array.from(seriesSet).sort().map(s => `<option value="${s}">${s}</option>`).join('');
-    // 행/펼침 패널 미포함 필드 (applications, heads, flow_min/max, series_label, category_label 등) 보존
-    // Phase 4부터 'matching'은 펼침 패널에서 명시 편집 — extras에서 제외
+    // UI 미포함 필드 (series_label, category_label 등) 보존
+    // Phase 4부터 matching/heads/applications/flow_min/flow_max/navimro_url은 펼침 패널에서 명시 편집 — extras에서 제외
     window.__catalogExtras = {};
-    const UI_FIELDS = ['id','name','sub','series','category','image','flow_display','comm','matching'];
+    const UI_FIELDS = ['id','name','sub','series','category','image','flow_display','comm',
+                       'matching','heads','applications','flow_min','flow_max','navimro_url'];
     pumps.forEach(p => {
       const extras = {};
       Object.keys(p).forEach(k => {
@@ -917,7 +1047,7 @@ async function catalogSaveAndBuild(){
       _base_url: base._base_url || 'https://cellab.kr/',
       version: base.version || '1.0',
       updated_at: today,
-      source: 'admin.html (Phase 4 editor — matching)',
+      source: 'admin.html (Phase 4 editor — matching/heads/specs)',
       count: rows.length,
       pumps: rows
     };
@@ -927,7 +1057,7 @@ async function catalogSaveAndBuild(){
       method: 'PUT',
       headers: { Authorization: 'Bearer ' + token, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        message: `Update catalog.json (admin Phase 4 — matching) ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
+        message: `Update catalog.json (admin Phase 4 — matching/heads/specs) ${new Date().toISOString().slice(0,16).replace('T',' ')}`,
         content: contentB64,
         sha: meta.sha
       })

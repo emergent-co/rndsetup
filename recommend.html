@@ -22,6 +22,218 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-CN3E3PVQVD');
+function onInquiryClick(){
+  let summary = window.__wizLast ? window.__wizLast.wizSummary : '';
+  // 추가 정보 토글 항목 수집
+  function val(n){ const e=document.querySelector('[name="'+n+'"]'); return e?e.value.trim():''; }
+  function radioVal(n){ const e=document.querySelector('[name="'+n+'"]:checked'); return e?e.value:''; }
+  const bp = val('back_pressure');
+  const ip = radioVal('ip_grade');
+  const med = val('medium_note');
+  const req = val('extra_req');
+  const note = document.getElementById('wzExtraNote');
+  const noteVal = note ? note.value.trim() : '';
+  let extras = '';
+  if (bp)  extras += '\n· 토출 배압/라인: ' + bp;
+  if (ip)  extras += '\n· IP 등급: ' + ip;
+  if (med) extras += '\n· 매질 특이사항: ' + med;
+  if (req) extras += '\n· 부가 요구사항: ' + req;
+  if (noteVal) extras += '\n· 기타 요청: ' + noteVal;
+  if (extras) summary += '\n\n[추가 정보]' + extras;
+  openInquiry(window.__wizLast ? window.__wizLast.setupId : 'wizard:general', summary);
+}
+// ===== catalog.json 매칭·렌더 (Phase 3: SSOT 통합 — 2026-05-15) =====
+let __catalogPumps = null;
+async function fetchAndMatchPumps(wiz){
+  const box = document.getElementById('matchedPumps');
+  if (!box) return;
+  box.innerHTML = '<div style="padding:14px;color:var(--muted);font-size:13px">매칭 펌프 불러오는 중...</div>';
+  try {
+    if (!__catalogPumps){
+      const res = await fetch('/_build/catalog.json', {cache:'no-store'});
+      const data = await res.json();
+      __catalogPumps = data.pumps || [];
+    }
+    const matched = matchPumps(__catalogPumps, wiz);
+    renderMatched(box, matched);
+  } catch(e){
+    box.innerHTML = '<div class="no-match">매칭 펌프 데이터를 불러오지 못했습니다. 견적 문의로 안내드릴게요.</div>';
+    console.error('fetchAndMatchPumps error:', e);
+  }
+}
+function matchPumps(pumps, wiz){
+  const extras = wiz.extras || {};
+  const scored = pumps.map(p => {
+    const m = p.matching || {};
+    let score = 0, total = 0, penalty = 0;
+    // === 양수 점수 ===
+    if (wiz.flow && wiz.flow.length && m.flow && m.flow.length){
+      total += 2;
+      const hit = wiz.flow.some(f => m.flow.includes(f));
+      if (hit) score += 2;
+    }
+    if (wiz.func && wiz.func.length && m.func && m.func.length){
+      total += 2;
+      const hit = wiz.func.some(f => m.func.includes(f));
+      if (hit) score += 2;
+    }
+    if (wiz.ctrl && wiz.ctrl.length && m.ctrl && m.ctrl.length){
+      total += 1;
+      const hit = wiz.ctrl.some(c => m.ctrl.includes(c));
+      if (hit) score += 1;
+    }
+    if (wiz.fluid && wiz.fluid.length && m.fluid && m.fluid.length){
+      total += 1;
+      const hit = wiz.fluid.some(f => m.fluid.includes(f));
+      if (hit) score += 1;
+    }
+    if (wiz.channels && m.channels && m.channels.length){
+      total += 1;
+      if (m.channels.includes(wiz.channels)) score += 1;
+    }
+
+    // === 음수 점수 (부적합 페널티) ===
+    const series = p.series || '';
+    const cat = p.category || '';
+
+    // 방폭(EX) 펌프 + 일반 액체(인화성·유기용매·산알칼리 미선택) → -2 (overspec)
+    if (series === 'EX' && wiz.fluid && wiz.fluid.length){
+      const hazardous = wiz.fluid.some(f => ['flammable','organic','acid'].includes(f));
+      if (!hazardous) penalty += 2;
+    }
+    // 일반 펌프 + 인화성·산알칼리 → -3 (위험 미스매칭)
+    if (series !== 'EX' && wiz.fluid && wiz.fluid.includes('flammable')) penalty += 3;
+    if (series !== 'EX' && series !== 'HighProt' && wiz.fluid && wiz.fluid.includes('acid')) penalty += 1.5;
+
+    // 시린지 펌프 + 대용량 유량(high/xhigh) → -3 (불가능)
+    if (cat === 'syringe' && wiz.flow && wiz.flow.some(f => ['high','xhigh'].includes(f))) penalty += 3;
+    // 시린지 펌프 + 연속 이송 기능 메인 → -1
+    if (cat === 'syringe' && wiz.func && wiz.func.includes('metering') && !wiz.func.includes('dispensing')) penalty += 1;
+
+    // 기어 펌프 + 마이크로 유량 → -2 (부정확)
+    if (cat === 'gear' && wiz.flow && wiz.flow.includes('micro')) penalty += 2;
+
+    // 대용량(JP/WT) + 마이크로 유량 → -2
+    if ((series === 'Batch' || /^WT/.test(p.id || '')) && wiz.flow && wiz.flow.includes('micro')) penalty += 2;
+
+    // === 추가 정보 토글 연동 ===
+    // IP 등급
+    if (extras.ip_grade === 'ip66'){
+      if (series === 'HighProt' || series === 'EX') score += 1.5;  // 매칭 가산
+      else penalty += 0.5;                                          // 일반 펌프는 약간 페널티
+      total += 1.5;
+    }
+    if (extras.ip_grade === 'ip54'){
+      if (series === 'HighProt' || series === 'EX' || series === 'Industrial') score += 0.5;
+      total += 0.5;
+    }
+    // 매질 특이사항 키워드 감지
+    const note = (extras.medium_note || '') + ' ' + (extras.back_pressure || '');
+    if (note){
+      if (/인화|flammable|용매|solvent|아세톤|에탄올|메탄올/i.test(note)){
+        if (series === 'EX') score += 1; else penalty += 1.5;
+      }
+      if (/부식|corrosi|hcl|naoh|황산|sulfuric/i.test(note)){
+        if (series === 'EX' || series === 'HighProt') score += 0.5; else penalty += 0.8;
+      }
+      if (/점도|viscos|cP|점성/i.test(note)){
+        if (cat === 'gear') score += 1.5; else penalty += 0.5;
+      }
+      if (/고온|high temp|80℃|100℃|끓는/i.test(note)){
+        if (series === 'HighProt' || series === 'EX') score += 0.5;
+      }
+      if (/입자|particle|슬러리|slurry/i.test(note)){
+        if (cat === 'peristaltic') score += 0.5;
+        if (cat === 'gear') penalty += 1;
+      }
+    }
+    // 튜브 재질 매칭 (교체 분기, Viton/PTFE면 화학내성 요구)
+    if (extras.tube_mat && extras.tube_mat.length){
+      if (extras.tube_mat.some(t => ['viton','ptfe'].includes(t))){
+        if (series === 'EX' || series === 'HighProt') score += 0.5;
+      }
+    }
+
+    const finalScore = score - penalty;
+    const ratio = total > 0 ? finalScore/total : 0;
+    return { pump: p, score: finalScore, ratio, penalty };
+  });
+
+  scored.sort((a,b) => b.ratio - a.ratio || b.score - a.score);
+  // ratio >= 0.5 상위 3개, 없으면 페널티 적은 순으로 상위 3개 (음수 점수여도 표시)
+  let top = scored.filter(x => x.ratio >= 0.5).slice(0, 3);
+  if (top.length === 0) top = scored.slice(0, 3);
+  return top;
+}
+function renderMatched(box, matched){
+  if (!matched.length){
+    box.innerHTML = '<div class="no-match"><strong>적합한 모델을 찾지 못했습니다.</strong><br>아래 견적 문의로 사장님이 직접 추천드립니다.</div>';
+    return;
+  }
+  const primary = matched[0];
+  const subs = matched.slice(1, 3);
+  let h = '<div style="margin-bottom:10px;font-size:13px;font-weight:700;color:var(--navy)">📋 추천 모델 + 펌프헤드 조합 (' + matched.length + '개)</div>';
+  h += '<div class="match-layout">';
+  // 1순위 (큰 카드)
+  h += renderPrimaryCard(primary);
+  // 2~3순위 (오른쪽 2행, 작은 카드)
+  if (subs.length){
+    h += '<div class="match-sub-col">';
+    subs.forEach(s => { h += renderSubCard(s); });
+    h += '</div>';
+  }
+  h += '</div>';
+  box.innerHTML = h;
+}
+function renderPrimaryCard({pump:p, score, ratio}){
+  const img = p.image
+    ? '<div class="mc-img"><img src="'+escapeHtml(p.image)+'" alt="'+escapeHtml(p.name)+'" loading="lazy"></div>'
+    : '<div class="mc-img ph">'+escapeHtml(p.name)+'</div>';
+  const matchPct = Math.round(ratio * 100);
+  const seriesLabel = (p.series_label || p.series || '');
+  const heads = (p.heads || []).slice(0, 3);
+  const headsHtml = heads.map(h =>
+    '<li style="font-size:11.5px;color:var(--text);margin-bottom:3px">'+
+      '<strong style="color:var(--navy)">'+escapeHtml(h.name)+'</strong>'+
+      (h.tube ? ' · '+escapeHtml(h.tube) : '')+
+      (h.flow ? ' · '+escapeHtml(h.flow) : '')+
+    '</li>'
+  ).join('');
+  return '<div class="match-card primary">' + img +
+    '<div class="mc-body">' +
+      '<div class="mc-head"><div class="mc-name" style="font-size:17px">'+escapeHtml(p.name)+'</div><span class="mc-badge">'+escapeHtml(seriesLabel)+'</span></div>' +
+      '<div class="mc-sub">'+escapeHtml(p.sub||'')+'</div>' +
+      '<div class="mc-spec"><strong>유량</strong> '+escapeHtml(p.flow_display||'')+'</div>' +
+      (p.speed_display ? '<div class="mc-spec"><strong>속도</strong> '+escapeHtml(p.speed_display)+'</div>' : '') +
+      (heads.length ? '<div style="margin-top:8px;padding-top:8px;border-top:1px solid #eef1f5"><div style="font-size:11px;color:var(--muted);font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em">호환 펌프헤드</div><ul style="list-style:none;padding:0;margin:0">'+headsHtml+'</ul></div>' : '') +
+      '<div class="mc-score">조건 매칭 '+matchPct+'%</div>' +
+      '<div class="mc-actions">' +
+        '<a class="mc-btn" href="/leadfluid.html#'+encodeURIComponent(p.id)+'" target="_blank">자세히</a>' +
+        (p.navimro_url ? '<a class="mc-btn" href="'+escapeHtml(p.navimro_url)+'" target="_blank" rel="noopener">나비엠알오</a>' : '') +
+        '<a class="mc-btn primary" href="/inquiry.html?product='+encodeURIComponent(p.id)+'">견적 문의</a>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+function renderSubCard({pump:p, score, ratio}){
+  const matchPct = Math.round(ratio * 100);
+  const head = (p.heads && p.heads[0]) ? p.heads[0] : null;
+  return '<div class="match-card sub">' +
+    '<div class="mc-body" style="padding:10px 12px">' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">' +
+        '<div class="mc-name" style="font-size:13.5px">'+escapeHtml(p.name)+'</div>' +
+        '<span style="font-size:10px;color:var(--teal);font-weight:700">'+matchPct+'%</span>' +
+      '</div>' +
+      '<div style="font-size:11px;color:var(--muted);margin-bottom:4px">'+escapeHtml(p.flow_display||'')+'</div>' +
+      (head ? '<div style="font-size:10.5px;color:var(--text)"><strong>'+escapeHtml(head.name)+'</strong></div>' : '') +
+      '<div style="margin-top:6px;display:flex;gap:4px">' +
+        '<a class="mc-btn" style="padding:5px 6px;font-size:10.5px;flex:1" href="/leadfluid.html#'+encodeURIComponent(p.id)+'" target="_blank">상세</a>' +
+        '<a class="mc-btn primary" style="padding:5px 6px;font-size:10.5px;flex:1" href="/inquiry.html?product='+encodeURIComponent(p.id)+'">견적</a>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+function escapeHtml(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 </script>
 
 <style>
@@ -85,7 +297,15 @@ a:hover{text-decoration:underline}
 .wz-q legend{display:block;font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:14px;padding:0;line-height:1.5}
 .wz-q legend .num{display:inline-block;width:22px;height:22px;border-radius:50%;background:var(--navy);color:#fff;font-size:11.5px;font-weight:800;text-align:center;line-height:22px;margin-right:8px}
 .wz-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.wz-options.single{display:block}
+.wz-options.single > *{width:100%;margin-bottom:12px}
+.wz-options.single > *:last-child{margin-bottom:0}
+.opt-inline{display:flex;flex-wrap:wrap;gap:6px;padding-bottom:2px}
+.opt-inline label{white-space:nowrap;flex:0 0 auto;padding:7px 10px;font-size:12.5px;gap:7px}
+@media(max-width:480px){.opt-inline label{padding:6px 8px;font-size:12px}}
 .wz-options label{display:flex;align-items:center;gap:9px;padding:10px 14px;background:#fff;border:1px solid var(--border);border-radius:8px;font-size:13px;cursor:pointer;transition:all .15s;color:var(--text)}
+@media(max-width:600px){.wz-options label{padding:8px 10px;font-size:12.5px;gap:6px}}
+@media(max-width:400px){.wz-options label{padding:7px 9px;font-size:12px}}
 .wz-options label:hover{border-color:var(--teal);background:#fafdfc}
 .wz-options input{accent-color:var(--teal);flex-shrink:0}
 .wz-options label:has(input:checked){border-color:var(--teal);background:var(--soft);font-weight:600;color:var(--navy)}
@@ -324,6 +544,32 @@ body.iq-locked{overflow:hidden}
   body.embed-mode{background:#fff;overflow:hidden;margin:0;padding:0}
   body.embed-mode .wizard-wrap{padding:0;min-height:auto}
   body.embed-mode .wizard-card{box-shadow:none;border:none;padding:14px 16px 8px}
+
+  /* 매칭 펌프 결과 — 1+2 그리드 */
+  .match-layout{display:grid;grid-template-columns:1.6fr 1fr;gap:10px;margin-top:14px}
+  .match-sub-col{display:flex;flex-direction:column;gap:8px}
+  @media(max-width:600px){.match-layout{grid-template-columns:1fr}}
+  .match-card{background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;transition:all .15s}
+  .match-card:hover{border-color:var(--teal);box-shadow:0 4px 12px rgba(10,37,64,.06)}
+  .match-card.primary{border-color:var(--teal);border-width:1.5px}
+  .match-card.sub{flex:1}
+  .match-card .mc-img{aspect-ratio:2/1;background:#fff;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:6px}
+  .match-card .mc-img img{max-width:80%;max-height:90%;object-fit:contain}
+  .match-card .mc-img.ph{color:#a9b8cc;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  .match-card .mc-body{padding:10px 12px;flex:1;display:flex;flex-direction:column}
+  .match-card .mc-head{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:3px}
+  .match-card .mc-name{font-size:14px;font-weight:800;color:var(--navy)}
+  .match-card .mc-badge{font-size:10px;font-weight:700;color:var(--teal);background:#f5f9f7;padding:1px 5px;border-radius:4px;border:1px solid #d9ead5;white-space:nowrap}
+  .match-card .mc-sub{font-size:11px;color:var(--muted);margin-bottom:5px}
+  .match-card .mc-spec{font-size:11.5px;color:var(--text);margin-bottom:3px}
+  .match-card .mc-spec strong{color:var(--navy);font-weight:700}
+  .match-card .mc-score{font-size:10px;color:var(--teal);font-weight:700;margin-top:6px}
+  .match-card .mc-actions{display:flex;gap:5px;margin-top:8px}
+  .match-card .mc-btn{flex:1;padding:6px 7px;border:1px solid var(--border);background:#fff;color:var(--text);font-size:11px;font-weight:600;border-radius:5px;text-decoration:none;text-align:center;transition:all .15s}
+  .match-card .mc-btn:hover{border-color:var(--teal);color:var(--teal);background:#f5f9f7}
+  .match-card .mc-btn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .match-card .mc-btn.primary:hover{background:#155b48}
+  .no-match{padding:18px;background:#fff8e6;border:1px solid #f0d976;border-radius:8px;text-align:center;font-size:13px;color:#6c5005}
 </style>
 </head>
 <body>
@@ -356,119 +602,156 @@ body.iq-locked{overflow:hidden}
   <div class="wizard-card">
     <div class="wz-head">
       <span class="wz-mark">30초 추천</span>
-      <h2>30초 안에 추천해드립니다</h2>
+      <h2>30초 안에 추천해드립니다 (v2)</h2>
       <p>해당하는 항목을 모두 선택해주세요 (복수 선택 가능). 정확한 모델 비교는 추천 결과의 링크에서 이어집니다.</p>
     </div>
 
     <form class="wz-form" id="wzForm">
       <div class="wz-progress">
         <div class="wz-progress-bar"><div class="wz-progress-fill" id="wzProgressFill"></div></div>
-        <div class="wz-progress-text" id="wzProgressText">1 / 7</div>
+        <div class="wz-progress-text" id="wzProgressText">1 / 5</div>
       </div>
-
+      <!-- Q1: 상황 분류 (라우팅) -->
       <fieldset class="wz-q active" data-step="1">
-        <legend><span class="num">1</span>어떤 작업이 필요하신가요?</legend>
+        <legend><span class="num">1</span>어떤 상황이신가요? <span style="color:#b94545">*</span></legend>
         <div class="wz-options">
-          <label><input type="checkbox" name="work" value="continuous"> 연속으로 흘려보내기</label>
-          <label><input type="checkbox" name="work" value="dispense"> 정해진 양 반복 분주</label>
-          <label><input type="checkbox" name="work" value="micro"> μL 단위 미량 주입</label>
-          <label><input type="checkbox" name="work" value="large"> 대용량 (L/min 이상)</label>
-          <label><input type="checkbox" name="work" value="oem"> 장비 내장(OEM)</label>
+          <label><input type="radio" name="situation" value="replace"> 현재 쓰는 펌프가 있어요 (교체·업그레이드)</label>
+          <label><input type="radio" name="situation" value="new"> 펌프가 없어서 찾고 있어요 (신규 도입)</label>
         </div>
       </fieldset>
 
-      <fieldset class="wz-q" data-step="2">
-        <legend><span class="num">2</span>다루는 액체에 가까운 건?</legend>
-        <div class="wz-options">
-          <label><input type="checkbox" name="fluid" value="aqueous"> 수용액·배지·일반 시약</label>
-          <label><input type="checkbox" name="fluid" value="medical"> 의료·멸균 등급(혈액·세포·약액)</label>
-          <label><input type="checkbox" name="fluid" value="viscous"> 점성·기름·코팅·수지</label>
-          <label><input type="checkbox" name="fluid" value="flammable"> 인화성·휘발성·부식성</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="wz-q" data-step="3">
-        <legend><span class="num">3</span>필요한 최대 유량은?</legend>
-        <div class="wz-options">
-          <label><input type="checkbox" name="flow" value="micro"> 마이크로 (1 mL/min 미만, μL 단위)</label>
-          <label><input type="checkbox" name="flow" value="low"> 저유량 (1 ~ 100 mL/min)</label>
-          <label><input type="checkbox" name="flow" value="mid"> 중유량 (100 ~ 1000 mL/min)</label>
-          <label><input type="checkbox" name="flow" value="high"> 고유량 (1 ~ 10 L/min)</label>
-          <label><input type="checkbox" name="flow" value="xhigh"> 초대용량 (10 L/min 이상)</label>
-          <label><input type="checkbox" name="flow" value="unsure"> 모르겠음 / 미정</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="wz-q" data-step="4">
-        <legend><span class="num">4</span>PC/외부 제어 또는 통신이 필요한가요?</legend>
-        <div class="wz-options">
-          <label><input type="checkbox" name="ctrl" value="none"> 필요 없음 (수동 패널만 OK)</label>
-          <label><input type="checkbox" name="ctrl" value="analog"> 아날로그 (0-10V / 4-20mA)</label>
-          <label><input type="checkbox" name="ctrl" value="rs485"> RS485 / MODBUS</label>
-          <label><input type="checkbox" name="ctrl" value="usb"> USB / PC 소프트웨어</label>
-          <label><input type="checkbox" name="ctrl" value="wifi"> WiFi 무선</label>
-          <label><input type="checkbox" name="ctrl" value="full"> 전부 필요</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="wz-q" data-step="5">
-        <legend><span class="num">5</span>사용 빈도는 어느 정도인가요?</legend>
-        <div class="wz-options">
-          <label><input type="checkbox" name="freq" value="occasional"> 실험할 때만 가끔</label>
-          <label><input type="checkbox" name="freq" value="daily"> 매일 몇 시간</label>
-          <label><input type="checkbox" name="freq" value="continuous"> 24시간 연속·장시간</label>
-          <label><input type="checkbox" name="freq" value="multi"> 여러 라인 동시 운전</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="wz-q" data-step="6">
-        <legend><span class="num">6</span>필요한 채널 수는 몇 개인가요?</legend>
-        <div class="wz-options">
-          <label><input type="checkbox" name="channels" value="1"> 1채널 (단일 라인)</label>
-          <label><input type="checkbox" name="channels" value="2"> 2채널</label>
-          <label><input type="checkbox" name="channels" value="4"> 4채널</label>
-          <label><input type="checkbox" name="channels" value="multi"> 다중 채널 (8/12/16/24)</label>
-          <label><input type="checkbox" name="channels" value="unsure"> 모르겠음 / 미정</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="wz-q" data-step="7">
-        <legend><span class="num">7</span>현재 사용 중인 튜브 / 펌프 모델 (선택)</legend>
-        <div class="wz-options">
-          <div style="margin-bottom:14px">
-            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:6px">튜브 재질 (복수 선택 가능, 없으면 건너뛰기)</span>
-            <div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px">
-              <label><input type="checkbox" name="tube_mat" value="silicone"> 실리콘 (Silicone)</label>
-              <label><input type="checkbox" name="tube_mat" value="pharmed"> PharMed BPT</label>
-              <label><input type="checkbox" name="tube_mat" value="tygon"> Tygon (R-3603 / A-60-F / LFL)</label>
-              <label><input type="checkbox" name="tube_mat" value="norprene"> Norprene</label>
-              <label><input type="checkbox" name="tube_mat" value="viton"> Viton (FKM)</label>
-              <label><input type="checkbox" name="tube_mat" value="pvc"> PVC</label>
-              <label><input type="checkbox" name="tube_mat" value="ptfe"> PTFE / Teflon</label>
-              <label><input type="checkbox" name="tube_mat" value="pu"> PU (폴리우레탄)</label>
-              <label><input type="checkbox" name="tube_mat" value="unsure"> 모르겠음</label>
+      <!-- Q2-A: 교체 분기 (situation=replace일 때만) -->
+      <fieldset class="wz-q" data-step="2" data-branch="replace">
+        <legend><span class="num">2</span>현재 쓰고 계신 펌프 정보 <span style="color:#b94545">*</span></legend>
+        <div class="wz-options single">
+          <div style="margin-bottom:12px">
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">현재 펌프 모델명 <span style="color:#b94545">*</span></div>
+            <input type="text" name="current_model" placeholder="예: EYELA MP-2000, Watson-Marlow 313, Cole-Parmer Masterflex L/S" style="width:100%;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
+          </div>
+          <div style="margin:14px 0 8px;font-size:12.5px;color:var(--muted);font-weight:600">교체·업그레이드 이유 <span style="color:#b94545">*</span> <span style="font-weight:400">(복수 선택 가능)</span></div>
+          <div class="opt-inline" style="font-size:13px">
+            <label><input type="checkbox" name="reason" value="flow_up"> 유량 증가 필요</label>
+            <label><input type="checkbox" name="reason" value="control"> 제어 강화</label>
+            <label><input type="checkbox" name="reason" value="pressure"> 압력 부족</label>
+            <label><input type="checkbox" name="reason" value="precision"> 정밀도 부족</label>
+            <label><input type="checkbox" name="reason" value="aged"> 노후·고장</label>
+            <label><input type="checkbox" name="reason" value="comm"> 통신·자동화 필요</label>
+            <label><input type="checkbox" name="reason" value="etc"> 기타</label>
+          </div>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border)">
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:8px;font-weight:600">현재 사용 튜브 치수 <span style="color:#b94545">*</span></div>
+            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+              <input type="text" name="tube_id" placeholder="내경 mm (예: 3.17)" style="flex:0 0 130px;width:130px;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px">
+              <input type="text" name="tube_od" placeholder="외경 mm (예: 6.4)" style="flex:0 0 130px;width:130px;padding:9px 11px;border:1px solid var(--border);border-radius:6px;font-size:13px">
+              <label style="display:inline-flex;align-items:center;gap:6px;font-size:13px;white-space:nowrap;flex:0 0 auto;padding:7px 12px;background:#fafbfd;border:1px solid var(--border);border-radius:6px"><input type="checkbox" name="tube_size_unknown" value="1"> 모름</label>
             </div>
           </div>
-          <label style="display:block;margin-bottom:10px">
-            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">튜브 내경 (mm) — 없으면 비워두세요</span>
-            <input type="text" name="tube_id" placeholder="예: 3.17, 4.8, 6.4" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
-          </label>
-          <label style="display:block;margin-bottom:10px">
-            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">튜브 외경 (mm) — 없으면 비워두세요</span>
-            <input type="text" name="tube_od" placeholder="예: 6.4, 9.6, 12.7" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
-          </label>
-          <label style="display:block;margin-bottom:6px">
-            <span style="font-size:12.5px;color:var(--muted);display:block;margin-bottom:4px">현재/대체 검토 중인 펌프 모델 — 없으면 비워두세요</span>
-            <input type="text" name="current_model" placeholder="예: Eyela MP-2000, Cole-Parmer Masterflex" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px">
-          </label>
-          <div style="font-size:12px;color:var(--muted);margin-top:8px">동일/유사 사양 대체 제품과 호환 튜브·헤드 추천에 활용됩니다.</div>
+          <div style="margin:14px 0 8px;font-size:12.5px;color:var(--muted);font-weight:600">튜브 재질 <span style="color:#b94545">*</span> <span style="font-weight:400">(복수 선택 가능)</span></div>
+          <div class="opt-inline" style="font-size:13px">
+            <label><input type="checkbox" name="tube_mat" value="silicone"> 실리콘</label>
+            <label><input type="checkbox" name="tube_mat" value="pharmed"> PharMed BPT</label>
+            <label><input type="checkbox" name="tube_mat" value="tygon"> Tygon</label>
+            <label><input type="checkbox" name="tube_mat" value="norprene"> Norprene</label>
+            <label><input type="checkbox" name="tube_mat" value="viton"> Viton</label>
+            <label><input type="checkbox" name="tube_mat" value="pvc"> PVC</label>
+            <label><input type="checkbox" name="tube_mat" value="ptfe"> PTFE</label>
+            <label><input type="checkbox" name="tube_mat" value="pu"> PU</label>
+            <label><input type="checkbox" name="tube_mat" value="unknown"> 재질 모름</label>
+          </div>
         </div>
       </fieldset>
+
+      <!-- Q2-B: 신규 도입 분기 (situation=new일 때만) -->
+      <fieldset class="wz-q" data-step="2" data-branch="new">
+        <legend><span class="num">2</span>이송 유체와 필요 유량 <span style="color:#b94545">*</span></legend>
+        <div class="wz-options single">
+          <div style="margin-bottom:8px;font-size:12.5px;color:var(--muted);font-weight:600">이송 유체 <span style="color:#b94545">*</span> <span style="font-weight:400">(복수 선택)</span></div>
+          <div class="opt-inline" style="font-size:13px;margin-bottom:14px">
+            <label><input type="checkbox" name="fluid" value="aqueous"> 물·수용액·일반 시약</label>
+            <label><input type="checkbox" name="fluid" value="acid"> 산·알칼리</label>
+            <label><input type="checkbox" name="fluid" value="organic"> 유기용매</label>
+            <label><input type="checkbox" name="fluid" value="viscous"> 점성액·기름</label>
+            <label><input type="checkbox" name="fluid" value="slurry"> 슬러리·입자 함유</label>
+            <label><input type="checkbox" name="fluid" value="other"> 기타</label>
+          </div>
+          <div style="margin-bottom:6px;font-size:12.5px;color:var(--muted);font-weight:600">필요 유량 범위 <span style="color:#b94545">*</span> <span style="font-weight:400">(복수 선택 가능)</span></div>
+          <div style="display:flex;flex-direction:column;gap:5px;font-size:13px">
+            <label><input type="checkbox" name="flow" value="micro"> 마이크로 (1 mL/min 미만, μL 단위)</label>
+            <label><input type="checkbox" name="flow" value="low"> 저유량 (1 ~ 100 mL/min)</label>
+            <label><input type="checkbox" name="flow" value="mid"> 중유량 (100 ~ 1000 mL/min)</label>
+            <label><input type="checkbox" name="flow" value="high"> 고유량 (1 ~ 10 L/min)</label>
+            <label><input type="checkbox" name="flow" value="xhigh"> 초대용량 (10 L/min 이상)</label>
+            <label><input type="checkbox" name="flow" value="unsure"> 협의·미정</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Q3: 기능 중심 -->
+      <fieldset class="wz-q" data-step="3">
+        <legend><span class="num">3</span>주로 어떤 기능이 필요하신가요? <span style="color:#b94545">*</span> <span style="font-size:12px;font-weight:400;color:var(--muted)">(복수 선택 가능)</span></legend>
+        <div class="wz-options">
+          <label><input type="checkbox" name="func" value="metering"> 정량 이송 (일정 유량·연속)</label>
+          <label><input type="checkbox" name="func" value="dispensing"> 분주 (정해진 양 반복)</label>
+          <label><input type="checkbox" name="func" value="filling"> 충진 (용기·라인 채우기)</label>
+          <label><input type="checkbox" name="func" value="pc_prog"> PC 프로그램 제어 (자체 SW로 시퀀스 제어)</label>
+        </div>
+      </fieldset>
+
+      <!-- Q4: 제어 방식 -->
+      <fieldset class="wz-q" data-step="4">
+        <legend><span class="num">4</span>어떤 방식으로 제어하실 건가요? <span style="color:#b94545">*</span> <span style="font-size:12px;font-weight:400;color:var(--muted)">(복수 선택 가능)</span></legend>
+        <div class="wz-options">
+          <label><input type="checkbox" name="ctrl" value="local"> 로컬 제어 (다이얼·키패드·버튼, PC 연동 없음)</label>
+          <label><input type="checkbox" name="ctrl" value="comm"> PC·PLC 통신 연동 (RS485/RS232)</label>
+          <label><input type="checkbox" name="ctrl" value="auto_sw"> 자동제어 시스템 구축 (자체 SW로 펌프 직접 제어)</label>
+        </div>
+      </fieldset>
+
+      <!-- Q5: 채널 수 -->
+      <fieldset class="wz-q" data-step="5">
+        <legend><span class="num">5</span>동시에 몇 개의 라인이 필요하신가요? <span style="color:#b94545">*</span></legend>
+        <div class="wz-options">
+          <label><input type="radio" name="channels" value="1"> 1채널 (단일 라인)</label>
+          <label><input type="radio" name="channels" value="2"> 2채널</label>
+          <label><input type="radio" name="channels" value="4"> 4채널</label>
+          <label><input type="radio" name="channels" value="multi"> 다채널 (8/12/16/24)</label>
+        </div>
+      </fieldset>
+
+      
+
+      <!-- 추가 정보 토글 (선택) -->
+      <details class="wz-extra" style="margin-top:18px;border-top:1px solid var(--border);padding-top:14px">
+        <summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--teal);user-select:none">추가 정보 (선택, 클릭해서 펼치기) ▾</summary>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px">
+          <div>
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">토출 배압 / 라인 구성</div>
+            <textarea name="back_pressure" placeholder="펌프~다음 장치까지 거리, 높이, 중간 필터 유무 등" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;min-height:50px;resize:vertical"></textarea>
+          </div>
+          <div>
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">IP 방수 등급 요건</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px 12px;font-size:13px">
+              <label><input type="radio" name="ip_grade" value="none"> 불필요</label>
+              <label><input type="radio" name="ip_grade" value="ip54"> IP54</label>
+              <label><input type="radio" name="ip_grade" value="ip66"> IP66</label>
+              <label><input type="radio" name="ip_grade" value="unsure"> 모름·협의</label>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">매질 특이사항</div>
+            <textarea name="medium_note" placeholder="점도(cP), 부식성, 온도(℃), 입자 함유 등" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;min-height:50px;resize:vertical"></textarea>
+          </div>
+          <div>
+            <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">부가 요구사항 (캘리브레이션 성적서 / A/S 패키지 / 설치 지원 등)</div>
+            <textarea name="extra_req" placeholder="필요한 부가 사항을 자유롭게 적어주세요" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;min-height:50px;resize:vertical"></textarea>
+          </div>
+        </div>
+      </details>
 
       <div class="wz-actions">
         <button type="button" class="wz-btn alt" id="wzPrev" style="display:none">← 이전</button>
         <button type="button" class="wz-btn" id="wzNext" style="display:none">다음 →</button>
-        <button type="button" class="wz-btn" id="wzRun" style="display:none">추천 받기 →</button>
+        <button type="button" class="wz-btn" id="wzRun" style="display:none">이 조건으로 문의하기 →</button>
         <button type="button" class="wz-btn alt" id="wzReset" style="display:none">처음부터</button>
         <span class="wz-hint" id="wzHint">옵션을 선택하면 다음 질문으로 자동 이동합니다</span>
       </div>
@@ -911,45 +1194,83 @@ window.addEventListener('message', e=>{
     criteria:'#faq-criteria',
     tubing:'#faq-tubing'
   };
-  const TOTAL = 7;
+  const TOTAL = 5;
   let currentStep = 1;
 
   function showStep(n){
+    const situation = getVal('situation');
     document.querySelectorAll('.wz-q').forEach(q=>{
-      q.classList.toggle('active', parseInt(q.dataset.step)===n);
+      const stepMatch = parseInt(q.dataset.step) === n;
+      const branch = q.dataset.branch;
+      let active = stepMatch;
+      if (stepMatch && branch && branch !== situation) active = false;
+      q.classList.toggle('active', active);
     });
     currentStep = n;
     document.getElementById('wzProgressFill').style.width = (n/TOTAL*100)+'%';
     document.getElementById('wzProgressText').textContent = `${n} / ${TOTAL}`;
     document.getElementById('wzPrev').style.display  = n>1 ? '' : 'none';
     document.getElementById('wzReset').style.display = n>1 ? '' : 'none';
-    document.getElementById('wzRun').style.display   = n===TOTAL ? '' : 'none';
-    document.getElementById('wzHint').textContent = n===TOTAL
-      ? '마지막 질문입니다. 답변 후 추천 받기를 누르세요'
-      : '옵션을 선택하면 다음 질문으로 자동 이동합니다';
+    document.getElementById('wzRun').style.display   = 'none';
+    const nextBtn = document.getElementById('wzNext');
+    if (nextBtn) nextBtn.style.display = 'none';
     document.getElementById('wzResult').classList.remove('show');
+    // 버그 fix: 이미 입력된 항목 있으면 [다음] 또는 [추천] 버튼 자동 노출 (1→2→1→2 재방문)
+    requestAnimationFrame(() => {
+      const activeFs = document.querySelector('.wz-q.active');
+      if (!activeFs){
+        document.getElementById('wzHint').textContent = '옵션을 선택해주세요';
+        return;
+      }
+      const hasCheck = activeFs.querySelectorAll('input[type=checkbox]:checked, input[type=radio]:checked').length > 0;
+      const textInputs = Array.from(activeFs.querySelectorAll('input[type=text]'));
+      const hasText = textInputs.some(i => i.value.trim().length > 0);
+      if (n < TOTAL && (hasCheck || hasText)){
+        if (nextBtn) nextBtn.style.display = '';
+        document.getElementById('wzHint').textContent = '[다음] 버튼을 눌러주세요';
+      } else if (n === TOTAL && hasCheck){
+        document.getElementById('wzRun').style.display = '';
+        document.getElementById('wzHint').textContent = '[이 조건으로 문의하기] 버튼을 눌러주세요';
+      } else {
+        document.getElementById('wzHint').textContent = n===TOTAL
+          ? '마지막 질문입니다. 답변 후 문의하기를 누르세요'
+          : '항목을 선택하세요';
+      }
+    });
   }
 
-  function recommend(work, fluid, flow, ctrl, freq){
-    // 우선순위: 작업 특수성 > 액체 특수성 > 빈도
-    if (work === 'micro')
+  function recommend(situation, fluid, flow, func, ctrl, channels){
+    // 배열 정규화 (호출부에서 단일 값/배열 모두 허용)
+    const F  = Array.isArray(fluid)? fluid : (fluid? [fluid] : []);
+    const FL = Array.isArray(flow) ? flow  : (flow ? [flow]  : []);
+    const FN = Array.isArray(func) ? func  : (func ? [func]  : []);
+    const C  = Array.isArray(ctrl) ? ctrl  : (ctrl ? [ctrl]  : []);
+    const ch = channels || '';
+
+    // 우선순위: 위험성 > 유체 특수성 > 유량 > 채널 > 기능 > 제어 > 기본
+    if (F.includes('organic'))
+      return {cat:'방폭 정량펌프', why:'유기용매·휘발성 액체는 일반 펌프 사용이 어렵습니다. 방폭 인증(EX) 라인을 우선 검토합니다.'};
+    if (F.includes('acid') && (C.includes('auto_sw') || FN.includes('pc_prog')))
+      return {cat:'산·알칼리 대응 정량펌프 (HighProt)', why:'부식성 매질 + 자동 제어 환경은 IP66급 본체와 화학 내성 튜브(Viton/PTFE)가 함께 필요합니다.'};
+    if (F.includes('viscous'))
+      return {cat:'기어펌프', why:'점성·기름 매질은 페리스탈틱보다 기어펌프의 토출 안정성이 좋습니다.'};
+    if (FL.includes('micro') && !FL.includes('mid') && !FL.includes('high') && !FL.includes('xhigh'))
       return {cat:'시린지펌프', why:'μL 단위 미량 주입은 시린지 직접 구동 방식이 가장 정확합니다. 분석기 시료 주입·미세 약물 반응 등에 적합합니다.'};
-    if (work === 'oem')
-      return {cat:'OEM 정량펌프', why:'장비 내부에 들어가는 모듈은 사양 외에 장착 공간·전원·통신 인터페이스를 함께 검토합니다.'};
-    if (work === 'large' || (freq === 'continuous' && fluid === 'aqueous' && work === 'continuous'))
-      return {cat:'대용량 정량펌프', why:'L/min급 처리량과 장시간 운전을 위해 헤드·튜브 내구성을 우선합니다.'};
-    if (fluid === 'flammable')
-      return {cat:'방폭 정량펌프', why:'인화·휘발성 액체와 방폭 구역은 일반 펌프 사용이 어렵습니다. 인증 등급 라인으로 검토합니다.'};
-    if (fluid === 'viscous')
-      return {cat:'기어펌프', why:'점성이 있거나 자연압·배관 압력이 큰 조건에서는 페리스탈틱보다 토출 안정성이 좋습니다.'};
-    if (work === 'dispense'){
-      if (freq === 'multi') return {cat:'다중채널 디스펜스', why:'여러 라인 동시 분주가 필요한 경우. 채널별 독립 유량 제어가 필요하면 별도 확인이 필요합니다.'};
-      if (freq === 'continuous') return {cat:'자동분주기', why:'반복 분주를 장시간·자동으로 운영해야 할 때 작업자 피로와 편차를 줄일 수 있습니다.'};
-      return {cat:'디스펜스 정량펌프', why:'1회 분주량과 반복 횟수가 정해진 작업에 적합합니다.'};
+    if (FL.includes('xhigh') || FL.includes('high'))
+      return {cat:'대용량 정량펌프', why:'L/min급 처리량과 장시간 운전을 위해 헤드·튜브 내구성을 우선합니다 (WT/JP 시리즈).'};
+    if (ch === 'multi' || ch === '4'){
+      if (FN.includes('dispensing'))
+        return {cat:'다중채널 분주펌프', why:'여러 라인 동시 분주에 적합합니다. 채널별 독립 유량 제어는 별도 협의 필요.'};
+      return {cat:'다중채널 정량펌프', why:'여러 라인을 같은 조건으로 동시 운전 — DMD/MC 시리즈를 검토합니다.'};
     }
-    // 기본 = 연속 이송
-    if (freq === 'multi') return {cat:'다중채널 디스펜스', why:'여러 라인을 같은 조건으로 동시에 운전할 때 적합합니다.'};
-    if (freq === 'continuous') return {cat:'유량조절 정량펌프', why:'장시간 운전·표준화된 유량 관리가 중요한 라인은 RPM보다 유량 기준 운전이 유리합니다.'};
+    if (FN.includes('pc_prog') || C.includes('auto_sw'))
+      return {cat:'PC 프로그램 제어 정량펌프', why:'자체 SW로 시퀀스를 짜고 펌프를 직접 제어할 때 — RS485/RS232 통신 + SDK 지원 모델 검토.'};
+    if (FN.includes('dispensing') || FN.includes('filling'))
+      return {cat:'분주·디스펜스 정량펌프', why:'정해진 양을 반복 분주하거나 용기·라인을 채울 때 — 분주 모드 내장 모델이 작업 효율을 높입니다.'};
+    if (C.includes('comm'))
+      return {cat:'통신 가능 정량펌프', why:'RS485/RS232 연동으로 PC·PLC에서 펌프 제어 — 일반 스피드형보다 통신 패키지 모델이 유리합니다.'};
+    if (FN.includes('metering'))
+      return {cat:'유량조절 정량펌프', why:'장시간 운전·표준화된 유량 관리가 중요한 라인은 RPM보다 유량 기준 운전이 유리합니다.'};
     return {cat:'스피드 정량펌프', why:'일반 수용액·시약을 가끔~매일 흘려보내는 범용 작업에 가장 무난한 기본형입니다.'};
   }
 
@@ -969,27 +1290,90 @@ window.addEventListener('message', e=>{
     return Array.from($form.querySelectorAll(`input[name="${name}"]:checked`)).map(el => el.value);
   }
 
-  // 옵션 선택 시 — checkbox 모드: 자동 진행 X, "다음" 버튼 노출
+  // 옵션 선택 시
   $form.addEventListener('change', e => {
+    // radio (단일 선택) — 자동 진행
+    if (e.target.matches('input[type=radio][name="situation"]')){
+      setTimeout(() => showStep(2), 220);
+      return;
+    }
+    if (e.target.matches('input[type=radio][name="channels"]')){
+      // 자동 진행 OFF — 사용자가 직접 [이 조건으로 문의하기] 버튼을 눌러야 모달 오픈
+      $run.style.display = '';
+      document.getElementById('wzHint').textContent = '[이 조건으로 문의하기] 버튼을 눌러주세요';
+      return;
+    }
+    // Q2~Q5 (checkbox) — [다음] 버튼 노출
     if (e.target.matches('input[type=checkbox]')){
       const stepEl = e.target.closest('.wz-q');
       const step   = parseInt(stepEl.dataset.step);
-      const hasAny = stepEl.querySelectorAll('input[type=checkbox]:checked').length > 0;
+      const hasAny = stepEl.querySelectorAll('input[type=checkbox]:checked').length > 0
+                   || stepEl.querySelectorAll('input[type=text]').length > 0;
       if (hasAny){
         if (step < TOTAL){
           document.getElementById('wzNext').style.display = '';
           document.getElementById('wzHint').textContent = '선택 후 [다음] 버튼을 눌러주세요 (복수 선택 가능)';
         } else {
           $run.style.display = '';
-          document.getElementById('wzHint').textContent = '추천 받기 버튼을 눌러주세요';
+          document.getElementById('wzHint').textContent = '이 조건으로 문의하기 버튼을 눌러주세요';
         }
       }
     }
   });
   
-  // 다음 버튼
+  // 다음 버튼 — 검증 + alert
+  function validateCurrentStep(){
+    const activeFs = document.querySelector('.wz-q.active');
+    if (!activeFs) return false;
+    // Q2 교체 분기: 모델명 / 교체이유 / 튜브 치수 / 튜브 재질 모두 필수
+    if (currentStep === 2 && getVal('situation') === 'replace'){
+      const cm = $form.querySelector('input[name="current_model"]');
+      if (!cm || !cm.value.trim()){
+        alert('현재 펌프 모델명은 필수 입력 항목입니다.');
+        if (cm) cm.focus();
+        return false;
+      }
+      if (getVals('reason').length === 0){
+        alert('교체·업그레이드 이유를 1개 이상 선택해주세요.');
+        return false;
+      }
+      const tid = $form.querySelector('input[name="tube_id"]');
+      const tod = $form.querySelector('input[name="tube_od"]');
+      const tubeUnknown = $form.querySelector('input[name="tube_size_unknown"]:checked');
+      const hasTubeSize = (tid && tid.value.trim()) || (tod && tod.value.trim()) || tubeUnknown;
+      if (!hasTubeSize){
+        alert('튜브 치수(내경 또는 외경)를 입력하거나 "튜브 치수 모름"을 체크해주세요.');
+        return false;
+      }
+      if (getVals('tube_mat').length === 0){
+        alert('튜브 재질을 1개 이상 선택하거나 "재질 모름"을 체크해주세요.');
+        return false;
+      }
+      return true;
+    }
+    // Q2 신규 분기: 유체 + 유량 모두 필수
+    if (currentStep === 2 && getVal('situation') === 'new'){
+      if (getVals('fluid').length === 0){
+        alert('이송 유체를 1개 이상 선택해주세요.');
+        return false;
+      }
+      if (getVals('flow').length === 0){
+        alert('필요 유량 범위를 1개 이상 선택해주세요.');
+        return false;
+      }
+      return true;
+    }
+    // 그 외 단계: 하나 이상 선택 필수
+    const hasCheck = activeFs.querySelectorAll('input[type=checkbox]:checked, input[type=radio]:checked').length > 0;
+    if (!hasCheck){
+      alert('하나 이상 선택해주세요.');
+      return false;
+    }
+    return true;
+  }
   const $next = document.getElementById('wzNext');
   if ($next) $next.addEventListener('click', () => {
+    if (!validateCurrentStep()) return;
     if (currentStep < TOTAL){
       showStep(currentStep + 1);
       $next.style.display = 'none';
@@ -1001,23 +1385,40 @@ window.addEventListener('message', e=>{
   });
 
   $run.addEventListener('click', () => {
-    const work = getVal('work'), fluid = getVal('fluid'), flow = getVal('flow'),
-          ctrl = getVal('ctrl'), freq = getVal('freq');
+    const situation = getVal('situation');
+    const fluidArr = getVals('fluid');
+    const flowArr  = getVals('flow');
+    const funcArr  = getVals('func');
+    const ctrlArr  = getVals('ctrl');
+    const channelsVal = getVal('channels');
     const cmEl = $form.querySelector('input[name="current_model"]');
     const currentModel = cmEl ? cmEl.value.trim() : '';
-    if (!work || !fluid || !flow || !ctrl || !freq){
+    if (!getVal('situation') || !getVal('func') || !getVal('ctrl') || !getVal('channels')){
       $res.classList.remove('show');
-      $res.innerHTML = '<div class="res-label">알림</div><div class="res-cat" style="font-size:16px">3개 모두 선택해 주세요</div>';
+      $res.innerHTML = '<div class="res-label">알림</div><div class="res-cat" style="font-size:16px">필수 항목을 모두 답변해주세요</div>';
       requestAnimationFrame(() => $res.classList.add('show'));
       return;
     }
-    const r = recommend(work, fluid, flow, ctrl, freq);
-    const workAll = getVals('work').join(', ') || work;
-    const fluidAll = getVals('fluid').join(', ') || fluid;
-    const flowAll = getVals('flow').join(', ') || flow;
-    const ctrlAll = getVals('ctrl').join(', ') || ctrl;
-    const freqAll = getVals('freq').join(', ') || freq;
-    const channelsAll = getVals('channels').join(', ') || '';
+    const r = recommend(situation, fluidArr, flowArr, funcArr, ctrlArr, channelsVal);
+    // admin 매칭 펌프 fetch + 렌더링
+    // 추가 정보 토글 수집
+    function _v(n){ const e=$form.querySelector('[name="'+n+'"]'); return e?e.value.trim():''; }
+    function _r(n){ const e=$form.querySelector('[name="'+n+'"]:checked'); return e?e.value:''; }
+    const extras = {
+      ip_grade: _r('ip_grade'),                    // none/ip54/ip66/unsure
+      medium_note: _v('medium_note').toLowerCase(), // 자유 텍스트 (키워드 감지용)
+      back_pressure: _v('back_pressure').toLowerCase(),
+      tube_mat: getVals('tube_mat')                // 교체 분기 튜브 재질
+    };
+    fetchAndMatchPumps({
+      situation, fluid: getVals('fluid'), flow: getVals('flow'),
+      func: getVals('func'), ctrl: getVals('ctrl'), channels: getVal('channels'),
+      extras
+    });
+    const fluidAll = fluidArr.join(', ');
+    const flowAll  = flowArr.join(', ');
+    const ctrlAll  = ctrlArr.join(', ');
+    const channelsAll = channelsVal || '';
     const tubeMatAll = getVals('tube_mat').join(', ') || '';
     const tubeIdEl = $form.querySelector('input[name="tube_id"]');
     const tubeOdEl = $form.querySelector('input[name="tube_od"]');
@@ -1027,21 +1428,36 @@ window.addEventListener('message', e=>{
     if (tubeId || tubeOd) {
       tubeStr = '내경 ' + (tubeId || '?') + 'mm × 외경 ' + (tubeOd || '?') + 'mm';
     }
-    const wizSummary = '[펌프 추천 위저드 응답]\n· 작업: ' + workAll + '\n· 액체: ' + fluidAll + '\n· 유량: ' + flowAll + '\n· 제어/통신: ' + ctrlAll + '\n· 빈도: ' + freqAll + (channelsAll ? '\n· 채널 수: ' + channelsAll : '') + (tubeMatAll ? '\n· 튜브 재질: ' + tubeMatAll : '') + (tubeStr ? '\n· 튜브 치수: ' + tubeStr : '') + (currentModel ? '\n· 현재 모델: ' + currentModel : '') + '\n\n추천: ' + r.cat + '\n사유: ' + r.why;
+    const wizSummary = '[펌프 추천 위저드 응답 v2]\n· 상황: ' + (situation==='replace'?'기존 펌프 교체':'신규 도입') + (fluidAll ? '\n· 이송 유체: ' + fluidAll : '') + (flowAll ? '\n· 필요 유량: ' + flowAll : '') + '\n· 기능: ' + (getVals('func').join(', ')||func) + '\n· 제어: ' + ctrlAll + (getVals('reason').length ? '\n· 교체 이유: ' + getVals('reason').join(', ') : '') + (channelsAll ? '\n· 채널 수: ' + channelsAll : '') + (tubeMatAll ? '\n· 튜브 재질: ' + tubeMatAll : '') + (tubeStr ? '\n· 튜브 치수: ' + tubeStr : '') + (currentModel ? '\n· 현재 모델: ' + currentModel : '') + '\n\n추천: ' + r.cat + '\n사유: ' + r.why;
+    // === wizSummary / __wizLast 먼저 세팅 (분기 무관 사용) ===
+    window.__wizSummary = wizSummary;
+    window.__wizLast = {
+      wizSummary,
+      setupId: `wizard:${situation}_${(funcArr[0]||'na')}_${(ctrlArr[0]||'na')}_${channelsVal||'na'}`
+    };
+
+    // ★ 추천 결과 표시 잠정중단 — 바로 문의 모달 오픈
+    //   복원하려면 아래 SHOW_RESULT 를 true 로 변경
+    const SHOW_RESULT = false;
+    if (!SHOW_RESULT){
+      if (typeof gtag === 'function') gtag('event','inquiry_open_from_wizard',{situation: getVal('situation')});
+      openInquiry(window.__wizLast.setupId, wizSummary);
+      return;
+    }
+
+    // === 이하 SHOW_RESULT=true 일 때만 실행 (잠정중단) ===
     $res.innerHTML = `
       <div class="res-label">추천 제품군</div>
       <div class="res-cat">${r.cat}</div>
       <div class="res-why">${r.why}</div>
       <div class="res-actions">
-        <button type="button" class="res-primary" onclick="openInquiry('wizard:${work}_${fluid}_${flow}_${ctrl}_${freq}_${(getVals('channels').join('-')||'na')}', window.__wizSummary)" style="border:none;cursor:pointer;font-family:inherit">이 조건으로 문의하기 →</button>
+        <button type="button" class="res-primary" onclick="openInquiry('wizard:${situation}_${getVal('func')||'na'}_${getVal('ctrl')||'na'}_${getVal('channels')||'na'}', window.__wizSummary)" style="border:none;cursor:pointer;font-family:inherit">이 조건으로 문의하기 →</button>
         <a class="res-sec" href="${FAQ_ID.cat}" data-open="faq-types">제품군 비교 보기</a>
       </div>
     `;
     requestAnimationFrame(() => $res.classList.add('show'));
-
-    window.__wizSummary = wizSummary;
     if (typeof gtag === 'function') {
-      gtag('event','wizard_recommend',{work, fluid, flow, ctrl, freq, recommended: r.cat});
+      gtag('event','wizard_recommend_v2',{situation: getVal('situation'), func: getVal('func'), recommended: r.cat});
     }
 
     // 추천 결과 FAQ 자동 펼침 + inner 자세히 보기까지
