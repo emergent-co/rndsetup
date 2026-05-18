@@ -1,0 +1,40 @@
+{
+  "_comment": "Cellab 사이트 메타 설정 — admin DB의 일부로서 SSOT. nav_groups·wizard 옵션 어휘를 한 곳에서 관리. STRATEGY.md §7.1 마이그레이션 큐의 1순위 통합 결과.",
+  "version": 1,
+  "updated_at": "2026-05-18",
+  "source": "admin.html NAV_GROUPS + recommend2.html NAV_GROUP_LABELS·USE_CASE_INFO·FLOW_RANGE_BOUNDS·FLOW_LABEL 통합",
+
+  "nav_groups": [
+    { "key": "S",                  "label": "S 시리즈",         "order": 1 },
+    { "key": "L",                  "label": "L 시리즈",         "order": 2 },
+    { "key": "F",                  "label": "F 시리즈",         "order": 3 },
+    { "key": "ef-fg",              "label": "EF/FG 시리즈",     "order": 4 },
+    { "key": "syringe-integrated", "label": "Syringe 일체형",   "order": 5 },
+    { "key": "syringe-split",      "label": "Syringe 분리형",   "order": 6 },
+    { "key": "gear",               "label": "Gear",            "order": 7 }
+  ],
+
+  "wizard": {
+    "_comment_use_cases": "위저드 Q1 선택지. recommend2.html USE_CASE_INFO에서 이전. 'unsure'는 셀렙 직접 상담 분기용 (실제 펌프 그룹 아님).",
+    "use_cases": [
+      { "key": "S",                  "label": "S 시리즈 (속도 가변 페리스탈틱)",    "why": "일반 실험실 펌핑 — 배지·시약 연속 이송에 가장 무난한 기본형" },
+      { "key": "L",                  "label": "L 시리즈 (Intelligent Flow)",       "why": "유량을 정확히 표시·제어해야 할 때" },
+      { "key": "F",                  "label": "F 시리즈 (Intelligent Dispensing)", "why": "정해진 양으로 반복 분주·충진 작업" },
+      { "key": "ef-fg",              "label": "EF/FG 시리즈 (방폭·세척 환경)",      "why": "인화성·휘발성 매질 또는 식품·세척 환경" },
+      { "key": "syringe-integrated", "label": "Syringe 일체형 (Laboratory)",       "why": "정밀 미량 분주 (μL~mL), 다채널 가능" },
+      { "key": "syringe-split",      "label": "Syringe 분리형 (Split Style)",      "why": "초미량 분주 (pL~μL) 또는 시린지·본체 분리 구조" },
+      { "key": "gear",               "label": "Gear 시리즈",                       "why": "점성액·기름·고압 연속 정량" },
+      { "key": "unsure",             "label": "미정 — 사장님 직접 상담",            "why": "사용자가 그룹 선택을 보류함" }
+    ],
+
+    "_comment_flow_ranges": "위저드 Q2 유량 범위. recommend2.html FLOW_RANGE_BOUNDS + FLOW_LABEL 통합. max:null은 코드에서 Infinity로 해석. min:null + max:null은 매칭 무시(unsure).",
+    "flow_ranges": [
+      { "key": "micro",    "label": "μL 단위",          "min": 0,    "max": 0.001 },
+      { "key": "lt1",      "label": "<1 mL/min",       "min": 0,    "max": 1 },
+      { "key": "1-100",    "label": "1~100 mL/min",    "min": 1,    "max": 100 },
+      { "key": "100-1000", "label": "100~1000 mL/min", "min": 100,  "max": 1000 },
+      { "key": "gt1000",   "label": ">1 L/min",        "min": 1000, "max": null },
+      { "key": "unsure",   "label": "협의",             "min": null, "max": null }
+    ]
+  }
+}
