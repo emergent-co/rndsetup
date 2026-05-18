@@ -2,7 +2,7 @@
   "_comment": "Cellab 통합 펌프 카탈로그 (SSOT). leadfluid + admin_pumps 통합 완료. STRATEGY.md § 6 참조. 향후 모든 펌프 사양·매칭·이미지·헤드·마켓 URL은 본 파일에서 관리.",
   "_base_url": "https://cellab.kr/",
   "version": "1.0",
-  "updated_at": "2026-05-17",
+  "updated_at": "2026-05-18",
   "source": "admin.html (Phase 4 editor — matching/heads/specs + nav_group_urls)",
   "count": 29,
   "nav_group_urls": {
@@ -69,7 +69,8 @@
       ],
       "series_label": "Speed Variable",
       "category_label": "페리스탈틱",
-      "nav_group": "S"
+      "nav_group": "S",
+      "speed_display": "0.1~80 rpm"
     },
     {
       "id": "BT103S",
@@ -125,7 +126,8 @@
       ],
       "series_label": "Speed Variable",
       "category_label": "페리스탈틱",
-      "nav_group": "S"
+      "nav_group": "S",
+      "speed_display": "0.1~100 rpm"
     },
     {
       "id": "BT101S",
@@ -198,7 +200,7 @@
       ],
       "series_label": "Speed Variable",
       "category_label": "페리스탈틱",
-      "speed_display": "0.1 ~ 150 rpm",
+      "speed_display": "0.1~150 rpm",
       "weight_kg": 3.6,
       "dimensions_mm": "284×180×197",
       "power": "AC 100-240V 50/60Hz",
@@ -263,7 +265,8 @@
       ],
       "series_label": "Speed Variable",
       "category_label": "페리스탈틱",
-      "nav_group": "S"
+      "nav_group": "S",
+      "speed_display": "0.1~350 rpm"
     },
     {
       "id": "BT601S",
@@ -320,7 +323,8 @@
       ],
       "series_label": "Speed Variable",
       "category_label": "페리스탈틱",
-      "nav_group": "S"
+      "nav_group": "S",
+      "speed_display": "0.1~600 rpm"
     },
     {
       "id": "BT101L",
@@ -376,7 +380,8 @@
       ],
       "series_label": "Intelligent Flow",
       "category_label": "페리스탈틱",
-      "nav_group": "L"
+      "nav_group": "L",
+      "speed_display": "0.1~150 rpm"
     },
     {
       "id": "BT301L",
@@ -433,7 +438,8 @@
       ],
       "series_label": "Intelligent Flow",
       "category_label": "페리스탈틱",
-      "nav_group": "L"
+      "nav_group": "L",
+      "speed_display": "0.1~350 rpm"
     },
     {
       "id": "BT601L",
@@ -490,7 +496,8 @@
       ],
       "series_label": "Intelligent Flow",
       "category_label": "페리스탈틱",
-      "nav_group": "L"
+      "nav_group": "L",
+      "speed_display": "0.1~600 rpm"
     },
     {
       "id": "BT101F",
@@ -548,7 +555,8 @@
       ],
       "series_label": "Dispensing",
       "category_label": "페리스탈틱",
-      "nav_group": "F"
+      "nav_group": "F",
+      "speed_display": "0.1~150 rpm"
     },
     {
       "id": "BT301F",
@@ -607,7 +615,8 @@
       ],
       "series_label": "Dispensing",
       "category_label": "페리스탈틱",
-      "nav_group": "F"
+      "nav_group": "F",
+      "speed_display": "0.1~350 rpm"
     },
     {
       "id": "BT601F",
@@ -666,7 +675,8 @@
       ],
       "series_label": "Dispensing",
       "category_label": "페리스탈틱",
-      "nav_group": "F"
+      "nav_group": "F",
+      "speed_display": "0.1~600 rpm"
     },
     {
       "id": "EF800",
@@ -718,7 +728,8 @@
       ],
       "series_label": "Explosion-proof",
       "category_label": "페리스탈틱",
-      "nav_group": "ef-fg"
+      "nav_group": "ef-fg",
+      "speed_display": "0.1~360 rpm"
     },
     {
       "id": "EF900",
@@ -771,7 +782,8 @@
       ],
       "series_label": "Explosion-proof",
       "category_label": "페리스탈틱",
-      "nav_group": "ef-fg"
+      "nav_group": "ef-fg",
+      "speed_display": "0.1~600 rpm"
     },
     {
       "id": "TYD01-01",
@@ -811,7 +823,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 83.318,
       "applications": [
         "Microsphere Preparation",
@@ -822,7 +834,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD01-02",
@@ -863,7 +876,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -874,7 +887,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD02-01",
@@ -915,7 +929,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -926,7 +940,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD02-02",
@@ -967,7 +982,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -978,7 +993,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD02-04",
@@ -1018,7 +1034,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1029,7 +1045,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD02-06",
@@ -1069,7 +1086,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1080,7 +1097,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD02-10",
@@ -1120,7 +1138,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 1.84e-7,
+      "flow_min": 1.84e-07,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1131,7 +1149,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TYD03-01",
@@ -1171,7 +1190,7 @@
           "flow": "nL~mL/min"
         }
       ],
-      "flow_min": 3.7e-8,
+      "flow_min": 3.7e-08,
       "flow_max": 16.663,
       "applications": [
         "Microsphere Preparation",
@@ -1182,7 +1201,8 @@
       ],
       "series_label": "Laboratory TYD",
       "category_label": "시린지",
-      "nav_group": "syringe-integrated"
+      "nav_group": "syringe-integrated",
+      "speed_display": "0.2μm/min ~ 30mm/min"
     },
     {
       "id": "TFD01-01",
@@ -1221,7 +1241,7 @@
           "flow": "pL~μL/min"
         }
       ],
-      "flow_min": 2e-8,
+      "flow_min": 2e-08,
       "flow_max": 0.003048,
       "applications": [
         "Microfluidics",
@@ -1231,7 +1251,8 @@
       ],
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "nav_group": "syringe-split"
+      "nav_group": "syringe-split",
+      "speed_display": "0.635μm/min ~ 95.25mm/min"
     },
     {
       "id": "TFD02-01",
@@ -1271,7 +1292,7 @@
           "flow": "pL~μL/min"
         }
       ],
-      "flow_min": 1.63e-7,
+      "flow_min": 1.63e-07,
       "flow_max": 24.52,
       "applications": [
         "Microfluidics",
@@ -1281,7 +1302,8 @@
       ],
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "nav_group": "syringe-split"
+      "nav_group": "syringe-split",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "TFD03-01",
@@ -1330,7 +1352,8 @@
       ],
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "nav_group": "syringe-split"
+      "nav_group": "syringe-split",
+      "speed_display": "0.6096μm/min ~ 91.44mm/min"
     },
     {
       "id": "TFD04",
@@ -1379,7 +1402,8 @@
       ],
       "series_label": "Split TFD",
       "category_label": "시린지",
-      "nav_group": "syringe-split"
+      "nav_group": "syringe-split",
+      "speed_display": "1μm/min ~ 150mm/min"
     },
     {
       "id": "G3030-1S",
@@ -1428,7 +1452,8 @@
       ],
       "series_label": "Industrial G",
       "category_label": "시린지",
-      "nav_group": "gear"
+      "nav_group": "gear",
+      "speed_display": "0.005mm/s ~ 25mm/s"
     },
     {
       "id": "G6060-1S",
@@ -1478,7 +1503,8 @@
       ],
       "series_label": "Industrial G",
       "category_label": "시린지",
-      "nav_group": "gear"
+      "nav_group": "gear",
+      "speed_display": "0.01mm/s ~ 50mm/s"
     },
     {
       "id": "FG601S-A3",
@@ -1529,7 +1555,8 @@
       ],
       "series_label": "Explosion-proof Gear",
       "category_label": "기어",
-      "nav_group": "ef-fg"
+      "nav_group": "ef-fg",
+      "speed_display": "72~600 rpm"
     },
     {
       "id": "FG601S-W3",
@@ -1579,7 +1606,8 @@
       ],
       "series_label": "Explosion-proof Gear",
       "category_label": "기어",
-      "nav_group": "ef-fg"
+      "nav_group": "ef-fg",
+      "speed_display": "135~600 rpm"
     }
   ]
 }

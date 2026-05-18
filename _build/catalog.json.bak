@@ -2,9 +2,19 @@
   "_comment": "Cellab 통합 펌프 카탈로그 (SSOT). leadfluid + admin_pumps 통합 완료. STRATEGY.md § 6 참조. 향후 모든 펌프 사양·매칭·이미지·헤드·마켓 URL은 본 파일에서 관리.",
   "_base_url": "https://cellab.kr/",
   "version": "1.0",
-  "updated_at": "2026-05-18",
-  "source": "migrate_nav_groups.py (7개 그룹 적용 + 단종(100/300/600) + 안 파는 라인 제거)",
+  "updated_at": "2026-05-17",
+  "source": "admin.html (Phase 4 editor — matching/heads/specs + nav_group_urls)",
   "count": 29,
+  "nav_group_urls": {
+    "_comment": "그룹별 나비엠알오 URL. 카드 렌더 시 펌프의 nav_group에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용.",
+    "S": "",
+    "L": "",
+    "F": "",
+    "ef-fg": "",
+    "syringe-integrated": "",
+    "syringe-split": "",
+    "gear": ""
+  },
   "pumps": [
     {
       "id": "BQ80S",
@@ -36,17 +46,6 @@
           "4"
         ]
       },
-      "series_label": "Speed Variable",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.0035,
-      "flow_max": 34,
-      "applications": [
-        "Lab Transfer",
-        "Cell Culture",
-        "Bioreactor",
-        "Dispensing",
-        "TFF"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -59,7 +58,17 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.0035,
+      "flow_max": 34,
+      "applications": [
+        "Lab Transfer",
+        "Cell Culture",
+        "Bioreactor",
+        "Dispensing",
+        "TFF"
+      ],
+      "series_label": "Speed Variable",
+      "category_label": "페리스탈틱",
       "nav_group": "S"
     },
     {
@@ -93,17 +102,6 @@
           "4"
         ]
       },
-      "series_label": "Speed Variable",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.00011,
-      "flow_max": 500,
-      "applications": [
-        "Lab Transfer",
-        "Cell Culture",
-        "Bioreactor",
-        "Dispensing",
-        "TFF"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -116,7 +114,17 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.00011,
+      "flow_max": 500,
+      "applications": [
+        "Lab Transfer",
+        "Cell Culture",
+        "Bioreactor",
+        "Dispensing",
+        "TFF"
+      ],
+      "series_label": "Speed Variable",
+      "category_label": "페리스탈틱",
       "nav_group": "S"
     },
     {
@@ -150,18 +158,35 @@
           "4"
         ]
       },
-      "series_label": "Speed Variable",
-      "category_label": "페리스탈틱",
+      "heads": [
+        {
+          "name": "DG/DS (10 rollers)",
+          "tube": "wall 0.8~1mm, ID≤3.17mm",
+          "flow": "0.00011~32"
+        },
+        {
+          "name": "DG/DS (6 rollers)",
+          "tube": "wall 0.8~1mm, ID≤3.17mm",
+          "flow": "0.00016~49"
+        },
+        {
+          "name": "DT10-18/28",
+          "tube": "13# 14#, wall 0.8~1mm, ID≤3.17mm",
+          "flow": "0.00023~64"
+        },
+        {
+          "name": "YZ15 / YZ15T",
+          "tube": "13# 14# 19# 16# 25# 17# 18#",
+          "flow": "0.005~641"
+        },
+        {
+          "name": "YT25",
+          "tube": "114# 116# 15# 24# 35# 36#",
+          "flow": "0.024~750"
+        }
+      ],
       "flow_min": 0.00011,
       "flow_max": 750,
-      "speed_display": "0.1 ~ 150 rpm",
-      "weight_kg": 3.6,
-      "dimensions_mm": "284×180×197",
-      "power": "AC 100-240V 50/60Hz",
-      "power_w": 30,
-      "ip_grade": "IP31",
-      "ext_control": "5-24V, 0-5V/0-10V/4-20mA",
-      "speed_accuracy": "<±0.2%",
       "applications": [
         "Cell Culture",
         "Heart Perfusion",
@@ -171,39 +196,16 @@
         "Coating",
         "Medical Aesthetics"
       ],
-      "heads": [
-        {
-          "name": "DG/DS (10 rollers)",
-          "channel": "1,2,4",
-          "tube": "wall 0.8~1mm, ID≤3.17mm",
-          "flow": "0.00011~32"
-        },
-        {
-          "name": "DG/DS (6 rollers)",
-          "channel": "1,2,4",
-          "tube": "wall 0.8~1mm, ID≤3.17mm",
-          "flow": "0.00016~49"
-        },
-        {
-          "name": "DT10-18/28",
-          "channel": "1,2",
-          "tube": "13# 14#, wall 0.8~1mm, ID≤3.17mm",
-          "flow": "0.00023~64"
-        },
-        {
-          "name": "YZ15 / YZ15T",
-          "channel": "1,2",
-          "tube": "13# 14# 19# 16# 25# 17# 18#",
-          "flow": "0.005~641"
-        },
-        {
-          "name": "YT25",
-          "channel": "1",
-          "tube": "114# 116# 15# 24# 35# 36#",
-          "flow": "0.024~750"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Speed Variable",
+      "category_label": "페리스탈틱",
+      "speed_display": "0.1 ~ 150 rpm",
+      "weight_kg": 3.6,
+      "dimensions_mm": "284×180×197",
+      "power": "AC 100-240V 50/60Hz",
+      "power_w": 30,
+      "ip_grade": "IP31",
+      "ext_control": "5-24V, 0-5V/0-10V/4-20mA",
+      "speed_accuracy": "<±0.2%",
       "nav_group": "S"
     },
     {
@@ -238,17 +240,6 @@
           "4"
         ]
       },
-      "series_label": "Speed Variable",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 1750,
-      "applications": [
-        "Lab Transfer",
-        "Cell Culture",
-        "Bioreactor",
-        "Dispensing",
-        "TFF"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -261,7 +252,17 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 1750,
+      "applications": [
+        "Lab Transfer",
+        "Cell Culture",
+        "Bioreactor",
+        "Dispensing",
+        "TFF"
+      ],
+      "series_label": "Speed Variable",
+      "category_label": "페리스탈틱",
       "nav_group": "S"
     },
     {
@@ -296,17 +297,6 @@
           "4"
         ]
       },
-      "series_label": "Speed Variable",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 3000,
-      "applications": [
-        "Lab Transfer",
-        "Cell Culture",
-        "Bioreactor",
-        "Dispensing",
-        "TFF"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -319,7 +309,17 @@
           "flow": "~750mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 3000,
+      "applications": [
+        "Lab Transfer",
+        "Cell Culture",
+        "Bioreactor",
+        "Dispensing",
+        "TFF"
+      ],
+      "series_label": "Speed Variable",
+      "category_label": "페리스탈틱",
       "nav_group": "S"
     },
     {
@@ -355,15 +355,6 @@
           "4"
         ]
       },
-      "series_label": "Intelligent Flow",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.00011,
-      "flow_max": 750,
-      "applications": [
-        "Lab Dispensing",
-        "Sampling",
-        "Continuous Transfer"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -376,7 +367,15 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.00011,
+      "flow_max": 750,
+      "applications": [
+        "Lab Dispensing",
+        "Sampling",
+        "Continuous Transfer"
+      ],
+      "series_label": "Intelligent Flow",
+      "category_label": "페리스탈틱",
       "nav_group": "L"
     },
     {
@@ -413,15 +412,6 @@
           "4"
         ]
       },
-      "series_label": "Intelligent Flow",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 1750,
-      "applications": [
-        "Lab Dispensing",
-        "Sampling",
-        "Continuous Transfer"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -434,7 +424,15 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 1750,
+      "applications": [
+        "Lab Dispensing",
+        "Sampling",
+        "Continuous Transfer"
+      ],
+      "series_label": "Intelligent Flow",
+      "category_label": "페리스탈틱",
       "nav_group": "L"
     },
     {
@@ -471,15 +469,6 @@
           "4"
         ]
       },
-      "series_label": "Intelligent Flow",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 3000,
-      "applications": [
-        "Lab Dispensing",
-        "Sampling",
-        "Continuous Transfer"
-      ],
       "heads": [
         {
           "name": "YZ15/YZ15T",
@@ -492,7 +481,15 @@
           "flow": "~64mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 3000,
+      "applications": [
+        "Lab Dispensing",
+        "Sampling",
+        "Continuous Transfer"
+      ],
+      "series_label": "Intelligent Flow",
+      "category_label": "페리스탈틱",
       "nav_group": "L"
     },
     {
@@ -530,15 +527,6 @@
           "multi"
         ]
       },
-      "series_label": "Dispensing",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.00011,
-      "flow_max": 750,
-      "applications": [
-        "Filling",
-        "Dispensing",
-        "Bottling"
-      ],
       "heads": [
         {
           "name": "DG/DS (다채널)",
@@ -551,7 +539,15 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.00011,
+      "flow_max": 750,
+      "applications": [
+        "Filling",
+        "Dispensing",
+        "Bottling"
+      ],
+      "series_label": "Dispensing",
+      "category_label": "페리스탈틱",
       "nav_group": "F"
     },
     {
@@ -590,15 +586,6 @@
           "multi"
         ]
       },
-      "series_label": "Dispensing",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 1750,
-      "applications": [
-        "Filling",
-        "Dispensing",
-        "Bottling"
-      ],
       "heads": [
         {
           "name": "DG/DS (다채널)",
@@ -611,7 +598,15 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 1750,
+      "applications": [
+        "Filling",
+        "Dispensing",
+        "Bottling"
+      ],
+      "series_label": "Dispensing",
+      "category_label": "페리스탈틱",
       "nav_group": "F"
     },
     {
@@ -650,15 +645,6 @@
           "multi"
         ]
       },
-      "series_label": "Dispensing",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 3000,
-      "applications": [
-        "Filling",
-        "Dispensing",
-        "Bottling"
-      ],
       "heads": [
         {
           "name": "DG/DS (다채널)",
@@ -671,7 +657,15 @@
           "flow": "~641mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 3000,
+      "applications": [
+        "Filling",
+        "Dispensing",
+        "Bottling"
+      ],
+      "series_label": "Dispensing",
+      "category_label": "페리스탈틱",
       "nav_group": "F"
     },
     {
@@ -708,15 +702,6 @@
           "4"
         ]
       },
-      "series_label": "Explosion-proof",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 7800,
-      "applications": [
-        "Explosion Zone",
-        "Solvent",
-        "ATEX/IECEx"
-      ],
       "heads": [
         {
           "name": "방폭 헤드 (YT25/YZ35)",
@@ -724,7 +709,15 @@
           "flow": "~7800mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 7800,
+      "applications": [
+        "Explosion Zone",
+        "Solvent",
+        "ATEX/IECEx"
+      ],
+      "series_label": "Explosion-proof",
+      "category_label": "페리스탈틱",
       "nav_group": "ef-fg"
     },
     {
@@ -762,15 +755,6 @@
           "4"
         ]
       },
-      "series_label": "Explosion-proof",
-      "category_label": "페리스탈틱",
-      "flow_min": 0.005,
-      "flow_max": 33000,
-      "applications": [
-        "Explosion Zone",
-        "Solvent",
-        "ATEX/IECEx"
-      ],
       "heads": [
         {
           "name": "방폭 헤드 (YT25/YZ35)",
@@ -778,7 +762,15 @@
           "flow": "~7800mL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.005,
+      "flow_max": 33000,
+      "applications": [
+        "Explosion Zone",
+        "Solvent",
+        "ATEX/IECEx"
+      ],
+      "series_label": "Explosion-proof",
+      "category_label": "페리스탈틱",
       "nav_group": "ef-fg"
     },
     {
@@ -812,9 +804,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 83.318,
       "applications": [
         "Microsphere Preparation",
@@ -823,14 +820,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -865,9 +856,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -876,14 +872,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -918,9 +908,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -929,14 +924,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -971,9 +960,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 173.718,
       "applications": [
         "Microsphere Preparation",
@@ -982,14 +976,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -1023,9 +1011,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1034,14 +1027,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -1075,9 +1062,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1086,14 +1078,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -1127,9 +1113,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 1.84e-07,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 1.84e-7,
       "flow_max": 24.52,
       "applications": [
         "Microsphere Preparation",
@@ -1138,14 +1129,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -1179,9 +1164,14 @@
           "1"
         ]
       },
-      "series_label": "Laboratory TYD",
-      "category_label": "시린지",
-      "flow_min": 3.7e-08,
+      "heads": [
+        {
+          "name": "10μL~140mL 시린지",
+          "tube": "시린지 직접",
+          "flow": "nL~mL/min"
+        }
+      ],
+      "flow_min": 3.7e-8,
       "flow_max": 16.663,
       "applications": [
         "Microsphere Preparation",
@@ -1190,14 +1180,8 @@
         "Coating",
         "Mass Spec"
       ],
-      "heads": [
-        {
-          "name": "10μL~140mL 시린지",
-          "tube": "시린지 직접",
-          "flow": "nL~mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Laboratory TYD",
+      "category_label": "시린지",
       "nav_group": "syringe-integrated"
     },
     {
@@ -1230,16 +1214,6 @@
           "1"
         ]
       },
-      "series_label": "Split TFD",
-      "category_label": "시린지",
-      "flow_min": 2e-08,
-      "flow_max": 0.003048,
-      "applications": [
-        "Microfluidics",
-        "Precision Dispensing",
-        "Cell Injection",
-        "Pharma R&D"
-      ],
       "heads": [
         {
           "name": "5μL~1mL 시린지 (분할형)",
@@ -1247,7 +1221,16 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 2e-8,
+      "flow_max": 0.003048,
+      "applications": [
+        "Microfluidics",
+        "Precision Dispensing",
+        "Cell Injection",
+        "Pharma R&D"
+      ],
+      "series_label": "Split TFD",
+      "category_label": "시린지",
       "nav_group": "syringe-split"
     },
     {
@@ -1281,16 +1264,6 @@
           "1"
         ]
       },
-      "series_label": "Split TFD",
-      "category_label": "시린지",
-      "flow_min": 1.63e-07,
-      "flow_max": 24.52,
-      "applications": [
-        "Microfluidics",
-        "Precision Dispensing",
-        "Cell Injection",
-        "Pharma R&D"
-      ],
       "heads": [
         {
           "name": "5μL~1mL 시린지 (분할형)",
@@ -1298,7 +1271,16 @@
           "flow": "pL~μL/min"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 1.63e-7,
+      "flow_max": 24.52,
+      "applications": [
+        "Microfluidics",
+        "Precision Dispensing",
+        "Cell Injection",
+        "Pharma R&D"
+      ],
+      "series_label": "Split TFD",
+      "category_label": "시린지",
       "nav_group": "syringe-split"
     },
     {
@@ -1331,8 +1313,13 @@
           "1"
         ]
       },
-      "series_label": "Split TFD",
-      "category_label": "시린지",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ],
       "flow_min": 8.3e-11,
       "flow_max": 0.016893,
       "applications": [
@@ -1341,14 +1328,8 @@
         "Cell Injection",
         "Pharma R&D"
       ],
-      "heads": [
-        {
-          "name": "5μL~1mL 시린지 (분할형)",
-          "tube": "시린지 직접",
-          "flow": "pL~μL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Split TFD",
+      "category_label": "시린지",
       "nav_group": "syringe-split"
     },
     {
@@ -1381,8 +1362,13 @@
           "1"
         ]
       },
-      "series_label": "Split TFD",
-      "category_label": "시린지",
+      "heads": [
+        {
+          "name": "5μL~1mL 시린지 (분할형)",
+          "tube": "시린지 직접",
+          "flow": "pL~μL/min"
+        }
+      ],
       "flow_min": 4.17e-10,
       "flow_max": 0.124984,
       "applications": [
@@ -1391,14 +1377,8 @@
         "Cell Injection",
         "Pharma R&D"
       ],
-      "heads": [
-        {
-          "name": "5μL~1mL 시린지 (분할형)",
-          "tube": "시린지 직접",
-          "flow": "pL~μL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Split TFD",
+      "category_label": "시린지",
       "nav_group": "syringe-split"
     },
     {
@@ -1432,15 +1412,6 @@
           "1"
         ]
       },
-      "series_label": "Industrial G",
-      "category_label": "시린지",
-      "flow_min": 0.0005,
-      "flow_max": 250,
-      "applications": [
-        "Micro Continuous Transfer",
-        "Quality Testing",
-        "Material Prep"
-      ],
       "heads": [
         {
           "name": "50μL~5mL 글래스 시린지",
@@ -1448,7 +1419,15 @@
           "flow": "정밀 미량"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.0005,
+      "flow_max": 250,
+      "applications": [
+        "Micro Continuous Transfer",
+        "Quality Testing",
+        "Material Prep"
+      ],
+      "series_label": "Industrial G",
+      "category_label": "시린지",
       "nav_group": "gear"
     },
     {
@@ -1483,15 +1462,6 @@
           "1"
         ]
       },
-      "series_label": "Industrial G",
-      "category_label": "시린지",
-      "flow_min": 0.0003125,
-      "flow_max": 1250,
-      "applications": [
-        "Micro Continuous Transfer",
-        "Quality Testing",
-        "Material Prep"
-      ],
       "heads": [
         {
           "name": "50μL~5mL 글래스 시린지",
@@ -1499,7 +1469,15 @@
           "flow": "정밀 미량"
         }
       ],
-      "navimro_url": "",
+      "flow_min": 0.0003125,
+      "flow_max": 1250,
+      "applications": [
+        "Micro Continuous Transfer",
+        "Quality Testing",
+        "Material Prep"
+      ],
+      "series_label": "Industrial G",
+      "category_label": "시린지",
       "nav_group": "gear"
     },
     {
@@ -1534,8 +1512,13 @@
           "1"
         ]
       },
-      "series_label": "Explosion-proof Gear",
-      "category_label": "기어",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ],
       "flow_min": 1000,
       "flow_max": 13000,
       "applications": [
@@ -1544,14 +1527,8 @@
         "Petrochemical",
         "ATEX"
       ],
-      "heads": [
-        {
-          "name": "방폭 기어 헤드 (PEEK/SS)",
-          "tube": "관 연결",
-          "flow": "4~13000mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Explosion-proof Gear",
+      "category_label": "기어",
       "nav_group": "ef-fg"
     },
     {
@@ -1585,8 +1562,13 @@
           "1"
         ]
       },
-      "series_label": "Explosion-proof Gear",
-      "category_label": "기어",
+      "heads": [
+        {
+          "name": "방폭 기어 헤드 (PEEK/SS)",
+          "tube": "관 연결",
+          "flow": "4~13000mL/min"
+        }
+      ],
       "flow_min": 1800,
       "flow_max": 13000,
       "applications": [
@@ -1595,25 +1577,9 @@
         "Petrochemical",
         "ATEX"
       ],
-      "heads": [
-        {
-          "name": "방폭 기어 헤드 (PEEK/SS)",
-          "tube": "관 연결",
-          "flow": "4~13000mL/min"
-        }
-      ],
-      "navimro_url": "",
+      "series_label": "Explosion-proof Gear",
+      "category_label": "기어",
       "nav_group": "ef-fg"
     }
-  ],
-  "nav_group_urls": {
-    "_comment": "그룹별 나비엠알오 URL. 카드 렌더 시 펌프의 nav_group에서 조회. 펌프별 navimro_url(override) 우선, 없으면 본 매핑 사용.",
-    "S": "",
-    "L": "",
-    "F": "",
-    "ef-fg": "",
-    "syringe-integrated": "",
-    "syringe-split": "",
-    "gear": ""
-  }
+  ]
 }
