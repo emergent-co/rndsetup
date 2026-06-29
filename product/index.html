@@ -82,37 +82,45 @@
     <p><b>정량펌프</b>·<b>연동(페리스탈틱)펌프</b>·<b>시린지펌프</b>·<b>방폭펌프</b>까지.
        정밀 분주부터 무오염 관류, 위험지역까지 LeadFluid 정식 공급, 펌프 제어 프로그램으로 PC에서 제어합니다.</p>
     <div class="btns">
-      <a class="b1" href="/quote/">무료 견적 문의</a>
+      <button class="b1" type="button" onclick="openPumpFind()" style="border:0;cursor:pointer;font:inherit">펌프 찾기</button>
       <a class="b2" href="/#download">제어 프로그램 다운로드</a>
     </div>
   </div>
 </section>
 
-<!-- ===== 펌프 추천 위저드 (recommend.html 임베드) ===== -->
-<section id="wizard" style="border-top:1px solid var(--line);background:var(--green-bg);padding:28px 0">
-  <div class="wrap">
-    <details class="wz-acc">
-      <summary style="cursor:pointer;font-family:var(--serif);font-size:22px;font-weight:600;color:var(--ink);text-align:center;display:block;outline:none">정량펌프 추천 <span style="font-family:var(--sans);font-size:14px;font-weight:500;color:var(--green)">— 클릭해서 열기 ▾</span></summary>
-      <p style="text-align:center;color:var(--gray);font-size:15px;margin:10px 0 16px">응용·유량만 고르면 적합한 펌프를 바로 추천합니다.</p>
-      <iframe id="wizardFrame" src="/recommend.html?embed=1" title="펌프 추천 위저드" loading="lazy" scrolling="no" style="width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;display:block;min-height:340px"></iframe>
-    </details>
+<!-- ===== 펌프 찾기 위저드 (팝업) ===== -->
+<style>
+  .pf-modal{position:fixed;inset:0;background:rgba(10,20,40,.5);display:none;align-items:flex-start;justify-content:center;padding:24px 16px;z-index:90;overflow:auto}
+  .pf-modal.open{display:flex}
+  .pf-box{position:relative;background:var(--green-bg);border-radius:14px;max-width:960px;width:100%;margin:auto;padding:14px}
+  .pf-head{text-align:center;font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink);margin:6px 0 12px}
+  .pf-close{position:absolute;top:6px;right:12px;font-size:28px;line-height:1;color:var(--gray);cursor:pointer;background:none;border:0;z-index:2}
+  #wizardFrame.fs{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;z-index:9999;border:0;border-radius:0;min-height:0;margin:0}
+</style>
+<div class="pf-modal" id="pumpFindModal" onclick="if(event.target===this)closePumpFind()">
+  <div class="pf-box">
+    <button class="pf-close" type="button" onclick="closePumpFind()" aria-label="닫기">×</button>
+    <div class="pf-head">정량펌프 추천</div>
+    <iframe id="wizardFrame" src="/recommend.html?embed=1" title="펌프 추천 위저드" loading="lazy" scrolling="no" style="width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;display:block;min-height:340px"></iframe>
   </div>
-</section>
-<style>#wizardFrame.fs{position:fixed;inset:0;width:100vw;height:100vh;max-width:none;z-index:9999;border:0;border-radius:0;min-height:0;margin:0}</style>
+</div>
 <script>
+  function openPumpFind(){ document.getElementById('pumpFindModal').classList.add('open'); document.body.style.overflow='hidden'; }
+  function closePumpFind(){ document.getElementById('pumpFindModal').classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closePumpFind(); });
   window.addEventListener('message', function(e){
     if(!e.data) return;
     var f = document.getElementById('wizardFrame');
     if(!f) return;
     if(e.data.type === 'cellab-wizard-height'){
-      if(f.classList.contains('fs')) return;            // 전체화면 중엔 높이 고정
+      if(f.classList.contains('fs')) return;
       if(e.data.height){
         var hpx = e.data.height + 'px';
         if(f.style.height !== hpx) f.style.height = hpx;
       }
     } else if(e.data.type === 'cellab-wizard-fs'){
-      if(e.data.on){ f.classList.add('fs'); document.body.style.overflow = 'hidden'; }
-      else { f.classList.remove('fs'); document.body.style.overflow = ''; }
+      if(e.data.on){ f.classList.add('fs'); document.body.style.overflow='hidden'; }
+      else { f.classList.remove('fs'); document.body.style.overflow = document.getElementById('pumpFindModal').classList.contains('open') ? 'hidden' : ''; }
     }
   });
 </script>
