@@ -767,8 +767,8 @@ body.iq-locked{overflow:hidden}
 <section class="wizard-wrap">
   <div class="wizard-card">
     <div class="wz-head">
-      <span class="wz-mark">30초 추천</span>
-      <h2>30초 안에 추천해드립니다 (v2)</h2>
+      <span class="wz-mark">펌프 추천</span>
+      <h2>조건만 입력하면 추천해드립니다</h2>
       <p>해당하는 항목을 모두 선택해주세요 (복수 선택 가능). 정확한 모델 비교는 추천 결과의 링크에서 이어집니다.</p>
     </div>
 
@@ -777,32 +777,9 @@ body.iq-locked{overflow:hidden}
         <div class="wz-progress-bar"><div class="wz-progress-fill" id="wzProgressFill"></div></div>
         <div class="wz-progress-text" id="wzProgressText">1 / 3</div>
       </div>
-      <!-- Q1: 주요 용도 / 환경 (그룹 직접 매핑) -->
+      <!-- Q1: 유량 -->
       <fieldset class="wz-q active" data-step="1">
-        <legend><span class="num">1</span>이 펌프를 어디에 쓰실 건가요? <span style="color:#b94545">*</span></legend>
-        <div class="wz-options">
-          <label><input type="radio" name="use_case" value="S"> 일반 실험실 펌핑 (배지·시약 연속 이송)
-            <span class="opt-hint">가장 무난한 기본형 — 세포배양·시약 이송</span></label>
-          <label><input type="radio" name="use_case" value="L"> 정확한 유량 제어·측정 (유량 디스플레이)
-            <span class="opt-hint">유량 디스플레이 + 통신 — 정확한 유량 추적</span></label>
-          <label><input type="radio" name="use_case" value="F"> 정해진 양 반복 분주 (충진·dispensing)
-            <span class="opt-hint">분주 모드 내장 — 충진·dispensing 자동화</span></label>
-          <label><input type="radio" name="use_case" value="ef-fg"> 방폭·세척 환경 (인화성·휘발성·식품)
-            <span class="opt-hint">방폭/세척 인증 — 인화성·휘발성 환경</span></label>
-          <label><input type="radio" name="use_case" value="syringe-integrated"> 정밀 미량 분주 (μL~mL · 다채널 가능)
-            <span class="opt-hint">본체 일체형 — 1·2·4·6·10 채널</span></label>
-          <label><input type="radio" name="use_case" value="syringe-split"> 초미량 분주 (pL~μL) 또는 시린지·본체 분리
-            <span class="opt-hint">시린지/본체 분리 — cleanroom·microfluidics</span></label>
-          <label><input type="radio" name="use_case" value="gear"> 점성액·기름·고압 연속 정량
-            <span class="opt-hint">산업용 정밀 — 점성·고압에 강함</span></label>
-          <label><input type="radio" name="use_case" value="unsure"> 잘 모르겠음 — 사장님께 직접 상담
-            <span class="opt-hint">사장님이 사용 사례 듣고 추천</span></label>
-        </div>
-      </fieldset>
-
-      <!-- Q2: 필요 유량 범위 -->
-      <fieldset class="wz-q" data-step="2">
-        <legend><span class="num">2</span>필요한 유량은 얼마나 되시나요? <span style="color:#b94545">*</span></legend>
+        <legend><span class="num">1</span>필요한 유량은 얼마나 되시나요? <span style="color:#b94545">*</span></legend>
         <div class="wz-options">
           <label><input type="radio" name="flow_range" value="micro"> 마이크로 미량 (μL 단위)</label>
           <label><input type="radio" name="flow_range" value="lt1"> 1 mL/min 미만</label>
@@ -813,45 +790,48 @@ body.iq-locked{overflow:hidden}
         </div>
       </fieldset>
 
-      <!-- Q3: 추가 정보 (펼침형, 선택) -->
+      <!-- Q2: 채널수 -->
+      <fieldset class="wz-q" data-step="2">
+        <legend><span class="num">2</span>동시 라인 수(채널)는 몇 개인가요? <span style="color:#b94545">*</span></legend>
+        <div class="wz-options">
+          <label><input type="radio" name="channels" value="1"> 1채널 (단일 라인)</label>
+          <label><input type="radio" name="channels" value="2"> 2채널</label>
+          <label><input type="radio" name="channels" value="4"> 4채널</label>
+          <label><input type="radio" name="channels" value="multi"> 다채널 (6개 이상)</label>
+        </div>
+      </fieldset>
+
+      <!-- Q3: 제어 방식 -->
       <fieldset class="wz-q" data-step="3">
-        <legend><span class="num">3</span>추가 정보 <span style="font-size:12px;font-weight:400;color:var(--muted)">(선택 — 더 정확한 추천에 도움)</span></legend>
-        <details class="wz-extra-inline" open style="border:1px solid var(--border);border-radius:8px;padding:12px 14px;background:#fafbfd">
-          <summary style="cursor:pointer;font-size:13px;font-weight:700;color:var(--teal);user-select:none">옵션 (채널·유체·제어·메모) — 답해주시면 추천 정밀도 ↑</summary>
-          <div style="margin-top:14px;display:flex;flex-direction:column;gap:14px">
-            <div>
-              <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">동시 라인 수 (채널)</div>
-              <div class="opt-inline" style="font-size:13px">
-                <label><input type="radio" name="channels" value="1"> 1채널</label>
-                <label><input type="radio" name="channels" value="2"> 2채널</label>
-                <label><input type="radio" name="channels" value="4"> 4채널</label>
-                <label><input type="radio" name="channels" value="multi"> 다채널 (6+)</label>
-              </div>
-            </div>
-            <div>
-              <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">이송 유체 <span style="font-weight:400">(복수 선택 가능)</span></div>
-              <div class="opt-inline" style="font-size:13px">
-                <label><input type="checkbox" name="fluid" value="aqueous"> 일반 수용액·시약</label>
-                <label><input type="checkbox" name="fluid" value="viscous"> 점성액·기름</label>
-                <label><input type="checkbox" name="fluid" value="flammable"> 인화성·휘발성·유기용매</label>
-                <label><input type="checkbox" name="fluid" value="acid"> 산·알칼리·부식성</label>
-                <label><input type="checkbox" name="fluid" value="slurry"> 슬러리·입자 함유</label>
-              </div>
-            </div>
-            <div>
-              <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">제어 방식</div>
-              <div class="opt-inline" style="font-size:13px">
-                <label><input type="radio" name="ctrl_pref" value="local"> 수동 (다이얼·키패드)</label>
-                <label><input type="radio" name="ctrl_pref" value="comm"> PC·PLC 통신 (RS485/RS232)</label>
-                <label><input type="radio" name="ctrl_pref" value="auto_sw"> 자동제어 시스템 (자체 SW)</label>
-              </div>
-            </div>
-            <div>
-              <div style="font-size:12.5px;color:var(--muted);margin-bottom:6px;font-weight:600">현재 모델·특이사항 (자유 메모)</div>
-              <textarea name="notes" placeholder="현재 사용 모델, 매질 점도/온도, 응용 사례, 부가 요구사항 등" style="width:100%;padding:9px;border:1px solid var(--border);border-radius:6px;font-family:inherit;font-size:13px;min-height:60px;resize:vertical"></textarea>
-            </div>
-          </div>
-        </details>
+        <legend><span class="num">3</span>제어 방식은 어떻게 하시나요? <span style="color:#b94545">*</span></legend>
+        <div class="wz-options">
+          <label><input type="radio" name="ctrl_pref" value="local"> 수동 (다이얼·키패드)</label>
+          <label><input type="radio" name="ctrl_pref" value="comm"> PC·PLC 통신 (RS485/RS232)</label>
+          <label><input type="radio" name="ctrl_pref" value="auto_sw"> 자동제어·스케줄링 (제어 프로그램)</label>
+        </div>
+      </fieldset>
+
+      <!-- Q4: 필요 기능 (펌프 종류 매핑) -->
+      <fieldset class="wz-q" data-step="4">
+        <legend><span class="num">4</span>어떤 기능이 필요하세요? <span style="color:#b94545">*</span></legend>
+        <div class="wz-options">
+          <label><input type="radio" name="use_case" value="S"> 연속 이송 (배지·시약 펌핑)
+            <span class="opt-hint">가장 무난한 기본형 — 세포배양·시약 이송</span></label>
+          <label><input type="radio" name="use_case" value="L"> 정밀 정량·유량 제어
+            <span class="opt-hint">유량 디스플레이 + 통신 — 정확한 유량 추적</span></label>
+          <label><input type="radio" name="use_case" value="F"> 반복 분주·충진
+            <span class="opt-hint">분주 모드 내장 — 충진·dispensing 자동화</span></label>
+          <label><input type="radio" name="use_case" value="syringe-integrated"> 정밀 미량 분주 (μL~mL)
+            <span class="opt-hint">시린지 일체형 — 다채널 가능</span></label>
+          <label><input type="radio" name="use_case" value="syringe-split"> 초미량 분주 (pL~μL)
+            <span class="opt-hint">시린지/본체 분리 — microfluidics</span></label>
+          <label><input type="radio" name="use_case" value="gear"> 점성액·고압 정량
+            <span class="opt-hint">기어 펌프 — 점성·고압에 강함</span></label>
+          <label><input type="radio" name="use_case" value="ef-fg"> 방폭·세척 환경 (인화성·식품)
+            <span class="opt-hint">방폭/세척 인증 — 인화성·휘발성 환경</span></label>
+          <label><input type="radio" name="use_case" value="unsure"> 잘 모르겠음 — 직접 상담
+            <span class="opt-hint">사장님이 사용 사례 듣고 추천</span></label>
+        </div>
       </fieldset>
 
       <div class="wz-actions">
@@ -1300,7 +1280,7 @@ window.addEventListener('message', e=>{
     criteria:'#faq-criteria',
     tubing:'#faq-tubing'
   };
-  const TOTAL = 3;
+  const TOTAL = 4;
   let currentStep = 1;
 
   function showStep(n){
@@ -1325,7 +1305,7 @@ window.addEventListener('message', e=>{
       const hasCheck = activeFs.querySelectorAll('input[type=checkbox]:checked, input[type=radio]:checked').length > 0;
       if (n === TOTAL){
         document.getElementById('wzRun').style.display = '';
-        document.getElementById('wzHint').textContent = '추가 정보는 선택 사항. [추천 받기] 버튼을 눌러주세요';
+        document.getElementById('wzHint').textContent = '[추천 받기] 버튼을 눌러주세요';
       } else if (hasCheck){
         if (nextBtn) nextBtn.style.display = '';
         document.getElementById('wzHint').textContent = '[다음] 버튼을 눌러주세요';
@@ -1364,77 +1344,30 @@ window.addEventListener('message', e=>{
 
   // 옵션 선택 시
   $form.addEventListener('change', e => {
-    if (e.target.matches('input[type=radio][name="use_case"]')){
-      const useCase = e.target.value;
-      ensureCatalogLoaded().then(() => updateQ2OptionsForUseCase(useCase));
+    if (e.target.matches('input[type=radio][name="flow_range"]')){
+      if (typeof ensureCatalogLoaded === 'function') ensureCatalogLoaded();
       setTimeout(() => showStep(2), 220);
       return;
     }
-    if (e.target.matches('input[type=radio][name="flow_range"]')){
+    if (e.target.matches('input[type=radio][name="channels"]')){
       setTimeout(() => showStep(3), 220);
       return;
     }
-    const stepEl = e.target.closest('.wz-q');
-    if (stepEl && parseInt(stepEl.dataset.step) === 3){
+    if (e.target.matches('input[type=radio][name="ctrl_pref"]')){
+      setTimeout(() => showStep(4), 220);
+      return;
+    }
+    if (e.target.matches('input[type=radio][name="use_case"]')){
       $run.style.display = '';
+      return;
     }
   });
 
   function validateCurrentStep(){
-    const activeFs = document.querySelector('.wz-q.active');
-    if (!activeFs) return false;
-    if (currentStep === 1){
-      if (!getVal('use_case')){ alert('주요 용도를 선택해주세요.'); return false; }
-      return true;
-    }
-    if (currentStep === 2){
-      if (!getVal('flow_range')){ alert('필요 유량을 선택해주세요.'); return false; }
-      return true;
-    }
-    return true;
-    if (false){
-      const cm = $form.querySelector('input[name="current_model"]');
-      if (!cm || !cm.value.trim()){
-        alert('현재 펌프 모델명은 필수 입력 항목입니다.');
-        if (cm) cm.focus();
-        return false;
-      }
-      if (getVals('reason').length === 0){
-        alert('교체·업그레이드 이유를 1개 이상 선택해주세요.');
-        return false;
-      }
-      const tid = $form.querySelector('input[name="tube_id"]');
-      const tod = $form.querySelector('input[name="tube_od"]');
-      const tubeUnknown = $form.querySelector('input[name="tube_size_unknown"]:checked');
-      const hasTubeSize = (tid && tid.value.trim()) || (tod && tod.value.trim()) || tubeUnknown;
-      if (!hasTubeSize){
-        alert('튜브 치수(내경 또는 외경)를 입력하거나 "튜브 치수 모름"을 체크해주세요.');
-        return false;
-      }
-      if (getVals('tube_mat').length === 0){
-        alert('튜브 재질을 1개 이상 선택하거나 "재질 모름"을 체크해주세요.');
-        return false;
-      }
-      return true;
-    }
-    // Q2 신규 분기: 유체 + 유량 모두 필수
-    if (currentStep === 2 && getVal('situation') === 'new'){
-      if (getVals('fluid').length === 0){
-        alert('이송 유체를 1개 이상 선택해주세요.');
-        return false;
-      }
-      if (getVals('flow').length === 0){
-        alert('필요 유량 범위를 1개 이상 선택해주세요.');
-        return false;
-      }
-      return true;
-    }
-    // 그 외 단계: 하나 이상 선택 필수
-    const hasCheck = activeFs.querySelectorAll('input[type=checkbox]:checked, input[type=radio]:checked').length > 0;
-    if (!hasCheck){
-      alert('하나 이상 선택해주세요.');
-      return false;
-    }
+    if (currentStep === 1 && !getVal('flow_range')){ alert('필요 유량을 선택해주세요.'); return false; }
+    if (currentStep === 2 && !getVal('channels')){ alert('채널 수를 선택해주세요.'); return false; }
+    if (currentStep === 3 && !getVal('ctrl_pref')){ alert('제어 방식을 선택해주세요.'); return false; }
+    if (currentStep === 4 && !getVal('use_case')){ alert('필요한 기능을 선택해주세요.'); return false; }
     return true;
   }
   const $next = document.getElementById('wzNext');
@@ -1453,8 +1386,8 @@ window.addEventListener('message', e=>{
   $run.addEventListener('click', () => {
     const useCase   = getVal('use_case');
     const flowRange = getVal('flow_range');
-    if (!useCase){ alert('주요 용도를 선택해주세요.'); showStep(1); return; }
-    if (!flowRange){ alert('필요 유량을 선택해주세요.'); showStep(2); return; }
+    if (!useCase){ alert('필요한 기능을 선택해주세요.'); showStep(4); return; }
+    if (!flowRange){ alert('필요 유량을 선택해주세요.'); showStep(1); return; }
     function _v(n){ const e=$form.querySelector('[name="'+n+'"]'); return e?e.value.trim():''; }
     const extras = {
       channels: getVal('channels') || '',
