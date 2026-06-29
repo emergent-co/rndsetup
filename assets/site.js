@@ -30,7 +30,7 @@
         '상호 셀렙 (Cellab) · 대표 이영현 · 사업자등록 637-05-03629 · 개업일 2026.01.06<br>' +
         '소재지 부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 업태 도매·소매업 / 정보통신업</div>' +
       '<div class="cf-bar">Lead Fluid 한국 공식 총판 · 3년 무상 보증 · 국내 A/S 직접 응대</div>' +
-      '<div class="cf-cp">© 2026 Cellab · <a href="mailto:contact@cellab.kr">contact@cellab.kr</a></div>' +
+      '<div class="cf-cp">© 2026 Cellab · <a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a></div>' +
     '</div></footer>';
 
   function inject() {
