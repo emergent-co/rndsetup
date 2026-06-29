@@ -12,6 +12,18 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# --- UTF-8 강제 (한글 커밋 메시지 깨짐 방지) ---
+# PowerShell이 git에 인자를 넘길 때 콘솔 인코딩(기본 cp949)으로 변환하면
+# 한글이 '?'로 손상된다. 콘솔/출력 인코딩을 UTF-8로 고정하고 git도 UTF-8로 설정.
+try {
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    [Console]::InputEncoding  = [System.Text.Encoding]::UTF8
+} catch {}
+$OutputEncoding = [System.Text.Encoding]::UTF8
+$env:LC_ALL = "C.UTF-8"
+git config i18n.commitEncoding utf-8 2>$null
+git config i18n.logOutputEncoding utf-8 2>$null
+
 $RepoUrl  = "https://github.com/emergent-co/cellab.git"
 
 Write-Host ""
@@ -127,7 +139,11 @@ if ([string]::IsNullOrEmpty($Message)) {
     $Message = "Update: $(Get-Date -Format 'yyyy-MM-dd HH:mm')"
 }
 Write-Host "[INFO] commit: $Message" -ForegroundColor Yellow
-git commit -m $Message | Out-Null
+# 메시지를 UTF-8(BOM 없음) 임시파일로 써서 -F 로 커밋 → 콘솔 인코딩 무관하게 한글 보존
+$msgFile = [System.IO.Path]::GetTempFileName()
+[System.IO.File]::WriteAllText($msgFile, $Message, (New-Object System.Text.UTF8Encoding($false)))
+git commit -F $msgFile | Out-Null
+Remove-Item $msgFile -ErrorAction SilentlyContinue
 
 # Pull first — sync with GitHub Actions auto-build commits
 Write-Host "[INFO] git pull origin main (sync auto-build commits)" -ForegroundColor Yellow
