@@ -70,6 +70,19 @@
   .req-modal .m-desc{color:var(--ink);font-size:15px;line-height:1.75;margin-top:12px}
   .req-modal .m-meta{color:var(--gray-2);font-size:13px;margin-top:16px;border-top:1px solid var(--line);padding-top:12px}
   .req-modal .m-close{position:absolute;top:8px;right:12px;font-size:28px;line-height:1;color:#fff;cursor:pointer;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+  /* 개발 요청 폼 팝업 */
+  .rf-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;padding:20px;z-index:60}
+  .rf-modal.open{display:flex}
+  .rf-box{position:relative;background:#fff;border-radius:14px;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:26px 26px 22px}
+  .rf-box h3{font-family:var(--serif);font-size:22px;margin-bottom:6px}
+  .rf-box .rf-sub{color:var(--gray);font-size:13.5px;margin-bottom:14px}
+  .rf-close{position:absolute;top:12px;right:16px;font-size:26px;line-height:1;color:var(--gray);cursor:pointer}
+  .rf-box label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-top:12px}
+  .rf-box input,.rf-box select,.rf-box textarea{width:100%;margin-top:5px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:14px;background:#fff;color:var(--ink)}
+  .rf-box textarea{min-height:68px;resize:vertical}
+  .rf-send{margin-top:18px;width:100%;background:var(--ink);color:#fff;border:0;padding:12px;border-radius:9px;font-weight:600;font-size:15px;cursor:pointer}
+  .rf-send:hover{background:#000}
+  .rf-send:disabled{opacity:.6;cursor:default}
   @media(max-width:900px){.board{grid-template-columns:1fr 1fr}}
   @media(max-width:600px){.board{grid-template-columns:1fr}}
   @media(max-width:680px){.menu{display:none}.hero h1{font-size:30px}}
@@ -85,9 +98,7 @@
     <p>펌프 제어 프로그램에 필요한 기능을 이메일로 보내주시면, 검토 후 아래 대기열에 올리고
        <b>개발 진행 상황을 공개</b>로 보여드립니다.</p>
     <div class="btns">
-      <!-- 이메일 요청: 받는 주소·템플릿은 실제 값으로 교체 -->
-      <a class="b1" href="mailto:emgt.yhlee@gmail.com?subject=%5B%EA%B0%9C%EB%B0%9C%20%EC%9A%94%EC%B2%AD%5D%20&body=%E2%96%A0%20%EC%9A%94%EC%B2%AD%20%EA%B8%B0%EB%8A%A5%3A%0A%E2%96%A0%20%EC%82%AC%EC%9A%A9%20%EC%83%81%ED%99%A9%2F%EC%9D%B4%EC%9C%A0%3A%0A%E2%96%A0%20%EC%9A%B0%EC%84%A0%EC%88%9C%EC%9C%84(%EC%83%81%2F%EC%A4%91%2F%ED%95%98)%3A%0A%E2%96%A0%20%ED%9A%8C%EC%82%AC%C2%B7%EC%97%B0%EA%B5%AC%EC%8B%A4%3A%0A%E2%96%A0%20%EC%97%B0%EB%9D%BD%EC%B2%98%3A%0A">이메일로 개발 요청 보내기</a>
-      <a class="b2" href="#board">진행 상황 보기</a>
+      <button class="b1" type="button" onclick="openReqForm()" style="border:0;cursor:pointer;font:inherit">개발 요청하기</button>
     </div>
   </div>
 </section>
@@ -96,7 +107,6 @@
   <div class="wrap">
     <div class="sum" id="sum"><!-- JS가 채움 --></div>
     <div class="board" id="boardList"><!-- JS가 채움 --></div>
-    <p class="legend">상태 흐름: 요청됨 → 검토중 → 개발중 → 완료 &nbsp;·&nbsp; 모든 요청은 검토 후 게시됩니다.</p>
   </div>
 </section>
 
@@ -111,6 +121,31 @@
       <p class="m-desc" id="mDesc"></p>
       <div class="m-meta" id="mMeta"></div>
     </div>
+  </div>
+</div>
+
+<!-- 개발 요청 폼 팝업 -->
+<div class="rf-modal" id="reqFormModal" onclick="if(event.target===this)closeReqForm()">
+  <div class="rf-box">
+    <span class="rf-close" onclick="closeReqForm()">×</span>
+    <h3>개발 요청하기</h3>
+    <p class="rf-sub">필요한 기능을 남겨주시면 검토 후 진행 상황을 공개로 보여드립니다.</p>
+    <form id="reqForm">
+      <input type="hidden" name="_subject" value="[개발 요청] 펌프 제어 프로그램">
+      <label>요청 기능 <span style="color:#c00">*</span>
+        <textarea name="요청 기능" required placeholder="예: 다중 펌프 동시 제어"></textarea></label>
+      <label>사용 상황 / 이유
+        <textarea name="사용 상황·이유" placeholder="어떤 실험·작업에서 필요한지"></textarea></label>
+      <label>우선순위
+        <select name="우선순위"><option>상</option><option selected>중</option><option>하</option></select></label>
+      <label>회사 · 연구실
+        <input type="text" name="회사·연구실" placeholder="OO대학교 OO연구실"></label>
+      <label>이메일 <span style="color:#c00">*</span>
+        <input type="email" name="email" required placeholder="you@lab.ac.kr"></label>
+      <label>연락처
+        <input type="tel" name="연락처" placeholder="선택"></label>
+      <button class="rf-send" type="submit">요청 보내기</button>
+    </form>
   </div>
 </div>
 
@@ -182,7 +217,21 @@ function openReq(i){
   document.body.style.overflow = 'hidden';
 }
 function closeReq(){ document.getElementById('reqModal').classList.remove('open'); document.body.style.overflow=''; }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeReq(); });
+function openReqForm(){ document.getElementById('reqFormModal').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeReqForm(){ document.getElementById('reqFormModal').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('reqForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  var f = e.target, btn = f.querySelector('.rf-send');
+  btn.disabled = true; btn.textContent = '전송 중…';
+  fetch('https://formspree.io/f/mnjkzppj', { method:'POST', body:new FormData(f), headers:{'Accept':'application/json'} })
+    .then(function(r){
+      btn.disabled = false; btn.textContent = '요청 보내기';
+      if(r.ok){ f.reset(); closeReqForm(); alert('개발 요청이 접수되었습니다. 감사합니다!'); }
+      else { alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); }
+    })
+    .catch(function(){ btn.disabled = false; btn.textContent = '요청 보내기'; alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); });
+});
+document.addEventListener('keydown', e => { if(e.key==='Escape'){ closeReq(); closeReqForm(); } });
 renderSum(); renderList();
 </script>
 </body>
