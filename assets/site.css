@@ -9,7 +9,7 @@
 /* 1) 색 토큰 — 홈 팔레트로 통일 */
 :root{
   --ink:#1A1A1A; --gray:#6B6B6B; --gray-2:#9A9A9A;
-  --green:#1E3A5F; --green-dk:#142A45; --green-bg:#F6F7F8;
+  --green:#1E3A5F; --green-dk:#142A45; --green-bg:#EDF1F8;
   --line:#EAEAEA; --bg:#FFFFFF;
   --serif:"Noto Serif KR", Georgia, "Times New Roman", serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
@@ -20,8 +20,8 @@
   --text:#1A1A1A;
   --muted:#6B6B6B;
   --border:#EAEAEA;
-  --soft:#F6F7F8;
-  --soft-blue:#F6F7F8;
+  --soft:#EDF1F8;
+  --soft-blue:#EDF1F8;
   --accent:#1E3A5F;
 }
 /* 중요 글자 하이라이트 (마커 스타일) — 전 페이지 공통 */
