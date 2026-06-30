@@ -37,14 +37,14 @@
   var HEADER =
     '<header class="chrome-header"><div class="ch-inner">' +
       '<a class="ch-brand" href="/">Cellab<b>.</b>' +
-        '<span class="ch-tag">펌프 수리부터 제어 소프트웨어까지</span></a>' +
+        '<span class="ch-tag">펌프 수리부터 제어까지</span></a>' +
       '<nav class="ch-nav">' + navHTML + '</nav>' +
       '<div class="ch-cta">' + ctaHTML + '</div>' +
     '</div></header>';
 
   var FOOTER =
     '<footer class="chrome-footer"><div class="cf-inner">' +
-      '<div class="cf-co"><strong>Cellab</strong> · 펌프를 고치고, 제어 소프트웨어를 만드는 셀렙<br>' +
+      '<div class="cf-co"><strong>Cellab</strong> · 펌프 수리부터 제어까지<br>' +
         '셀렙 (Cellab) · 이영현 · 637-05-03629<br>' +
         '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
       '<div class="cf-cp">© 2026 Cellab</div>' +

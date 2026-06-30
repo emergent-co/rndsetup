@@ -9,7 +9,7 @@
 /* 1) 색 토큰 — 홈 팔레트로 통일 */
 :root{
   --ink:#1A1A1A; --gray:#6B6B6B; --gray-2:#9A9A9A;
-  --green:#1A6E56; --green-dk:#155A46; --green-bg:#F3F8F5;
+  --green:#1A6E56; --green-dk:#155A46; --green-bg:#F6F7F8;
   --line:#EAEAEA; --bg:#FFFFFF;
   --serif:"Noto Serif KR", Georgia, "Times New Roman", serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
@@ -20,8 +20,8 @@
   --text:#1A1A1A;
   --muted:#6B6B6B;
   --border:#EAEAEA;
-  --soft:#F3F8F5;
-  --soft-blue:#F3F8F5;
+  --soft:#F6F7F8;
+  --soft-blue:#F6F7F8;
   --accent:#1A6E56;
 }
 
@@ -32,7 +32,9 @@ html, body{
   font-family:var(--sans);
   word-break:keep-all;
   overflow-wrap:break-word;
+  overflow-x:clip;            /* 모바일 가로 스크롤 차단 (sticky 헤더 영향 없음) */
 }
+img, svg, video{ max-width:100%; height:auto; }
 
 /* 3) 제목 — 세리프 (홈 기준). 컴포넌트 라벨(div/span)은 영향 없음 */
 h1, h2, h3{
@@ -85,7 +87,13 @@ header,
 .ch-dropm a{ display:block; padding:9px 12px; font-size:14px; color:var(--gray); border-radius:7px; white-space:nowrap; text-decoration:none; }
 .ch-dropm a:hover{ background:var(--green-bg); color:var(--ink); }
 .ch-dropm a[aria-current="page"]{ color:var(--green); font-weight:600; }
-@media(max-width:980px){ .ch-inner{ display:flex; justify-content:space-between; padding:0 20px; } .ch-nav{ gap:20px; } }
+@media(max-width:980px){
+  .ch-tag{ display:none; }
+  .ch-inner{ display:flex; flex-wrap:wrap; align-items:center; height:auto; padding:9px 16px; gap:6px 14px; }
+  .ch-brand{ order:1; }
+  .ch-cta{ order:2; margin-left:auto; }
+  .ch-nav{ order:3; flex-basis:100%; justify-content:center; flex-wrap:wrap; gap:8px 18px; margin-top:2px; }
+}
 @media(max-width:600px){ .ch-tag{ display:none; } .ch-nav{ gap:14px; } .ch-nav a, .ch-droptg{ font-size:14px; } .ch-brand{ font-size:19px; } .ch-dropm{ left:auto; right:0; transform:none; } }
 
 /* 7) 공유 푸터 (site.js가 주입) — 회사정보 텍스트만, 중복 제거 */
