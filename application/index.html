@@ -60,6 +60,16 @@
   .gi{border:1px solid var(--line);border-radius:10px;padding:14px 16px}
   .gi b{font-size:14.5px;color:var(--ink)}
   .gi span{display:block;font-size:13px;color:var(--gray);line-height:1.6;margin-top:3px}
+  .abody p{font-size:15.5px;color:#2a2a2a;line-height:1.75;margin:0 0 14px}
+  .abody ul{margin:0 0 16px 18px}
+  .abody li{font-size:15.5px;color:#2a2a2a;line-height:1.7;margin-bottom:8px}
+  .abody b{color:var(--ink)}
+  .gtable{width:100%;border-collapse:collapse;margin:6px 0 18px;font-size:14px}
+  .gtable th,.gtable td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top;line-height:1.55}
+  .gtable th{background:#f7f9fc;font-weight:700}
+  .gbox{background:var(--green-bg);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:16px 0;font-size:14.5px;color:#2a2a2a;line-height:1.7}
+  .gbox b{color:var(--ink)}
+  @media(max-width:640px){.gtable{font-size:13px}.gtable th,.gtable td{padding:8px 9px}}
   @media(max-width:640px){.pmini{grid-template-columns:1fr 1fr}.tlist{grid-template-columns:1fr}}
   .subh{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);margin:34px 0 12px;padding-top:26px;border-top:1px solid var(--line)}
   .wzbtn{display:inline-block;background:var(--ink);color:#fff;border:0;border-radius:9px;padding:12px 20px;font-weight:700;font-size:14.5px;cursor:pointer;font-family:inherit}
@@ -99,31 +109,80 @@
     </div>
 
     <h3 class="subh">펌프 고르는 방법</h3>
-    <p class="tnote">순서대로 <b>4가지</b>만 정하면 펌프 종류가 거의 자동으로 좁혀집니다 — ① 사용 목적 · ② 유량 범위(최소·최대) · ③ 액체 특성(점도·부식·휘발·오염 민감도) · ④ 정밀도·제어 방식.</p>
-    <div class="ginfo">
-      <div class="gi"><b>연동(페리스탈틱)펌프 — 오염이 치명적인 실험</b><span>유체가 튜브 안에서만 흐르고 본체가 시료에 닿지 않습니다. 세포배양·관류·발효에 최적이고, 튜브만 교체하면 되어 관리가 간단합니다.</span></div>
-      <div class="gi"><b>정량펌프 — 재현성 있는 정량 주입</b><span>µL 단위 분주부터 연속 정량 이송까지. 마이크로플루이딕·분석 전처리·시약 정량 주입 등 정확도가 중요한 작업에.</span></div>
-      <div class="gi"><b>시린지펌프 — 초저유량·무맥동</b><span>µL급 미소 유량을 맥동 없이 정밀 주입. 약물주입·정밀 적정처럼 재현성이 핵심인 실험에.</span></div>
-      <div class="gi"><b>방폭펌프 — 위험지역(Ex)</b><span>인화성 용제·가연성 분위기용 방폭 인증. 용제 이송·화학 합성 등 안전이 최우선인 환경에.</span></div>
+    <div class="abody">
+      <p>모델명을 몰라도 괜찮습니다. 아래 <b>4가지</b>만 정하면 펌프 종류가 거의 자동으로 좁혀집니다.</p>
+      <ul>
+        <li><b>① 사용 목적</b> — 끊김 없는 연속 이송인지, 정확한 정량 분주인지, 초저유량 정밀 주입인지 먼저 정합니다.</li>
+        <li><b>② 유량 범위</b> — 최소·최대 유량(µL/min ~ L/min)을 잡습니다. 저유량일수록 RPM이 흔들리지 않는 안정형 헤드가 중요합니다.</li>
+        <li><b>③ 액체 특성</b> — 점도·부식성·휘발성·인화성, 그리고 <b>오염 민감도</b>. 오염이 치명적이면 비접촉 방식이 필수입니다.</li>
+        <li><b>④ 정밀도·제어</b> — 재현성이 얼마나 중요한지, PC로 유량·스케줄을 제어해야 하는지 정합니다.</li>
+      </ul>
+      <p>이 네 가지가 정해지면 아래 중 하나로 좁혀집니다.</p>
+      <table class="gtable">
+        <tr><th style="width:26%">펌프 종류</th><th>강점</th><th style="width:34%">적합 응용</th></tr>
+        <tr><td><b>연동(페리스탈틱)</b></td><td>본체(롤러)가 시료에 닿지 않는 무오염 이송. 튜브만 멸균·교체하면 무균 유지.</td><td>세포배양·관류·발효 등 오염이 치명적인 실험</td></tr>
+        <tr><td><b>정량</b></td><td>재현성 있는 정량 분주·연속 이송</td><td>마이크로플루이딕·분석 전처리·시약 정량 주입</td></tr>
+        <tr><td><b>시린지</b></td><td>µL급 초저유량을 맥동 없이 정밀 주입</td><td>약물주입·정밀 적정 등 고재현성 실험</td></tr>
+        <tr><td><b>방폭</b></td><td>위험지역(Ex) 방폭 인증</td><td>인화성 용제·화학 합성 등 안전 최우선 환경</td></tr>
+      </table>
+      <div class="gbox">고민되면 <b>액체 종류·유량·사용 방식</b>만 알려주세요. 모델명 없이도 맞는 펌프를 같이 골라드립니다. 아래 위저드로 30초 안에 후보를 좁힐 수도 있습니다.</div>
+      <div style="margin-top:4px"><button class="wzbtn" type="button" onclick="openPumpFind()">⚡ 30초만에 펌프 추천 받기 →</button></div>
     </div>
-    <p class="tnote" style="margin-top:14px">고민되면 <b>액체 종류·유량·사용 방식</b>만 알려주세요. 모델명 없이도 맞는 펌프를 같이 골라드립니다.</p>
-    <div style="margin-top:14px"><button class="wzbtn" type="button" onclick="openPumpFind()">⚡ 30초만에 펌프 추천 받기 →</button></div>
 
     <h3 class="subh">튜브 선택 가이드</h3>
-    <p class="tnote">연동펌프 성능은 <b>튜브가 좌우</b>합니다. 재질에 따라 내화학성·수명·용출·생체적합성이 다르니, 다루는 액체와 사용 시간에 맞춰 고릅니다.</p>
-    <div class="tlist">
-      <div class="t"><b>실리콘 (플래티넘)</b><span>생체적합·유연 — 세포배양·의료·완충액</span></div>
-      <div class="t"><b>Tygon (PVC계)</b><span>범용 투명 — 일반 수용액·시약 이송</span></div>
-      <div class="t"><b>PharMed · TPE</b><span>저용출·긴 수명 — 장시간 관류·발효</span></div>
-      <div class="t"><b>Viton (불소)</b><span>내용제·내화학 — 유기용제·부식성 액체</span></div>
+    <div class="abody">
+      <p>연동펌프는 <b>튜브가 성능을 좌우</b>합니다. 유체가 튜브 안에서만 흐르기 때문에, 재질에 따라 내화학성·수명·용출·생체적합성이 크게 달라집니다. 다루는 액체와 연속 운전 시간에 맞춰 고르는 것이 핵심입니다.</p>
+      <table class="gtable">
+        <tr><th style="width:24%">재질</th><th>특성</th><th style="width:34%">적합 응용</th></tr>
+        <tr><td><b>실리콘 (플래티넘)</b></td><td>생체적합·유연, 멸균 용이</td><td>세포배양·의료·완충액</td></tr>
+        <tr><td><b>Tygon (PVC계)</b></td><td>투명·범용, 넓은 화학 호환</td><td>일반 수용액·시약 이송</td></tr>
+        <tr><td><b>PharMed · TPE</b></td><td>저용출·긴 펌프 수명</td><td>장시간 관류·발효</td></tr>
+        <tr><td><b>Viton (불소)</b></td><td>내용제·내화학</td><td>유기용제·부식성 액체</td></tr>
+      </table>
+      <p><b>튜브 번호와 유량표를 읽는 법</b> — #13 같은 번호는 직경 숫자가 아니라 사이즈 코드입니다. 제조사 유량표는 대부분 물 기준이라, 점성 액체에서는 같은 RPM·튜브여도 실제 토출량이 줄어듭니다. 정량 분주가 필요하면 반드시 실제 액체로 캘리브레이션하세요.</p>
+      <div class="gbox">튜브는 <b>소모품</b>입니다. 재질·유량·연속운전 시간에 따라 교체 주기가 다르니, 응용을 알려주시면 권장 교체 주기까지 안내합니다.</div>
     </div>
-    <p class="tnote" style="margin-top:14px">튜브는 소모품입니다. 재질·유량·연속운전 시간에 따라 교체 주기가 다르니, 응용을 알려주시면 권장 주기까지 안내합니다.</p>
   </section>
 
   <div style="display:flex;gap:12px;flex-wrap:wrap;margin:30px 0 44px">
     <a href="/contact/" style="display:inline-block;background:#1A1A1A;border-radius:9px;padding:13px 20px;font-weight:600;color:#fff">응용 맞춤 견적 문의 →</a>
   </div>
 </div>
+
+<!-- ═══ Papers (홈에서 이동) — 논문이 검증한 펌프 ═══ -->
+<section id="papers">
+  <style>
+    #papers{padding:44px 0;border-top:1px solid var(--line)}
+    #papers .ph{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+    #papers .ph h2{font-family:var(--serif);font-size:clamp(20px,5vw,25px);font-weight:600;color:var(--ink)}
+    #papers .ph .sub{font-size:14px;color:var(--green);font-weight:600}
+    #papers .pstat{font-size:13.5px;color:var(--gray);margin:8px 0 18px}
+    #papers .pstat b{color:var(--ink);font-weight:600}
+    #papers .prow{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    #papers .pcard{border:1px solid var(--line);border-radius:12px;padding:18px;background:#fff;display:flex;flex-direction:column}
+    @media(max-width:820px){#papers .prow{grid-template-columns:1fr}}
+    #papers .pj{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+    #papers .bj{font-size:10.5px;font-weight:800;letter-spacing:.02em;color:#fff;background:#0A2540;padding:3px 7px;border-radius:5px;white-space:nowrap}
+    #papers .yr{font-size:12.5px;color:var(--gray-2);font-weight:700}
+    #papers .pcard h3{font-size:14.5px;font-weight:600;line-height:1.45;color:var(--ink);margin:0 0 8px;font-family:var(--sans)}
+    #papers .au{font-size:12.5px;color:var(--gray);margin-bottom:10px}
+    #papers .cat{margin:0 0 9px}
+    #papers .cat span{font-size:11.5px;font-weight:700;color:var(--green);margin-right:9px;letter-spacing:.01em}
+    #papers .snip{font-size:12px;color:#3a3a3a;line-height:1.55;background:#f7f9fc;border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:9px 11px;margin-bottom:14px}
+    #papers .snip mark{background:#fff3cd;color:var(--ink);font-weight:700;padding:0 2px;border-radius:2px}
+    #papers .pa{margin-top:auto}
+    #papers .pa a{font-size:13px;font-weight:700;color:var(--green)}
+  </style>
+  <div class="wrap">
+    <div class="ph"><h2>Papers</h2><span class="sub">서울대생도 쓰는 펌프, Nature에도 언급된 펌프</span></div>
+    <div class="pstat"><b>서울대학교</b>를 비롯한 국내외 연구진이 <b>Nature</b> 저널 연구에 <b>LeadFluid</b> 펌프를 사용했습니다 — 논문이 인정한, <span class="hl">신뢰할 수 있는 펌프</span>입니다.</div>
+    <div class="prow">
+      <article class="pcard"><div class="pj"><span class="bj">Nature Electronics</span><span class="yr">2024</span></div><div class="cat"><span>#바이오</span><span>#뇌공학</span></div><h3>A biodegradable and self-deployable electronic tent electrode for brain cortex interfacing</h3><div class="au">Bae, Jae-Young et al.</div><div class="snip">"…the injection process was controlled using a customized injection module. This module comprises a <mark>syringe pump (TYD01-01, Lead Fluid Technology)</mark> for precise control of the injection speed…"</div><div class="pa"><a href="https://www.nature.com/articles/s41928-024-01216-x" target="_blank" rel="noopener">Read Article ↗</a></div></article>
+      <article class="pcard"><div class="pj"><span class="bj">Nature Communications</span><span class="yr">2024</span></div><div class="cat"><span>#의료</span><span>#소재</span></div><h3>Heparin-network-mediated long-lasting coatings on intravascular catheters for adaptive antithrombosis and antibacterial infection</h3><div class="au">Liu, Lin et al.</div><div class="snip">"…a <mark>peristaltic pump (LEAD FLUID, BT101 L)</mark> was utilized to connect the silicone tube… to form a closed-loop system…"</div><div class="pa"><a href="https://www.nature.com/articles/s41467-023-44478-3" target="_blank" rel="noopener">Read Article ↗</a></div></article>
+      <article class="pcard"><div class="pj"><span class="bj">Nature Communications</span><span class="yr">2024</span></div><div class="cat"><span>#에너지</span><span>#탄소포집</span></div><h3>Continuous decoupled redox electrochemical CO2 capture</h3><div class="au">Liu, Tao et al.</div><div class="snip">"…the anolyte and catholyte were introduced into the cell… controlled by two <mark>magnetic pump systems (Lead Fluid, CT3001F)</mark>…"</div><div class="pa"><a href="https://www.nature.com/articles/s41467-024-55334-3" target="_blank" rel="noopener">Read Article ↗</a></div></article>
+    </div>
+  </div>
+</section>
 
 <!-- 펌프 추천 위저드 팝업 -->
 <div class="pf-modal" id="pumpFindModal" onclick="if(event.target===this)closePumpFind()">

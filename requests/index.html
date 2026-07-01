@@ -124,6 +124,12 @@
   #preview .sidecard .t{font-size:11px;color:#9A9A9A;font-weight:700;margin-bottom:8px;letter-spacing:.5px}
   #preview .sidecard p{font-size:13.5px;color:#E6F0EB;line-height:1.6}
   @media(max-width:780px){#preview .demo.active{grid-template-columns:1fr}#preview .showcase{padding:18px}}
+  .swshow{padding:4px 0 44px}
+  .swimg{max-width:900px;margin:0 auto;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f4f6f9;line-height:0;box-shadow:0 12px 30px rgba(10,37,64,.08)}
+  .swimg img{width:100%;height:auto;display:block}
+  .swimg .swph{aspect-ratio:16/9;display:none;align-items:center;justify-content:center;color:var(--gray-2);font-size:13px}
+  .swdl{text-align:center;margin-top:24px}
+  .swmeta{display:block;font-size:12.5px;color:var(--gray);margin-top:10px}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 </head>
@@ -137,101 +143,47 @@
        <b>개발 진행 상황을 공개</b>로 보여드립니다.</p>
     <div class="btns">
       <button class="b1" type="button" onclick="openReqForm()" style="border:0;cursor:pointer;font:inherit">개발 요청하기</button>
-      <button class="b2" type="button" onclick="showPreview()" style="border:0;cursor:pointer;font:inherit">소프트웨어 미리보기</button>
     </div>
   </div>
 </section>
 
-<!-- ===== 소프트웨어 미리보기 (Pump Control Program 데모) — 팝업 ===== -->
-<div id="preview" onclick="if(event.target===this)hidePreview()">
-  <div class="pv-box">
-    <button class="pv-close" type="button" onclick="hidePreview()" aria-label="닫기">×</button>
-    <div class="sec-h">
-      <span class="kicker">Pump Control Program</span>
-      <h2>이렇게 동작합니다</h2>
-      <p>유량·시퀀스·모니터링 — 탭을 눌러 실제 프로그램 화면을 확인하세요.</p>
+<!-- ═══ 제어 소프트웨어 (단순 수리를 넘어 제어까지) ═══ -->
+<section id="edge">
+  <style>
+    #edge{padding:6px 0 44px;border-bottom:1px solid var(--line)}
+    #edge .eh{text-align:center;max-width:620px;margin:0 auto 26px}
+    #edge .eh h2{font-family:var(--serif);font-size:26px;color:var(--ink)}
+    #edge .eh p{color:var(--gray);font-size:15px;margin-top:10px}
+    #edge .eg{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto}
+    #edge .ec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+    #edge .ec .t{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px}
+    #edge .ec p{font-size:14px;color:var(--gray);line-height:1.65}
+    #edge .swimg{max-width:900px;margin:30px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f4f6f9;line-height:0;box-shadow:0 12px 30px rgba(10,37,64,.08)}
+    #edge .swimg img{width:100%;height:auto;display:block}
+    #edge .swimg .swph{aspect-ratio:16/9;display:none;align-items:center;justify-content:center;color:var(--gray-2);font-size:13px}
+    #edge .edl{text-align:center;margin-top:26px}
+    #edge .edl a{display:inline-block;background:var(--ink);color:#fff;padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px}
+    #edge .edl a:hover{background:#000}
+    #edge .edl-meta{font-size:12.5px;color:var(--gray);margin-top:10px}
+    @media(max-width:780px){#edge .eg{grid-template-columns:1fr}}
+  </style>
+  <div class="wrap">
+    <div class="eh">
+      <h2>단순 수리를 넘어, 제어까지 만들어 드립니다</h2>
+      <p>단순 판매 대리점엔 없는 두 가지.</p>
     </div>
-    <div class="tabs">
-      <button class="tab active" data-t="flow"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>유량·RPM 제어</button>
-      <button class="tab" data-t="seq"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg>시퀀스 스케줄링</button>
-      <button class="tab" data-t="mon"><svg viewBox="0 0 24 24"><path d="M4 19V5m4 14V9m4 10V7m4 12v-6m4 6V11"/></svg>실시간 모니터링</button>
+    <div class="eg">
+      <div class="ec"><div class="t">폐루프 정밀제어 (LEADFLUID Pump + Alicat MFC)</div><p>LEADFLUID 펌프와 Alicat 질량유량계(MFC)를 연동해, 목표 유량을 실시간 피드백으로 잡아주는 제어를 직접 개발합니다.</p></div>
+      <div class="ec"><div class="t">맞춤 제어 소프트웨어 무료</div><p>유량·시퀀스·실시간 모니터링은 기본. 연구에 필요한 기능은 요청만 하면 만들어 무료로 드립니다.</p></div>
     </div>
-    <div class="showcase">
-      <div class="demo active" data-d="flow">
-        <div class="win">
-          <div class="winbar"><span class="dots"><i></i><i></i><i></i></span>유량 설정</div>
-          <div class="winbody">
-            <div class="crow"><span class="k">목표 유량</span><span class="cin">12.5 mL/min</span></div>
-            <div class="crow"><span class="k">회전수</span><span class="cin">120 rpm</span></div>
-            <div class="crow"><span class="k">튜브</span><span class="cin">Masterflex L/S 16 ▾</span></div>
-            <span class="chip">⇄ 자동 환산 · 12.5 mL/min = 120 rpm (calib 1.05)</span><br>
-            <span class="applybtn">적용</span>
-          </div>
-        </div>
-        <div class="sidecard"><div class="t">이렇게</div><p>목표 유량만 입력하면 RPM·튜브 계수를 자동 환산. 숫자 외울 필요 없이 mL/min으로.</p></div>
-      </div>
-      <div class="demo" data-d="seq">
-        <div class="win">
-          <div class="winbar"><span class="dots"><i></i><i></i><i></i></span>시퀀스</div>
-          <div class="winbody" style="padding:0">
-            <table class="seq">
-              <thead><tr><th>#</th><th>동작</th><th>유량</th><th>시간</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td class="st">주입</td><td>12.5 mL/min</td><td>10:00</td></tr>
-                <tr><td>2</td><td class="st">정지</td><td>—</td><td>02:00</td></tr>
-                <tr><td>3</td><td class="st">역방향</td><td>8 mL/min</td><td>05:00</td></tr>
-                <tr><td>4</td><td class="st">주입</td><td>12.5 mL/min</td><td>30:00</td></tr>
-              </tbody>
-            </table>
-            <div style="padding:12px 14px;font-size:12px;color:var(--gray)">총 47분 · 반복 ×3 · 무인 운전</div>
-          </div>
-        </div>
-        <div class="sidecard"><div class="t">이렇게</div><p>주입·정지·역방향을 시간표로 짜두면 밤샘 없이 장시간 관류·발효를 무인 운전.</p></div>
-      </div>
-      <div class="demo" data-d="mon">
-        <div class="win">
-          <div class="winbar"><span class="dots"><i></i><i></i><i></i></span>모니터링</div>
-          <div class="winbody">
-            <div class="mstat">
-              <div><b>12.5</b><span>현재 mL/min</span></div>
-              <div><b>312 mL</b><span>누적</span></div>
-              <div><b>00:42:10</b><span>경과</span></div>
-            </div>
-            <svg viewBox="0 0 440 150" style="width:100%;height:auto">
-              <line x1="20" y1="34" x2="430" y2="34" stroke="#B0B6BE" stroke-width="1.2" stroke-dasharray="4 3"/>
-              <path d="M20 130 L80 28 L140 40 L200 32 L260 38 L320 34 L430 34 L430 130 Z" fill="#1E3A5F" fill-opacity="0.10"/>
-              <polyline points="20,130 80,28 140,40 200,32 260,38 320,34 430,34" fill="none" stroke="#1E3A5F" stroke-width="2"/>
-              <circle cx="430" cy="34" r="3.4" fill="#1E3A5F"/>
-            </svg>
-            <span class="applybtn">로그 CSV 내보내기</span>
-          </div>
-        </div>
-        <div class="sidecard"><div class="t">이렇게</div><p>유량·누적량·경과시간을 실시간으로 보고, 로그를 CSV로 내보내 분석에 바로.</p></div>
-      </div>
+    <div class="swimg"><img src="/img/software.png" alt="Cellab Pump Control 프로그램 화면" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="swph">프로그램 화면 (이미지 준비중)</div></div>
+    <div class="edl">
+      <!-- TODO: href를 실제 설치파일(.exe) URL로 교체 -->
+      <a href="#" download>Windows용 다운로드</a>
+      <div class="edl-meta">Windows 10/11 · 무료 · 최신 버전 v1.0</div>
     </div>
   </div>
-  <script>
-    (function(){
-      document.querySelectorAll('#preview .tabs .tab').forEach(function(t){
-        t.addEventListener('click',function(){
-          var k=t.dataset.t;
-          document.querySelectorAll('#preview .tabs .tab').forEach(function(x){x.classList.toggle('active',x===t)});
-          document.querySelectorAll('#preview .showcase .demo').forEach(function(d){d.classList.toggle('active',d.dataset.d===k)});
-        });
-      });
-      window.showPreview = function(){
-        document.getElementById('preview').classList.add('open');
-        document.body.style.overflow='hidden';
-      };
-      window.hidePreview = function(){
-        document.getElementById('preview').classList.remove('open');
-        document.body.style.overflow='';
-      };
-      document.addEventListener('keydown',function(e){ if(e.key==='Escape') hidePreview(); });
-      if(location.hash==='#preview'){ showPreview(); }
-    })();
-  </script>
-</div>
+</section>
 
 <section id="board">
   <div class="wrap">
