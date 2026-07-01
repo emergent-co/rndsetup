@@ -8,11 +8,7 @@
 
   var NAV = [
     { href:'/repair/',   label:'무상 진단' },
-    { label:'가이드', children:[
-        ['/product/',     '펌프 가이드'],
-        ['/tubing.html',  '튜브 가이드'],
-        ['/application/', '실험 가이드']
-      ] },
+    { href:'/application/', label:'실험 가이드' },
     { href:'/requests/', label:'소프트웨어' },
     { href:'/faq/',      label:'FAQ' },
     { href:'/contact/',  label:'문의하기', quote:true }
