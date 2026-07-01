@@ -7,8 +7,8 @@
   var path = location.pathname;
 
   var NAV = [
-    { href:'/application/', label:'실험 가이드' },
     { href:'/requests/', label:'소프트웨어' },
+    { href:'/application/', label:'실험 가이드' },
     { href:'/faq/',      label:'FAQ' },
     { href:'/contact/',  label:'문의하기', quote:true }
   ];
