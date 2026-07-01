@@ -42,7 +42,12 @@
     '</div></header>';
 
   var FOOTER =
-    '<footer class="chrome-footer"><div class="cf-inner">' +
+    '<footer class="chrome-footer">' +
+      '<div class="cf-trust">' +
+        '<span class="cf-tline">LeadFluid 공식 한국 A/S 파트너 · 나비엠알오 등록 공급사 · 셀렙 구매 고객 3년 무상보증</span>' +
+        '<a class="cf-tcta" href="/repair/#apply">무료 수리진단 신청 →</a>' +
+      '</div>' +
+      '<div class="cf-inner">' +
       '<div class="cf-co"><strong>Cellab</strong> · 펌프 수리부터 제어까지<br>' +
         '셀렙 (Cellab) · 이영현 · 637-05-03629<br>' +
         '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
