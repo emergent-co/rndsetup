@@ -19,12 +19,6 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://cellab.kr/repair/</loc>
-    <lastmod>2026-06-30</lastmod>
-    <priority>0.8</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
     <loc>https://cellab.kr/faq/</loc>
     <lastmod>2026-06-30</lastmod>
     <priority>0.7</priority>

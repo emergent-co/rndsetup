@@ -136,21 +136,10 @@
 <body>
 <div id="cellab-header"></div>
 
-<section class="hero">
-  <div class="wrap">
-    <h1>개발 요청 게시판</h1>
-    <p>펌프 제어 프로그램에 필요한 기능을 이메일로 보내주시면, 검토 후 아래 대기열에 올리고
-       <b>개발 진행 상황을 공개</b>로 보여드립니다.</p>
-    <div class="btns">
-      <button class="b1" type="button" onclick="openReqForm()" style="border:0;cursor:pointer;font:inherit">개발 요청하기</button>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 제어 소프트웨어 (단순 수리를 넘어 제어까지) ═══ -->
+<!-- ═══ 제어 소프트웨어 (단순 수리를 넘어 제어까지) — 최상단 ═══ -->
 <section id="edge">
   <style>
-    #edge{padding:6px 0 44px;border-bottom:1px solid var(--line)}
+    #edge{padding:44px 0 8px}
     #edge .eh{text-align:center;max-width:620px;margin:0 auto 26px}
     #edge .eh h2{font-family:var(--serif);font-size:26px;color:var(--ink)}
     #edge .eh p{color:var(--gray);font-size:15px;margin-top:10px}
@@ -158,14 +147,44 @@
     #edge .ec{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
     #edge .ec .t{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--ink);margin-bottom:8px}
     #edge .ec p{font-size:14px;color:var(--gray);line-height:1.65}
-    #edge .swimg{max-width:900px;margin:30px auto 0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#f4f6f9;line-height:0;box-shadow:0 12px 30px rgba(10,37,64,.08)}
-    #edge .swimg img{width:100%;height:auto;display:block}
-    #edge .swimg .swph{aspect-ratio:16/9;display:none;align-items:center;justify-content:center;color:var(--gray-2);font-size:13px}
     #edge .edl{text-align:center;margin-top:26px}
     #edge .edl a{display:inline-block;background:var(--ink);color:#fff;padding:14px 26px;border-radius:10px;font-weight:700;font-size:15px}
     #edge .edl a:hover{background:#000}
     #edge .edl-meta{font-size:12.5px;color:var(--gray);margin-top:10px}
     @media(max-width:780px){#edge .eg{grid-template-columns:1fr}}
+    /* 프로그램 목업 (홈에서 사용하던 화면) */
+    #edge .app{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(10,37,64,.13);font-family:var(--sans);max-width:900px;margin:30px auto 0}
+    #edge .app .bar{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#F6F7F9;border-bottom:1px solid var(--line);font-size:13px;font-weight:700;color:var(--ink)}
+    #edge .app .bar .gd{width:12px;height:12px;border-radius:3px;background:var(--green)}
+    #edge .app .bar .wctl{margin-left:auto;display:flex;gap:1px}
+    #edge .app .bar .wbtn{width:38px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:5px;color:#5A6472}
+    #edge .app .bar .wbtn svg{width:11px;height:11px;stroke:currentColor;stroke-width:1.2;fill:none}
+    #edge .app .bar .wbtn:hover{background:#E7EAEF}
+    #edge .app .bar .wclose:hover{background:#E5484D;color:#fff}
+    #edge .app .body{display:grid;grid-template-columns:1fr 1fr}
+    #edge .app .pane{padding:13px}
+    #edge .app .pl{border-right:1px solid var(--line)}
+    #edge .app .lbl{font-size:10px;font-weight:700;color:var(--gray);margin:0 0 6px}
+    #edge .app .conn{display:flex;gap:6px;margin-bottom:11px}
+    #edge .app .fld{flex:1;border:1px solid var(--line);border-radius:6px;padding:7px 8px;font-size:10px;color:var(--ink)}
+    #edge .app .mbtn{background:var(--green);color:#fff;border-radius:6px;padding:7px 9px;font-size:10px;font-weight:700}
+    #edge .app .card{border:1px solid var(--line);border-radius:8px;padding:10px;margin-bottom:11px}
+    #edge .app .run{display:inline-block;background:#ECEDEF;border-radius:5px;padding:3px 8px;font-size:11px;font-weight:700}
+    #edge .app .upd{float:right;color:var(--gray-2);font-size:10px;font-weight:400;margin-top:4px}
+    #edge .app .kv{display:grid;grid-template-columns:auto 1fr auto 1fr;gap:6px 8px;margin-top:9px;font-size:10px;align-items:baseline}
+    #edge .app .kv .k{color:var(--gray)} #edge .app .kv .v{font-weight:700;text-align:right}
+    #edge .app .ops{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+    #edge .app .op{border:1px solid var(--line);border-radius:6px;padding:8px 0;text-align:center;font-size:10px;font-weight:600}
+    #edge .app .op.go{background:var(--green);color:#fff;border-color:var(--green)}
+    #edge .app .set{margin-top:11px;display:grid;gap:6px}
+    #edge .app .setrow{display:grid;grid-template-columns:42px 1fr auto;gap:6px;align-items:center;font-size:10px}
+    #edge .app .setrow .k{color:var(--gray)}
+    #edge .app .ap{border:1px solid var(--line);border-radius:6px;padding:6px 9px;font-size:10px;color:var(--gray)}
+    #edge .app .chart .ct{font-size:13px;font-weight:700}
+    #edge .app .chart .cs{font-size:10px;color:var(--gray-2);font-weight:400}
+    #edge .app .foot{border-top:1px solid var(--line);padding:8px 14px;display:flex;justify-content:space-between;font-size:10px;color:var(--gray)}
+    #edge .app .foot .on{color:var(--green);font-weight:700}
+    @media(max-width:560px){#edge .app .body{grid-template-columns:1fr}#edge .app .pl{border-right:0;border-bottom:1px solid var(--line)}}
   </style>
   <div class="wrap">
     <div class="eh">
@@ -176,11 +195,62 @@
       <div class="ec"><div class="t">폐루프 정밀제어 (LEADFLUID Pump + Alicat MFC)</div><p>LEADFLUID 펌프와 Alicat 질량유량계(MFC)를 연동해, 목표 유량을 실시간 피드백으로 잡아주는 제어를 직접 개발합니다.</p></div>
       <div class="ec"><div class="t">맞춤 제어 소프트웨어 무료</div><p>유량·시퀀스·실시간 모니터링은 기본. 연구에 필요한 기능은 요청만 하면 만들어 무료로 드립니다.</p></div>
     </div>
-    <div class="swimg"><img src="/img/software.png" alt="Cellab Pump Control 프로그램 화면" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="swph">프로그램 화면 (이미지 준비중)</div></div>
+    <div class="app" aria-label="Cellab Pump Control 화면">
+      <div class="bar"><span class="gd"></span>Cellab Pump Control<span class="wctl"><span class="wbtn"><svg viewBox="0 0 12 12"><line x1="2" y1="6.5" x2="10" y2="6.5"/></svg></span><span class="wbtn"><svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" rx="1"/></svg></span><span class="wbtn wclose"><svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></span></div>
+      <div class="body">
+        <div class="pane pl">
+          <div class="lbl">Connection</div>
+          <div class="conn"><div class="fld">COM3 — USB-Serial (BT101L)</div><div class="mbtn">Reconnect</div></div>
+          <div class="card">
+            <span class="run">Running</span><span class="upd">updated 14:32:10</span>
+            <div class="kv">
+              <span class="k">Direction</span><span class="v">CCW</span><span class="k">Speed</span><span class="v">120 rpm</span>
+              <span class="k">Flow</span><span class="v">12.5 mL/min</span><span class="k">Target</span><span class="v">12.5</span>
+              <span class="k">Mode</span><span class="v">Normal</span><span class="k">Calib.</span><span class="v">1.05</span>
+            </div>
+          </div>
+          <div class="lbl">Operation</div>
+          <div class="ops">
+            <div class="op go">Start</div><div class="op">Pause</div><div class="op">Stop</div>
+            <div class="op">Full speed</div><div class="op">Fwd (CW)</div><div class="op">Rev (CCW)</div>
+          </div>
+          <div class="set">
+            <div class="setrow"><span class="k">Target</span><div class="fld">12.5 mL/min</div><div class="ap">Apply</div></div>
+            <div class="setrow"><span class="k">Calib.</span><div class="fld">1.05</div><div class="ap">Apply</div></div>
+          </div>
+        </div>
+        <div class="pane chart">
+          <div class="ct">Flow rate <span class="cs">mL/min · last 60s</span></div>
+          <svg viewBox="0 0 300 232" style="width:100%;height:auto;margin-top:6px">
+            <g fill="#9AA3AE" font-size="9" font-family="sans-serif">
+              <text x="6" y="30">15</text><text x="6" y="89">10</text><text x="10" y="148">5</text><text x="14" y="208">0</text>
+              <text x="26" y="224">-60s</text><text x="258" y="224">now</text>
+            </g>
+            <line x1="30" y1="55" x2="288" y2="55" stroke="#B0B6BE" stroke-width="1.3" stroke-dasharray="4 3"/>
+            <text x="214" y="48" fill="#6B6B6B" font-size="9.5" font-weight="700" font-family="sans-serif">Target 12.5</text>
+            <path d="M30 205 L72 47 L114 63 L156 51 L198 59 L240 55 L288 55 L288 205 Z" fill="#1E3A5F" fill-opacity="0.10"/>
+            <polyline points="30,205 72,47 114,63 156,51 198,59 240,55 288,55" fill="none" stroke="#1E3A5F" stroke-width="2"/>
+            <circle cx="288" cy="55" r="3.4" fill="#1E3A5F"/>
+          </svg>
+        </div>
+      </div>
+      <div class="foot"><span><span class="on">● Connected</span> &nbsp; COM3 · 9600 8N1 · addr 1</span><span>Running · 120 rpm · CCW</span></div>
+    </div>
     <div class="edl">
       <!-- TODO: href를 실제 설치파일(.exe) URL로 교체 -->
       <a href="#" download>Windows용 다운로드</a>
       <div class="edl-meta">Windows 10/11 · 무료 · 최신 버전 v1.0</div>
+    </div>
+  </div>
+</section>
+
+<section class="hero">
+  <div class="wrap">
+    <h1>개발 요청 게시판</h1>
+    <p>펌프 제어 프로그램에 필요한 기능을 이메일로 보내주시면, 검토 후 아래 대기열에 올리고
+       <b>개발 진행 상황을 공개</b>로 보여드립니다.</p>
+    <div class="btns">
+      <button class="b1" type="button" onclick="openReqForm()" style="border:0;cursor:pointer;font:inherit">개발 요청하기</button>
     </div>
   </div>
 </section>

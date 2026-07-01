@@ -129,7 +129,6 @@
         }
       });
     }
-    initRepairModal();
     if (!document.querySelector('.navimro-fab')) {
       document.body.insertAdjacentHTML('beforeend',
         '<a class="navimro-fab" href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" aria-label="나비엠알오에서 LeadFluid 제품 보기">' +
