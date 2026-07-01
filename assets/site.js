@@ -131,7 +131,7 @@
     }
     if (!document.querySelector('.navimro-fab')) {
       document.body.insertAdjacentHTML('beforeend',
-        '<a class="navimro-fab" href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" aria-label="나비엠알오에서 LeadFluid 제품 보기">' +
+        '<a class="navimro-fab" href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_fab" aria-label="나비엠알오에서 LeadFluid 제품 보기">' +
           '<span class="nm-brand">NAVI<b>MRO</b></span>' +
           '<span class="nm-t">LeadFluid<br>제품 바로가기</span>' +
         '</a>');
@@ -232,14 +232,26 @@
     }
   }, true);
 
-  // 전환(주요 이벤트) — 견적·문의·개발요청 폼 제출
+  // 전환(주요 이벤트) — 문의·개발요청 폼 제출
   document.addEventListener('submit', function (e) {
     var f = e.target;
     if (!f || f.tagName !== 'FORM' || typeof window.gtag !== 'function') return;
     var act = f.getAttribute('action') || '';
-    if (/formspree\.io/i.test(act) || /\/(quote|inquiry|requests)\//.test(location.pathname)) {
+    if (/formspree\.io/i.test(act) || /\/(inquiry|requests)\//.test(location.pathname)) {
       gtag('event', 'generate_lead', {
         form_action: act,
+        page_path: location.pathname
+      });
+    }
+  }, true);
+
+  // 전환 후보 — 나비엠알오(구매 채널) 클릭
+  document.addEventListener('click', function (e) {
+    var a = (e.target && e.target.closest) ? e.target.closest('a') : null;
+    if (!a || typeof window.gtag !== 'function') return;
+    if (/navimro\.com/i.test(a.getAttribute('href') || '')) {
+      gtag('event', 'navimro_click', {
+        link_text: (a.getAttribute('data-ga') || a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 60),
         page_path: location.pathname
       });
     }
