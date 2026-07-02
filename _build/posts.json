@@ -42,53 +42,6 @@
       "image": "/img/og-cover.png",
       "journal": "Nature Communications",
       "doi": "10.1038/s41467-024-55334-3"
-    },
-    {
-      "type": "blog",
-      "slug": "bt101-ex-vivo-catheter",
-      "noindex": true,
-      "title": "ex vivo 카테터 시험 데이터가 매번 흔들린다면 — 회로 설계가 답일 수 있습니다",
-      "summary": "같은 코팅인데 ex vivo 결과가 재현 안 되거나 누적 데이터를 못 뽑고 계시다면, 회로 설계가 원인입니다. Nat. Commun. 2024가 28일 안정 데이터를 뽑아낸 BT101 셋업의 3가지 디테일을 본인 실험에 바로 적용해볼 수 있습니다.",
-      "date": "2026-05-07",
-      "tags": ["BT101", "카테터", "ex vivo", "항혈전", "항균", "Nature Communications"],
-      "setup_id": "bt101_ex_vivo_catheter",
-      "url": "/blog/bt101-ex-vivo-catheter.html",
-      "model_focus": "BT101",
-      "application": "카테터·의료기기",
-      "image": "/blog/img/bt101-ex-vivo-catheter.svg",
-      "journal": "Nature Communications",
-      "citations": null
-    },
-    {
-      "type": "blog",
-      "slug": "bt101-solar-droplet-feedback",
-      "noindex": true,
-      "title": "농축 태양광 하 droplet 증발 데이터가 흔들린다면 — 펌프 + 저울 피드백 조합이 답",
-      "summary": "솔라 스팀·광열 변환 실험에서 droplet 공급이 흔들리면 펌프 선택이 원인입니다. Adv. Sci. 2020가 6 sun 농축광 하에서 0.94 mg/cm²/s 증발 속도를 안정 측정한 BT101 + 전자저울 피드백 셋업의 3가지 디테일을 본인 실험에 그대로 이식할 수 있습니다.",
-      "date": "2026-05-08",
-      "tags": ["BT101", "솔라 스팀", "광열 변환", "rGO", "Advanced Science"],
-      "setup_id": "bt101_solar_droplet",
-      "url": "/blog/bt101-solar-droplet-feedback.html",
-      "model_focus": "BT101",
-      "application": "연료전지·에너지",
-      "image": "/blog/img/bt101-solar-droplet-feedback.svg",
-      "journal": "Advanced Science",
-      "citations": null
-    },
-    {
-      "type": "blog",
-      "slug": "biureactor-perfusion",
-      "noindex": false,
-      "title": "관류 배양을 논문처럼 재현하려면 펌프 제어를 어떻게 해야 하나 — bIUreactor(Butch 2024) 분석",
-      "summary": "오픈소스 3D 조직 플랫폼 bIUreactor(Butch et al., 2024, Ann Biomed Eng)는 연동펌프로 산소화 관류를 구현합니다. 약 $8,000로 실험실 자체 구축이 가능하지만, 다채널 독립 유량·장시간 무인 안정성·유량 프로파일 기록/재현에서 확장 병목이 생깁니다.",
-      "date": "2026-07-02",
-      "tags": ["관류배양", "연동펌프", "3D조직", "무인 관류", "재현성", "Annals of Biomedical Engineering"],
-      "url": "/blog/biureactor-perfusion.html",
-      "model_focus": "연동펌프",
-      "application": "관류배양·3D조직",
-      "image": "/img/og-cover.png",
-      "journal": "Annals of Biomedical Engineering",
-      "citations": null
     }
   ]
 }

@@ -18,7 +18,6 @@
     { t:'실험 가이드', u:'/application/', k:'응용별 셋업 가이드 펌프 튜브', c:'실험별 셋업 가이드' },
     { t:'셋업사례 — LeadFluid 논문 셋업', u:'/setups/', k:'논문 nature 셋업 leadfluid 펌프 사용 사례', c:'셋업사례' },
     { t:'국내 A/S·정품·3년보증', u:'/trust/', k:'리드플루이드 leadfluid 국내 as 수리 정품 중국산 보증 신뢰 진단', c:'믿고 도입할 때' },
-    { t:'블로그', u:'/blog/', k:'아티클 논문 셋업 인사이트', c:'블로그' },
     { t:'자주 묻는 질문 FAQ', u:'/faq/', k:'질문 faq 정량펌프 연동펌프 튜브 채널 제어 수리 소프트웨어', c:'FAQ' },
     { t:'문의하기', u:'/contact/', k:'상담 수리 개발 견적 실험 문의', c:'문의하기' }
   ];
@@ -44,7 +43,6 @@
   var NAV = [
     { href:'/',            label:'홈',        icon:'home' },
     { href:'/setups/', label:'셋업사례', icon:'star' },
-    { href:'/blog/',       label:'블로그',     icon:'feed' },
     { href:'/application/pump-selection.html', label:'펌프를 고를 때', icon:'pick', sub:[
         ['/application/pump-selection.html', '펌프 종류·선택'],
         ['/application/tube-selection.html', '튜브·화학 적합성']
@@ -53,14 +51,10 @@
         ['/requests/',       '소프트웨어 제어'],
         ['/requests/#board', '개발 요청 게시판']
       ] },
-    { href:'/application/', label:'실험별 셋업 가이드', icon:'guide', sub:[
-        ['/application/', '가이드 전체'],
+    { href:'/application/cell-culture-perfusion.html', label:'실험별 셋업 가이드', icon:'guide', sub:[
         ['/application/cell-culture-perfusion.html', '세포배양 관류']
       ] },
-    { href:'/trust/',      label:'믿고 도입할 때', icon:'shield', sub:[
-        ['/trust/#as',    '국내 A/S·정품·3년보증'],
-        ['/trust/#cases', '수리 사례']
-      ] },
+    { href:'/trust/',      label:'믿고 도입할 때', icon:'shield' },
     { href:'/contact/',    label:'문의하기',   icon:'contact' },
     { href:'/faq/',        label:'FAQ',       icon:'faq', sub:[
         ['/faq/#repair', '수리·A/S'],
@@ -69,15 +63,28 @@
       ] }
   ];
   function matches(href){ if(href.indexOf('#') > -1) return false; return href === '/' ? path === '/' : path === href; }
-  function isCur(n){ if(matches(n.href)) return true; return n.sub ? n.sub.some(function(s){ return matches(s[0]); }) : false; }
+  function subOnPage(href){ var i = href.indexOf('#'); if(i === -1) return false; return path === (href.slice(0, i) || '/'); }
   var navHTML = NAV.map(function (n) {
-    var cur = isCur(n);
+    // 하위탭이 있는 그룹은 부모(메인)에 활성표시를 주지 않고, 일치하는 하위탭을 활성화한다.
+    var cur = n.sub ? false : matches(n.href);
     var row = '<a class="s-item' + (cur ? ' active' : '') + '" href="' + n.href + '"' +
               (cur ? ' aria-current="page"' : '') + '>' + (ICONS[n.icon] || '') +
               '<span>' + n.label + '</span></a>';
     if (n.sub) {
-      row += '<div class="s-sub">' + n.sub.map(function (s) {
-        return '<a href="' + s[0] + '">' + s[1] + '</a>';
+      // 현재 페이지와 일치하는 하위탭을 찾는다: 경로형 우선, 해시형은 해시 일치, 해시 없으면 첫 하위탭 기본 활성.
+      var activeIdx = -1;
+      n.sub.forEach(function (s, i) {
+        var href = s[0], hi = href.indexOf('#');
+        if (hi === -1) { if (matches(href)) activeIdx = i; }
+        else if (subOnPage(href) && location.hash === href.slice(hi)) { activeIdx = i; }
+      });
+      if (activeIdx === -1 && !location.hash) {
+        n.sub.forEach(function (s, i) { if (activeIdx === -1 && subOnPage(s[0])) activeIdx = i; });
+      }
+      row += '<div class="s-sub">' + n.sub.map(function (s, i) {
+        var sc = (i === activeIdx);
+        return '<a class="' + (sc ? 'active' : '') + '" href="' + s[0] + '"' +
+               (sc ? ' aria-current="page"' : '') + '>' + s[1] + '</a>';
       }).join('') + '</div>';
     }
     return row;
@@ -100,7 +107,7 @@
       '<div class="cf-inner">' +
         '<div class="cf-cols">' +
           '<div class="cf-col"><h4>바로가기</h4>' +
-            '<a href="/requests/">소프트웨어</a><a href="/application/">실험 가이드</a><a href="/blog/">블로그</a><a href="/faq/">FAQ</a></div>' +
+            '<a href="/requests/">소프트웨어</a><a href="/application/">실험 가이드</a><a href="/setups/">셋업사례</a><a href="/faq/">FAQ</a></div>' +
           '<div class="cf-col"><h4>문의</h4>' +
             '<a href="/contact/#repair">수리 문의</a><a href="/contact/#dev">개발 문의</a>' +
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +

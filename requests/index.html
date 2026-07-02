@@ -200,47 +200,6 @@
       <div class="ec" id="record"><div class="t">유량 프로파일 기록 · 재현</div><p>무엇을 언제 얼마나 흘렸는지 로그로 남기고, 같은 프로파일을 그대로 재실행 — 논문 수준 재현성.</p></div>
     </div>
     <p style="text-align:center;color:var(--gray);font-size:14px;max-width:640px;margin:18px auto 0">이 모두를 <b>LeadFluid 정량·연동·시린지펌프 + 제어 소프트웨어</b>로 구현합니다. 필요한 기능은 요청만 하면 무료로 개발합니다. <span style="color:var(--gray-2)">(정밀 유량 피드백이 필요하면 Alicat 질량유량계(MFC) 연동 폐루프 제어도 별도 지원.)</span></p>
-    <div class="app" aria-label="Cellab Pump Control 화면">
-      <div class="bar"><span class="gd"></span>Cellab Pump Control<span class="wctl"><span class="wbtn"><svg viewBox="0 0 12 12"><line x1="2" y1="6.5" x2="10" y2="6.5"/></svg></span><span class="wbtn"><svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" rx="1"/></svg></span><span class="wbtn wclose"><svg viewBox="0 0 12 12"><line x1="3" y1="3" x2="9" y2="9"/><line x1="9" y1="3" x2="3" y2="9"/></svg></span></span></div>
-      <div class="body">
-        <div class="pane pl">
-          <div class="lbl">Connection</div>
-          <div class="conn"><div class="fld">COM3 — USB-Serial (BT101L)</div><div class="mbtn">Reconnect</div></div>
-          <div class="card">
-            <span class="run">Running</span><span class="upd">updated 14:32:10</span>
-            <div class="kv">
-              <span class="k">Direction</span><span class="v">CCW</span><span class="k">Speed</span><span class="v">120 rpm</span>
-              <span class="k">Flow</span><span class="v">12.5 mL/min</span><span class="k">Target</span><span class="v">12.5</span>
-              <span class="k">Mode</span><span class="v">Normal</span><span class="k">Calib.</span><span class="v">1.05</span>
-            </div>
-          </div>
-          <div class="lbl">Operation</div>
-          <div class="ops">
-            <div class="op go">Start</div><div class="op">Pause</div><div class="op">Stop</div>
-            <div class="op">Full speed</div><div class="op">Fwd (CW)</div><div class="op">Rev (CCW)</div>
-          </div>
-          <div class="set">
-            <div class="setrow"><span class="k">Target</span><div class="fld">12.5 mL/min</div><div class="ap">Apply</div></div>
-            <div class="setrow"><span class="k">Calib.</span><div class="fld">1.05</div><div class="ap">Apply</div></div>
-          </div>
-        </div>
-        <div class="pane chart">
-          <div class="ct">Flow rate <span class="cs">mL/min · last 60s</span></div>
-          <svg viewBox="0 0 300 232" style="width:100%;height:auto;margin-top:6px">
-            <g fill="#9AA3AE" font-size="9" font-family="sans-serif">
-              <text x="6" y="30">15</text><text x="6" y="89">10</text><text x="10" y="148">5</text><text x="14" y="208">0</text>
-              <text x="26" y="224">-60s</text><text x="258" y="224">now</text>
-            </g>
-            <line x1="30" y1="55" x2="288" y2="55" stroke="#B0B6BE" stroke-width="1.3" stroke-dasharray="4 3"/>
-            <text x="214" y="48" fill="#6B6B6B" font-size="9.5" font-weight="700" font-family="sans-serif">Target 12.5</text>
-            <path d="M30 205 L72 47 L114 63 L156 51 L198 59 L240 55 L288 55 L288 205 Z" fill="#1E3A5F" fill-opacity="0.10"/>
-            <polyline points="30,205 72,47 114,63 156,51 198,59 240,55 288,55" fill="none" stroke="#1E3A5F" stroke-width="2"/>
-            <circle cx="288" cy="55" r="3.4" fill="#1E3A5F"/>
-          </svg>
-        </div>
-      </div>
-      <div class="foot"><span><span class="on">● Connected</span> &nbsp; COM3 · 9600 8N1 · addr 1</span><span>Running · 120 rpm · CCW</span></div>
-    </div>
     <div class="edl">
       <!-- TODO: href를 실제 설치파일(.exe) URL로 교체 -->
       <a href="#" download>Windows용 다운로드</a>

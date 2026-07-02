@@ -450,12 +450,8 @@ def main():
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
-        ('setups/',       '0.8', 'weekly'),   # 셋업사례 (인덱스)
-        ('setups/brain-electrode-tyd01.html', '0.7', 'monthly'),
-        ('setups/catheter-heparin-bt101.html', '0.7', 'monthly'),
-        ('setups/co2-capture-ct3001f.html', '0.7', 'monthly'),
+        ('setups/',       '0.8', 'weekly'),   # 셋업사례 (인덱스) — 상세 페이지는 posts.json 루프가 추가
         ('faq/',          '0.7', 'monthly'),  # FAQ
-        ('blog/',         '0.6', 'weekly'),   # 블로그(피드)
         ('application/',  '0.7', 'monthly'),  # 셋업 가이드 (목록)
         ('application/cell-culture-perfusion.html', '0.8', 'monthly'),  # 응용 SEO 페이지
         ('application/pump-selection.html', '0.7', 'monthly'),  # 펌프 고르는 방법
@@ -466,7 +462,7 @@ def main():
             f'  <url>\n    <loc>{base_url}{path}</loc>\n    <lastmod>{build_date}</lastmod>\n    <priority>{prio}</priority>\n    <changefreq>{freq}</changefreq>\n  </url>'
         )
 
-    # posts.json에서 블로그 글 합산 (noindex=true 글은 sitemap 제외)
+    # posts.json에서 콘텐츠(셋업사례) 합산 (noindex=true 글은 sitemap 제외)
     posts_json = os.path.join(SCRIPT_DIR, 'posts.json')
     if os.path.exists(posts_json):
         try:
