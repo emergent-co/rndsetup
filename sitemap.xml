@@ -19,6 +19,18 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://cellab.kr/blog/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://cellab.kr/blog/biureactor-perfusion.html</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://cellab.kr/faq/</loc>
     <lastmod>2026-06-30</lastmod>
     <priority>0.7</priority>

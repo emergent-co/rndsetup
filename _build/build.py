@@ -450,6 +450,7 @@ def main():
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기
         ('faq/',          '0.7', 'monthly'),  # FAQ
+        ('blog/',         '0.6', 'weekly'),   # 블로그(피드)
         ('application/',  '0.7', 'monthly'),  # 셋업 가이드 (목록)
         ('application/cell-culture-perfusion.html', '0.8', 'monthly'),  # 응용 SEO 페이지
         ('application/pump-selection.html', '0.7', 'monthly'),  # 펌프 고르는 방법
