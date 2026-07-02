@@ -6,23 +6,25 @@
    여기서 홈 값으로 재매핑되므로 마크업 수정 없이 톤이 맞춰진다.
    ============================================================ */
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
 /* 1) 색 토큰 — 홈 팔레트로 통일 */
 :root{
   --ink:#1A1A1A; --gray:#6B6B6B; --gray-2:#9A9A9A;
-  --green:#1E3A5F; --green-dk:#142A45; --green-bg:#EDF1F8;
+  --green:#3182F6; --green-dk:#1B64DA; --green-bg:#EAF2FE;
   --line:#EAEAEA; --bg:#FFFFFF;
-  --serif:"Noto Serif KR", Georgia, "Times New Roman", serif;
-  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --serif:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
 
   /* B 계열 변수 → 홈 팔레트로 재매핑 (네이비/틸 → 잉크/초록, 배경 → 흰색) */
   --navy:#1A1A1A;
-  --teal:#1E3A5F;
+  --teal:#3182F6;
   --text:#1A1A1A;
   --muted:#6B6B6B;
   --border:#EAEAEA;
-  --soft:#EDF1F8;
-  --soft-blue:#EDF1F8;
-  --accent:#1E3A5F;
+  --soft:#F2F4F6;
+  --soft-blue:#EAF2FE;
+  --accent:#3182F6;
 }
 /* 중요 글자 하이라이트 (마커 스타일) — 전 페이지 공통 */
 .hl{ background:linear-gradient(transparent 60%, #FFE49A 60%); font-weight:700; padding:0 1px; }
@@ -95,14 +97,26 @@ body{ padding-top:60px; padding-left:300px; }
   .ch-scrim.open{ display:block; position:fixed; inset:60px 0 0 0; background:rgba(0,0,0,.4); z-index:37; }
 }
 
-/* 7) 공유 푸터 (site.js가 주입) — 회사정보 텍스트만, 중복 제거 */
-.chrome-footer{ background:#fff; border-top:1px solid var(--line); margin-top:48px; }
-.cf-inner{ max-width:1080px; margin:0 auto; padding:30px 24px; text-align:center; }
-.cf-co{ font-size:12.5px; color:var(--gray); line-height:1.95; }
-.cf-co strong{ font-family:var(--serif); color:var(--ink); font-size:14px; }
-.cf-bar{ margin-top:14px; font-size:13px; font-weight:600; color:var(--gray); }
+/* 7) 공유 푸터 (site.js가 주입) — 토스식 다단 */
+.chrome-footer{ background:#F9FAFB; border-top:1px solid var(--line); margin-top:56px; }
+.cf-inner{ max-width:1080px; margin:0 auto; padding:40px 28px; }
+.cf-cols{ display:flex; gap:64px; flex-wrap:wrap; margin-bottom:26px; }
+.cf-col{ display:flex; flex-direction:column; gap:10px; }
+.cf-col h4{ font-size:13px; font-weight:700; color:var(--ink); margin-bottom:2px; }
+.cf-col a, .cf-col span{ font-size:13px; color:var(--gray); text-decoration:none; }
+.cf-col a:hover{ color:var(--green); }
+.cf-co{ font-size:12.5px; color:var(--gray-2); line-height:1.9; border-top:1px solid var(--line); padding-top:20px; }
+.cf-co strong{ font-family:var(--serif); color:var(--ink); font-size:13.5px; }
 .cf-cp{ margin-top:8px; font-size:12px; color:var(--gray-2); }
-.cf-cp a{ color:var(--gray-2); }
+@media(max-width:640px){ .cf-cols{ gap:28px; } .cf-inner{ padding:32px 22px; } }
+
+/* 7-1) 아티클(가이드·블로그 글) — 토스식 가운데 제목 (breadcrumb 있는 히어로만) */
+.hero:has(.crumb){ text-align:center; }
+.hero:has(.crumb) .lead{ max-width:620px; margin-left:auto; margin-right:auto; }
+.hero:has(.crumb) .crumb{ justify-content:center; }
+.article-main h1{ text-align:center; }
+.article-main .breadcrumb{ text-align:center; }
+.article-main .meta{ justify-content:center; text-align:center; flex-wrap:wrap; }
 
 /* 8) 공유 무료 수리진단 신청 팝업 (site.js가 주입) */
 .rp-modal{ position:fixed; inset:0; background:rgba(10,20,40,.55); display:none; align-items:flex-start; justify-content:center; padding:24px 16px; z-index:100; overflow:auto; }

@@ -59,12 +59,20 @@
   var FOOTER =
     '<footer class="chrome-footer">' +
       '<div class="cf-inner">' +
-      '<div class="cf-co"><strong>Cellab</strong> · 펌프 수리부터 제어까지<br>' +
-        'LeadFluid 공식 한국 A/S 파트너 · 나비엠알오 등록 공급사 · 셀렙 구매 고객 3년 무상보증<br>' +
-        '셀렙 (Cellab) · 이영현 · 637-05-03629<br>' +
-        '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
-      '<div class="cf-cp">© 2026 Cellab</div>' +
-    '</div></footer>';
+        '<div class="cf-cols">' +
+          '<div class="cf-col"><h4>바로가기</h4>' +
+            '<a href="/requests/">소프트웨어</a><a href="/application/">실험 가이드</a><a href="/blog/">블로그</a><a href="/faq/">FAQ</a></div>' +
+          '<div class="cf-col"><h4>문의</h4>' +
+            '<a href="/contact/#repair">수리 문의</a><a href="/contact/#dev">개발 문의</a>' +
+            '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +
+          '<div class="cf-col"><h4>고객센터</h4>' +
+            '<a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a>' +
+            '<span>LeadFluid 공식 한국 A/S 파트너</span><span>셀렙 구매 고객 3년 무상보증</span></div>' +
+        '</div>' +
+        '<div class="cf-co"><strong>Cellab (셀렙)</strong> · 이영현 · 사업자등록 637-05-03629<br>' +
+          '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
+        '<div class="cf-cp">© 2026 Cellab. All Rights Reserved.</div>' +
+      '</div></footer>';
 
   var REPAIR_MODAL =
     '<div class="rp-modal" id="repairModal">' +
