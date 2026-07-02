@@ -195,9 +195,9 @@
       <p>관류·연속배양·flow chemistry처럼 <b>무인·정밀·재현</b>이 실험 성립 조건인 연구를 위한 제어입니다.</p>
     </div>
     <div class="eg">
-      <div class="ec"><div class="t">무인 장시간 관류</div><p>유량·시퀀스를 설정해 두면 며칠~몇 주를 무인 운전. 밤사이 흔들림 없이 재현 가능한 데이터가 쌓입니다.</p></div>
-      <div class="ec"><div class="t">채널별 독립 유량 · 다펌프 동기</div><p>조건군마다 다른 유량을 독립 제어하고 여러 펌프를 동기화. 대조군을 한 번에 돌립니다.</p></div>
-      <div class="ec"><div class="t">유량 프로파일 기록 · 재현</div><p>무엇을 언제 얼마나 흘렸는지 로그로 남기고, 같은 프로파일을 그대로 재실행 — 논문 수준 재현성.</p></div>
+      <div class="ec" id="unattended"><div class="t">무인 장시간 관류</div><p>유량·시퀀스를 설정해 두면 며칠~몇 주를 무인 운전. 밤사이 흔들림 없이 재현 가능한 데이터가 쌓입니다.</p></div>
+      <div class="ec" id="channels"><div class="t">채널별 독립 유량 · 다펌프 동기</div><p>조건군마다 다른 유량을 독립 제어하고 여러 펌프를 동기화. 대조군을 한 번에 돌립니다.</p></div>
+      <div class="ec" id="record"><div class="t">유량 프로파일 기록 · 재현</div><p>무엇을 언제 얼마나 흘렸는지 로그로 남기고, 같은 프로파일을 그대로 재실행 — 논문 수준 재현성.</p></div>
     </div>
     <p style="text-align:center;color:var(--gray);font-size:14px;max-width:640px;margin:18px auto 0">이 모두를 <b>LeadFluid 정량·연동·시린지펌프 + 제어 소프트웨어</b>로 구현합니다. 필요한 기능은 요청만 하면 무료로 개발합니다. <span style="color:var(--gray-2)">(정밀 유량 피드백이 필요하면 Alicat 질량유량계(MFC) 연동 폐루프 제어도 별도 지원.)</span></p>
     <div class="app" aria-label="Cellab Pump Control 화면">

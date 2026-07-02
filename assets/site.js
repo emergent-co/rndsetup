@@ -31,8 +31,7 @@
         ['/requests/#record',     '유량 기록·재현']
       ] },
     { href:'/application/', label:'실험별 셋업 가이드', icon:'guide', sub:[
-        ['/application/cell-culture-perfusion.html', '세포배양 관류'],
-        ['/application/pump-selection.html', '펌프 고르는 방법']
+        ['/application/cell-culture-perfusion.html', '세포배양 관류']
       ] },
     { href:'/#trust',      label:'믿고 도입할 때', icon:'shield', sub:[
         ['/#trust', '국내 A/S·정품·3년보증'],
@@ -41,9 +40,10 @@
     { href:'/contact/',    label:'문의하기',   icon:'contact' },
     { href:'/faq/',        label:'FAQ',       icon:'faq' }
   ];
-  function isCur(href){ return href === '/' ? path === '/' : path.indexOf(href) === 0; }
+  function matches(href){ if(href.indexOf('#') > -1) return false; return href === '/' ? path === '/' : path === href; }
+  function isCur(n){ if(matches(n.href)) return true; return n.sub ? n.sub.some(function(s){ return matches(s[0]); }) : false; }
   var navHTML = NAV.map(function (n) {
-    var cur = isCur(n.href);
+    var cur = isCur(n);
     var row = '<a class="s-item' + (cur ? ' active' : '') + '" href="' + n.href + '"' +
               (cur ? ' aria-current="page"' : '') + '>' + (ICONS[n.icon] || '') +
               '<span>' + n.label + '</span></a>';
