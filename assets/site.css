@@ -39,6 +39,7 @@ html, body{
   overflow-x:clip;            /* 모바일 가로 스크롤 차단 (sticky 헤더 영향 없음) */
 }
 img, svg, video{ max-width:100%; height:auto; }
+a{ text-decoration:none; color:inherit; }
 
 /* 3) 제목 — 세리프 (홈 기준). 컴포넌트 라벨(div/span)은 영향 없음 */
 h1, h2, h3{
@@ -86,7 +87,7 @@ body{ padding-top:60px; padding-left:300px; }
 .ch-side .s-sub{ display:flex; flex-direction:column; padding:2px 0 8px 46px; }
 .ch-side .s-sub a{ padding:7px 0; font-size:13.5px; color:var(--gray-2); font-weight:500; text-decoration:none; }
 .ch-side .s-sub a:hover{ color:var(--ink); }
-.ch-side-foot{ margin-top:auto; padding:14px 14px 4px; font-size:11px; color:var(--gray-2); line-height:1.7; border-top:1px solid var(--line); }
+.ch-side-foot{ margin-top:24px; padding:14px 14px 4px; font-size:11px; color:var(--gray-2); line-height:1.7; border-top:1px solid var(--line); }
 .ch-scrim{ display:none; }
 @media(max-width:900px){
   body{ padding-left:0; }
