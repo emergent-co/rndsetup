@@ -123,7 +123,7 @@
   function render(items){
     items.sort(function(a,b){ return (b.date||'').localeCompare(a.date||''); });
     document.getElementById('homeArt').innerHTML = items.map(function(p){
-      var cat = p.type === 'setup' ? '셋업사례' : '블로그';
+      var cat = ({setup:'셋업사례', guide:'실험 가이드'})[p.type] || '아티클';
       var meta = '<b>'+cat+'</b> · ' + [p.date, p.journal].filter(Boolean).join(' · ');
       var img = p.image ? '<img src="'+p.image+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
       return '<a class="h-art" href="'+p.url+'">'+

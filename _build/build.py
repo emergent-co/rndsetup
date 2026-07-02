@@ -452,14 +452,10 @@ def main():
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
         ('setups/',       '0.8', 'weekly'),   # 셋업사례 (인덱스) — 상세 페이지는 posts.json 루프가 추가
         ('faq/',          '0.7', 'monthly'),  # FAQ
-        ('application/',  '0.7', 'monthly'),  # 셋업 가이드 (목록)
-        ('application/cell-culture-perfusion.html', '0.8', 'monthly'),  # 응용 SEO 페이지
-        ('application/pump-selection.html', '0.7', 'monthly'),  # 펌프 고르는 방법
-        ('application/tube-selection.html', '0.7', 'monthly'),  # 튜브 선택 가이드
-        ('application/chemostat-continuous-culture.html', '0.8', 'monthly'),  # 연속배양
-        ('application/photobioreactor-microalgae.html', '0.8', 'monthly'),    # 광배양·미세조류
-        ('application/flow-chemistry.html', '0.8', 'monthly'),                # flow chemistry
-        ('application/organ-on-chip-perfusion.html', '0.8', 'monthly'),       # 장기칩·오가노이드
+        ('application/',  '0.7', 'monthly'),  # 실험 가이드 (목록)
+        ('application/pump-selection.html', '0.7', 'monthly'),  # 펌프 고르는 방법 (posts.json 미포함)
+        ('application/tube-selection.html', '0.7', 'monthly'),  # 튜브 선택 가이드 (posts.json 미포함)
+        # 응용 가이드 5편(관류·연속배양·광배양·flowchem·장기칩)은 posts.json(type=guide) 루프가 추가 — 중복 방지
     ]
     for path, prio, freq in static_pages:
         sitemap_lines.append(

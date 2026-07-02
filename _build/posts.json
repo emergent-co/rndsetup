@@ -1,5 +1,5 @@
 {
-  "_comment": "콘텐츠 메타데이터(SSOT). type=blog|setup. 홈 최신 아티클=전체 날짜순, 블로그=blog, 셋업사례=setup.",
+  "_comment": "콘텐츠 메타데이터(SSOT). type=setup|guide. 홈 최신 아티클=전체 날짜순, 셋업사례=/setups/(setup), 실험 가이드=/application/(guide). date는 정렬용이라 편집 가능.",
   "posts": [
     {
       "type": "setup",
@@ -42,6 +42,56 @@
       "image": "/img/og-cover.png",
       "journal": "Nature Communications",
       "doi": "10.1038/s41467-024-55334-3"
+    },
+    {
+      "type": "guide",
+      "slug": "cell-culture-perfusion",
+      "title": "세포배양 관류 펌프 — 무오염 연속 관류 셋업",
+      "summary": "본체가 시료에 닿지 않는 연동(페리스탈틱)펌프 셋업과 모델 선택 기준.",
+      "date": "2026-06-26",
+      "tags": ["관류", "연동펌프", "세포배양"],
+      "url": "/application/cell-culture-perfusion.html",
+      "image": "/img/og-cover.png"
+    },
+    {
+      "type": "guide",
+      "slug": "chemostat-continuous-culture",
+      "title": "연속배양(chemostat) 유량 제어 — 희석률 일정 유지 셋업",
+      "summary": "신선 배지 유입과 배양액 배출을 같은 유량으로 유지해 정상상태 확보.",
+      "date": "2026-06-24",
+      "tags": ["연속배양", "chemostat", "희석률"],
+      "url": "/application/chemostat-continuous-culture.html",
+      "image": "/img/og-cover.png"
+    },
+    {
+      "type": "guide",
+      "slug": "photobioreactor-microalgae",
+      "title": "광배양·미세조류 정량공급 — 광생물반응기(PBR) 셋업",
+      "summary": "CO₂·영양 배지 정량 공급과 배양액 순환으로 미세조류 생산성 확보.",
+      "date": "2026-06-22",
+      "tags": ["광배양", "미세조류", "PBR"],
+      "url": "/application/photobioreactor-microalgae.html",
+      "image": "/img/og-cover.png"
+    },
+    {
+      "type": "guide",
+      "slug": "flow-chemistry",
+      "title": "flow chemistry 연속흐름 반응 — 유량비·체류시간 제어 셋업",
+      "summary": "두 개 이상 시약 스트림을 정밀 유량비로 합류·체류시간 제어.",
+      "date": "2026-06-20",
+      "tags": ["연속흐름", "flow chemistry", "유량비"],
+      "url": "/application/flow-chemistry.html",
+      "image": "/img/og-cover.png"
+    },
+    {
+      "type": "guide",
+      "slug": "organ-on-chip-perfusion",
+      "title": "장기칩·오가노이드 관류 — 미세유체 저유량 관류 셋업",
+      "summary": "µL/min 초저유량으로 미세유체 채널에 배지를 연속 관류.",
+      "date": "2026-06-18",
+      "tags": ["장기칩", "오가노이드", "미세유체"],
+      "url": "/application/organ-on-chip-perfusion.html",
+      "image": "/img/og-cover.png"
     }
   ]
 }
