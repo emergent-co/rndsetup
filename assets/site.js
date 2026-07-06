@@ -112,7 +112,7 @@
       '<a class="ch-cta" href="/contact/">문의하기</a>' +
     '</header>' +
     '<aside class="ch-side" id="chSide"><nav>' + navHTML + '</nav>' +
-      '<div class="ch-side-foot">LeadFluid 공식 한국 A/S 파트너<br>나비엠알오 등록 공급사</div>' +
+      '<div class="ch-side-foot">LeadFluid 공식 한국 유일 A/S 파트너<br>나비엠알오 등록 공급사</div>' +
     '</aside>' +
     '<div class="ch-scrim" id="chScrim"></div>';
 
@@ -127,7 +127,7 @@
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +
           '<div class="cf-col"><h4>고객센터</h4>' +
             '<a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a>' +
-            '<span>LeadFluid 공식 한국 A/S 파트너</span><span>셀렙 구매 고객 3년 무상보증</span></div>' +
+            '<span>LeadFluid 공식 한국 유일 A/S 파트너</span><span>셀렙 구매 고객 3년 무상보증</span></div>' +
         '</div>' +
         '<div class="cf-co"><strong>Cellab (셀렙)</strong> · 이영현 · 사업자등록 637-05-03629<br>' +
           '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
