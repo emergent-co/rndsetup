@@ -5,8 +5,8 @@
 ## 핵심 정보
 
 - **본질**: 단순 펌프 판매가 아니라 "소프트웨어 제어가 탑재된 펌프 시스템" 공급. 소프트웨어(유량·스케줄·다펌프 동기·로그/재현)는 셀렙 구매 고객에게 무상 제공.
-- **취급 브랜드**: LeadFluid(정량·연동·시린지·마그네틱펌프, 한국 공식 A/S 파트너), Alicat(질량유량계 MFC).
-- **신뢰 근거**: Nature 계열 논문이 실제 LeadFluid 펌프를 실험 셋업에 사용. 국내 직접 진단·수리, 셀렙 구매 고객 3년 무상보증.
+- **취급 브랜드**: LeadFluid(정량·연동·시린지·마그네틱펌프, 한국 공식 A/S 파트너, 글로벌 산업그룹 Ingersoll Rand 계열), Alicat(질량유량계 MFC).
+- **신뢰 근거**: Nature 계열 논문이 실제 LeadFluid 펌프를 실험 셋업에 사용. 국내 직접 진단·수리, 셀렙 구매 고객 3년 무상보증. LeadFluid는 CE·RoHS 인증, Ingersoll Rand(NYSE: IR) 계열.
 - **구매 채널**: 실제 판매·결제는 나비엠알오(navimro.com)에서 이뤄짐. 가격·견적은 문의 페이지로 안내.
 - **연락**: emgt.yhlee@gmail.com
 
@@ -14,25 +14,25 @@
 
 - [홈](https://cellab.kr/): 소프트웨어 제어 펌프 시스템 개요 + 제어 프로그램 무료 다운로드
 - [소프트웨어 제어](https://cellab.kr/requests/): 무인 장시간 관류·채널별 독립 유량·기록/재현·Modbus·RS-485·Python 제어·개발 요청
-  - [유량 스케줄·ramp 자동화하는 법](https://cellab.kr/application/pump-flow-schedule-ramp.html)
-  - [다펌프 동기·무인 장시간 운전 구성하는 법](https://cellab.kr/application/multi-pump-sync-unattended.html)
-  - [운전 로그(CSV)로 실험 재현하는 법](https://cellab.kr/application/pump-run-log-csv-reproducibility.html)
+  - [유량 스케줄·ramp 자동화하는 법](https://cellab.kr/application/pump-flow-schedule-ramp)
+  - [다펌프 동기·무인 장시간 운전 구성하는 법](https://cellab.kr/application/multi-pump-sync-unattended)
+  - [운전 로그(CSV)로 실험 재현하는 법](https://cellab.kr/application/pump-run-log-csv-reproducibility)
 - [실험 가이드(응용 분야)](https://cellab.kr/application/): LeadFluid 공식 응용 분류 기준 분야별 펌프 셋업
-  - [바이오의약 — 발효·세포배양·정제·충전](https://cellab.kr/application/biopharmaceutical.html)
-  - [분석기기 — 크로마토그래피 컬럼 주입·시료 정량 주입](https://cellab.kr/application/analytical-instrument.html)
-  - [의료기기·IVD — 진단분석기 시약·세척·폐액 이송](https://cellab.kr/application/medical-device-ivd.html)
-  - [환경 — 수질 시료·시약 정량 투입·폐수 처리](https://cellab.kr/application/environmental.html)
-  - [산업화학·소재 — 정량 투입·연속흐름 반응·디스펜싱](https://cellab.kr/application/industrial-chemical-material.html)
-  - [식음료 — 위생 충전·정량 분주·이송](https://cellab.kr/application/food-beverage.html)
-- 실험 기법별 셋업: [세포배양 관류](https://cellab.kr/application/cell-culture-perfusion.html) · [연속배양(chemostat)](https://cellab.kr/application/chemostat-continuous-culture.html) · [광배양·미세조류](https://cellab.kr/application/photobioreactor-microalgae.html) · [flow chemistry](https://cellab.kr/application/flow-chemistry.html) · [장기칩·오가노이드](https://cellab.kr/application/organ-on-chip-perfusion.html)
-- [펌프 고르기(선택)](https://cellab.kr/application/pump-selection.html): 펌프 종류·선택 기준
-  - [튜브 선택 가이드](https://cellab.kr/application/tube-selection.html): 재질별 특성·화학 적합성
-  - [내 펌프가 PC 제어(Modbus·RS485)가 되는지 확인하는 법](https://cellab.kr/application/pump-pc-control-modbus-rs485.html)
+  - [바이오의약 — 발효·세포배양·정제·충전](https://cellab.kr/application/biopharmaceutical)
+  - [분석기기 — 크로마토그래피 컬럼 주입·시료 정량 주입](https://cellab.kr/application/analytical-instrument)
+  - [의료기기·IVD — 진단분석기 시약·세척·폐액 이송](https://cellab.kr/application/medical-device-ivd)
+  - [환경 — 수질 시료·시약 정량 투입·폐수 처리](https://cellab.kr/application/environmental)
+  - [산업화학·소재 — 정량 투입·연속흐름 반응·디스펜싱](https://cellab.kr/application/industrial-chemical-material)
+  - [식음료 — 위생 충전·정량 분주·이송](https://cellab.kr/application/food-beverage)
+- 실험 기법별 셋업: [세포배양 관류](https://cellab.kr/application/cell-culture-perfusion) · [연속배양(chemostat)](https://cellab.kr/application/chemostat-continuous-culture) · [광배양·미세조류](https://cellab.kr/application/photobioreactor-microalgae) · [flow chemistry](https://cellab.kr/application/flow-chemistry) · [장기칩·오가노이드](https://cellab.kr/application/organ-on-chip-perfusion)
+- [펌프 고르기(선택)](https://cellab.kr/application/pump-selection): 펌프 종류·선택 기준
+  - [튜브 선택 가이드](https://cellab.kr/application/tube-selection): 재질별 특성·화학 적합성
+  - [내 펌프가 PC 제어(Modbus·RS485)가 되는지 확인하는 법](https://cellab.kr/application/pump-pc-control-modbus-rs485)
 - [논문 사례(증거)](https://cellab.kr/setups/): 유명 논문이 어떤 LeadFluid 펌프를 어떤 셋업에 썼나
-  - [뇌 피질 인터페이싱 — 시린지펌프 TYD01-01 (Nature Electronics 2024)](https://cellab.kr/setups/brain-electrode-tyd01.html)
-  - [혈관내 카테터 코팅 — 연동펌프 BT101 L (Nature Communications 2024)](https://cellab.kr/setups/catheter-heparin-bt101.html)
-  - [연속 CO₂ 포집 — 마그네틱펌프 CT3001F (Nature Communications 2024)](https://cellab.kr/setups/co2-capture-ct3001f.html)
-- [믿고 도입할 때](https://cellab.kr/trust/): 국내 A/S·정품·3년 보증·중국산 인식 대응
+  - [뇌 피질 인터페이싱 — 시린지펌프 TYD01-01 (Nature Electronics 2024)](https://cellab.kr/setups/brain-electrode-tyd01)
+  - [혈관내 카테터 코팅 — 연동펌프 BT101 L (Nature Communications 2024)](https://cellab.kr/setups/catheter-heparin-bt101)
+  - [연속 CO₂ 포집 — 마그네틱펌프 CT3001F (Nature Communications 2024)](https://cellab.kr/setups/co2-capture-ct3001f)
+- [믿고 도입할 때](https://cellab.kr/trust/): 국내 A/S·정품·3년 보증·중국산 인식 대응(Ingersoll Rand 계열·CE·RoHS)
 - [자주 묻는 질문(FAQ)](https://cellab.kr/faq/): 수리·A/S·펌프·소프트웨어
 - [문의하기](https://cellab.kr/contact/): 실험 상담·수리·개발·견적
 - [카탈로그 PDF](https://cellab.kr/Leadfluid-2025-Catalog.pdf): LeadFluid 2025 공식 카탈로그
