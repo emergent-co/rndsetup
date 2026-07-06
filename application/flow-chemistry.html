@@ -49,6 +49,46 @@
     <p>유량·유량비를 소프트웨어로 고정하고 ramp로 스캔하며 로그를 남기면, 체류시간·화학량론 조건을 재현하고 최적 조건을 체계적으로 탐색할 수 있습니다.</p>
   </div>
 
+  <div class="sw-sec">
+    <h2>본문 기능, 셀렙 소프트웨어로 이렇게 구현됩니다</h2>
+    <p class="sw-cap" style="margin:0 0 4px">본문의 <b>유량비 Q_A:Q_B · 체류시간 τ · 재현</b>을 아래 기능으로 실제 구현합니다. (셀렙 제어 소프트웨어 예시, 구매 고객 무상 제공)</p>
+    <div class="sw-cards">
+      <div class="sw-card"><div class="ch"><span class="gd"></span>유량비 제어</div><div class="cb">
+        <svg viewBox="0 0 240 116" style="width:100%;height:auto" role="img" aria-label="두 스트림 유량비 Q_A:Q_B"><line x1="26" y1="10" x2="26" y2="92" stroke="#D5DBE2" stroke-width="1"/><line x1="26" y1="92" x2="232" y2="92" stroke="#D5DBE2" stroke-width="1"/><g stroke="#EEF1F4" stroke-width="1"><line x1="26" y1="40" x2="232" y2="40"/><line x1="26" y1="66" x2="232" y2="66"/></g><polyline points="26,40 232,40" fill="none" stroke="#1E3A5F" stroke-width="2"/><polyline points="26,66 232,66" fill="none" stroke="#5A7AA0" stroke-width="2"/><text x="30" y="24" font-size="10" fill="#1a6e56" font-weight="700">Q_A : Q_B = 3 : 1</text><g font-size="9" font-family="sans-serif" fill="#6B6B6B"><text x="198" y="37">Q_A</text><text x="198" y="63">Q_B</text></g></svg>
+        <div class="cap2">두 시약 스트림을 정밀 유량비 Q_A:Q_B로 합류</div>
+      </div></div>
+      <div class="sw-card"><div class="ch"><span class="gd"></span>체류시간 τ 제어</div><div class="cb">
+        <div class="setr"><span class="sk">총 유량 Q</span><span class="sv">2.0 mL/min</span><span class="sa">적용</span></div>
+        <div class="setr"><span class="sk">반응기 부피 V</span><span class="sv">10 mL</span><span class="sa">적용</span></div>
+        <div class="setr"><span class="sk">체류시간 τ=V/Q</span><span class="sv">5 min</span><span class="sa">계산</span></div>
+        <div class="cap2">유량으로 체류시간 τ = V/Q 정밀 제어</div>
+      </div></div>
+      <div class="sw-card"><div class="ch"><span class="gd"></span>운전 로그·재현</div><div class="cb">
+        <table class="log"><tr><td>00:00</td><td>3:1</td><td>Run</td></tr><tr><td>00:05</td><td>τ=5min</td><td>정상</td></tr><tr><td>01:00</td><td>—</td><td>Log</td></tr></table>
+        <div class="cap2">반응 조건을 CSV로 기록 → <span class="rep">재현 OK</span></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sw-sec">
+    <h2>셀렙 vs 일반 펌프 단독 도입</h2>
+    <div class="cmp-wrap">
+    <table class="cmp">
+      <thead><tr><th>항목</th><th>셀렙 (LeadFluid 공식 한국 A/S + 제어 SW)</th><th>일반 펌프 단독 도입</th></tr></thead>
+      <tbody>
+        <tr><th>유량비 Q_A:Q_B 정밀 제어</th><td class="c"><span class="yes">✔ 소프트웨어</span></td><td class="c"><span class="no">수동/미지원</span></td></tr>
+        <tr><th>체류시간 τ 제어</th><td class="c"><span class="yes">✔ 유량 기반</span></td><td class="c"><span class="no">제한적</span></td></tr>
+        <tr><th>무맥동 안정 이송</th><td class="c"><span class="yes">✔ 시린지·기어</span></td><td class="c"><span class="no">맥동·제품별</span></td></tr>
+        <tr><th>조건 스케줄·재현</th><td class="c"><span class="yes">✔ 레시피</span></td><td class="c"><span class="no">수동</span></td></tr>
+        <tr><th>운전 로그(CSV)·재현</th><td class="c"><span class="yes">✔</span></td><td class="c"><span class="no">✕</span></td></tr>
+        <tr><th>LeadFluid 공식 한국 A/S</th><td class="c"><span class="yes">✔ 국내 직접 수리(본사 반송 불필요)</span></td><td class="c"><span class="no">해외 반송/교체</span></td></tr>
+        <tr><th>무상보증·제어 SW</th><td class="c"><span class="yes">✔ 3년·무상 제공</span></td><td class="c"><span class="no">짧거나 별도</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="sw-cap">특정 제조사 비교가 아니라, "제어 소프트웨어·국내 A/S 패키지"와 "펌프 단독 도입"의 차이입니다.</p>
+  </div>
+
   <div class="sd-bridge">
     <h2>유량비·체류시간, 프로그램이 대신 지킵니다</h2>
     <p>셀렙은 LeadFluid 시린지·정량·마그네틱펌프에 제어 소프트웨어를 얹어 유량비 고정·ramp 스캔·기록/재현을 구현합니다. 용매·유량 범위·스트림 수를 알려주시면 화학 적합성까지 고려해 구성을 제안드립니다.</p>

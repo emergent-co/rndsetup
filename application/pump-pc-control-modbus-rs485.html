@@ -59,6 +59,48 @@
     </ul>
   </div>
 
+  <div class="sw-sec">
+    <h2>PC 제어, 셀렙 소프트웨어에서 이렇게 씁니다</h2>
+    <p class="sw-cap" style="margin:0 0 4px">본문의 <b>통신 설정 · 명령 제어 · 외부신호 대안</b>을 아래 화면으로 실제 구현합니다. (셀렙 제어 소프트웨어 예시, 구매 고객 무상 제공)</p>
+    <div class="sw-cards">
+      <div class="sw-card"><div class="ch"><span class="gd"></span>통신 설정 (RS485·Modbus)</div><div class="cb">
+        <div class="setr"><span class="sk">인터페이스</span><span class="sv">RS485</span><span class="sa">연결</span></div>
+        <div class="setr"><span class="sk">프로토콜</span><span class="sv">Modbus RTU</span><span class="sa">적용</span></div>
+        <div class="setr"><span class="sk">주소·통신</span><span class="sv">addr 1 · 9600</span><span class="sa">적용</span></div>
+        <div class="cap2">통신 인터페이스·프로토콜을 설정</div>
+      </div></div>
+      <div class="sw-card"><div class="ch"><span class="gd"></span>명령 제어(레지스터)</div><div class="cb">
+        <table class="log"><tr><td>0x01</td><td>Flow=12.5</td><td>Write</td></tr><tr><td>0x02</td><td>Start</td><td>Write</td></tr><tr><td>0x10</td><td>Status</td><td>Read</td></tr></table>
+        <div class="cap2">레지스터 맵·Python 예제로 유량·기동 제어</div>
+      </div></div>
+      <div class="sw-card"><div class="ch"><span class="gd"></span>외부신호 대안(4-20mA)</div><div class="cb">
+        <div class="setr"><span class="sk">신호</span><span class="sv">4-20 mA</span><span class="sa">매핑</span></div>
+        <div class="setr"><span class="sk">0% → 100%</span><span class="sv">0 → 최대유량</span><span class="sa">적용</span></div>
+        <div class="setr"><span class="sk">용도</span><span class="sv">통신 없는 펌프</span><span class="sa">—</span></div>
+        <div class="cap2">통신 없어도 아날로그 신호로 유량 조절</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="sw-sec">
+    <h2>셀렙 vs 일반 펌프 단독 도입</h2>
+    <div class="cmp-wrap">
+    <table class="cmp">
+      <thead><tr><th>항목</th><th>셀렙 (LeadFluid 공식 한국 A/S + 제어 SW)</th><th>일반 펌프 단독 도입</th></tr></thead>
+      <tbody>
+        <tr><th>RS485/RS232/USB 통신</th><td class="c"><span class="yes">✔ 모델 확인 지원</span></td><td class="c"><span class="no">제품별 상이</span></td></tr>
+        <tr><th>Modbus RTU 프로토콜 문서</th><td class="c"><span class="yes">✔ 레지스터 맵 제공</span></td><td class="c"><span class="no">미제공 잦음</span></td></tr>
+        <tr><th>Python 예제·통합 지원</th><td class="c"><span class="yes">✔</span></td><td class="c"><span class="no">✕</span></td></tr>
+        <tr><th>외부신호(4-20mA) 대안</th><td class="c"><span class="yes">✔</span></td><td class="c"><span class="no">제품별 상이</span></td></tr>
+        <tr><th>PC 제어 가능 여부 판별</th><td class="c"><span class="yes">✔ 구매 전 확인</span></td><td class="c"><span class="no">직접 확인</span></td></tr>
+        <tr><th>LeadFluid 공식 한국 A/S</th><td class="c"><span class="yes">✔ 국내 직접 수리(본사 반송 불필요)</span></td><td class="c"><span class="no">해외 반송/교체</span></td></tr>
+        <tr><th>무상보증·제어 SW</th><td class="c"><span class="yes">✔ 3년·무상 제공</span></td><td class="c"><span class="no">짧거나 별도</span></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="sw-cap">특정 제조사 비교가 아니라, "제어 소프트웨어·국내 A/S 패키지"와 "펌프 단독 도입"의 차이입니다.</p>
+  </div>
+
   <div class="sd-bridge">
     <h2>확인부터 제어 프로그램까지, 셀렙이 대신합니다</h2>
     <p>셀렙은 LeadFluid 통신 지원 모델의 프로토콜 문서를 확보해, 유량 설정·스케줄·로그/재현·다펌프 동기를 PC 제어 프로그램으로 바로 연결합니다. 쓰고 계신(또는 검토 중인) 펌프 모델명만 알려주시면 <b>PC 제어가 되는지부터 확인</b>해 드립니다.</p>
