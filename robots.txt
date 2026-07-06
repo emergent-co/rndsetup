@@ -3,6 +3,7 @@
 
 User-agent: *
 Allow: /
+Allow: /_build/posts.json
 Disallow: /_build/
 Disallow: /crawler/
 Disallow: /blog/naver/
