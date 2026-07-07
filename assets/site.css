@@ -160,6 +160,8 @@ body{ padding-top:60px; padding-left:300px; }
 .navimro-fab .nm-brand b{ color:#FF6A00; }
 .navimro-fab .nm-t{ display:block; font-size:11px; color:var(--gray); margin-top:6px; line-height:1.4; font-weight:700; }
 @media(max-width:820px){ .navimro-fab{ width:auto; padding:9px 12px; top:auto; bottom:14px; right:14px; transform:none; border-radius:30px; } .navimro-fab:hover{ transform:none; } .navimro-fab .nm-t{ display:none; } }
+/* 데스크톱(웹)에서만 나비엠알오 FAB 확대 (≈1.7배). 모바일은 위 규칙 유지 */
+@media(min-width:821px){ .navimro-fab{ width:180px; padding:22px 20px; right:20px; border-radius:18px; } .navimro-fab .nm-brand{ font-size:24px; } .navimro-fab .nm-t{ font-size:18px; margin-top:9px; } }
 
 /* 임베드(iframe) 모드에서는 공유 상단바·사이드바·여백 해제 */
 body.embed-mode{ padding:0 !important; }
