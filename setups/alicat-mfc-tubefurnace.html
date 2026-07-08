@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1500℃ 튜브퍼니스 가스 분위기, 온도 스케줄에 맞춰 자동 제어 — Alicat MFC 도입 사례 | 정량펌프연구소</title>
+<meta name="description" content="부산의 대학 배터리 실험실에서 삼흥에너지 1500℃ 튜브퍼니스의 Ar·N₂ 분위기를 만들기 위해 Alicat 질량유량계(MFC)를 도입한 사례. MFC 하나로 여러 가스 제어, RS485 다중 MFC 동시 제어, 온도컨트롤러(SP570) 온도 스케줄에 맞춘 가스 유량 자동 조절을 정량펌프연구소가 소프트웨어로 구현했습니다.">
+<link rel="canonical" href="https://pumplab.co.kr/setups/alicat-mfc-tubefurnace.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1500℃ 튜브퍼니스 가스 분위기 자동 제어 — Alicat MFC 도입 사례">
+<meta property="og:description" content="MFC 하나로 여러 가스 제어 · RS485 다중 MFC 동시 제어 · 온도 스케줄 연동 가스 유량 자동 조절.">
+<meta property="og:url" content="https://pumplab.co.kr/setups/alicat-mfc-tubefurnace.html">
+<meta property="og:image" content="https://pumplab.co.kr/img/cases/alicat-mfc-tubefurnace-1.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article",
+"headline":"1500℃ 튜브퍼니스 가스 분위기, 온도 스케줄에 맞춰 자동 제어 — Alicat MFC 도입 사례",
+"datePublished":"2026-07-08",
+"about":{"@type":"Product","name":"Alicat 질량유량계(MFC)","brand":{"@type":"Brand","name":"Alicat Scientific"}},
+"author":{"@type":"Organization","name":"정량펌프연구소","url":"https://pumplab.co.kr/"},
+"publisher":{"@type":"Organization","name":"정량펌프연구소","url":"https://pumplab.co.kr/"},
+"image":"https://pumplab.co.kr/img/cases/alicat-mfc-tubefurnace-1.jpg",
+"mainEntityOfPage":{"@type":"WebPage","@id":"https://pumplab.co.kr/setups/alicat-mfc-tubefurnace.html"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"MFC 하나로 여러 종류의 가스를 제어할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. Alicat 질량유량계(MFC)는 내장 가스 데이터베이스에서 가스 종류를 선택해 장비 하나로 수십 종의 가스를 정량 제어합니다. 이 사례에서는 하나의 MFC로 98종의 가스를 선택·제어할 수 있게 구성했습니다."}},
+{"@type":"Question","name":"여러 대의 MFC를 동시에 제어할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. RS485 통신으로 여러 대의 Alicat MFC를 하나의 소프트웨어에서 동시에 제어합니다. 채널별로 다른 가스·유량을 독립 설정할 수 있습니다."}},
+{"@type":"Question","name":"온도 스케줄에 따라 가스 유량을 자동으로 바꿀 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"네. 이 사례에서는 온도컨트롤러(SP570)의 승온 프로그램에 연동해, 튜브퍼니스의 온도 스케줄에 맞춰 MFC가 흘리는 가스 유량을 점진적으로 조절하도록 정량펌프연구소가 소프트웨어를 커스터마이징했습니다."}}
+]}
+</script>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<article class="sd-wrap">
+  <div class="sd-crumb"><a href="/">홈</a> › <a href="/setups/">사례</a> › Alicat MFC · 튜브퍼니스 가스 제어</div>
+  <h1>1500℃ 튜브퍼니스 가스 분위기,<br>온도 스케줄에 맞춰 자동 제어<br>— Alicat MFC 도입 사례</h1>
+  <div class="sd-meta">2026-07-08 · 도입 사례 · 부산 · 대학 배터리 실험실</div>
+
+  <div class="sd-summary">
+    <h3>도입 요약</h3>
+    <div class="row"><span class="k">현장</span><span>부산 · 대학 연구실 · <b>배터리 실험실</b></span></div>
+    <div class="row"><span class="k">설비</span><span>삼흥에너지 <b>1500℃ 튜브퍼니스</b> · Ar·N₂ 흐름 분위기</span></div>
+    <div class="row"><span class="k">사용 장비</span><span><b>Alicat 질량유량계(MFC)</b> · RS485 다중 제어</span></div>
+    <div class="row"><span class="k">핵심</span><span>온도컨트롤러(SP570) 온도 스케줄에 맞춰 <b>가스 유량 자동 조절</b> (커스텀 SW)</span></div>
+    <div class="row"><span class="k">분야</span><span>#배터리 #소성·열처리 #가스분위기 #MFC</span></div>
+  </div>
+
+  <div class="sd-answer">
+    <b>부산의 한 대학 배터리 실험실에서 삼흥에너지 1500℃ 튜브퍼니스의 Ar·N₂ 분위기를 만들기 위해 Alicat 질량유량계(MFC)를 도입했습니다.</b> MFC 하나로 여러 가스를 정량 제어하고, RS485로 여러 대를 동시에 제어하며, 온도컨트롤러(SP570)의 온도 스케줄에 맞춰 가스 유량을 점진적으로 조절하도록 정량펌프연구소가 소프트웨어를 커스터마이징했습니다.
+  </div>
+
+  <div class="sd-gallery" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:22px 0">
+    <img src="/img/cases/alicat-mfc-tubefurnace-1.jpg" alt="1500℃ 튜브퍼니스와 Alicat MFC 가스 제어 구성" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;aspect-ratio:4/3">
+    <img src="/img/cases/alicat-mfc-tubefurnace-2.jpg" alt="RS485로 여러 Alicat MFC를 동시 제어하는 구성" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;aspect-ratio:4/3">
+    <img src="/img/cases/alicat-mfc-tubefurnace-3.jpg" alt="온도 스케줄 연동 가스 유량 제어 소프트웨어 화면" loading="lazy" style="width:100%;height:100%;object-fit:cover;border-radius:10px;aspect-ratio:4/3">
+  </div>
+
+  <div class="sd-body">
+    <h2>어떤 구성인가</h2>
+    <p>배터리 소재의 소성·열처리에는 <b>산화를 막는 불활성 가스 분위기(Ar·N₂)</b>가 필수입니다. 이 실험실은 삼흥에너지 <b>1500℃ 튜브퍼니스</b> 안에 Ar·N₂를 일정하게 흘려 분위기를 만들되, 온도 승온·유지 단계마다 가스 유량을 다르게 가져가야 했습니다. 가스 유량을 정밀하게 정량 제어하는 역할을 <b>Alicat MFC(질량유량계)</b>가 맡았습니다.</p>
+
+    <h2>MFC 하나로 여러 가스를 제어</h2>
+    <p>Alicat MFC는 내장 가스 데이터베이스에서 가스 종류를 선택하는 방식이라, <b>장비 하나로 수십 종의 가스를 정량 제어</b>할 수 있습니다. 이 구성에서는 하나의 MFC로 <b>98종의 가스</b>를 선택·제어할 수 있게 세팅해, 가스를 바꿀 때마다 유량계를 교체할 필요가 없습니다.</p>
+
+    <h2>RS485로 여러 MFC 동시 제어</h2>
+    <p>여러 가스 라인을 동시에 다뤄야 할 때는 <b>RS485 통신으로 여러 대의 MFC를 하나의 소프트웨어에서 동시 제어</b>합니다. 채널별로 다른 가스·유량을 독립 설정하고 상태를 한 화면에서 모니터링합니다.</p>
+
+    <h2>온도 스케줄에 가스 유량을 맞춘다 (핵심)</h2>
+    <p>Alicat 기본 소프트웨어도 있지만, 이 실험실은 <b>온도컨트롤러(SP570)의 승온 프로그램에 가스 유량을 연동</b>하고 싶어 했습니다. 정량펌프연구소가 소프트웨어를 커스터마이징해, <b>튜브퍼니스의 온도 스케줄(승온·유지·냉각)에 맞춰 MFC가 흘리는 가스 유량을 점진적으로 조절</b>하도록 구현했습니다. 온도와 가스 유량이 하나의 시퀀스로 묶여, 사람이 지키지 않아도 프로그램이 분위기를 유지합니다.</p>
+  </div>
+
+  <div class="sd-bridge">
+    <h2>기체 정량 제어까지, 소프트웨어로 완성합니다</h2>
+    <p>정량펌프연구소는 액체(펌프)뿐 아니라 <b>기체(Alicat 질량유량계·MFC) 정량 제어</b>를 아우릅니다. 데모 장비로 실제 구동을 확인하고, 현장 요구에 맞춰 온도·유량을 연동하는 제어를 직접 만들어 드립니다.</p>
+    <a href="/contact/">MFC·가스 제어 문의 →</a>
+  </div>
+
+  <div class="sd-sources">
+    <h4>비고</h4>
+    본 페이지는 정량펌프연구소가 실제 납품·구성한 도입 사례를 정리한 것입니다. 설비·현장 정보는 고객 동의 범위 내에서 익명으로 기술했습니다.
+  </div>
+
+  <div class="sd-tags"><span>#배터리</span><span>#소성·열처리</span><span>#가스분위기</span><span>#Alicat</span><span>#MFC</span><span>#RS485</span></div>
+
+  <div class="sd-related">
+    <h3>관련 콘텐츠</h3>
+    <div class="sd-rel-grid">
+      <a class="sd-rc" href="/requests/"><div class="cat">소프트웨어</div><div class="t">소프트웨어 제어 펌프·MFC 시스템</div><div class="d">유량 고정·스케줄·기록/재현·다장비 동시 제어를 소프트웨어로.</div></a>
+      <a class="sd-rc" href="/application/multi-pump-sync-unattended.html"><div class="cat">가이드 · 자동화</div><div class="t">다펌프 동기·무인 운전</div><div class="d">여러 장비를 한 타임라인에 묶어 무인으로 장시간 운전.</div></a>
+      <a class="sd-rc" href="/application/pump-flow-schedule-ramp.html"><div class="cat">가이드 · 스케줄</div><div class="t">유량 스케줄·ramp 자동화</div><div class="d">시간·조건에 따라 유량을 점진 조절하는 시퀀스 제어.</div></a>
+      <a class="sd-rc" href="/contact/"><div class="cat">문의</div><div class="t">가스·MFC 도입 문의</div><div class="d">현장 조건에 맞춘 MFC 구성·소프트웨어 연동을 상담합니다.</div></a>
+    </div>
+  </div>
+</article>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

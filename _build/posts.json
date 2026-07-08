@@ -1,6 +1,8 @@
 {
   "_comment": "콘텐츠 메타데이터(SSOT). type=setup|guide. 홈 최신 아티클=전체 날짜순, 셋업사례=/setups/(setup), 실험 가이드=/application/(guide). date는 정렬용이라 편집 가능.",
   "posts": [
+    {"type":"case","slug":"alicat-mfc-tubefurnace","title":"1500℃ 튜브퍼니스 가스 분위기 자동 제어 — Alicat MFC 도입 사례","summary":"삼흥에너지 1500℃ 튜브퍼니스 Ar·N₂ 분위기 · MFC 다중 제어 · 온도 스케줄 연동","date":"2026-07-08","tags":["배터리","MFC","가스분위기"],"url":"/setups/alicat-mfc-tubefurnace.html","model_focus":"Alicat MFC","application":"배터리·가스분위기","image":"/img/cases/alicat-mfc-tubefurnace-1.jpg"},
+    {"type":"case","slug":"leadfluid-bt101l-plating","title":"유량 캘리브레이션으로 100mL/min을 맞추다 — LeadFluid BT101L 도금 도입 사례","summary":"도금공정 다펌프 동시 제어 · 저울 실측 기반 유량 캘리브레이션 무료 제공","date":"2026-07-08","tags":["도금","연동펌프","캘리브레이션"],"url":"/setups/leadfluid-bt101l-plating.html","model_focus":"BT101L 연동","application":"도금·표면처리","image":"/img/cases/leadfluid-bt101l-calibration.jpg"},
     {
       "type": "setup",
       "slug": "heart-eshp-bt101l",

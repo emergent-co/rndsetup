@@ -412,6 +412,8 @@ CRAWLER_LINKS = [
     ('/setups/heart-eshp-bt101l.html', '심장 체외 관류(ESHP) — 연동펌프 BT101L'),
     ('/setups/damo-recirculation-bt600s.html', '혐기성 메탄산화 반응기 순환 — 연동펌프 BT600S'),
     ('/setups/nitrification-ph-bq50s.html', '폐수 질산화 pH 제어 — 정량펌프 BQ50S'),
+    ('/setups/alicat-mfc-tubefurnace.html', '1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례'),
+    ('/setups/leadfluid-bt101l-plating.html', '도금 다펌프 제어·유량 캘리브레이션 — LeadFluid BT101L 도입 사례'),
     ('/trust/', '믿고 도입할 때 (국내 A/S·정품·보증)'),
     ('/faq/', '자주 묻는 질문(FAQ)'),
     ('/contact/', '문의하기'),

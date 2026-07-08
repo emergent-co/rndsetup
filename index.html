@@ -171,7 +171,7 @@
   function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
   var PAGE_SIZE = 6, ALL = [], PAGE = 0;
   function itemHTML(p){
-    var cat = ({setup:'논문 사례', guide:'실험 가이드'})[p.type] || '아티클';
+    var cat = ({setup:'논문 사례', guide:'실험 가이드', case:'도입 사례'})[p.type] || '아티클';
     var meta = '<b>'+cat+'</b> · ' + [p.date, p.journal].filter(Boolean).join(' · ');
     var img = p.image ? '<img src="'+p.image+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">' : '';
     return '<a class="h-art" href="'+p.url+'">'+
