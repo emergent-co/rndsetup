@@ -510,7 +510,7 @@ ORG_WEBSITE_GRAPH = {
             "alternateName": "Cellab",
             "legalName": "emergent co.",
             "url": "https://pumplab.co.kr/",
-            "email": "emgt.yhlee@gmail.com",
+            "email": "info@pumplab.co.kr",
             "description": "LeadFluid 정량·연동(페리스탈틱)·시린지펌프에 제어 소프트웨어를 얹은 실험실 펌프 시스템을 공급하고, 하드웨어를 직접 진단·수리하는 한국 A/S 전문점. 관류·연속배양 등 무인·정밀·재현이 필요한 연구에 맞춘 제어를 제공합니다.",
             "address": {
                 "@type": "PostalAddress",

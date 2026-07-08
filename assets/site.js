@@ -131,7 +131,7 @@
             '<a href="/contact/#repair">수리 문의</a><a href="/contact/#dev">개발 문의</a>' +
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +
           '<div class="cf-col"><h4>고객센터</h4>' +
-            '<a href="mailto:emgt.yhlee@gmail.com">emgt.yhlee@gmail.com</a>' +
+            '<a href="mailto:info@pumplab.co.kr">info@pumplab.co.kr</a>' +
             '<span>LeadFluid 한국 공식 A/S 파트너</span><span>정량펌프연구소 구매 고객 3년 무상보증</span></div>' +
         '</div>' +
         '<div class="cf-co"><strong>정량펌프연구소</strong> · 이영현 · 사업자등록 637-05-03629<br>' +
@@ -187,9 +187,9 @@
           if (r.ok) {
             if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_type: 'repair_diagnosis', page_path: location.pathname });
             f.style.display = 'none'; document.getElementById('repairPopDone').style.display = 'block';
-          } else { alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); }
+          } else { alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr'); }
         })
-        .catch(function () { btn.disabled = false; btn.textContent = '무료 수리진단 신청 보내기'; alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); });
+        .catch(function () { btn.disabled = false; btn.textContent = '무료 수리진단 신청 보내기'; alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr'); });
     });
   }
 

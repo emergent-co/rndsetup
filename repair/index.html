@@ -202,7 +202,7 @@
         <label>회사·연구실명 <span style="color:var(--gray-2);font-weight:400">(선택)</span>
           <input type="text" name="소속" placeholder="OO대학교 OO연구실"></label>
         <button class="send" type="submit">무상 진단 신청 보내기</button>
-        <div class="alt">또는 이메일 <a href="mailto:emgt.yhlee@gmail.com" data-ga="repair_email">emgt.yhlee@gmail.com</a></div>
+        <div class="alt">또는 이메일 <a href="mailto:info@pumplab.co.kr" data-ga="repair_email">info@pumplab.co.kr</a></div>
       </form>
       <div class="done" id="repairDone">
         <div class="ok">✓</div>
@@ -231,12 +231,12 @@
           document.getElementById('repairDone').classList.add('show');
         } else {
           btn.disabled = false; btn.textContent = '무상 진단 신청 보내기';
-          alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com');
+          alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr');
         }
       })
       .catch(function(){
         btn.disabled = false; btn.textContent = '무상 진단 신청 보내기';
-        alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com');
+        alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr');
       });
   });
 </script>

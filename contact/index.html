@@ -144,9 +144,9 @@
             document.querySelector('.picker').style.display = 'none';
             f.parentNode.querySelectorAll('.cform').forEach(function(x){ x.style.display='none'; });
             document.getElementById('contactDone').classList.add('show');
-          } else { btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); }
+          } else { btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr'); }
         })
-        .catch(function(){ btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. 이메일로 보내주세요: emgt.yhlee@gmail.com'); });
+        .catch(function(){ btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. 이메일로 보내주세요: info@pumplab.co.kr'); });
     });
   });
   (function(){ var m={'#experiment':'experiment','#repair':'repair','#dev':'dev','#quote':'quote'}; var t=m[location.hash]; if(t){ var b=document.querySelector('.pick[data-type="'+t+'"]'); if(b) b.click(); } })();
