@@ -136,9 +136,10 @@
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +
           '<div class="cf-col"><h4>고객센터</h4>' +
             '<a href="mailto:info@pumplab.co.kr">info@pumplab.co.kr</a>' +
-            '<span>LeadFluid 한국 공식 A/S 파트너</span><span>정량펌프연구소 구매 고객 3년 무상보증</span></div>' +
+            '<a href="tel:+827089832600">070-8983-2600</a>' +
+            '<span>LeadFluid 한국 공식 대리점·공인 A/S 파트너</span><span>정량펌프연구소 구매 고객 3년 무상보증</span></div>' +
         '</div>' +
-        '<div class="cf-co"><strong>정량펌프연구소</strong> · 이영현 · 사업자등록 637-05-03629<br>' +
+        '<div class="cf-co"><strong>정량펌프연구소</strong> · 이영현 · 070-8983-2600 · 사업자등록 637-05-03629<br>' +
           '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +
         '<div class="cf-cp">© 2026 정량펌프연구소. All Rights Reserved.</div>' +
       '</div></footer>';

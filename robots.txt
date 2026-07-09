@@ -1,4 +1,4 @@
-# Cellab — robots.txt
+# 정량펌프연구소 (pumplab.co.kr) — robots.txt
 # 검색엔진 + AI 크롤러 모두 허용
 
 User-agent: *
