@@ -221,10 +221,8 @@
       <div class="rq-c"><div class="t">기록·재현</div><p>운전 로그를 남기고 같은 프로파일을 그대로 재실행.</p></div>
     </div>
 
-    <div class="rq-acc" aria-label="소프트웨어 제어 기능 상세">
-      <details class="rq-d" id="control" open>
-        <summary><span class="tag">프로그래밍 제어</span><span class="rq-dh">Modbus·RS-485·Python으로 펌프를 제어합니다</span></summary>
-        <div class="rq-dbody">
+    <section class="sw-sec" id="control">
+      <h2>프로그래밍 제어 — Modbus·RS-485·Python으로 펌프를 제어합니다</h2>
           <p>손으로 버튼을 누르지 않고 PC·스크립트로 펌프를 움직입니다. LeadFluid 정량·연동펌프는 <b>RS-485(Modbus RTU)</b> 인터페이스를 제공하며, 정량펌프연구소 제어 소프트웨어가 유량·RPM·회전 방향·기동/정지를 명령으로 주고받습니다.</p>
           <p>직접 코드로 통합하고 싶다면 <b>Modbus 레지스터 맵과 Python 예제</b>를 제공합니다. 센서를 읽어 유량을 조정하는 폐루프, 다른 장비와의 시퀀스 연동 등 기존 실험 자동화 스크립트에 펌프를 그대로 넣을 수 있습니다.</p>
 
@@ -250,10 +248,10 @@ p.write_register(4126, 1, functioncode=6)   # Start (BT101L)</code></pre>
             <p style="margin:10px 0 0;font-size:13px;color:#667">전체 레지스터 맵(S/L/F 시리즈 · 시린지 · 기어 포함)은 구매 고객에게 제공합니다.</p>
           </div>
 
-          <p style="margin-top:12px"><a href="/application/pump-pc-control-modbus-rs485.html" style="color:var(--green);font-weight:700;font-size:14px">내 펌프가 PC 제어되는지 확인하는 법 →</a></p>
-        </div>
-      </details>
+      <p style="margin-top:12px"><a href="/application/pump-pc-control-modbus-rs485.html" style="color:var(--green);font-weight:700;font-size:14px">내 펌프가 PC 제어되는지 확인하는 법 →</a></p>
+    </section>
 
+    <div class="rq-acc" aria-label="소프트웨어 제어 기능 상세">
       <details class="rq-d" id="schedule">
         <summary><span class="tag">유량 스케줄 · 레시피</span><span class="rq-dh">시간에 따라 유량을 바꾸고, 레시피로 저장·반복합니다</span></summary>
         <div class="rq-dbody">
