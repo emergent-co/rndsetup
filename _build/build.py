@@ -502,6 +502,9 @@ def build_setups():
 
 BASE_URL_LD = 'https://pumplab.co.kr'
 
+# NOTE(엔티티): sameAs는 실제 공식 프로필 URL 확보 시 Organization 노드에 추가할 것
+#   후보 — 구글 비즈니스 프로필 / 네이버 플레이스 / 나비엠알오 판매자 / 유튜브·인스타
+#   (가짜/추정 URL 금지: 확인된 것만 넣는다)
 ORG_WEBSITE_GRAPH = {
     "@context": "https://schema.org",
     "@graph": [
@@ -509,10 +512,12 @@ ORG_WEBSITE_GRAPH = {
             "@type": "Organization",
             "@id": "https://pumplab.co.kr/#org",
             "name": "정량펌프연구소",
-            "alternateName": "Cellab",
+            "alternateName": ["셀렙", "Cellab"],
             "legalName": "emergent co.",
+            "taxID": "637-05-03629",
             "url": "https://pumplab.co.kr/",
             "email": "info@pumplab.co.kr",
+            "founder": {"@type": "Person", "name": "이영현"},
             "description": "Modbus·RS485 기반 제어 소프트웨어로 브랜드와 무관하게 펌프를 제어하고, LeadFluid 정량·연동(페리스탈틱)·시린지·기어펌프와 국내 직접 A/S·3년 무상보증으로 완결된 시스템을 제공합니다. 액체(펌프)와 기체(Alicat 질량유량계·MFC) 정량 제어를 아우르는 실험실 정량 유체 제어 전문점. 관류·연속배양 등 무인·정밀·재현이 필요한 연구에 맞춘 제어를 제공합니다.",
             "address": {
                 "@type": "PostalAddress",
@@ -520,6 +525,9 @@ ORG_WEBSITE_GRAPH = {
                 "addressLocality": "부산광역시",
                 "addressCountry": "KR"
             },
+            "areaServed": {"@type": "Country", "name": "대한민국"},
+            "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "LeadFluid 펌프", "Alicat 질량유량계"],
+            "contactPoint": {"@type": "ContactPoint", "email": "info@pumplab.co.kr", "contactType": "customer support", "areaServed": "KR", "availableLanguage": "Korean"},
             "makesOffer": [
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid"}}},
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Alicat 질량유량계(MFC) 공급·시스템 연동", "serviceType": "질량유량계 공급 및 제어 연동", "brand": {"@type": "Brand", "name": "Alicat Scientific"}}}
