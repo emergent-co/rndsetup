@@ -59,6 +59,11 @@
   .lcard .lt{font-weight:700;font-size:15.5px;margin-bottom:5px}
   .lcard .ld{font-size:13.5px;color:var(--gray);line-height:1.6}
   .lcard .lm{font-size:12px;color:var(--green);font-weight:700;margin-top:8px}
+  .mtab{width:100%;border-collapse:collapse;margin-top:18px;font-size:13.5px}
+  .mtab th,.mtab td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  .mtab th{background:var(--green-bg);font-weight:700;color:#26333f;font-size:12.5px}
+  .mtab td:first-child{font-weight:700;white-space:nowrap}
+  @media(max-width:640px){.mtab{font-size:12.5px}.mtab th,.mtab td{padding:7px 8px}}
   /* 구매(나비엠알오) 강조 박스 */
   .buy{background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:22px 24px;margin-top:8px}
   .buy .bt{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:8px}
@@ -119,6 +124,17 @@
       <a class="lcard" href="/pumps/metering.html"><div class="lt">정량펌프 (연동식 디스펜싱)</div><div class="ld">정량·디스펜싱·pH 제어. 반복 분주와 정밀 투입.</div><div class="lm">BQ·BT101F 등 →</div></a>
       <a class="lcard" href="/pumps/gear.html"><div class="lt">기어펌프</div><div class="ld">무맥동 고압 대유량. 유기용매·산업 이송.</div><div class="lm">FG 시리즈 등 →</div></a>
     </div>
+    <table class="mtab">
+      <thead><tr><th>종류</th><th>대표 모델(리드플루이드)</th><th>특징</th></tr></thead>
+      <tbody>
+        <tr><td>연동펌프</td><td>BT100S · BT300 · BT600 · BT101 L · BT101F</td><td>저유량~중유량, 지능형·분주형</td></tr>
+        <tr><td>시린지펌프</td><td>TYD01-01 · TYD03</td><td>초저유량 정밀 주입·다채널</td></tr>
+        <tr><td>정량펌프(연동식)</td><td>BQ50S · BQ80S · BT-F</td><td>정량·디스펜싱·pH 제어</td></tr>
+        <tr><td>기어펌프</td><td>FG601S</td><td>공압 방폭·고압 대유량</td></tr>
+        <tr><td>마그네틱펌프</td><td>CT3001F</td><td>밀폐 무누설 연속 순환</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px;font-size:14px">모델별 상세 — <a class="inlink" href="/leadfluid/bt101l/">BT101 L 연동</a> · <a class="inlink" href="/leadfluid/tyd01-01/">TYD01-01 시린지</a> · <a class="inlink" href="/leadfluid/ct3001f/">CT3001F 마그네틱</a></p>
     <p style="margin-top:16px">마그네틱(자기구동) 펌프 CT 시리즈는 밀폐·무누설 연속 순환에 쓰이며, 연속 CO₂ 포집 셋업(CT3001F) 사례가 있습니다. 전체 종류 비교는 <a class="inlink" href="/pumps/">펌프 종류 허브</a>에서 볼 수 있습니다.</p>
   </section>
 

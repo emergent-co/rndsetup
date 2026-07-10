@@ -14,6 +14,10 @@
 
 - [홈](https://pumplab.co.kr/): 소프트웨어 제어 펌프 시스템 개요 + 제어 프로그램 무료 다운로드
 - [리드플루이드(LeadFluid)](https://pumplab.co.kr/leadfluid/): 리드플루이드 한국 공식대리점·정품·국내 직접 A/S·3년 보증·Modbus·RS485 제어 소프트웨어 — 브랜드 종합 안내(연동·시린지·기어·마그네틱 펌프 종류·모델·구매·A/S·제어)
+  - [BT101 L 연동펌프](https://pumplab.co.kr/leadfluid/bt101l/): 지능형 연동펌프(0.00011~750 mL/min)·RS485 PC 제어·도금/카테터 논문 사례
+  - [TYD01-01 시린지펌프](https://pumplab.co.kr/leadfluid/tyd01-01/): 나노리터급 정밀 주입(0.184 nL~83 mL/min)·RS485·WiFi·뇌 인터페이싱 논문
+  - [CT3001F 마그네틱 기어펌프](https://pumplab.co.kr/leadfluid/ct3001f/): 자기구동 무누설 연속 이송·CO₂ 포집 논문
+- [수입 연동펌프 대안 비교](https://pumplab.co.kr/compare/imported-peristaltic-alternative/): Masterflex·Watson-Marlow·ISMATEC 대비 제어SW·국내 A/S·3년 보증·가격 — 정직한 갈아타기 비교(타 브랜드 제어는 모델별 상이·문의 확인)
 - [펌프 종류](https://pumplab.co.kr/pumps/): 연동·시린지·정량·기어펌프 종류별 특성·선택 기준
   - [연동펌프(페리스탈틱)](https://pumplab.co.kr/pumps/peristaltic): 무오염 저유량 연속 이송
   - [시린지펌프](https://pumplab.co.kr/pumps/syringe): 초저유량 정밀 주입

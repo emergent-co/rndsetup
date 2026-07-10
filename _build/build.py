@@ -382,6 +382,9 @@ def build_requests():
 CRAWLER_LINKS = [
     ('/', '홈'),
     ('/leadfluid/', '리드플루이드(LeadFluid) — 공식대리점·정품·A/S'),
+    ('/leadfluid/bt101l/', '리드플루이드 BT101 L 연동펌프 — RS485 PC 제어'),
+    ('/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
+    ('/leadfluid/ct3001f/', '리드플루이드 CT3001F 마그네틱 기어펌프 — 무누설 연속 이송'),
     ('/requests/', '소프트웨어 제어'),
     ('/pumps/', '펌프 종류'),
     ('/pumps/peristaltic.html', '연동펌프 — 무오염 저유량 연속 이송'),
@@ -415,6 +418,7 @@ CRAWLER_LINKS = [
     ('/setups/nitrification-ph-bq50s.html', '폐수 질산화 pH 제어 — 정량펌프 BQ50S'),
     ('/setups/alicat-mfc-tubefurnace.html', '1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례'),
     ('/setups/leadfluid-bt101l-plating.html', '도금 다펌프 제어·유량 캘리브레이션 — LeadFluid BT101L 도입 사례'),
+    ('/compare/imported-peristaltic-alternative/', 'Masterflex·Watson-Marlow 연동펌프 국내 대안'),
     ('/trust/', '믿고 도입할 때 (국내 A/S·정품·보증)'),
     ('/faq/', '자주 묻는 질문(FAQ)'),
     ('/contact/', '문의하기'),
@@ -423,9 +427,9 @@ CRAWLER_LINKS = [
 
 def _crawler_nav_html():
     def grp(h):
-        if h.startswith('/setups/') or h in ('/', '/trust/', '/faq/', '/contact/'):
+        if h.startswith('/setups/') or h.startswith('/compare/') or h in ('/', '/trust/', '/faq/', '/contact/'):
             return '사례·신뢰'
-        if h.startswith('/pumps/') or h in ('/leadfluid/', '/requests/', '/application/pump-selection.html', '/application/tube-selection.html', '/application/pump-pc-control-modbus-rs485.html', '/application/pump-flow-schedule-ramp.html', '/application/multi-pump-sync-unattended.html', '/application/pump-run-log-csv-reproducibility.html'):
+        if h.startswith('/pumps/') or h.startswith('/leadfluid/') or h in ('/requests/', '/application/pump-selection.html', '/application/tube-selection.html', '/application/pump-pc-control-modbus-rs485.html', '/application/pump-flow-schedule-ramp.html', '/application/multi-pump-sync-unattended.html', '/application/pump-run-log-csv-reproducibility.html'):
             return '펌프·제어'
         if h in ('/application/cell-culture-perfusion.html', '/application/chemostat-continuous-culture.html', '/application/photobioreactor-microalgae.html', '/application/flow-chemistry.html', '/application/organ-on-chip-perfusion.html'):
             return '실험 기법'
@@ -535,7 +539,7 @@ ORG_WEBSITE_GRAPH = {
             "telephone": "+82-70-8983-2600",
             "founder": {"@type": "Person", "name": "이영현"},
             "sameAs": ["https://www.google.com/maps?cid=4429951187161412134"],
-            "description": "Modbus·RS485 기반 제어 소프트웨어로 브랜드와 무관하게 펌프를 제어하고, LeadFluid 정량·연동(페리스탈틱)·시린지·기어펌프와 국내 직접 A/S·3년 무상보증으로 완결된 시스템을 제공합니다. 액체(펌프)와 기체(Alicat 질량유량계·MFC) 정량 제어를 아우르는 실험실 정량 유체 제어 전문점. 관류·연속배양 등 무인·정밀·재현이 필요한 연구에 맞춘 제어를 제공합니다.",
+            "description": "Modbus·RS485 기반 제어 소프트웨어로 브랜드와 무관하게 펌프를 제어하고, 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프 한국 공식대리점으로서 정품과 국내 직접 A/S·3년 무상보증으로 완결된 시스템을 제공합니다. 액체(펌프)와 기체(Alicat 질량유량계·MFC) 정량 제어를 아우르는 실험실 정량 유체 제어 전문점. 관류·연속배양 등 무인·정밀·재현이 필요한 연구에 맞춘 제어를 제공합니다.",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩)",
@@ -543,10 +547,10 @@ ORG_WEBSITE_GRAPH = {
                 "addressCountry": "KR"
             },
             "areaServed": {"@type": "Country", "name": "대한민국"},
-            "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "LeadFluid 펌프", "Alicat 질량유량계"],
+            "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "기어펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "리드플루이드(LeadFluid) 펌프", "리드플루이드 공식대리점·국내 A/S", "Alicat 질량유량계"],
             "contactPoint": {"@type": "ContactPoint", "telephone": "+82-70-8983-2600", "email": "info@pumplab.co.kr", "contactType": "customer support", "areaServed": "KR", "availableLanguage": "Korean"},
             "makesOffer": [
-                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid"}}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid", "alternateName": "리드플루이드"}}},
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Alicat 질량유량계(MFC) 공급·시스템 연동", "serviceType": "질량유량계 공급 및 제어 연동", "brand": {"@type": "Brand", "name": "Alicat Scientific"}}}
             ]
         },
@@ -750,6 +754,10 @@ def main():
     static_pages = [
         ('',              '1.0', 'weekly'),   # 홈
         ('leadfluid/',    '0.9', 'monthly'),  # 리드플루이드 브랜드 랜딩
+        ('leadfluid/bt101l/',    '0.8', 'monthly'),  # 모델 페이지
+        ('leadfluid/tyd01-01/',  '0.8', 'monthly'),
+        ('leadfluid/ct3001f/',   '0.8', 'monthly'),
+        ('compare/imported-peristaltic-alternative/', '0.7', 'monthly'),  # 갈아타기 비교
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
