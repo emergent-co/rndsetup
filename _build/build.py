@@ -421,8 +421,23 @@ CRAWLER_LINKS = [
 
 
 def _crawler_nav_html():
-    lis = ''.join(f'<li><a href="{href}">{escape(label)}</a></li>' for href, label in CRAWLER_LINKS)
-    return '<nav class="crawler-nav" aria-label="사이트 전체 링크"><ul>' + lis + '</ul></nav>'
+    def grp(h):
+        if h.startswith('/setups/') or h in ('/', '/trust/', '/faq/', '/contact/'):
+            return '사례·신뢰'
+        if h.startswith('/pumps/') or h in ('/requests/', '/application/pump-selection.html', '/application/tube-selection.html', '/application/pump-pc-control-modbus-rs485.html', '/application/pump-flow-schedule-ramp.html', '/application/multi-pump-sync-unattended.html', '/application/pump-run-log-csv-reproducibility.html'):
+            return '펌프·제어'
+        if h in ('/application/cell-culture-perfusion.html', '/application/chemostat-continuous-culture.html', '/application/photobioreactor-microalgae.html', '/application/flow-chemistry.html', '/application/organ-on-chip-perfusion.html'):
+            return '실험 기법'
+        return '산업 분야'
+    order = ['펌프·제어', '실험 기법', '산업 분야', '사례·신뢰']
+    buckets = {g: [] for g in order}
+    for href, label in CRAWLER_LINKS:
+        buckets[grp(href)].append(f'<li><a href="{href}">{escape(label)}</a></li>')
+    groups = ''.join(
+        f'<div class="cn-group"><h5>{g}</h5><ul>{"".join(buckets[g])}</ul></div>'
+        for g in order if buckets[g]
+    )
+    return '<nav class="crawler-nav" aria-label="사이트 전체 링크">' + groups + '</nav>'
 
 
 def inject_static_nav():

@@ -32,6 +32,12 @@
   - [뇌 피질 인터페이싱 — 시린지펌프 TYD01-01 (Nature Electronics 2024)](https://pumplab.co.kr/setups/brain-electrode-tyd01)
   - [혈관내 카테터 코팅 — 연동펌프 BT101 L (Nature Communications 2024)](https://pumplab.co.kr/setups/catheter-heparin-bt101)
   - [연속 CO₂ 포집 — 마그네틱펌프 CT3001F (Nature Communications 2024)](https://pumplab.co.kr/setups/co2-capture-ct3001f)
+  - [심장 체외 관류(ESHP) — 연동펌프 BT101L (Frontiers 2021)](https://pumplab.co.kr/setups/heart-eshp-bt101l)
+  - [혐기성 메탄산화 반응기 순환 — 연동펌프 BT600S (Environ. Sci. Technol. 2021)](https://pumplab.co.kr/setups/damo-recirculation-bt600s)
+  - [폐수 질산화 pH 제어 — 정량펌프 BQ50S (Bioresource Technology 2017)](https://pumplab.co.kr/setups/nitrification-ph-bq50s)
+- 도입 사례(실증): 정량펌프연구소가 실제 납품·구성한 사례
+  - [1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC](https://pumplab.co.kr/setups/alicat-mfc-tubefurnace)
+  - [도금 다펌프 제어·유량 캘리브레이션 — LeadFluid BT101L](https://pumplab.co.kr/setups/leadfluid-bt101l-plating)
 - [믿고 도입할 때](https://pumplab.co.kr/trust/): 국내 A/S·정품·3년 보증·중국산 인식 대응(Ingersoll Rand 계열·CE·RoHS)
 - [자주 묻는 질문(FAQ)](https://pumplab.co.kr/faq/): 수리·A/S·펌프·소프트웨어
 - [문의하기](https://pumplab.co.kr/contact/): 실험 상담·수리·개발·견적
