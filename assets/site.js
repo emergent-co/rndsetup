@@ -64,15 +64,13 @@
     find:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
   };
   var NAV = [
-    { href:'/',            label:'홈',        icon:'home' },
-    { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw', sub:[
-        ['/requests/',                                      '소프트웨어 소개·다운로드'],
-        ['/application/pump-pc-control-modbus-rs485.html',  'Modbus·RS485 제어'],
-        ['/requests/#control',                              'Python 자동화 Q&A 예제']
-      ] },
     { href:'/guide/', label:'실험 셋업 가이드', icon:'find', sub:[
-        ['/guide/', '질문·비교로 셋업 찾기']
+        ['/guide/?d=액체',   '액체 — 펌프·튜브'],
+        ['/guide/?d=기체',   '기체 — MFC'],
+        ['/guide/?d=진공',   '진공'],
+        ['/guide/?d=자동화', '자동화·제어']
       ] },
+    { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' },
     { href:'/setups/', label:'연구별 셋업', icon:'shield', sub:[
         ['/setups/#bio',    '바이오·의료'],
         ['/setups/#env',    '환경·수처리'],

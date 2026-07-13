@@ -113,6 +113,50 @@
   <div class="g-grid" id="gGrid"></div>
 </main>
 
+<style>
+  .g-reqbar-wrap{margin:10px auto 0}
+  .g-reqbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--green-bg,#eef6f0);border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:14.5px;color:var(--ink)}
+  .g-reqbtn{background:var(--green);color:#fff;border:0;border-radius:9px;padding:11px 16px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap}
+  .g-reqbtn:hover{background:var(--green-dk,#0b6b4f)}
+  .g-empty .g-reqbtn{margin-top:12px}
+  .g-modal{display:none;position:fixed;inset:0;background:rgba(10,20,30,.5);z-index:100;align-items:center;justify-content:center;padding:20px}
+  .g-modal.open{display:flex}
+  .g-modal-box{position:relative;background:#fff;border-radius:14px;padding:26px 24px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  .g-modal-x{position:absolute;right:14px;top:12px;background:none;border:0;font-size:24px;color:var(--gray-2);cursor:pointer;line-height:1}
+  .g-modal-h{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ink);margin:0 0 6px}
+  .g-modal-sub{font-size:13.5px;color:var(--gray);margin:0 0 16px;line-height:1.6}
+  .g-lab{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:12px}
+  .g-lab textarea,.g-lab input{width:100%;margin-top:5px;padding:11px 12px;font-size:14.5px;font-family:inherit;border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);box-sizing:border-box;font-weight:400}
+  .g-lab textarea:focus,.g-lab input:focus{outline:none;border-color:var(--green)}
+  .g-reqsubmit{width:100%;background:var(--green);color:#fff;border:0;border-radius:9px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:4px;font-family:inherit}
+  .g-reqsubmit:hover{background:var(--green-dk,#0b6b4f)}
+</style>
+<section class="gwrap g-reqbar-wrap">
+  <div class="g-reqbar">
+    <div>찾으시는 실험 셋업 가이드가 없나요? <b>필요한 주제를 요청</b>하시면 정리해 드립니다.</div>
+    <button type="button" class="g-reqbtn" onclick="openGReq()">실험가이드 요청하기 →</button>
+  </div>
+</section>
+
+<div class="g-modal" id="gReqModal" onclick="if(event.target===this)closeGReq()">
+  <div class="g-modal-box">
+    <button class="g-modal-x" type="button" onclick="closeGReq()" aria-label="닫기">×</button>
+    <form id="gReqForm" action="https://formspree.io/f/mnjkzppj" method="POST">
+      <input type="hidden" name="form_type" value="guide_request">
+      <h3 class="g-modal-h">실험가이드 요청</h3>
+      <p class="g-modal-sub">어떤 실험 셋업이 궁금하신가요? 주제를 남겨주시면 가이드로 정리해 회신드립니다.</p>
+      <label class="g-lab">찾는 주제·질문 *<textarea name="topic" id="gReqTopic" rows="3" required placeholder="예: 미세유체 장기칩에 어떤 저맥동 펌프가 맞나요?"></textarea></label>
+      <label class="g-lab">이메일 *<input type="email" name="email" required placeholder="you@lab.ac.kr"></label>
+      <label class="g-lab">소속(선택)<input type="text" name="org" placeholder="○○대학교 ○○연구실"></label>
+      <button type="submit" class="g-reqsubmit">요청 보내기</button>
+    </form>
+    <div id="gReqDone" style="display:none">
+      <h3 class="g-modal-h">요청 감사합니다!</h3>
+      <p class="g-modal-sub">남겨주신 주제를 검토해 실험 셋업 가이드로 정리한 뒤 이메일로 회신드리겠습니다.</p>
+    </div>
+  </div>
+</div>
+
 <div id="pumplab-footer"></div>
 <script src="/assets/site.js" defer></script>
 <script>
@@ -156,6 +200,15 @@
   var searchEl = document.getElementById("gSearch");
   var filtersEl = document.getElementById("gFilters");
   var state = { d:"전체", q:"" };
+  (function initFromURL(){
+    var p = new URLSearchParams(location.search);
+    var q = p.get('q'), d = p.get('d');
+    if(q){ state.q = q; if(searchEl) searchEl.value = q; }
+    if(d){
+      var btn = filtersEl.querySelector('.g-fbtn[data-d="'+d+'"]');
+      if(btn){ Array.prototype.forEach.call(filtersEl.querySelectorAll('.g-fbtn'), function(b){ b.classList.remove('active'); }); btn.classList.add('active'); state.d = d; }
+    }
+  })();
 
   function cardHTML(c){
     var dcls = DOMAIN_CLASS[c.d] || "d-liquid";
@@ -180,7 +233,8 @@
     if(list.length === 0){
       grid.innerHTML = '';
       countEl.innerHTML = '';
-      grid.insertAdjacentHTML('beforeend', '<div class="g-empty" style="grid-column:1/-1">해당 조건의 가이드가 없습니다</div>');
+      var qtxt = state.q ? '‘'+esc(state.q)+'’에 맞는' : '해당 조건의';
+      grid.insertAdjacentHTML('beforeend', '<div class="g-empty" style="grid-column:1/-1">'+qtxt+' 가이드가 아직 없습니다.<br><button type="button" class="g-reqbtn" onclick="openGReq()">이 주제로 실험가이드 요청하기 →</button></div>');
       return;
     }
     countEl.innerHTML = '가이드 <b>'+list.length+'</b>개';
@@ -200,6 +254,25 @@
     state.q = searchEl.value;
     render();
   });
+
+  window.openGReq = function(){
+    var m = document.getElementById('gReqModal'); if(!m) return;
+    var t = document.getElementById('gReqTopic'); if(t && !t.value) t.value = state.q || '';
+    m.classList.add('open');
+    if(typeof gtag==='function') gtag('event','guide_request_open');
+  };
+  window.closeGReq = function(){ var m = document.getElementById('gReqModal'); if(m) m.classList.remove('open'); };
+  var gReqForm = document.getElementById('gReqForm');
+  if(gReqForm){ gReqForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var f = e.target, btn = f.querySelector('.g-reqsubmit'), orig = btn.textContent;
+    btn.disabled = true; btn.textContent = '전송 중…';
+    try{
+      var res = await fetch(f.action, { method:'POST', headers:{'Accept':'application/json'}, body:new FormData(f) });
+      if(res.ok){ f.style.display='none'; document.getElementById('gReqDone').style.display='block'; if(typeof gtag==='function') gtag('event','guide_request_submit'); }
+      else { btn.disabled=false; btn.textContent=orig; alert('전송에 실패했습니다. 잠시 후 다시 시도해 주세요.'); }
+    }catch(_){ btn.disabled=false; btn.textContent=orig; alert('네트워크 오류가 발생했습니다.'); }
+  }); }
 
   render();
 })();
