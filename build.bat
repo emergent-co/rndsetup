@@ -1,5 +1,5 @@
 @echo off
-title Cellab build - generate static category pages
+title 실험셋업연구소 build - generate static category pages
 cd /d "%~dp0"
 
 python --version > nul 2>&1

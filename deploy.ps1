@@ -1,4 +1,4 @@
-# Cellab GitHub Pages Deploy Script
+# 실험셋업연구소 GitHub Pages Deploy Script
 # Usage:
 #   .\deploy.ps1                    (auto commit message)
 #   .\deploy.ps1 "commit message"
@@ -24,13 +24,13 @@ $env:LC_ALL = "C.UTF-8"
 git config i18n.commitEncoding utf-8 2>$null
 git config i18n.logOutputEncoding utf-8 2>$null
 
-$RepoUrl  = "https://github.com/emergent-co/pumplab.git"
+$RepoUrl  = "https://github.com/emergent-co/rndsetup.git"
 
 Write-Host ""
 Write-Host "==================================================" -ForegroundColor Cyan
-Write-Host "  Cellab GitHub Pages Deploy" -ForegroundColor Cyan
-Write-Host "  Repo: emergent-co/pumplab" -ForegroundColor Cyan
-Write-Host "  Live: https://pumplab.co.kr" -ForegroundColor Cyan
+Write-Host "  실험셋업연구소 GitHub Pages Deploy" -ForegroundColor Cyan
+Write-Host "  Repo: emergent-co/rndsetup" -ForegroundColor Cyan
+Write-Host "  Live: https://rndsetup.com" -ForegroundColor Cyan
 Write-Host "==================================================" -ForegroundColor Cyan
 Write-Host ""
 
@@ -50,7 +50,7 @@ if (-not (Test-Path ".git")) {
     Write-Host ""
     Write-Host "[!] First run: git repo init required." -ForegroundColor Yellow
     Write-Host "    Old GitHub files (index.html etc) will be overwritten by local files." -ForegroundColor Yellow
-    Write-Host "    CNAME (pumplab.co.kr domain) will be preserved." -ForegroundColor Yellow
+    Write-Host "    CNAME (rndsetup.com domain) will be preserved." -ForegroundColor Yellow
     Write-Host ""
     $confirm = Read-Host "Proceed? (y/n)"
     if ($confirm -ne "y") {
@@ -77,9 +77,9 @@ if (-not (Test-Path ".git")) {
             $cnameContent = (Get-Content "CNAME" -Raw).Trim()
             Write-Host "[OK] CNAME preserved: $cnameContent" -ForegroundColor Green
         } else {
-            Write-Host "[!] No CNAME on remote - creating pumplab.co.kr" -ForegroundColor Yellow
-            "pumplab.co.kr" | Out-File -FilePath "CNAME" -Encoding ASCII -NoNewline
-            Write-Host "[OK] CNAME created: pumplab.co.kr" -ForegroundColor Green
+            Write-Host "[!] No CNAME on remote - creating rndsetup.com" -ForegroundColor Yellow
+            "rndsetup.com" | Out-File -FilePath "CNAME" -Encoding ASCII -NoNewline
+            Write-Host "[OK] CNAME created: rndsetup.com" -ForegroundColor Green
         }
     } else {
         Write-Host "[OK] Local CNAME exists" -ForegroundColor Green
@@ -172,7 +172,7 @@ if ($LASTEXITCODE -ne 0) {
 Write-Host ""
 Write-Host "==================================================" -ForegroundColor Green
 Write-Host "  Deploy Complete" -ForegroundColor Green
-Write-Host "  https://pumplab.co.kr" -ForegroundColor Green
+Write-Host "  https://rndsetup.com" -ForegroundColor Green
 Write-Host "  GitHub Pages build: 1-3 minutes" -ForegroundColor Green
 Write-Host "==================================================" -ForegroundColor Green
 Write-Host ""

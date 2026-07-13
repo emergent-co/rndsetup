@@ -1,6 +1,6 @@
 {
-  "_comment": "Cellab 통합 펌프 카탈로그 (SSOT). leadfluid + admin_pumps 통합 완료. STRATEGY.md § 6 참조. 향후 모든 펌프 사양·매칭·이미지·헤드·마켓 URL은 본 파일에서 관리.",
-  "_base_url": "https://cellab.kr/",
+  "_comment": "실험셋업연구소 통합 펌프 카탈로그 (SSOT). leadfluid + admin_pumps 통합 완료. STRATEGY.md § 6 참조. 향후 모든 펌프 사양·매칭·이미지·헤드·마켓 URL은 본 파일에서 관리.",
+  "_base_url": "https://rndsetup.com/",
   "version": "1.0",
   "updated_at": "2026-05-17",
   "source": "admin.html (Phase 4 editor — matching/heads/specs + nav_group_urls)",

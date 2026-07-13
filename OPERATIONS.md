@@ -24,7 +24,7 @@
 
 ## 1. 사이트 구조
 
-정적 사이트 · GitHub Pages(`emergent-co/pumplab`) · 도메인 rndsetup.com.
+정적 사이트 · GitHub Pages(`emergent-co/rndsetup`) · 도메인 rndsetup.com.
 
 **공유 크롬(SSOT):** `assets/site.js`가 `#pumplab-header`/`#pumplab-footer`에 상단바+좌측 사이드바+푸터를 주입. `assets/site.css`가 색·폰트 토큰과 사이드바·아티클·검색 스타일. 색=네이비 `#1E3A5F`, 폰트=Pretendard.
 
