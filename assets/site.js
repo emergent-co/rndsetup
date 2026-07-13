@@ -8,7 +8,7 @@
 
   var SEARCH_INDEX = [
     { t:'홈', u:'/', k:'소프트웨어 제어 펌프 시스템 관류', c:'페이지' },
-    { t:'리드플루이드(LeadFluid) — 공식대리점·정품·A/S', u:'/leadfluid/', k:'리드플루이드 leadfluid 공식대리점 정품 국내 as 수리 3년보증 연동 시린지 기어 마그네틱 정량펌프 baoding ingersoll rand 나비엠알오 브랜드', c:'리드플루이드' },
+    { t:'리드플루이드(LeadFluid) — 정품·국내 A/S·제어', u:'/leadfluid/', k:'리드플루이드 leadfluid 정품 국내 as 수리 3년보증 연동 시린지 기어 마그네틱 정량펌프 baoding ingersoll rand 나비엠알오 제어 소프트웨어', c:'리드플루이드' },
     { t:'리드플루이드 BT101 L 연동펌프', u:'/leadfluid/bt101l/', k:'BT101L bt101 l 리드플루이드 연동펌프 지능형 rs485 modbus 도금 코팅 카테터 논문 750 mL 제어', c:'리드플루이드' },
     { t:'리드플루이드 TYD01-01 시린지펌프', u:'/leadfluid/tyd01-01/', k:'TYD01 TYD01-01 리드플루이드 시린지펌프 나노리터 정밀 주입 rs485 wifi 뇌 전극 미세유체 논문', c:'리드플루이드' },
     { t:'리드플루이드 CT3001F 마그네틱 기어펌프', u:'/leadfluid/ct3001f/', k:'CT3001F 리드플루이드 마그네틱 자기구동 기어펌프 무누설 연속 순환 co2 포집 논문', c:'리드플루이드' },
@@ -143,7 +143,7 @@
           '<div class="cf-col"><h4>고객센터</h4>' +
             '<a href="mailto:info@rndsetup.com">info@rndsetup.com</a>' +
             '<a href="tel:+827089832600">070-8983-2600</a>' +
-            '<span>LeadFluid 한국 공식 대리점·공인 A/S 파트너</span><span>실험셋업연구소 구매 고객 3년 무상보증</span></div>' +
+            '<span>LeadFluid 정품 공급·국내 직접 A/S</span><span>실험셋업연구소 구매 고객 3년 무상보증</span></div>' +
         '</div>' +
         '<div class="cf-co"><strong>실험셋업연구소</strong> · 이영현 · 070-8983-2600 · 사업자등록 637-05-03629<br>' +
           '부산광역시 북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩) · 도매·소매업 / 정보통신업</div>' +

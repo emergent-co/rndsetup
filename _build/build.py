@@ -381,7 +381,7 @@ def build_requests():
 # 크롤러용 사이트 전체 링크(푸터 div에 정적 주입 → site.js가 런타임에 대체)
 CRAWLER_LINKS = [
     ('/', '홈'),
-    ('/leadfluid/', '리드플루이드(LeadFluid) — 공식대리점·정품·A/S'),
+    ('/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
     ('/leadfluid/bt101l/', '리드플루이드 BT101 L 연동펌프 — RS485 PC 제어'),
     ('/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
     ('/leadfluid/ct3001f/', '리드플루이드 CT3001F 마그네틱 기어펌프 — 무누설 연속 이송'),
@@ -540,7 +540,7 @@ ORG_WEBSITE_GRAPH = {
             "telephone": "+82-70-8983-2600",
             "founder": {"@type": "Person", "name": "이영현"},
             "sameAs": ["https://www.google.com/maps?cid=4429951187161412134"],
-            "description": "Modbus·RS485 기반 제어 소프트웨어로 브랜드와 무관하게 펌프를 제어하고, 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프 한국 공식대리점으로서 정품과 국내 직접 A/S·3년 무상보증으로 완결된 시스템을 제공합니다. 액체(펌프)와 기체(Alicat 질량유량계·MFC) 정량 제어를 아우르는 실험실 정량 유체 제어 전문점. 관류·연속배양 등 무인·정밀·재현이 필요한 연구에 맞춘 제어를 제공합니다.",
+            "description": "실험용 펌프·유체 제어 셋업 정보를 제공하는 곳. 어떤 펌프를 고르고 유량·스케줄을 어떻게 자동화·재현하는지, 어떤 논문이 어떤 셋업을 썼는지 정리합니다. 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프와 Alicat 질량유량계(MFC)의 제어 소프트웨어와 국내 직접 A/S(구매 시 3년 무상보증)도 지원합니다. 관류·연속배양 등 무인·정밀·재현이 필요한 실험의 셋업을 다룹니다.",
             "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩)",
@@ -548,7 +548,7 @@ ORG_WEBSITE_GRAPH = {
                 "addressCountry": "KR"
             },
             "areaServed": {"@type": "Country", "name": "대한민국"},
-            "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "기어펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "리드플루이드(LeadFluid) 펌프", "리드플루이드 공식대리점·국내 A/S", "Alicat 질량유량계"],
+            "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "기어펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "리드플루이드(LeadFluid) 펌프", "리드플루이드 펌프 국내 직접 A/S", "실험 셋업 정보", "Alicat 질량유량계"],
             "contactPoint": {"@type": "ContactPoint", "telephone": "+82-70-8983-2600", "email": "info@rndsetup.com", "contactType": "customer support", "areaServed": "KR", "availableLanguage": "Korean"},
             "makesOffer": [
                 {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid", "alternateName": "리드플루이드"}}},
