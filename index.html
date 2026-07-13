@@ -23,14 +23,14 @@
   .home-main{ padding:30px 40px 72px; }
   .hwrap{ max-width:900px; margin:0 auto; }
   /* 1) 소프트웨어 다운로드 프로모 */
-  .h-promo{ display:flex; align-items:center; justify-content:space-between; gap:22px; background:linear-gradient(115deg,var(--green),var(--green-dk)); border-radius:20px; padding:34px 36px; color:#fff; overflow:hidden; }
-  .h-promo .p-sub{ font-size:13px; font-weight:700; color:#AEC2DE; margin-bottom:8px; }
-  .h-promo h1{ font-family:var(--serif); font-size:clamp(22px,4.6vw,29px); font-weight:700; color:#fff; line-height:1.32; letter-spacing:-.02em; }
-  .h-promo .p-tx p{ font-size:14.5px; color:#d7e1ef; margin-top:11px; max-width:430px; line-height:1.6; }
-  .h-promo .p-btn{ display:inline-block; margin-top:20px; background:#fff; color:var(--green); font-weight:800; font-size:14.5px; padding:12px 22px; border-radius:10px; }
+  .h-promo{ display:flex; align-items:center; justify-content:space-between; gap:22px; background:#fff; border:1px solid #e3e8ef; border-radius:20px; padding:34px 36px; color:var(--ink); overflow:hidden; }
+  .h-promo .p-sub{ font-size:13px; font-weight:700; color:var(--green); margin-bottom:8px; }
+  .h-promo h1{ font-family:var(--serif); font-size:clamp(22px,4.6vw,29px); font-weight:700; color:var(--ink); line-height:1.32; letter-spacing:-.02em; }
+  .h-promo .p-tx p{ font-size:14.5px; color:#5a6470; margin-top:11px; max-width:430px; line-height:1.6; }
+  .h-promo .p-btn{ display:inline-block; margin-top:20px; background:var(--green); color:#fff; font-weight:800; font-size:14.5px; padding:12px 22px; border-radius:10px; }
   .h-promo .p-ill{ flex:0 0 auto; cursor:zoom-in; text-align:center; }
-  .h-promo .p-ill svg{ width:246px; height:auto; border-radius:11px; filter:drop-shadow(0 10px 24px rgba(8,25,50,.38)); }
-  .h-promo .p-ill-cap{ display:block; margin-top:8px; font-size:12px; font-weight:700; color:#c5d5ea; }
+  .h-promo .p-ill svg{ width:246px; height:auto; border-radius:11px; filter:drop-shadow(0 6px 18px rgba(8,25,50,.14)); }
+  .h-promo .p-ill-cap{ display:block; margin-top:8px; font-size:12px; font-weight:700; color:#5a6470; }
   .sw-zoom{ position:fixed; inset:0; background:rgba(8,20,40,.74); display:none; align-items:center; justify-content:center; padding:18px; z-index:200; cursor:zoom-out; }
   .sw-zoom.on{ display:flex; }
   .sw-zoom svg, .sw-zoom img{ width:min(94vw,880px); height:auto; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,.45); display:block; }
@@ -155,30 +155,7 @@
       </div>
     </a>
     <div id="swZoom" class="sw-zoom" onclick="this.classList.remove('on')" aria-hidden="true"></div>
-    <!-- 소프트웨어 호환 장비 카드 (소프트웨어 카드와 한 묶음) -->
-    <div style="margin:14px 4px 0;background:#fff;border:1px solid #e3e8ef;border-radius:14px;padding:16px 18px">
-      <div style="font-size:13px;font-weight:700;color:var(--ink);margin-bottom:10px">이 소프트웨어와 호환되는 장비</div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
-        <a href="/leadfluid/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:10px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/리드플루이드_제품.jpg" alt="리드플루이드 펌프 제품" style="width:100%;height:84px;object-fit:cover;border-radius:8px;margin-bottom:10px" loading="lazy">
-          <div style="font-size:12px;font-weight:700;color:var(--ink)">리드플루이드</div>
-          <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">액체 · 펌프</div>
-          <div style="font-size:11px;color:#5a6470;margin-top:2px">연동·시린지·기어·마그네틱</div>
-        </a>
-        <a href="/sh-scientific/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:10px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/삼흥에너지_제품.jpg" alt="삼흥에너지 튜브퍼니스·전기로 제품" style="width:100%;height:84px;object-fit:cover;border-radius:8px;margin-bottom:10px" loading="lazy">
-          <div style="font-size:12px;font-weight:700;color:var(--ink)">삼흥에너지</div>
-          <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">열처리</div>
-          <div style="font-size:11px;color:#5a6470;margin-top:2px">튜브퍼니스·전기로 온도 연동</div>
-        </a>
-        <a href="/alicat/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:10px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/알리캣%20제품.jpg" alt="ALICAT 질량유량계(MFC) 제품" style="width:100%;height:84px;object-fit:cover;border-radius:8px;margin-bottom:10px" loading="lazy">
-          <div style="font-size:12px;font-weight:700;color:var(--ink)">ALICAT</div>
-          <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">기체 · 유량계</div>
-          <div style="font-size:11px;color:#5a6470;margin-top:2px">질량유량계(MFC) 동기 제어</div>
-        </a>
-      </div>
-    </div>
+    <!-- 호환 장비 카드는 /requests/(통합 제어 소프트웨어)로 이동됨 -->
 
     <!-- 실험셋업연구소 AI 인용 섹션 (AI 발췌 표적) -->
     <div style="background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:18px 20px;margin:14px 4px 0;font-size:14.5px;color:#26333f;line-height:1.75">
