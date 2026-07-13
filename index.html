@@ -23,7 +23,11 @@
   .home-main{ padding:30px 40px 72px; }
   .hwrap{ max-width:900px; margin:0 auto; }
   /* 1) 소프트웨어 다운로드 프로모 */
-  .h-promo{ display:flex; align-items:center; justify-content:space-between; gap:22px; background:#fff; border:1px solid #e3e8ef; border-radius:20px; padding:34px 36px; color:var(--ink); overflow:hidden; }
+  .h-promo{ display:block; background:#fff; border:1px solid #e3e8ef; border-radius:20px; padding:34px 36px; color:var(--ink); overflow:hidden; }
+  .h-promo .p-top{ display:flex; align-items:center; justify-content:space-between; gap:22px; }
+  .h-promo .p-compat{ margin-top:26px; padding-top:22px; border-top:1px solid #eef1f5; }
+  .h-promo .p-compat-h{ font-size:14px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+  .h-promo .p-compat-sub{ font-size:13px; color:#5a6470; margin:0 0 14px; line-height:1.6; }
   .h-promo .p-sub{ font-size:13px; font-weight:700; color:var(--green); margin-bottom:8px; }
   .h-promo h1{ font-family:var(--serif); font-size:clamp(22px,4.6vw,29px); font-weight:700; color:var(--ink); line-height:1.32; letter-spacing:-.02em; }
   .h-promo .p-tx p{ font-size:14.5px; color:#5a6470; margin-top:11px; max-width:430px; line-height:1.6; }
@@ -71,7 +75,8 @@
   .h-art-meta b{ color:var(--green); font-weight:700; }
   @media(max-width:640px){
     .home-main{ padding:24px 20px 56px; }
-    .h-promo{ flex-direction:column; align-items:flex-start; padding:26px 24px; }
+    .h-promo{ padding:26px 24px; }
+    .h-promo .p-top{ flex-direction:column; align-items:flex-start; }
     .h-promo .p-ill{ display:block; width:100%; margin-top:20px; }
     .h-promo .p-ill svg{ width:100%; }
     .h-cats{ grid-template-columns:1fr 1fr 1fr; gap:10px; }
@@ -122,12 +127,13 @@
     </section>
 
     <!-- 1) 소프트웨어 다운로드 -->
-    <a class="h-promo" id="download" href="/application/pump-pc-control-modbus-rs485">
+    <div class="h-promo" id="download">
+      <div class="p-top">
       <div class="p-tx">
         <div class="p-sub">통합 제어 소프트웨어 · Modbus·RS485 · 액체·기체·진공·자동화</div>
         <h1>하나의 소프트웨어로 — 펌프·질량유량계·진공·자동화를 통합 제어</h1>
         <p>액체(펌프)·기체(질량유량계 MFC)·진공·열처리까지, Modbus·RS485(RTU) 지원 장비를 한 프로그램에서 유량·유량계·온도 스케줄을 함께 제어하고 무인·재현으로 운전합니다.</p>
-        <span class="p-btn">내 장비가 제어되는지 30초 확인 →</span>
+        <a class="p-btn" href="/requests/">자세히 보기 →</a>
       </div>
       <div class="p-ill" role="button" tabindex="0" aria-label="소프트웨어 화면 크게 보기" onclick="event.preventDefault();event.stopPropagation();openSwZoom();">
         <svg viewBox="0 0 260 168" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI',sans-serif">
@@ -153,33 +159,33 @@
         </svg>
         <span class="p-ill-cap">🔍 크게 보기</span>
       </div>
-    </a>
-    <div id="swZoom" class="sw-zoom" onclick="this.classList.remove('on')" aria-hidden="true"></div>
-    <!-- 이 소프트웨어와 호환되는 장비 (통합 제어 SW 카드) -->
-    <div style="background:#fff;border:1px solid #e3e8ef;border-radius:14px;padding:18px 20px;margin:16px 4px 0">
-      <div style="font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">이 소프트웨어와 호환되는 장비</div>
-      <p style="font-size:13px;color:#5a6470;margin:0 0 14px;line-height:1.6">필요한 장비는 이 브랜드 중에서 고르시고, 제어는 통합 소프트웨어 하나로 묶으세요.</p>
+      </div>
+      <div class="p-compat">
+        <div class="p-compat-h">이 소프트웨어와 호환되는 장비</div>
+        <p class="p-compat-sub">필요한 장비는 이 브랜드 중에서 고르시고, 제어는 통합 소프트웨어 하나로 묶으세요.</p>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
         <a href="/leadfluid/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:12px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/리드플루이드_제품.jpg" alt="리드플루이드 펌프 제품" style="width:100%;height:118px;object-fit:contain;background:#f7f9fc;border-radius:8px;margin-bottom:10px" loading="lazy">
+          <img src="/img/product/리드플루이드_제품.jpg" alt="리드플루이드 펌프 제품" style="width:100%;height:118px;object-fit:contain;background:transparent;border-radius:8px;margin-bottom:10px" loading="lazy">
           <div style="font-size:12px;font-weight:700;color:var(--ink)">리드플루이드</div>
           <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">액체 · 펌프</div>
           <div style="font-size:11px;color:#5a6470;margin-top:2px">연동·시린지·기어·마그네틱</div>
         </a>
         <a href="/sh-scientific/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:12px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/삼흥에너지_제품.jpg" alt="삼흥에너지 튜브퍼니스·전기로 제품" style="width:100%;height:118px;object-fit:contain;background:#f7f9fc;border-radius:8px;margin-bottom:10px" loading="lazy">
+          <img src="/img/product/삼흥에너지_제품.jpg" alt="삼흥에너지 튜브퍼니스·전기로 제품" style="width:100%;height:118px;object-fit:contain;background:transparent;border-radius:8px;margin-bottom:10px" loading="lazy">
           <div style="font-size:12px;font-weight:700;color:var(--ink)">삼흥에너지</div>
           <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">열처리</div>
           <div style="font-size:11px;color:#5a6470;margin-top:2px">튜브퍼니스·전기로 온도 연동</div>
         </a>
         <a href="/alicat/" style="display:flex;flex-direction:column;align-items:center;text-align:center;border:1px solid #e3e8ef;border-radius:10px;padding:12px 10px 14px;text-decoration:none;color:inherit">
-          <img src="/img/product/알리캣%20제품.jpg" alt="ALICAT 질량유량계(MFC) 제품" style="width:100%;height:118px;object-fit:contain;background:#f7f9fc;border-radius:8px;margin-bottom:10px" loading="lazy">
+          <img src="/img/product/알리캣%20제품.jpg" alt="ALICAT 질량유량계(MFC) 제품" style="width:100%;height:118px;object-fit:contain;background:transparent;border-radius:8px;margin-bottom:10px" loading="lazy">
           <div style="font-size:12px;font-weight:700;color:var(--ink)">ALICAT</div>
           <div style="font-size:11px;color:var(--green);font-weight:700;margin-top:2px">기체 · 유량계</div>
           <div style="font-size:11px;color:#5a6470;margin-top:2px">질량유량계(MFC) 동기 제어</div>
         </a>
       </div>
+      </div>
     </div>
+    <div id="swZoom" class="sw-zoom" onclick="this.classList.remove('on')" aria-hidden="true"></div>
 
     <!-- 실험셋업연구소 AI 인용 섹션 (AI 발췌 표적) -->
     <div style="background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:18px 20px;margin:14px 4px 0;font-size:14.5px;color:#26333f;line-height:1.75">
