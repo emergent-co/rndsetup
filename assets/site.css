@@ -259,3 +259,27 @@ body.embed-mode .cta-band{ display:none !important; }
 .cmp .yes{ color:var(--green); font-weight:700; }
 .cmp .no{ color:var(--gray-2); }
 @media(max-width:640px){ .sw-cards{ grid-template-columns:1fr; } }
+
+/* ============================================================
+   11) 모바일 반응형 보정 — 다열 그리드→1열 · 자연 줄바꿈 · 글자 크기 (전 페이지 공통)
+   ============================================================ */
+@media (max-width:640px){
+  /* (a) 2·3열 그리드 → 1열 (인라인 style·클래스 모두) */
+  [style*="repeat(2"], [style*="repeat(3"]{ grid-template-columns:1fr !important; }
+  .rq-cards, .sw-cards, .tier-grid, .sd-rel-grid, .rcases, .pillars, .line,
+  .dl-feat ul, .dl-spec ul{ grid-template-columns:1fr !important; }
+
+  /* (b) 제목의 강제 줄바꿈(<br>) 해제 → 화면폭에 맞춰 자연 줄바꿈 */
+  h1 br, h2 br{ display:none; }
+
+  /* (c) 글자 자동확대 방지(iOS) + 한글 자연 줄바꿈 */
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
+  body, h1, h2, h3, p, li, td, th, .answer, .sd-answer, .rq-answer{
+    word-break:keep-all; overflow-wrap:break-word;
+  }
+
+  /* (d) 과대 글자 정리 — 모바일 가독 크기로 캡(반응형 유지) */
+  h1{ font-size:clamp(20px,5.6vw,25px) !important; line-height:1.36; }
+  h2{ font-size:clamp(17px,5vw,21px) !important; line-height:1.42; }
+  h3{ font-size:16px !important; line-height:1.45; }
+}
