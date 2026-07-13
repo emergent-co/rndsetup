@@ -385,6 +385,8 @@ CRAWLER_LINKS = [
     ('/leadfluid/bt101l/', '리드플루이드 BT101 L 연동펌프 — RS485 PC 제어'),
     ('/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
     ('/leadfluid/ct3001f/', '리드플루이드 CT3001F 마그네틱 기어펌프 — 무누설 연속 이송'),
+    ('/sh-scientific/', '삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업'),
+    ('/alicat/', 'ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어'),
     ('/requests/', '소프트웨어 제어'),
     ('/pumps/', '펌프 종류'),
     ('/pumps/peristaltic.html', '연동펌프 — 무오염 저유량 연속 이송'),
@@ -578,6 +580,8 @@ BREADCRUMB_SECTIONS = {
     'faq': ('자주 묻는 질문(FAQ)', '/faq/'),
     'gas': ('기체', '/gas/'),
     'vacuum': ('진공', '/vacuum/'),
+    'alicat': ('ALICAT', '/alicat/'),
+    'sh-scientific': ('삼흥에너지', '/sh-scientific/'),
 }
 
 # /application/ 내 페이지 중 섹션을 다르게 잡을 것 (펌프 가이드 / 소프트웨어 제어)
@@ -776,6 +780,8 @@ def main():
         ('pumps/gear.html',        '0.7', 'monthly'),  # 기어펌프
         ('gas/',          '0.8', 'monthly'),  # 기체 — 질량유량계(MFC)
         ('vacuum/',       '0.8', 'monthly'),  # 진공 셋업
+        ('alicat/',       '0.8', 'monthly'),  # 소프트웨어 호환 장비 — ALICAT
+        ('sh-scientific/','0.8', 'monthly'),  # 소프트웨어 호환 장비 — 삼흥에너지
         ('application/biopharmaceutical.html', '0.8', 'monthly'),        # 응용분야 클러스터
         ('application/analytical-instrument.html', '0.8', 'monthly'),
         ('application/medical-device-ivd.html', '0.8', 'monthly'),

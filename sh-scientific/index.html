@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업 + 가스·온도 연동 | 실험셋업연구소</title>
+<meta name="description" content="삼흥에너지(SH Scientific)는 국내 열처리 실험 장비(튜브퍼니스/관상로, 박스형 전기로/머플로, 건조기 등) 제조사입니다. 튜브퍼니스 열처리에서 중요한 승온 프로파일과 가스 분위기를 정리하고, 온도컨트롤러의 온도 스케줄에 Alicat MFC 가스 유량을 자동 연동해 무인·재현 셋업을 만드는 방법을 소개합니다.">
+<meta name="keywords" content="삼흥에너지, SH Scientific, SH-Scientific, 튜브퍼니스, 관상로, 전기로, 머플로, 열처리, 승온 프로파일, 가스 분위기, 온도 스케줄, Alicat MFC, 실험셋업연구소">
+<link rel="canonical" href="https://rndsetup.com/sh-scientific/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업 + 가스·온도 연동">
+<meta property="og:description" content="삼흥에너지 열처리 장비 소개와, 온도컨트롤러의 온도 스케줄에 Alicat MFC 가스 유량을 자동 연동해 열처리 셋업을 무인·재현으로 돌리는 방법을 정리했습니다.">
+<meta property="og:url" content="https://rndsetup.com/sh-scientific/">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업 + 가스·온도 연동","description":"삼흥에너지(SH Scientific) 열처리 장비(튜브퍼니스/관상로, 전기로/머플로 등) 소개와, 온도컨트롤러의 온도 스케줄에 Alicat MFC 가스 유량을 연동해 무인·재현 열처리 셋업을 구성하는 방법을 정리한 정보 문서입니다.","inLanguage":"ko","about":{"@type":"Brand","name":"SH Scientific"},"author":{"@type":"Organization","name":"실험셋업연구소","url":"https://rndsetup.com/"},"publisher":{"@type":"Organization","name":"실험셋업연구소","url":"https://rndsetup.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rndsetup.com/sh-scientific/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"튜브퍼니스 가스 분위기는 어떻게 제어하나요?","acceptedAnswer":{"@type":"Answer","text":"목표 가스(예: N2, Ar, H2, 공기)마다 질량유량계(MFC)를 두어 각 유량을 설정하면 원하는 분위기와 혼합비를 재현성 있게 유지할 수 있습니다. 여러 MFC를 제어 소프트웨어로 묶으면 승온·유지·냉각 구간별로 유량과 혼합비를 스케줄링해 불활성·환원 등 분위기를 일정하게 재현할 수 있습니다."}},
+{"@type":"Question","name":"온도 스케줄에 가스 유량을 연동할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"가능합니다. 온도컨트롤러의 승온 프로파일(램프·유지·냉각)에 맞춰 Alicat MFC의 가스 유량과 혼합비를 자동으로 바꾸도록 제어 소프트웨어로 연동할 수 있습니다. 예를 들어 특정 온도 구간에서 가스 비율을 변경하는 식으로, 온도와 가스를 하나의 스케줄로 묶어 재현성 있게 실험할 수 있습니다."}},
+{"@type":"Question","name":"열처리 셋업을 무인으로 돌릴 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"온도 스케줄과 가스 유량을 소프트웨어로 함께 스케줄링하면 승온부터 냉각까지 사람이 계속 지키지 않아도 정해진 프로파일대로 진행되고 데이터가 기록됩니다. 안전 조건(가스·온도 한계 등)을 함께 설정해 두면 무인·재현 열처리 셋업으로 운용할 수 있습니다."}}
+]}
+</script>
+<style>
+  :root{
+    --ink:#1A1A1A; --gray:#6B6B6B; --gray-2:#9A9A9A;
+    --green:#1A6E56; --green-bg:#F6F7F8; --line:#EAEAEA; --bg:#fff;
+    --serif:"Noto Serif KR",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 8px}
+  .hero .crumb{font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .hero .crumb a{color:var(--green);text-decoration:none}
+  h1{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.3;letter-spacing:-.02em}
+  .hero .lead{margin-top:14px;font-size:16.5px;color:var(--gray);line-height:1.7}
+  article{padding:24px 0 40px}
+  article h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:34px 0 10px;letter-spacing:-.01em}
+  article p{font-size:16px;color:#2a2a2a;margin:0 0 14px}
+  article ul{margin:0 0 16px 18px}
+  article li{font-size:16px;color:#2a2a2a;margin-bottom:7px}
+  article b{color:var(--ink)}
+  .box{background:var(--green-bg);border:1px solid #d9ead5;border-radius:12px;padding:18px 20px;margin:20px 0}
+  .box h3{font-family:var(--serif);font-size:17px;margin-bottom:8px}
+  .ans{background:#eef4f1;border:1px solid #cfe3da;border-left:4px solid var(--green);border-radius:10px;padding:16px 18px;margin:18px 0 6px;font-size:16px;color:#20302a;line-height:1.7}
+  .spec{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:14.5px}
+  .spec th,.spec td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  .spec th{background:#f7f9fc;font-weight:700}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 8px}
+  .btn{display:inline-block;padding:12px 20px;border-radius:9px;font-weight:600;text-decoration:none}
+  .btn.p{background:var(--ink);color:#fff}
+  .btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:18px;font-size:14px;color:var(--gray)}
+  .rel a{color:var(--green);text-decoration:none;font-weight:600}
+</style>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/">홈</a> › 소프트웨어 호환 장비 › 삼흥에너지</div>
+    <h1>삼흥에너지(SH-Scientific)<br>튜브퍼니스·전기로 열처리 셋업</h1>
+    <p class="lead">삼흥에너지(SH Scientific)는 국내 <b>열처리 실험 장비</b> 제조사입니다. 튜브퍼니스 열처리에서 중요한 승온 프로파일과 가스 분위기를 정리하고, <b>온도 스케줄에 Alicat MFC 가스 유량을 연동</b>해 무인·재현 셋업을 만드는 방법을 소개합니다.</p>
+  </div>
+</section>
+
+<article>
+  <div class="wrap">
+    <div class="ans">삼흥에너지(SH Scientific)는 <b>튜브퍼니스(관상로), 박스형 전기로(머플로), 건조기</b> 등 국내 열처리 실험 장비를 만드는 제조사입니다. 이 페이지는 삼흥에너지 열처리 장비를 소개하고, 실험셋업연구소의 제어 소프트웨어가 <b>그 온도 스케줄과 Alicat MFC 가스 유량을 연동</b>하는 호환성·셋업 정보를 정리합니다.</div>
+
+    <h2>삼흥에너지 열처리 장비</h2>
+    <p>삼흥에너지는 실험실 열처리에 쓰이는 여러 유형의 로(爐)를 제조합니다. 대표적으로 다음과 같은 장비군이 있습니다.</p>
+    <ul>
+      <li><b>튜브퍼니스(관상로)</b> — 관 내부에 시료를 두고 가스 분위기 하에서 열처리. CVD·소성·환원 실험 등에 사용.</li>
+      <li><b>박스형 전기로(머플로)</b> — 대기 중 고온 소성·회화·열처리에 쓰이는 챔버형 로.</li>
+      <li><b>건조기·기타</b> — 시료 건조·전처리용 장비.</li>
+    </ul>
+
+    <h2>튜브퍼니스 열처리에서 중요한 것</h2>
+    <ul>
+      <li><b>승온 프로파일</b> — 램프(승온 속도)·유지(목표 온도 홀드)·냉각을 정확히 지키는 것이 결과 재현의 핵심입니다.</li>
+      <li><b>가스 분위기</b> — 불활성(N2·Ar)·환원(H2 포함) 등 목표 분위기와 혼합비를 유지해야 시료 산화·조성을 통제할 수 있습니다.</li>
+      <li><b>안전</b> — 가연성 가스·고온을 다루므로 유량·온도 한계와 인터록 등 안전 조건을 함께 설계해야 합니다.</li>
+    </ul>
+
+    <h2>온도 스케줄에 가스 유량을 연동하면</h2>
+    <p>튜브퍼니스 실험의 재현성은 <b>온도와 가스를 따로 다루지 않고 하나의 스케줄로 묶을 때</b> 크게 올라갑니다. 온도컨트롤러의 승온 프로파일에 맞춰 <b>Alicat MFC의 가스 유량과 혼합비를 자동으로 바꾸도록 연동</b>하면, 예를 들어 특정 온도 구간에서 환원 가스 비율을 높이거나 유지 구간에서 캐리어 가스만 흘리는 식의 시퀀스를 사람이 지키지 않아도 정확히 재현할 수 있습니다.</p>
+    <table class="spec">
+      <tr><th style="width:30%">단계</th><th>온도</th><th>가스(MFC 연동)</th></tr>
+      <tr><td><b>승온(램프)</b></td><td>목표 속도로 승온</td><td>불활성 가스 퍼지 유량 유지</td></tr>
+      <tr><td><b>유지(홀드)</b></td><td>목표 온도 유지</td><td>반응·환원 가스 비율로 전환</td></tr>
+      <tr><td><b>냉각</b></td><td>서냉·강냉</td><td>불활성 가스로 복귀·퍼지</td></tr>
+    </table>
+    <p>이렇게 온도 스케줄과 MFC 유량을 <b>제어 소프트웨어로 함께 스케줄링</b>하면 승온부터 냉각까지 정해진 프로파일대로 진행되고 데이터가 기록되어, 열처리 셋업을 <b>무인·재현</b>으로 돌릴 수 있습니다.</p>
+
+    <h2>실험셋업연구소의 연동 지원</h2>
+    <p>실험셋업연구소는 삼흥에너지 튜브퍼니스 같은 열처리 장비의 <b>온도 스케줄과 Alicat MFC 가스 유량을 제어 소프트웨어로 연동</b>하는 셋업을 지원합니다. 사용하시는 로의 온도컨트롤러와 다루는 가스 구성을 알려주시면, 온도·가스를 하나의 스케줄로 묶는 무인·재현 셋업을 함께 정리해 드립니다.</p>
+
+    <div class="box">
+      <h3>실제 셋업 사례</h3>
+      <p style="margin:0;font-size:15px;color:#2a2a2a"><a href="/setups/alicat-mfc-tubefurnace" style="color:var(--green);font-weight:600">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례 →</a><br>삼흥에너지 1500℃ 튜브퍼니스에 Alicat MFC와 제어 소프트웨어를 연동해 온도·가스를 함께 제어한 사례입니다.</p>
+    </div>
+
+    <h2>열처리 셋업이 필요하면</h2>
+    <p>사용하시는 튜브퍼니스·전기로의 온도컨트롤러와 다루는 가스 종류·유량을 알려주시면, 온도 스케줄에 MFC 유량을 연동하는 셋업 구성과 소프트웨어 연동 방법을 함께 정리해 드립니다.</p>
+
+    <div class="cta">
+      <a class="btn p" href="/contact/">열처리 셋업 문의</a>
+      <a class="btn s" href="/setups/alicat-mfc-tubefurnace">도입 사례 보기 →</a>
+    </div>
+
+    <div class="rel">
+      관련: <a href="/setups/alicat-mfc-tubefurnace">Alicat MFC 튜브퍼니스 셋업</a> · <a href="/gas/">기체 유량 제어(MFC)</a> · <a href="/contact/">셋업 문의</a>
+    </div>
+  </div>
+</article>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALICAT 질량유량계(MFC) — 초고속 응답·다기체·정밀 제어 | 실험셋업연구소</title>
+<meta name="description" content="ALICAT Scientific는 실험·산업용 질량유량계/제어기(MFC)의 대표 브랜드입니다. 수십 ms 수준의 초고속 응답, 넓은 측정 범위(turndown), 다기체 보정, 압력 변동 내성, RS-485(Modbus)·아날로그 통신을 갖췄습니다. 실험셋업연구소는 Alicat MFC를 공급하고 제어 소프트웨어로 다중 MFC 유량·혼합비를 동기 제어하는 시스템 연동을 지원합니다.">
+<meta name="keywords" content="Alicat, 알리캇, 질량유량계, MFC, mass flow controller, 다기체 보정, turndown, 초고속 응답, RS-485, Modbus, 가스 혼합비, 실험셋업연구소">
+<link rel="canonical" href="https://rndsetup.com/alicat/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="ALICAT 질량유량계(MFC) — 초고속 응답·다기체·정밀 제어">
+<meta property="og:description" content="Alicat Scientific MFC의 강점 — 수십 ms 초고속 응답, 넓은 turndown, 다기체 보정, 압력 변동 내성, RS-485(Modbus)·아날로그 통신과 다중 MFC 동기 제어를 정리했습니다.">
+<meta property="og:url" content="https://rndsetup.com/alicat/">
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"ALICAT 질량유량계(MFC) — 초고속 응답·다기체·정밀 제어","description":"Alicat Scientific 질량유량계/제어기(MFC)의 강점(초고속 응답, 넓은 turndown, 다기체 보정, 압력 변동 내성, RS-485/아날로그 통신)과 다중 MFC 동기 제어 시스템 연동을 정리한 정보 문서입니다.","inLanguage":"ko","about":{"@type":"Brand","name":"Alicat Scientific"},"brand":{"@type":"Brand","name":"Alicat Scientific"},"author":{"@type":"Organization","name":"실험셋업연구소","url":"https://rndsetup.com/"},"publisher":{"@type":"Organization","name":"실험셋업연구소","url":"https://rndsetup.com/"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://rndsetup.com/alicat/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Alicat MFC의 강점은?","acceptedAnswer":{"@type":"Answer","text":"Alicat 질량유량계/제어기(MFC)는 수십 ms 수준의 초고속 응답, 넓은 측정 범위(turndown)로 하나의 기기가 저유량부터 고유량까지 정밀하게 커버, 다기체 보정(하나의 기기로 여러 가스 대응), 압력 변동에 강한 제어, RS-485(Modbus)·아날로그 등 다양한 통신, 컬러 디스플레이와 현장 재보정 기능이 강점입니다. 실험·산업 셋업에서 재현성 있는 가스 유량 제어에 널리 쓰입니다."}},
+{"@type":"Question","name":"다기체 보정이 뭔가요?","acceptedAnswer":{"@type":"Answer","text":"다기체 보정은 하나의 MFC에 여러 가스의 물성 데이터를 내장해, 사용 가스를 선택하면 그 가스 기준으로 질량 유량을 정확히 측정·제어하는 기능입니다. 가스마다 별도의 유량계를 두지 않고 하나의 기기로 여러 가스를 다룰 수 있어, 가스 종류를 자주 바꾸는 실험에서 특히 유용합니다."}},
+{"@type":"Question","name":"여러 MFC를 동시에 제어할 수 있나요?","acceptedAnswer":{"@type":"Answer","text":"가능합니다. RS-485(Modbus 등) 통신으로 여러 Alicat MFC를 하나의 제어 소프트웨어에 연결하면 채널별 유량을 동시에 설정·기록하고 혼합비를 동기 제어할 수 있습니다. 실험셋업연구소는 이렇게 다중 MFC의 유량·혼합비를 소프트웨어로 묶어 제어하는 시스템 연동을 지원합니다."}}
+]}
+</script>
+<style>
+  :root{
+    --ink:#1A1A1A; --gray:#6B6B6B; --gray-2:#9A9A9A;
+    --green:#1A6E56; --green-bg:#F6F7F8; --line:#EAEAEA; --bg:#fff;
+    --serif:"Noto Serif KR",Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
+  .hero{padding:48px 0 8px}
+  .hero .crumb{font-size:13px;color:var(--gray-2);margin-bottom:14px}
+  .hero .crumb a{color:var(--green);text-decoration:none}
+  h1{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.3;letter-spacing:-.02em}
+  .hero .lead{margin-top:14px;font-size:16.5px;color:var(--gray);line-height:1.7}
+  article{padding:24px 0 40px}
+  article h2{font-family:var(--serif);font-size:21px;font-weight:600;margin:34px 0 10px;letter-spacing:-.01em}
+  article p{font-size:16px;color:#2a2a2a;margin:0 0 14px}
+  article ul{margin:0 0 16px 18px}
+  article li{font-size:16px;color:#2a2a2a;margin-bottom:7px}
+  article b{color:var(--ink)}
+  .box{background:var(--green-bg);border:1px solid #d9ead5;border-radius:12px;padding:18px 20px;margin:20px 0}
+  .box h3{font-family:var(--serif);font-size:17px;margin-bottom:8px}
+  .ans{background:#eef4f1;border:1px solid #cfe3da;border-left:4px solid var(--green);border-radius:10px;padding:16px 18px;margin:18px 0 6px;font-size:16px;color:#20302a;line-height:1.7}
+  .spec{width:100%;border-collapse:collapse;margin:8px 0 18px;font-size:14.5px}
+  .spec th,.spec td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top}
+  .spec th{background:#f7f9fc;font-weight:700}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 8px}
+  .btn{display:inline-block;padding:12px 20px;border-radius:9px;font-weight:600;text-decoration:none}
+  .btn.p{background:var(--ink);color:#fff}
+  .btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:18px;font-size:14px;color:var(--gray)}
+  .rel a{color:var(--green);text-decoration:none;font-weight:600}
+</style>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb"><a href="/">홈</a> › 소프트웨어 호환 장비 › Alicat</div>
+    <h1>ALICAT 질량유량계(MFC) —<br>초고속 응답·다기체·정밀 제어</h1>
+    <p class="lead"><b>Alicat Scientific</b>(미국)는 실험·산업용 질량유량계/제어기(MFC)의 대표 브랜드입니다. 수십 ms 수준의 초고속 응답, 넓은 측정 범위, 다기체 보정으로 재현성 있는 가스 유량 제어를 만들어 냅니다.</p>
+  </div>
+</section>
+
+<article>
+  <div class="wrap">
+    <div class="ans"><b>Alicat MFC</b>는 기체의 질량 유량을 센서로 측정하고 내장 밸브로 설정값에 맞춰 자동 제어하는 전자식 유량 제어기입니다. <b>매우 빠른 응답</b>과 <b>넓은 turndown</b>, <b>다기체 보정</b>을 무기로, 하나의 기기로 여러 가스를 폭넓은 유량 범위에서 정밀하게 다룰 수 있습니다.</div>
+
+    <h2>Alicat이 강한 이유</h2>
+    <ul>
+      <li><b>초고속 응답</b> — 설정 유량에 도달하는 시간이 수십 ms 수준. 유량을 빠르게 바꿔야 하는 스위칭·펄스 실험에서 유리합니다.</li>
+      <li><b>넓은 측정 범위(turndown)</b> — 하나의 기기가 저유량부터 풀스케일까지 넓은 구간을 정밀하게 커버해, 여러 유량계를 두지 않아도 됩니다.</li>
+      <li><b>다기체 보정</b> — 여러 가스의 물성을 내장해 사용 가스를 선택만 하면 그 가스 기준으로 정확히 측정·제어. 하나의 기기로 여러 가스를 다룹니다.</li>
+      <li><b>압력 변동에 강함</b> — 상류·하류 압력이 흔들려도 질량 유량을 일정하게 유지하도록 제어합니다.</li>
+      <li><b>다양한 통신</b> — RS-485(Modbus 등) 디지털과 아날로그(0–5V/4–20mA)를 지원해 기록·다채널 제어와 시스템 연동이 쉽습니다.</li>
+      <li><b>컬러 디스플레이·현장 재보정</b> — 유량·압력·온도를 한눈에 보고, 현장에서 기준 대비 재보정을 할 수 있습니다.</li>
+    </ul>
+
+    <h2>어디에 쓰나</h2>
+    <ul>
+      <li><b>튜브퍼니스 가스 분위기 제어</b> — N2·Ar·H2·공기 등의 유량과 혼합비를 재현성 있게 유지.</li>
+      <li><b>CVD·박막 공정</b> — 전구체·캐리어 가스 유량을 정밀 제어해 증착 조건을 일정하게.</li>
+      <li><b>촉매·반응 실험</b> — 반응 가스 유량·비율을 정확히 잡아 활성·선택도 조건을 통제.</li>
+      <li><b>가스 혼합·희석</b> — 여러 가스를 정해진 비율로 섞어 목표 조성을 만듦.</li>
+    </ul>
+
+    <h2>선택할 때 확인할 것</h2>
+    <table class="spec">
+      <tr><th style="width:26%">항목</th><th>확인할 내용</th></tr>
+      <tr><td><b>가스 종류</b></td><td>대상 가스와 부식성·인화성 여부. 다기체 보정으로 어떤 가스들을 커버할지 확인.</td></tr>
+      <tr><td><b>유량 범위</b></td><td>필요한 최소·최대 유량(sccm ~ slpm)을 포함하는 풀스케일. Alicat의 넓은 turndown으로 한 기기가 커버할 수 있는지.</td></tr>
+      <tr><td><b>통신·신호</b></td><td>RS-485(Modbus 등) 디지털 또는 아날로그(0–5V/4–20mA). 기록·다채널 제어에는 디지털이 유리.</td></tr>
+      <tr><td><b>다중 MFC 동기</b></td><td>여러 채널의 유량을 동시에 설정·기록하고 혼합비를 함께 제어해야 하는지.</td></tr>
+    </table>
+
+    <h2>실험셋업연구소의 Alicat 셋업 지원</h2>
+    <p>실험셋업연구소는 <b>Alicat 질량유량계를 공급</b>하고, 제어 소프트웨어로 여러 MFC를 묶어 유량 설정·기록·혼합비까지 <b>동기 제어하는 시스템 연동을 지원</b>합니다. 튜브퍼니스나 CVD 라인처럼 여러 가스를 다뤄야 하는 셋업에서 가스 종류·유량 범위·통신 방식에 맞는 구성을 함께 정리하고, 온도 스케줄에 가스 유량을 연동하는 무인·재현 셋업까지 구성할 수 있습니다.</p>
+
+    <div class="box">
+      <h3>실제 도입 사례</h3>
+      <p style="margin:0;font-size:15px;color:#2a2a2a"><a href="/setups/alicat-mfc-tubefurnace" style="color:var(--green);font-weight:600">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례 →</a><br>1500℃ 튜브퍼니스의 가스 분위기와 혼합비를 Alicat MFC와 제어 소프트웨어로 구성한 사례입니다.</p>
+    </div>
+
+    <h2>Alicat MFC 셋업이 필요하면</h2>
+    <p>다루는 가스 종류·유량 범위·통신 방식과 다중 MFC 동기가 필요한지 알려주시면, Alicat 구성과 소프트웨어 연동 방법을 함께 정리해 드립니다.</p>
+
+    <div class="cta">
+      <a class="btn p" href="/contact/">Alicat MFC 셋업 문의</a>
+      <a class="btn s" href="/setups/alicat-mfc-tubefurnace">도입 사례 보기 →</a>
+    </div>
+
+    <div class="rel">
+      관련: <a href="/gas/">기체 유량 제어(MFC) 정보</a> · <a href="/setups/alicat-mfc-tubefurnace">Alicat MFC 튜브퍼니스 셋업</a> · <a href="/contact/">셋업 문의</a>
+    </div>
+  </div>
+</article>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

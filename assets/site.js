@@ -20,6 +20,8 @@
     { t:'기어펌프', u:'/pumps/gear.html', k:'기어펌프 gear pump 무맥동 고압 대유량 유기용매 방폭 FG601S 산업 이송', c:'펌프 종류' },
     { t:'기체 유량 제어 — 질량유량계(MFC)', u:'/gas/', k:'기체 가스 질량유량계 mfc mass flow controller alicat 유량계 튜브퍼니스 cvd 촉매 가스혼합 rs485 로타미터', c:'기체' },
     { t:'진공 셋업 — 오일 회전식·다이아프램 진공펌프', u:'/vacuum/', k:'진공 vacuum pump 오일 회전식 rotary vane 다이아프램 diaphragm 감압증류 탈기 건조 여과 무오일 데시케이터', c:'진공' },
+    { t:'ALICAT 질량유량계(MFC) 브랜드', u:'/alicat/', k:'alicat 알리캣 질량유량계 mfc mass flow controller 다기체 응답속도 rs485 modbus 소프트웨어 호환 장비', c:'호환 장비' },
+    { t:'삼흥에너지(SH-Scientific) 튜브퍼니스·전기로', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 소프트웨어 호환 장비', c:'호환 장비' },
     { t:'소프트웨어 제어 펌프 시스템', u:'/requests/', k:'자동화 무인 관류 채널 독립 유량 기록 재현 modbus rs485 python 스케줄 레시피 로그 다펌프 동기', c:'실험을 자동화할 때' },
     { t:'프로그래밍 제어 (Modbus·RS-485·Python)', u:'/requests/#control', k:'modbus rs485 python 시리얼 제어 자동화 스크립트 레지스터', c:'실험을 자동화할 때' },
     { t:'유량 스케줄·ramp·레시피', u:'/requests/#schedule', k:'스케줄 ramp 램프 레시피 시퀀스 프로파일 반복 저장', c:'실험을 자동화할 때' },
@@ -57,17 +59,15 @@
     pick:'<svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/></svg>',
     shield:'<svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>',
     gas:'<svg viewBox="0 0 24 24"><path d="M4 9c2-2.2 4 2.2 6 0s4-2.2 6 0 4 2.2 4 2.2M4 15c2-2.2 4 2.2 6 0s4-2.2 6 0 4 2.2 4 2.2"/></svg>',
-    vacuum:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 5v2"/></svg>'
+    vacuum:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 5v2"/></svg>',
+    devices:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M7 8h3M7 12h2"/></svg>'
   };
   var NAV = [
     { href:'/',            label:'홈',        icon:'home' },
     { href:'/pumps/', label:'액체', icon:'pick', sub:[
-        ['/leadfluid/',                 '리드플루이드 (브랜드)'],
         ['/pumps/peristaltic.html',     '연동펌프'],
         ['/pumps/syringe.html',         '시린지펌프'],
-        ['/pumps/metering.html',        '정량펌프(연동식)'],
-        ['/pumps/gear.html',            '기어펌프'],
-        ['/application/pump-selection.html', '펌프 고르는 방법']
+        ['/pumps/gear.html',            '기어펌프']
       ] },
     { href:'/gas/', label:'기체', icon:'gas', sub:[
         ['/gas/', '질량유량계(MFC)']
@@ -78,12 +78,19 @@
       ] },
     { href:'/requests/', label:'자동화', icon:'sw', sub:[
         ['/application/pump-pc-control-modbus-rs485.html',  'PC 제어 (Modbus·RS485)'],
-        ['/requests/#control',                              'Python 예제'],
-        ['/application/pump-flow-schedule-ramp.html',       '유량 스케줄·ramp'],
-        ['/application/multi-pump-sync-unattended.html',    '다펌프 동기·무인 운전'],
-        ['/application/pump-run-log-csv-reproducibility.html', '운전 로그·재현']
+        ['/requests/#control',                              'Python 예제']
+      ] },
+    { href:'/leadfluid/', label:'소프트웨어 호환 장비', icon:'devices', sub:[
+        ['/leadfluid/',      '리드플루이드 — 액체(펌프)'],
+        ['/sh-scientific/',  '삼흥에너지 — 열처리'],
+        ['/alicat/',         'ALICAT — 유량계(MFC)']
       ] },
     { href:'/setups/', label:'실험 셋업', icon:'guide', sub:[
+        ['/application/pump-selection.html', '펌프 고르는 방법'],
+        ['/application/tube-selection.html', '튜브 선택 가이드'],
+        ['/application/pump-flow-schedule-ramp.html',       '유량 스케줄·ramp'],
+        ['/application/multi-pump-sync-unattended.html',    '다펌프 동기·무인 운전'],
+        ['/application/pump-run-log-csv-reproducibility.html', '운전 로그·재현'],
         ['/application/', '실험 가이드 (관류·연속배양 등)'],
         ['/setups/',      '도입·논문 사례'],
         ['/trust/',       '믿고 도입할 때 (A/S·정품·보증)']
