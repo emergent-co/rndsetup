@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>펌프 트러블슈팅·셋업 자료실 — 멈춤·유량·튜빙 해결과 도입 셋업 | 실험셋업연구소</title>
+<meta name="description" content="연동펌프·정량펌프가 멈추거나, 유량이 설정값과 다르거나, 튜빙이 찢어지거나, 소음이 날 때 원인과 해결법을 증상별로 정리했습니다. 리드플루이드 등 실험용 펌프 트러블슈팅 — 해결 안 되면 국내 직접 A/S 무료 진단. 실험셋업연구소.">
+<link rel="canonical" href="https://rndsetup.com/troubleshooting/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="펌프 트러블슈팅 — 멈춤·유량 오차·튜빙·소음 해결 가이드">
+<meta property="og:description" content="증상별로 원인과 해결법을 정리한 실험용 펌프 트러블슈팅 자료실. 해결 안 되면 국내 직접 A/S 무료 진단.">
+<meta property="og:url" content="https://rndsetup.com/troubleshooting/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://rndsetup.com/"},
+{"@type":"ListItem","position":2,"name":"펌프 트러블슈팅","item":"https://rndsetup.com/troubleshooting/"}
+]}
+</script>
+<style>
+  :root{--ink:#17202A;--gray:#5b6b7a;--gray-2:#93a1b0;--green:#1E3A5F;--green-2:#2a5a8f;--green-bg:#EDF2F8;--line:#E6EAF0;--serif:"Noto Serif KR",Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.75;word-break:keep-all;overflow-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:900px;margin:0 auto;padding:0 22px}
+  .hero{padding:50px 0 6px}
+  .crumb{font-size:12.5px;color:var(--green-2);font-weight:700;letter-spacing:.03em;margin-bottom:12px}
+  h1{font-family:var(--serif);font-size:clamp(25px,5.4vw,36px);font-weight:700;letter-spacing:-.02em;line-height:1.3}
+  .lead{font-size:16px;color:#3a4650;margin-top:14px;line-height:1.85}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:26px 0 4px}
+  .tab{background:#f2f5f9;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font-size:13.5px;font-weight:700;color:#41505f;cursor:pointer;font-family:inherit}
+  .tab.active{background:var(--green);border-color:var(--green);color:#fff}
+  .count{font-size:13.5px;color:var(--gray-2);margin:18px 0 10px;font-weight:700}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;transition:box-shadow .15s,transform .15s;height:100%}
+  .card:hover{box-shadow:0 12px 30px rgba(20,40,70,.10);transform:translateY(-2px)}
+  .card .cat{font-size:11.5px;font-weight:800;color:var(--green-2);letter-spacing:.02em}
+  .card .t{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.4;margin:8px 0 8px;color:var(--ink)}
+  .card .s{font-size:13.5px;color:var(--gray);line-height:1.65;flex:1}
+  .card .d{font-size:12px;color:var(--gray-2);margin-top:14px}
+  .empty{grid-column:1/-1;color:var(--gray-2);font-size:14px;padding:24px;text-align:center;border:1px dashed var(--line);border-radius:12px}
+  .band{background:var(--green);color:#fff;border-radius:16px;padding:28px 26px;margin:38px 0 0;text-align:center}
+  .band .bt{font-family:var(--serif);font-size:20px;font-weight:700}
+  .band p{font-size:14px;opacity:.94;margin-top:8px}
+  .band a{display:inline-block;background:#fff;color:var(--green);font-weight:800;padding:13px 24px;border-radius:10px;margin-top:16px;font-size:15px}
+  .foot-links{display:grid;gap:8px;margin:34px 0 64px}
+  .foot-links a{border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-size:14px;font-weight:600;color:var(--ink)}
+  .foot-links a:hover{background:var(--green-bg)}
+</style>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb">펌프 자료실</div>
+    <h1>펌프 자료실 — 문제 해결부터 도입 셋업까지</h1>
+    <p class="lead">연동펌프·정량펌프가 <b>멈추거나, 유량이 설정값과 다르거나, 튜빙이 찢어지거나, 소음이 날 때</b> — 원인을 알고 바로 잡을 수 있게 증상별로 정리했습니다. 리드플루이드 등 실험용 펌프 기준이며, <b>해결이 안 되면 국내에서 직접 무료 진단</b>해 드립니다.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-c="전체" type="button">전체</button>
+    <button class="tab" data-c="셋업 스토리" type="button">셋업 스토리</button>
+    <button class="tab" data-c="결과값 이상" type="button">결과값 이상(유량·정량)</button>
+    <button class="tab" data-c="긴급·유지보수" type="button">긴급·유지보수</button>
+    <button class="tab" data-c="연결·실무" type="button">연결·실무</button>
+    <button class="tab" data-c="구매·선택" type="button">구매·선택</button>
+  </div>
+  <div class="count" id="count"></div>
+  <div class="grid" id="grid"></div>
+
+  <div class="band">
+    <div class="bt">해결이 안 되면, 국내에서 직접 봅니다</div>
+    <p>모델·튜브·매체·증상만 남겨주시면 원인 점검부터 수리까지 도와드립니다. 타사 제품도 무료 진단.</p>
+    <a href="/contact/#repair">국내 직접 A/S·무료 진단 →</a>
+  </div>
+
+  <div class="foot-links">
+    <a href="/leadfluid/">리드플루이드 전 모델·정품·국내 A/S →</a>
+    <a href="/guide/">실험 셋업 가이드 — 질문·비교로 펌프 찾기 →</a>
+    <a href="/application/tube-selection.html">튜브 선택 가이드 — 재질·규격 →</a>
+  </div>
+</div>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+<script>
+(function(){
+  var CARDS = [
+    {cat:"결과값 이상", title:"연동펌프 유량이 설정값과 다른 이유 — 원인 5가지와 해결법", summary:"설정값과 실제 토출량이 다른 원인(튜브 탄성·노후, 역압, 점도, 보정)과 실측 캘리브레이션으로 오차 줄이는 법.", url:"/troubleshooting/peristaltic-flow-setpoint-mismatch/", date:"2026-07-16"},
+    {cat:"긴급·유지보수", title:"연동펌프 튜빙이 자꾸 씹히고 찢어지는 이유 — 원인 4가지와 해결법", summary:"튜빙 파손의 원인(규격 불일치·과압착·화학 비적합·수명 초과)과, 수명을 늘리는 튜브 선택·옥클루전·교체 관리.", url:"/troubleshooting/tubing-crush-tear-causes/", date:"2026-07-16"},
+    {cat:"셋업 스토리", title:"도금 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업", summary:"유량 편차로 도금 두께가 흔들리던 라인을 BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업 이야기.", url:"/setups/plating-flow-calibration/", date:"2026-07-16"}
+  ];
+  var CATS = {"긴급·유지보수":"긴급·유지보수","결과값 이상":"결과값 이상","연결·실무":"연결·실무","구매·선택":"구매·선택"};
+  var grid=document.getElementById('grid'), countEl=document.getElementById('count'), tabsEl=document.getElementById('tabs');
+  var state="전체";
+  function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  function render(){
+    var list=CARDS.filter(function(c){return state==="전체"||c.cat===state;});
+    list.sort(function(a,b){return (b.date||"").localeCompare(a.date||"");});
+    countEl.innerHTML='글 <b style="color:var(--green)">'+list.length+'</b>개';
+    if(!list.length){grid.innerHTML='<div class="empty">이 분류의 글은 준비 중입니다. 급하면 <a href="/contact/#repair" style="color:var(--green-2);font-weight:700">무료 진단 문의</a>를 남겨주세요.</div>';return;}
+    grid.innerHTML=list.map(function(c){
+      return '<a class="card" href="'+c.url+'">'+
+        '<div class="cat">'+esc(c.cat)+'</div>'+
+        '<div class="t">'+esc(c.title)+'</div>'+
+        '<div class="s">'+esc(c.summary)+'</div>'+
+        '<div class="d">'+esc(c.date)+'</div>'+
+      '</a>';
+    }).join('');
+  }
+  tabsEl.addEventListener('click',function(e){
+    var b=e.target.closest('.tab'); if(!b)return;
+    Array.prototype.forEach.call(tabsEl.querySelectorAll('.tab'),function(x){x.classList.remove('active');});
+    b.classList.add('active'); state=b.getAttribute('data-c'); render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

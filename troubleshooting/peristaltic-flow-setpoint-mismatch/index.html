@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연동펌프 유량이 설정값과 다른 이유 — 원인 5가지와 해결법 | 실험셋업연구소</title>
+<meta name="description" content="연동펌프(페리스탈틱) 유량이 설정값과 실제 토출량이 다를 때의 원인 5가지(튜브 탄성·노후, 역압, 점도, 캘리브레이션 미보정)와 실측 보정으로 오차를 줄이는 해결법. 실험 데이터 신뢰성을 지키는 정량 세팅 가이드 — 실험셋업연구소.">
+<link rel="canonical" href="https://rndsetup.com/troubleshooting/peristaltic-flow-setpoint-mismatch/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="연동펌프 유량이 설정값과 다른 이유 — 원인 5가지와 해결법">
+<meta property="og:description" content="설정값과 실제 토출량이 다른 원인(튜브·역압·점도·보정)과 실측 캘리브레이션으로 오차 줄이는 법.">
+<meta property="og:url" content="https://rndsetup.com/troubleshooting/peristaltic-flow-setpoint-mismatch/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://rndsetup.com/"},
+{"@type":"ListItem","position":2,"name":"트러블슈팅","item":"https://rndsetup.com/troubleshooting/"},
+{"@type":"ListItem","position":3,"name":"유량이 설정값과 다를 때","item":"https://rndsetup.com/troubleshooting/peristaltic-flow-setpoint-mismatch/"}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"연동펌프 유량 설정값과 실제 나오는 양이 다른 이유는?","acceptedAnswer":{"@type":"Answer","text":"주된 원인은 다섯 가지입니다. (1) 튜브가 눌린 뒤 완전히 복원되지 않는 탄성 지연, (2) 튜브 노후·마모로 벽 두께가 변함, (3) 토출측 역압·양정(높이차)으로 실제 유량 감소, (4) 매체의 점도·비중이 물과 달라 물 기준 보정값과 어긋남, (5) 실측 캘리브레이션을 하지 않아 설정값(물·상온 기준)과 현장이 다름. 설정값은 어디까지나 기준값이고, 실제 유량은 저울로 실측해 보정해야 정확합니다."}},
+{"@type":"Question","name":"연동펌프 유량 오차를 줄이는 방법은?","acceptedAnswer":{"@type":"Answer","text":"일정 시간 토출량을 저울로 재서 보정계수를 잡는 실측 캘리브레이션이 가장 확실합니다. 여기에 튜브 정기 교체, 토출 높이·라인 저항(역압) 최소화, 매체가 바뀌면 재보정, 맥동이 문제면 다롤러 헤드 사용을 병행합니다. 속도 정확도가 높은 지능형 모델과 실측 보정을 함께 쓰면 반복 편차가 크게 줄어듭니다."}},
+{"@type":"Question","name":"점도가 높은 액체는 왜 유량이 안 맞나요?","acceptedAnswer":{"@type":"Answer","text":"점도가 높으면 튜브가 눌렸다 복원되는 시간이 늦어지고 흡입 저항이 커져, 물 기준 설정값보다 실제 토출량이 줄어듭니다. 회전수를 낮춰 튜브 복원 시간을 확보하고, 내경이 크거나 두꺼운 튜브·다롤러 헤드를 쓰며, 해당 점도에서 실측 보정을 다시 잡아야 합니다."}}
+]}
+</script>
+<style>
+  :root{--ink:#1A1A1A;--gray:#6B6B6B;--gray-2:#9A9A9A;--green:#1E3A5F;--green-bg:#EDF1F8;--line:#EAEAEA;--serif:"Noto Serif KR",Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px}
+  .hero{padding:50px 0 8px}
+  .crumb{font-size:12.5px;color:var(--green);font-weight:700;letter-spacing:.03em;margin-bottom:12px}
+  h1{font-family:var(--serif);font-size:clamp(23px,5vw,31px);font-weight:700;letter-spacing:-.02em;line-height:1.32}
+  .updated{font-size:12px;color:var(--gray-2);margin-top:10px}
+  .lead-hook{font-size:15px;color:#3a3a3a;line-height:1.85;margin:18px 0 0}
+  .lead-hook b{color:var(--ink)}
+  .answer{margin:20px 0 0;background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:20px 22px;font-size:15px;color:#26333f;line-height:1.75}
+  .answer b{color:var(--ink)}
+  .sec{padding:32px 0;border-top:1px solid var(--line)}
+  .sec h2{font-family:var(--serif);font-size:clamp(19px,4.4vw,24px);font-weight:600;margin-bottom:10px}
+  .sec p{font-size:15px;color:#2a2a2a;line-height:1.75;margin-bottom:10px}
+  .sec p b{color:var(--ink)}
+  .inlink{color:var(--green);font-weight:700;border-bottom:1px solid #c3d0e4}
+  .cmp{width:100%;border-collapse:collapse;margin:12px 0 4px;font-size:13px}
+  .cmp th,.cmp td{border:1px solid var(--line);padding:9px 11px;text-align:left;vertical-align:top}
+  .cmp thead th{background:var(--green);color:#fff}
+  .cmp tbody th{background:var(--green-bg);font-weight:700;color:#26333f;width:150px;white-space:nowrap}
+  .steps{display:grid;gap:12px;margin-top:14px}
+  .step{display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .step .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+  .step .st{font-size:14px;color:#2a2a2a;line-height:1.65}
+  .step .st b{color:var(--ink)}
+  .pickbox{background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:18px 20px;margin-top:12px}
+  .pickbox b{color:var(--ink)}
+  .midcta{background:var(--green);color:#fff;border-radius:14px;padding:20px 22px;margin:26px 0 0;text-align:center;font-weight:700;font-size:15.5px}
+  .midcta a{display:inline-block;background:#fff;color:var(--green);font-weight:800;padding:11px 20px;border-radius:9px;margin-top:10px;font-size:14.5px}
+  .related{display:grid;gap:8px;margin-top:12px}
+  .related a{border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:14px;font-weight:600;color:var(--ink)}
+  .related a:hover{background:var(--green-bg)}
+  .faq{padding:32px 0 60px;border-top:1px solid var(--line)}
+  .faq h2{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:14px}
+  .qa{border:1px solid var(--line);border-radius:12px;padding:15px 17px;margin-bottom:10px}
+  .qa .q{font-weight:700;font-size:14.5px;margin-bottom:5px}
+  .qa .a{font-size:13.5px;color:var(--gray);line-height:1.7}
+  .qa .a a{color:var(--green);font-weight:600}
+</style>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb">트러블슈팅 › 유량이 설정값과 다를 때</div>
+    <h1>연동펌프 유량이 설정값과 다른 이유<br>— 원인 5가지와 해결법</h1>
+    <div class="updated">최종 업데이트 2026년 7월 · 실험셋업연구소</div>
+    <p class="lead-hook">분명히 <b>2.0 mL/min</b>으로 맞췄는데, 저울로 재보니 실제로는 그보다 적게(또는 많이) 나옵니다. 정량 실험에서 이 차이는 <b>데이터 신뢰성을 통째로 흔듭니다.</b> 다행히 원인은 대부분 정해져 있고, 실측 보정으로 잡힙니다.</p>
+    <div class="answer">
+      <b>결론부터:</b> 설정값은 <b>물·상온 기준의 기준값</b>일 뿐이고, 실제 유량은 <b>튜브 상태·역압·점도</b>에 따라 달라집니다. 원인은 ① 튜브 탄성 복원 지연, ② 튜브 노후·마모, ③ 역압·양정(높이차), ④ 점도·비중 차이, ⑤ 실측 캘리브레이션 미실시 — 다섯 가지입니다. <b>저울로 실측해 보정계수를 잡으면</b> 대부분 해결됩니다.
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="causes">
+    <h2>왜 설정값과 실제가 다른가 — 원인 5가지</h2>
+    <table class="cmp">
+      <thead><tr><th>원인</th><th>무슨 일이 일어나나</th></tr></thead>
+      <tbody>
+        <tr><th>① 튜브 탄성 복원 지연</th><td>롤러가 지나간 뒤 튜브가 완전히 복원되지 않으면 한 번에 밀어내는 양이 줄어 유량이 감소합니다(고속·고점도에서 특히).</td></tr>
+        <tr><th>② 튜브 노후·마모</th><td>반복 압착으로 벽이 얇아지거나 경화되면 밀어내는 체적이 변해 유량이 서서히 어긋납니다.</td></tr>
+        <tr><th>③ 역압·양정(높이차)</th><td>토출측이 높거나 라인 저항·필터가 있으면 실제 토출량이 설정보다 줄어듭니다.</td></tr>
+        <tr><th>④ 점도·비중 차이</th><td>설정값은 물 기준입니다. 점성 액체는 흡입이 늦어 실제 유량이 줄고, 매체가 바뀌면 오차가 생깁니다.</td></tr>
+        <tr><th>⑤ 캘리브레이션 미실시</th><td>현장 튜브·매체·역압을 반영한 실측 보정을 안 하면 설정값과 실제가 벌어질 수밖에 없습니다.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="sec" id="fix">
+    <h2>오차를 줄이는 해결법 (실측 보정 중심)</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st"><b>실측 캘리브레이션</b> — 실제 튜브·매체로 <b>일정 시간 토출량을 저울로 측정</b>해 (측정값÷설정값)로 보정계수를 잡습니다. 가장 확실한 한 방입니다.</div></div>
+      <div class="step"><div class="n">2</div><div class="st"><b>튜브 관리</b> — 눌린 자국·경화가 보이면 교체하고, 새 튜브는 잠깐 돌려 자리를 잡은(pre-tension) 뒤 재보정합니다.</div></div>
+      <div class="step"><div class="n">3</div><div class="st"><b>역압 최소화</b> — 토출 높이를 낮추고 라인 저항·막힘을 줄입니다. 역압이 불가피하면 그 상태에서 보정합니다.</div></div>
+      <div class="step"><div class="n">4</div><div class="st"><b>매체별 재보정 · 저맥동</b> — 점도·매체가 바뀌면 다시 보정하고, 맥동이 문제면 회전수를 낮추거나 다롤러 헤드를 씁니다.</div></div>
+    </div>
+    <div class="pickbox">
+      <b>장비 자체로 편차를 줄이려면?</b> 속도 정확도가 높은 <b>지능형 모델 + 실측 보정</b> 조합이 반복 편차를 크게 낮춥니다. 예를 들어 <a class="inlink" href="/leadfluid/bt103s/">리드플루이드 BT103S</a>는 속도 정확도 ±0.2%에 유량 캘리브레이션·분주 반복 기능이 있어, 보정계수를 넣고 정량을 반복 재현하기 좋습니다. 유량을 시간에 따라 자동으로 바꾸거나 로그로 재현하려면 <a class="inlink" href="/requests/">통합 제어 소프트웨어</a>와 묶습니다.
+    </div>
+  </section>
+
+  <div class="midcta">
+    보정해도 유량이 계속 튀거나 맞지 않나요?
+    <div style="font-size:13.5px;font-weight:400;opacity:.94;margin-top:6px">모델·튜브·매체·증상만 남겨주시면 원인 점검과 해결을 도와드립니다. (타사 제품도 무료 진단)</div>
+    <a href="/contact/#repair">국내 직접 A/S·무료 진단 →</a>
+  </div>
+
+  <section class="sec" id="related">
+    <h2>함께 보면 좋은 페이지</h2>
+    <div class="related">
+      <a href="/leadfluid/bt103s/">리드플루이드 BT103S — 분주형·속도정확도 ±0.2%·캘리브레이션 →</a>
+      <a href="/application/pump-selection.html">연동 vs 시린지 vs 기어 — 펌프 고르는 방법 →</a>
+      <a href="/requests/">유량 스케줄·로그 재현 — 통합 제어 소프트웨어 →</a>
+      <a href="/guide/?d=액체">액체 이송·정량 실험 셋업 가이드 →</a>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="qa"><div class="q">유량 설정값과 실제 나오는 양이 다른 이유는?</div><div class="a">튜브 탄성 복원 지연·노후, 역압, 점도 차이, 캘리브레이션 미실시가 주원인입니다. 설정값은 물·상온 기준값이라 저울 실측으로 보정해야 정확합니다.</div></div>
+    <div class="qa"><div class="q">유량 오차를 줄이는 방법은?</div><div class="a">실측 캘리브레이션(보정계수)이 가장 확실하고, 튜브 교체·역압 최소화·매체별 재보정을 병행합니다. <a href="/leadfluid/bt103s/">속도 정확도 높은 모델</a>과 함께 쓰면 편차가 더 줄어듭니다.</div></div>
+    <div class="qa"><div class="q">점도 높은 액체는 왜 유량이 안 맞나요?</div><div class="a">튜브 복원이 늦고 흡입 저항이 커져 물 기준값보다 적게 나옵니다. 회전수를 낮추고 굵은 튜브·다롤러 헤드를 쓰며 해당 점도에서 재보정하세요.</div></div>
+  </section>
+</div>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

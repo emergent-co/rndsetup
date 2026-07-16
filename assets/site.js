@@ -61,7 +61,8 @@
     gas:'<svg viewBox="0 0 24 24"><path d="M4 9c2-2.2 4 2.2 6 0s4-2.2 6 0 4 2.2 4 2.2M4 15c2-2.2 4 2.2 6 0s4-2.2 6 0 4 2.2 4 2.2"/></svg>',
     vacuum:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 12l4-3"/><path d="M12 5v2"/></svg>',
     devices:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M7 8h3M7 12h2"/></svg>',
-    find:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>'
+    find:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
+    wrench:'<svg viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 0 1-4.6 4.6L5 16l3 3 4.9-4.9a3.5 3.5 0 0 0 4.6-4.6l-2.1 2.1-2-2 2.1-2.1z"/></svg>'
   };
   var NAV = [
     { href:'/guide/', label:'실험 셋업 가이드', icon:'find', sub:[
@@ -75,6 +76,10 @@
         ['/setups/#bio',    '바이오·의료'],
         ['/setups/#env',    '환경·수처리'],
         ['/setups/#energy', '에너지·재료·열처리']
+      ] },
+    { href:'/troubleshooting/', label:'자료실', icon:'wrench', sub:[
+        ['/troubleshooting/',                 '펌프 트러블슈팅'],
+        ['/setups/plating-flow-calibration/', '도입 셋업 스토리']
       ] },
     { href:'/leadfluid/', label:'호환 장비', icon:'devices', sub:[
         ['/leadfluid/',      '리드플루이드 — 액체 펌프'],

@@ -384,6 +384,7 @@ CRAWLER_LINKS = [
     ('/guide/', '실험 셋업 가이드 — 질문·비교로 찾는 펌프·유체 셋업'),
     ('/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
     ('/leadfluid/bt101l/', '리드플루이드 BT101 L 연동펌프 — RS485 PC 제어'),
+    ('/leadfluid/bt103s/', '리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주'),
     ('/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
     ('/leadfluid/ct3001f/', '리드플루이드 CT3001F 마그네틱 기어펌프 — 무누설 연속 이송'),
     ('/sh-scientific/', '삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업'),
@@ -414,6 +415,9 @@ CRAWLER_LINKS = [
     ('/application/pump-flow-schedule-ramp.html', '유량 스케줄·ramp 자동화'),
     ('/application/multi-pump-sync-unattended.html', '다펌프 동기·무인 운전'),
     ('/application/pump-run-log-csv-reproducibility.html', '운전 로그·재현(CSV)'),
+    ('/troubleshooting/', '펌프 트러블슈팅 — 멈춤·유량·튜빙·소음 해결'),
+    ('/troubleshooting/peristaltic-flow-setpoint-mismatch/', '연동펌프 유량이 설정값과 다른 이유'),
+    ('/troubleshooting/tubing-crush-tear-causes/', '연동펌프 튜빙 씹힘·찢어짐 원인·해결'),
     ('/setups/', '연구별 셋업 — 논문이 답한 셋업'),
     ('/setups/brain-electrode-tyd01.html', '뇌 피질 인터페이싱 — 시린지펌프 TYD01-01'),
     ('/setups/catheter-heparin-bt101.html', '혈관내 카테터 코팅 — 연동펌프 BT101 L'),
@@ -423,6 +427,7 @@ CRAWLER_LINKS = [
     ('/setups/nitrification-ph-bq50s.html', '폐수 질산화 pH 제어 — 정량펌프 BQ50S'),
     ('/setups/alicat-mfc-tubefurnace.html', '1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례'),
     ('/setups/leadfluid-bt101l-plating.html', '도금 다펌프 제어·유량 캘리브레이션 — LeadFluid BT101L 도입 사례'),
+    ('/setups/plating-flow-calibration/', '도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)'),
     ('/compare/imported-peristaltic-alternative/', 'Masterflex·Watson-Marlow 연동펌프 국내 대안'),
     ('/trust/', '믿고 도입할 때 (국내 A/S·정품·보증)'),
     ('/faq/', '자주 묻는 질문(FAQ)'),
@@ -434,7 +439,7 @@ def _crawler_nav_html():
     def grp(h):
         if h.startswith('/setups/') or h.startswith('/compare/') or h in ('/', '/trust/', '/faq/', '/contact/'):
             return '사례·신뢰'
-        if h.startswith('/pumps/') or h.startswith('/leadfluid/') or h in ('/requests/', '/application/pump-selection.html', '/application/tube-selection.html', '/application/pump-pc-control-modbus-rs485.html', '/application/pump-flow-schedule-ramp.html', '/application/multi-pump-sync-unattended.html', '/application/pump-run-log-csv-reproducibility.html'):
+        if h.startswith('/pumps/') or h.startswith('/leadfluid/') or h.startswith('/troubleshooting/') or h in ('/requests/', '/application/pump-selection.html', '/application/tube-selection.html', '/application/pump-pc-control-modbus-rs485.html', '/application/pump-flow-schedule-ramp.html', '/application/multi-pump-sync-unattended.html', '/application/pump-run-log-csv-reproducibility.html'):
             return '펌프·제어'
         if h in ('/application/cell-culture-perfusion.html', '/application/chemostat-continuous-culture.html', '/application/photobioreactor-microalgae.html', '/application/flow-chemistry.html', '/application/organ-on-chip-perfusion.html'):
             return '실험 기법'
@@ -786,11 +791,16 @@ def main():
         ('leadfluid/bt101l/',    '0.8', 'monthly'),  # 모델 페이지
         ('leadfluid/tyd01-01/',  '0.8', 'monthly'),
         ('leadfluid/ct3001f/',   '0.8', 'monthly'),
+        ('leadfluid/bt103s/',    '0.8', 'monthly'),  # 모델 페이지 (분주형)
         ('compare/imported-peristaltic-alternative/', '0.7', 'monthly'),  # 갈아타기 비교
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
         ('setups/',       '0.8', 'weekly'),   # 셋업사례 (인덱스) — 상세 페이지는 posts.json 루프가 추가
+        ('setups/plating-flow-calibration/', '0.8', 'monthly'),  # 도입 스토리 (도금 유량 보정)
+        ('troubleshooting/', '0.8', 'weekly'),   # 트러블슈팅 허브
+        ('troubleshooting/peristaltic-flow-setpoint-mismatch/', '0.7', 'monthly'),
+        ('troubleshooting/tubing-crush-tear-causes/', '0.7', 'monthly'),
         ('faq/',          '0.7', 'monthly'),  # FAQ
         ('application/',  '0.7', 'monthly'),  # 실험 가이드 (목록)
         ('pumps/',        '0.8', 'monthly'),  # 펌프 종류 (허브)

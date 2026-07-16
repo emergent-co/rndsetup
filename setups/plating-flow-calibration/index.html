@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도금 라인 유량이 매번 달랐던 이유 — BT101L 2대로 다펌프 제어·유량 보정한 셋업 | 실험셋업연구소</title>
+<meta name="description" content="도금 라인에서 유량이 매번 달라 두께 편차가 나던 문제를, 리드플루이드 BT101L 2대를 RS485로 다펌프 제어하고 저울로 RPM↔유량 실측 보정표를 만들어 해결한 실제 도입 셋업 이야기. 문제→구성→방법→결과 전 과정 공개. 실험셋업연구소.">
+<link rel="canonical" href="https://rndsetup.com/setups/plating-flow-calibration/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="도금 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업">
+<meta property="og:description" content="유량 편차로 도금 두께가 흔들리던 라인을, BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업.">
+<meta property="og:url" content="https://rndsetup.com/setups/plating-flow-calibration/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+{"@type":"ListItem","position":1,"name":"홈","item":"https://rndsetup.com/"},
+{"@type":"ListItem","position":2,"name":"연구별 셋업","item":"https://rndsetup.com/setups/"},
+{"@type":"ListItem","position":3,"name":"도금 라인 유량 보정 셋업","item":"https://rndsetup.com/setups/plating-flow-calibration/"}
+]}
+</script>
+<style>
+  :root{--ink:#17202A;--gray:#5b6b7a;--gray-2:#93a1b0;--green:#1E3A5F;--green-2:#2a5a8f;--green-bg:#EDF2F8;--tint:#eef6f0;--line:#E6EAF0;--serif:"Noto Serif KR",Georgia,serif;--sans:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--sans);background:#fff;color:var(--ink);line-height:1.85;word-break:keep-all;overflow-wrap:break-word;font-size:16px}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px}
+  .hero{padding:56px 0 6px}
+  .crumb{font-size:12.5px;color:var(--green-2);font-weight:700;letter-spacing:.03em;margin-bottom:14px}
+  .tag{display:inline-block;background:var(--tint);color:#1e7a52;font-size:11.5px;font-weight:800;padding:5px 11px;border-radius:999px;margin-bottom:14px}
+  h1{font-family:var(--serif);font-size:clamp(26px,5.6vw,37px);font-weight:700;letter-spacing:-.02em;line-height:1.28}
+  .updated{font-size:12.5px;color:var(--gray-2);margin-top:14px}
+  .lead-hook{font-size:16.5px;color:#333d47;line-height:1.9;margin:22px 0 0}
+  .lead-hook b{color:var(--ink)}
+  .keybox{margin:22px 0 0;background:var(--green-bg);border-left:4px solid var(--green);border-radius:4px 12px 12px 4px;padding:20px 24px;font-size:16px;color:#26333f;line-height:1.85}
+  .keybox b{color:var(--ink)}
+  .figure{margin:22px 0 0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .figure img{width:100%;display:block}
+  .sec{padding:40px 0;border-top:1px solid var(--line)}
+  .sec h2{font-family:var(--serif);font-size:clamp(21px,4.6vw,27px);font-weight:700;letter-spacing:-.01em;margin-bottom:14px;line-height:1.35}
+  .sec p{font-size:16px;color:#2c3742;line-height:1.9;margin-bottom:13px}
+  .sec p b{color:var(--ink)}
+  .inlink{color:var(--green-2);font-weight:700;border-bottom:1px solid #cddcef}
+  .steps{display:grid;gap:14px;margin-top:16px}
+  .step{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .step .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:15px}
+  .step .st{font-size:15.5px;color:#2c3742;line-height:1.7}
+  .step .st b{color:var(--ink)}
+  .resulttab{width:100%;border-collapse:collapse;margin:14px 0 4px;font-size:14px}
+  .resulttab th,.resulttab td{border:1px solid var(--line);padding:11px 13px;text-align:left;vertical-align:top}
+  .resulttab thead th{background:var(--green);color:#fff}
+  .resulttab tbody th{background:var(--green-bg);font-weight:700;color:#26333f;width:130px;white-space:nowrap}
+  .note{font-size:12.5px;color:var(--gray-2);margin-top:8px}
+  .midcta{background:var(--green);color:#fff;border-radius:16px;padding:26px 24px;margin:30px 0 0;text-align:center;font-weight:700;font-size:17px;line-height:1.5}
+  .midcta a{display:inline-block;background:#fff;color:var(--green);font-weight:800;padding:13px 24px;border-radius:10px;margin-top:14px;font-size:15px}
+  .related{display:grid;gap:10px;margin-top:16px;padding-bottom:64px}
+  .related a{display:block;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:15px;font-weight:700;color:var(--ink)}
+  .related a:hover{background:var(--green-bg)}
+</style>
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+<div id="pumplab-header"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="crumb">연구별 셋업 › 도입 스토리</div>
+    <div class="tag">실험셋업연구소 도입 셋업</div>
+    <h1>도금 라인 유량이 매번 달랐던 이유<br>— BT101L 2대로 다펌프 제어·유량을 잡은 셋업</h1>
+    <div class="updated">최종 업데이트 2026년 7월 · 실험셋업연구소 실제 도입 사례</div>
+    <p class="lead-hook">"같은 설정으로 돌렸는데 도금 두께가 배치마다 다릅니다." 원인을 따라가 보면 대부분 <b>펌프의 설정값과 실제 유량이 달랐고, 여러 펌프가 따로 놀았던</b> 것입니다. 실험셋업연구소가 이 도금 라인을 어떻게 잡았는지, 문제부터 구성·방법·결과까지 그대로 공개합니다.</p>
+    <div class="keybox">
+      <b>한 줄 요약 —</b> 도금 라인의 유량 편차를 <b>리드플루이드 BT101L 2대 + RS485 다펌프 제어 + 저울 실측 캘리브레이션(RPM↔유량 보정표)</b>으로 잡았습니다. 설정값이 아니라 <b>실측 보정값</b>으로 운전하니 배치 간 유량이 재현됐습니다.
+    </div>
+    <!-- 현장 사진: /img/product/plating-setup.jpg 넣으면 자동 노출 -->
+    <div class="figure"><img src="/img/product/plating-setup.jpg" alt="도금 라인 BT101L 다펌프 제어 셋업 현장" loading="lazy" onerror="this.parentNode.style.display='none'"></div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="sec" id="problem">
+    <h2>문제 — 유량이 매번 달라, 두께가 흔들렸다</h2>
+    <p>도금·표면처리에서 <b>용액 이송 유량</b>은 두께·균일도를 좌우합니다. 이 라인은 연동펌프를 쓰고 있었지만, <b>설정값(예: 특정 RPM)으로 돌려도 배치마다 실제 토출량이 달랐습니다.</b> 게다가 여러 펌프를 손으로 각각 맞추다 보니 채널 간 편차·시간 편차가 겹쳤습니다.</p>
+    <p>결과는 <b>두께 편차·재작업·불량</b>. 작업자는 매번 유량을 다시 감으로 조정했고, 야간에는 아예 세워둘 수밖에 없었습니다.</p>
+  </section>
+
+  <section class="sec" id="why">
+    <h2>왜 이런 일이 생기나</h2>
+    <p>연동펌프의 <b>설정값은 물·상온 기준의 기준값</b>일 뿐입니다. 튜브 탄성·노후, 토출측 역압, 용액 점도에 따라 <b>실제 유량은 설정과 벌어집니다.</b> (이 원리는 <a class="inlink" href="/troubleshooting/peristaltic-flow-setpoint-mismatch/">유량이 설정값과 다른 이유</a>에서 자세히 다룹니다.) 여기에 <b>여러 펌프가 동기화되지 않으면</b> 편차가 배로 커집니다.</p>
+  </section>
+
+  <section class="sec" id="build">
+    <h2>이렇게 구성했다</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><div class="st"><b>BT101L 2대 도입</b> — 라인 구성에 맞춰 리드플루이드 <a class="inlink" href="/leadfluid/bt101l/">BT101L</a> 지능형 연동펌프 2대로 채널을 구성했습니다.</div></div>
+      <div class="step"><div class="n">2</div><div class="st"><b>RS485 다펌프 제어</b> — 두 펌프를 RS485로 묶어 같은 타임라인에서 채널별 유량을 제어했습니다. 손으로 각각 맞추던 걸 하나로 통합했습니다.</div></div>
+      <div class="step"><div class="n">3</div><div class="st"><b>저울 실측 캘리브레이션</b> — 실제 용액·튜브로 일정 시간 토출량을 <b>저울로 계량</b>해 <b>RPM↔실제 유량 보정표</b>를 만들었습니다. 이제 "설정값"이 아니라 "보정된 실제값"으로 목표 유량을 넣습니다.</div></div>
+      <div class="step"><div class="n">4</div><div class="st"><b>운전값 고정·재현</b> — 검증된 보정값을 표준 운전값으로 고정해, 배치가 바뀌어도 같은 유량이 나오도록 했습니다.</div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="result">
+    <h2>결과 — 설정과 실제가 일치, 배치가 재현됐다</h2>
+    <p>보정값으로 운전하자 <b>설정 유량과 실제 토출량이 일치</b>했고, 채널·배치 간 편차가 줄어 <b>두께가 재현</b>됐습니다. 사람이 감으로 다시 맞추는 과정이 사라져 작업 시간도 줄었습니다.</p>
+    <table class="resulttab">
+      <thead><tr><th>항목</th><th>도입 전</th><th>도입 후</th></tr></thead>
+      <tbody>
+        <tr><th>유량 일치</th><td>설정값 ≠ 실제(배치마다 다름)</td><td>보정값으로 설정=실제</td></tr>
+        <tr><th>다펌프 편차</th><td>손으로 각각, 채널 편차</td><td>RS485로 동기 제어</td></tr>
+        <tr><th>재작업</th><td>두께 편차로 재작업 발생</td><td>재현으로 감소</td></tr>
+        <tr><th>운전</th><td>야간 정지</td><td>고정 운전값으로 지속</td></tr>
+      </tbody>
+    </table>
+    <p class="note">※ 정성적 개선 요약입니다. 이 라인의 정확한 유량·편차 수치(전/후)는 확인되는 대로 공개 예정입니다. <!-- 실제 수치 채움 자리: 예) 배치 간 유량 편차 ±__% → ±__%, RPM __에서 실측 __mL/min --></p>
+  </section>
+
+  <div class="midcta">
+    우리 라인·실험도 유량이 매번 다른가요?
+    <div style="font-size:14px;font-weight:400;opacity:.94;margin-top:8px">펌프·튜브·용액·채널 수만 남기면, 다펌프 제어와 실측 보정까지 포함한 셋업을 제안드립니다.</div>
+    <a href="/contact/#experiment">비슷한 셋업 상담·견적 →</a>
+  </div>
+
+  <section class="sec" id="fit">
+    <h2>이 셋업이 맞는 경우</h2>
+    <p><b>유량 재현성이 품질을 좌우</b>하는 도금·표면처리·코팅, <b>여러 펌프를 동기</b>해야 하는 다채널 정량 이송, <b>배치 간 편차</b>를 없애야 하는 연속 공정에 맞습니다. 정량을 반복 분배해야 하면 <a class="inlink" href="/leadfluid/bt103s/">분주형 BT103S</a>, 여러 장비를 하나로 묶으려면 <a class="inlink" href="/requests/">통합 제어 소프트웨어</a>를 함께 봅니다.</p>
+  </section>
+
+  <section class="sec" id="related" style="border-bottom:0">
+    <h2>함께 보면 좋은 페이지</h2>
+    <div class="related">
+      <a href="/leadfluid/bt101l/">리드플루이드 BT101L — RS485 PC 제어·논문·도금 검증 →</a>
+      <a href="/troubleshooting/peristaltic-flow-setpoint-mismatch/">유량이 설정값과 다를 때 — 원인·해결법 →</a>
+      <a href="/requests/">여러 펌프를 하나로 — 통합 제어 소프트웨어 →</a>
+      <a href="/setups/">연구별 셋업 — 논문이 답한 셋업 →</a>
+    </div>
+  </section>
+</div>
+
+<div id="pumplab-footer"></div>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
