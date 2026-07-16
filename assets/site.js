@@ -233,14 +233,11 @@
     if (h) h.outerHTML = HEADER;
     var f = document.getElementById('pumplab-footer');
     if (f) f.outerHTML = FOOTER;
-    if (document.body && !document.querySelector('.cta-chat')) {
-      document.body.insertAdjacentHTML('beforeend', CTA_FAB);
-      window.ccToggle = function (force) {
-        var w = document.getElementById('ctaChat'); if (!w) return;
-        var open = (force === undefined) ? !w.classList.contains('open') : force;
-        w.classList.toggle('open', open);
-        if (open && typeof gtag === 'function') gtag('event', 'chat_open');
-      };
+    // 채널톡(Channel Talk) 실시간 상담 위젯 — 우측 하단 (커스텀 CTA_FAB는 중복 방지 위해 미주입)
+    if (!window.__channelIOBooted) {
+      window.__channelIOBooted = true;
+      (function(){var w=window;if(w.ChannelIO){return;}var ch=function(){ch.c(arguments);};ch.q=[];ch.c=function(a){ch.q.push(a);};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return;}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x);}}if(document.readyState==="complete"){l();}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l);}})();
+      window.ChannelIO('boot', { pluginKey: '9ef4232c-59bb-4911-a4c7-363c6b5bc513' });
     }
     var burger = document.querySelector('.ch-burger');
     var side = document.getElementById('chSide');
