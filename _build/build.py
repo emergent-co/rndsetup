@@ -416,6 +416,7 @@ CRAWLER_LINKS = [
     ('/application/multi-pump-sync-unattended.html', '다펌프 동기·무인 운전'),
     ('/application/pump-run-log-csv-reproducibility.html', '운전 로그·재현(CSV)'),
     ('/pump/troubleshooting/', '펌프 트러블슈팅 — 멈춤·유량·튜빙·소음 해결'),
+    ('/pump/select/', '펌프·튜브 선택 위저드 — 조건 입력하면 추천'),
     ('/pump/troubleshooting/peristaltic-flow-setpoint-mismatch/', '연동펌프 유량이 설정값과 다른 이유'),
     ('/pump/troubleshooting/tubing-crush-tear-causes/', '연동펌프 튜빙 씹힘·찢어짐 원인·해결'),
     ('/pump/setups/plating-flow-calibration/', '도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)'),
@@ -792,7 +793,8 @@ def main():
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
         ('pump/setups/plating-flow-calibration/', '0.8', 'monthly'),  # 도입 스토리 (도금 유량 보정)
         ('pump/setups/alicat-mfc-tubefurnace/', '0.7', 'monthly'),  # 도입 스토리 (튜브퍼니스 MFC)
-        ('pump/troubleshooting/', '0.8', 'weekly'),   # 트러블슈팅 허브
+        ('pump/troubleshooting/', '0.8', 'weekly'),
+        ('pump/select/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
         ('pump/troubleshooting/peristaltic-flow-setpoint-mismatch/', '0.7', 'monthly'),
         ('pump/troubleshooting/tubing-crush-tear-causes/', '0.7', 'monthly'),
         ('faq/',          '0.7', 'monthly'),  # FAQ

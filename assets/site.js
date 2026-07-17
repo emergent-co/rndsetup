@@ -66,7 +66,8 @@
   };
   var NAV = [
     { href:'/pump/troubleshooting/', label:'펌프 A to Z', icon:'wrench', sub:[
-        ['/pump/guide/', '자주묻는 질문(FAQ)']
+        ['/pump/select/', '펌프·튜브 선택 위저드'],
+        ['/pump/guide/',  '자주묻는 질문(FAQ)']
       ] },
     { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' },
     { href:'/alicat/', label:'호환 장비', icon:'devices', sub:[
