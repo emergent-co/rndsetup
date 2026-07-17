@@ -124,12 +124,17 @@
       .setup-svc .svc-sub{font-size:15px;color:#3a4650;margin:12px 0 0;line-height:1.75;max-width:720px}
       .setup-svc .svc-steps{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
       .setup-svc .svc-steps span{background:var(--green-bg,#EDF2F8);border:1px solid #dce6f1;border-radius:999px;padding:6px 13px;font-size:12.5px;font-weight:700;color:var(--green)}
-      .setup-form{margin-top:18px;border:1px solid var(--line,#E6EAF0);border-radius:16px;padding:22px}
+      .setup-form{max-width:600px;margin-top:18px;border:1px solid var(--line,#E6EAF0);border-radius:16px;padding:22px}
       .setup-form label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:14px}
       .setup-form .req{color:#c00}
       .setup-form input[type=text],.setup-form input[type=email],.setup-form textarea,.setup-form select{width:100%;margin-top:6px;border:1px solid #d6dee8;border-radius:9px;padding:11px 12px;font-size:14.5px;font-family:inherit;color:#1a2733;background:#fff}
       .setup-form textarea{min-height:104px;resize:vertical;line-height:1.6}
       .setup-form input[type=file]{margin-top:6px;font-size:13px;font-family:inherit}
+      .setup-form .need-group{margin-bottom:16px}
+      .setup-form .need-q{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:9px}
+      .setup-form .need-hint{font-size:12px;font-weight:600;color:#8a95a3}
+      .setup-form .need-opt{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;font-weight:500;color:#2c3742;margin-bottom:8px;cursor:pointer;line-height:1.5}
+      .setup-form .need-opt input{margin-top:3px;flex:0 0 auto;width:auto}
       .setup-form .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
       .setup-form .send{width:100%;background:var(--green);color:#fff;border:0;border-radius:10px;padding:14px;font-size:15.5px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:4px}
       .setup-form .send:hover{background:#16304d}
@@ -139,25 +144,22 @@
     <section class="setup-svc" id="setup-inquiry">
       <div class="eyebrow">실험셋업연구소 메인 서비스 · 논문 기반 셋업 분석</div>
       <h1>논문을 보내주시면, 셋업 구성·필요 장비 스펙 리포트를 드립니다</h1>
-      <p class="svc-sub">참고 중인 <b>논문(DOI·링크·PDF)</b>과 실험 상황을 남겨주세요. 실험셋업연구소가 그 논문의 셋업을 분석해 <b>필요한 펌프·MFC·튜브·제어 구성과 스펙</b>을 정리한 리포트를 이메일로 보내드립니다.</p>
+      <p class="svc-sub">참고 중인 <b>논문 파일(PDF)</b>과 실험 상황을 남겨주세요. 실험셋업연구소가 그 논문의 셋업을 분석해 <b>필요한 펌프·MFC·튜브·제어 구성과 스펙</b>을 정리한 리포트를 이메일로 보내드립니다.</p>
       <div class="svc-steps"><span>1. 논문·상황 제출</span><span>2. 실험셋업연구소 분석</span><span>3. 셋업·스펙 리포트 회신</span></div>
 
       <form class="setup-form" id="setupForm">
         <input type="hidden" name="문의유형" value="논문 셋업 분석 리포트 신청">
-        <label>참고 논문 (DOI · 링크 · 제목) <span class="req">*</span>
-          <input type="text" name="논문" required placeholder="예: 10.1038/s41586-024-xxxxx · 또는 논문 제목/URL">
+        <label>참고 논문 파일 첨부 (PDF) <span class="req">*</span>
+          <input type="file" name="논문파일" accept=".pdf,.doc,.docx" required>
         </label>
-        <label>논문 파일 첨부 (선택 · PDF)
-          <input type="file" name="논문파일" accept=".pdf,.doc,.docx">
-        </label>
-        <label>무엇이 필요하세요? <span class="req">*</span>
-          <select name="필요항목" required>
-            <option value="">선택하세요</option>
-            <option value="셋업 구성 분석">셋업 구성 분석 (어떤 장비를 어떻게 연결·제어하나)</option>
-            <option value="필요 장비 스펙 안내">필요 장비 스펙 안내 (어떤 스펙의 펌프·MFC가 맞나)</option>
-            <option value="둘 다">둘 다</option>
-          </select>
-        </label>
+        <div class="need-group">
+          <div class="need-q">무엇이 필요하세요? <span class="req">*</span> <span class="need-hint">(해당되는 것 모두 선택)</span></div>
+          <label class="need-opt"><input type="checkbox" name="필요항목" value="논문 셋업 구성 분석"> 논문 셋업 구성 분석 — 어떤 장비를 어떻게 연결·제어하나</label>
+          <label class="need-opt"><input type="checkbox" name="필요항목" value="필요 장비 스펙·모델 추천"> 필요 장비 스펙·모델 추천 — 어떤 펌프·MFC·튜브가 맞나</label>
+          <label class="need-opt"><input type="checkbox" name="필요항목" value="유량·튜브·채널 파라미터 설계"> 유량·튜브·채널 등 세부 파라미터 설계</label>
+          <label class="need-opt"><input type="checkbox" name="필요항목" value="제어·자동화 구성"> 제어·자동화(Modbus·RS485·스케줄·무인운전) 구성</label>
+          <label class="need-opt"><input type="checkbox" name="필요항목" value="견적·구매·A/S 안내"> 견적·구매·납품·국내 A/S 안내</label>
+        </div>
         <label>상세 내용 — 실험 목적·조건, 확인하고 싶은 부분을 자세히 <span class="req">*</span>
           <textarea name="상세내용" required placeholder="예: 이 논문의 관류배양 셋업을 재현하려는데 유량 0.1~2 mL/min·3채널 독립 제어가 필요합니다. 맞는 펌프·튜브·제어 구성과 예산·A/S까지 알려주세요."></textarea>
         </label>
@@ -180,6 +182,7 @@
       var f=document.getElementById('setupForm'); if(!f) return;
       f.addEventListener('submit', function(e){
         e.preventDefault();
+        if(!f.querySelector('input[name="필요항목"]:checked')){ alert('필요한 항목을 하나 이상 선택해주세요.'); return; }
         var btn=f.querySelector('.send'), t=btn.textContent;
         btn.disabled=true; btn.textContent='보내는 중…';
         fetch('https://formspree.io/f/mnjkzppj', { method:'POST', body:new FormData(f), headers:{'Accept':'application/json'} })
