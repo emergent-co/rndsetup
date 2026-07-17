@@ -68,7 +68,7 @@
     { href:'/pump/troubleshooting/', label:'펌프 자료실', icon:'wrench', sub:[
         ['/pump/troubleshooting/', '펌프 A to Z'],
         ['/pump/leadfluid/',       '리드플루이드'],
-        ['/faq/',                  '자주묻는 질문(FAQ)']
+        ['/pump/guide/',           '자주묻는 질문(FAQ)']
       ] },
     { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' },
     { href:'/alicat/', label:'호환 장비', icon:'devices', sub:[
