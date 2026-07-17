@@ -33,9 +33,10 @@
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
   .card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;padding:20px 20px 18px;transition:box-shadow .15s,transform .15s;height:100%}
   .card:hover{box-shadow:0 12px 30px rgba(20,40,70,.10);transform:translateY(-2px)}
-  .card .cat{display:inline-block;align-self:flex-start;font-size:11px;font-weight:800;color:#fff;background:var(--green);padding:3px 10px;border-radius:999px;letter-spacing:.02em}
-  .card .t{font-family:var(--serif);font-size:18px;font-weight:700;line-height:1.4;margin:8px 0 8px;color:var(--ink)}
-  .card .s{font-size:13.5px;color:var(--gray);line-height:1.65;flex:1}
+  .card .cat{display:inline-block;align-self:flex-start;font-size:13px;font-weight:800;color:#fff;background:var(--green);padding:5px 13px;border-radius:999px;letter-spacing:.02em}
+  .card .t{font-family:var(--serif);font-size:21px;font-weight:700;line-height:1.42;margin:12px 0 4px;color:var(--ink);flex:1}
+  .card .t mark{background:#fff2b8;color:var(--ink);padding:0 3px;border-radius:3px}
+  .card .s{display:none}
   .card .d{font-size:12px;color:var(--gray-2);margin-top:14px}
   .empty{grid-column:1/-1;color:var(--gray-2);font-size:14px;padding:24px;text-align:center;border:1px dashed var(--line);border-radius:12px}
   .band{background:var(--green);color:#fff;border-radius:16px;padding:28px 26px;margin:38px 0 0;text-align:center}
@@ -68,9 +69,9 @@
   </div>
   <div class="count" id="count">글 <b style="color:var(--green)">3</b>개</div>
   <div class="grid" id="grid">
-    <a class="card" href="/pump/atoz/peristaltic-flow-setpoint-mismatch/"><div class="cat">결과값 이상</div><div class="t">연동펌프 유량이 설정값과 다른 이유 — 원인 5가지와 해결법</div><div class="s">설정값과 실제 토출량이 다른 원인(튜브 탄성·노후, 역압, 점도, 보정)과 실측 캘리브레이션으로 오차 줄이는 법.</div><div class="d">2026-07-16</div></a>
-    <a class="card" href="/pump/atoz/tubing-crush-tear-causes/"><div class="cat">긴급·유지보수</div><div class="t">연동펌프 튜빙이 자꾸 씹히고 찢어지는 이유 — 원인 4가지와 해결법</div><div class="s">튜빙 파손의 원인(규격 불일치·과압착·화학 비적합·수명 초과)과, 수명을 늘리는 튜브 선택·옥클루전·교체 관리.</div><div class="d">2026-07-16</div></a>
-    <a class="card" href="/pump/setups/plating-flow-calibration/"><div class="cat">셋업 스토리</div><div class="t">도금 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업</div><div class="s">유량 편차로 도금 두께가 흔들리던 라인을 BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업 이야기.</div><div class="d">2026-07-16</div></a>
+    <a class="card" href="/pump/atoz/peristaltic-flow-setpoint-mismatch/"><div class="cat">결과값 이상</div><div class="t">연동펌프 <mark>유량</mark>이 설정값과 다른 이유 — 원인 5가지와 해결법</div><div class="s">설정값과 실제 토출량이 다른 원인(튜브 탄성·노후, 역압, 점도, 보정)과 실측 캘리브레이션으로 오차 줄이는 법.</div><div class="d">2026-07-16</div></a>
+    <a class="card" href="/pump/atoz/tubing-crush-tear-causes/"><div class="cat">긴급·유지보수</div><div class="t">연동펌프 <mark>튜빙</mark>이 자꾸 씹히고 찢어지는 이유 — 원인 4가지와 해결법</div><div class="s">튜빙 파손의 원인(규격 불일치·과압착·화학 비적합·수명 초과)과, 수명을 늘리는 튜브 선택·옥클루전·교체 관리.</div><div class="d">2026-07-16</div></a>
+    <a class="card" href="/pump/setups/plating-flow-calibration/"><div class="cat">셋업 스토리</div><div class="t"><mark>도금</mark> 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업</div><div class="s">유량 편차로 도금 두께가 흔들리던 라인을 BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업 이야기.</div><div class="d">2026-07-16</div></a>
   </div>
 
 
@@ -87,9 +88,9 @@
 <script>
 (function(){
   var CARDS = [
-    {cat:"결과값 이상", title:"연동펌프 유량이 설정값과 다른 이유 — 원인 5가지와 해결법", summary:"설정값과 실제 토출량이 다른 원인(튜브 탄성·노후, 역압, 점도, 보정)과 실측 캘리브레이션으로 오차 줄이는 법.", url:"/pump/atoz/peristaltic-flow-setpoint-mismatch/", date:"2026-07-16"},
-    {cat:"긴급·유지보수", title:"연동펌프 튜빙이 자꾸 씹히고 찢어지는 이유 — 원인 4가지와 해결법", summary:"튜빙 파손의 원인(규격 불일치·과압착·화학 비적합·수명 초과)과, 수명을 늘리는 튜브 선택·옥클루전·교체 관리.", url:"/pump/atoz/tubing-crush-tear-causes/", date:"2026-07-16"},
-    {cat:"셋업 스토리", title:"도금 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업", summary:"유량 편차로 도금 두께가 흔들리던 라인을 BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업 이야기.", url:"/pump/setups/plating-flow-calibration/", date:"2026-07-16"}
+    {cat:"결과값 이상", title:"연동펌프 <mark>유량</mark>이 설정값과 다른 이유 — 원인 5가지와 해결법", summary:"설정값과 실제 토출량이 다른 원인(튜브 탄성·노후, 역압, 점도, 보정)과 실측 캘리브레이션으로 오차 줄이는 법.", url:"/pump/atoz/peristaltic-flow-setpoint-mismatch/", date:"2026-07-16"},
+    {cat:"긴급·유지보수", title:"연동펌프 <mark>튜빙</mark>이 자꾸 씹히고 찢어지는 이유 — 원인 4가지와 해결법", summary:"튜빙 파손의 원인(규격 불일치·과압착·화학 비적합·수명 초과)과, 수명을 늘리는 튜브 선택·옥클루전·교체 관리.", url:"/pump/atoz/tubing-crush-tear-causes/", date:"2026-07-16"},
+    {cat:"셋업 스토리", title:"<mark>도금</mark> 라인 유량이 매번 달랐던 이유 — BT101L 2대 다펌프 제어·유량 보정 셋업", summary:"유량 편차로 도금 두께가 흔들리던 라인을 BT101L 2대 RS485 다펌프 제어 + 실측 캘리브레이션으로 잡은 실제 도입 셋업 이야기.", url:"/pump/setups/plating-flow-calibration/", date:"2026-07-16"}
   ];
   var CATS = {"긴급·유지보수":"긴급·유지보수","결과값 이상":"결과값 이상","연결·실무":"연결·실무","구매·선택":"구매·선택"};
   var grid=document.getElementById('grid'), countEl=document.getElementById('count'), tabsEl=document.getElementById('tabs');
@@ -103,7 +104,7 @@
     grid.innerHTML=list.map(function(c){
       return '<a class="card" href="'+c.url+'">'+
         '<div class="cat">'+esc(c.cat)+'</div>'+
-        '<div class="t">'+esc(c.title)+'</div>'+
+        '<div class="t">'+c.title+'</div>'+
         '<div class="s">'+esc(c.summary)+'</div>'+
         '<div class="d">'+esc(c.date)+'</div>'+
       '</a>';
