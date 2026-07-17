@@ -152,14 +152,16 @@
         <label>참고 논문 PDF 다운로드 링크 <span class="req">*</span>
           <input type="url" name="논문링크" required placeholder="예: https://drive.google.com/... (열람 가능한 논문 PDF 링크)">
         </label>
-        <div class="need-group">
-          <div class="need-q">무엇이 필요하세요? <span class="req">*</span> <span class="need-hint">(해당되는 것 모두 선택)</span></div>
-          <label class="need-opt"><input type="checkbox" name="필요항목" value="논문 셋업 구성 분석"> 논문 셋업 구성 분석 — 어떤 장비를 어떻게 연결·제어하나</label>
-          <label class="need-opt"><input type="checkbox" name="필요항목" value="필요 장비 스펙·모델 추천"> 필요 장비 스펙·모델 추천 — 어떤 펌프·MFC·튜브가 맞나</label>
-          <label class="need-opt"><input type="checkbox" name="필요항목" value="유량·튜브·채널 파라미터 설계"> 유량·튜브·채널 등 세부 파라미터 설계</label>
-          <label class="need-opt"><input type="checkbox" name="필요항목" value="제어·자동화 구성"> 제어·자동화(Modbus·RS485·스케줄·무인운전) 구성</label>
-          <label class="need-opt"><input type="checkbox" name="필요항목" value="견적·구매·A/S 안내"> 견적·구매·납품·국내 A/S 안내</label>
-        </div>
+        <label>무엇이 필요하세요? <span class="req">*</span>
+          <select name="필요항목" required>
+            <option value="">선택하세요</option>
+            <option value="논문 셋업 구성 분석">논문 셋업 구성 분석 — 장비 연결·제어 방식</option>
+            <option value="필요 장비 스펙·모델 추천">필요 장비 스펙·모델 추천</option>
+            <option value="유량·튜브·채널 파라미터 설계">유량·튜브·채널 등 세부 파라미터 설계</option>
+            <option value="제어·자동화 구성">제어·자동화(Modbus·RS485·스케줄) 구성</option>
+            <option value="견적·구매·A/S 안내">견적·구매·납품·국내 A/S 안내</option>
+          </select>
+        </label>
         <label>상세 내용 — 실험 목적·조건, 확인하고 싶은 부분을 자세히 <span class="req">*</span>
           <textarea name="상세내용" required placeholder="예: 이 논문의 관류배양 셋업을 재현하려는데 유량 0.1~2 mL/min·3채널 독립 제어가 필요합니다. 맞는 펌프·튜브·제어 구성과 예산·A/S까지 알려주세요."></textarea>
         </label>
@@ -182,7 +184,6 @@
       var f=document.getElementById('setupForm'); if(!f) return;
       f.addEventListener('submit', function(e){
         e.preventDefault();
-        if(!f.querySelector('input[name="필요항목"]:checked')){ alert('필요한 항목을 하나 이상 선택해주세요.'); return; }
         var btn=f.querySelector('.send'), t=btn.textContent;
         btn.disabled=true; btn.textContent='보내는 중…';
         fetch('https://formspree.io/f/mnjkzppj', { method:'POST', body:new FormData(f), headers:{'Accept':'application/json'} })
