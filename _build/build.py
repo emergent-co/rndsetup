@@ -536,8 +536,9 @@ def build_setups():
 
 BASE_URL_LD = 'https://rndsetup.com'
 
-# NOTE(엔티티): sameAs는 실제 공식 프로필 URL 확보 시 Organization 노드에 추가할 것
-#   GBP(구글 지도 CID) 반영됨. 네이버 플레이스·나비엠알오·유튜브 URL 확보 시 추가.
+# NOTE(엔티티): sameAs는 실제 공식 프로필 URL 확보 시 각 노드에 추가할 것
+#   Org: GBP(구글 지도 CID)·유튜브(@rndsetuplab) 반영됨. 네이버 플레이스·나비엠알오 URL 확보 시 추가.
+#   Brand(리드플루이드): leadfluid.com·위키데이터(Q140602893) 반영됨.
 #   (가짜/추정 URL 금지: 확인된 것만 넣는다)
 ORG_WEBSITE_GRAPH = {
     "@context": "https://schema.org",
@@ -553,7 +554,7 @@ ORG_WEBSITE_GRAPH = {
             "email": "info@rndsetup.com",
             "telephone": "+82-70-8983-2600",
             "founder": {"@type": "Person", "name": "이영현"},
-            "sameAs": ["https://www.google.com/maps?cid=4429951187161412134"],
+            "sameAs": ["https://www.google.com/maps?cid=4429951187161412134", "https://www.youtube.com/@rndsetuplab"],
             "description": "실험용 펌프·유체 제어 셋업 정보를 제공하는 곳. 어떤 펌프를 고르고 유량·스케줄을 어떻게 자동화·재현하는지, 어떤 논문이 어떤 셋업을 썼는지 정리합니다. 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프와 Alicat 질량유량계(MFC)의 제어 소프트웨어와 국내 직접 A/S(구매 시 3년 무상보증)도 지원합니다. 관류·연속배양 등 무인·정밀·재현이 필요한 실험의 셋업을 다룹니다.",
             "address": {
                 "@type": "PostalAddress",
@@ -582,7 +583,7 @@ ORG_WEBSITE_GRAPH = {
             "@id": "https://rndsetup.com/#leadfluid",
             "name": "리드플루이드",
             "alternateName": ["LeadFluid", "Lead Fluid", "리드플루이드"],
-            "sameAs": ["https://www.leadfluid.com/", "https://www.leadfluid.com.cn/"]
+            "sameAs": ["https://www.leadfluid.com/", "https://www.leadfluid.com.cn/", "https://www.wikidata.org/wiki/Q140602893"]
         }
     ]
 }
