@@ -3,29 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>리드플루이드 TFD 스플릿형 시린지펌프 (컨트롤러 분리형·미세주입·다채널) | 실험셋업연구소</title>
-<meta name="description" content="리드플루이드(LeadFluid) TFD는 컨트롤러와 실행유닛이 분리된 스플릿형 실험실 시린지펌프입니다. 뇌정위장치 등 타 장비 결합, 초미량~중유량 정밀 주입, TFD04 다채널(최대 8채널). 국내 정품·직접 A/S — 실험셋업연구소.">
-<link rel="canonical" href="https://rndsetup.com/pump/leadfluid/tfd/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="리드플루이드 TFD 스플릿형 시린지펌프 (컨트롤러 분리형·미세주입)">
-<meta property="og:description" content="컨트롤러 분리형 시린지펌프 TFD — 뇌정위장치 결합·초미량 정밀 주입·다채널. 국내 정품·A/S.">
-<meta property="og:url" content="https://rndsetup.com/pump/leadfluid/tfd/">
+<title>연동펌프 유량 캘리브레이션 방법 — 설정값과 실제 유량 맞추기 | 실험셋업연구소</title>
+<meta name="description" content="연동펌프는 튜브 마모·배압·재질 때문에 설정값(RPM)과 실제 유량이 어긋납니다. 저울·메스실린더로 실제 토출량을 재서 보정하는 캘리브레이션 방법, 재캘리브레이션 주기, 재현성 확보 팁을 실험셋업연구소가 정리했습니다.">
+<link rel="canonical" href="https://rndsetup.com/pump/atoz/flow-calibration/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="연동펌프 유량 캘리브레이션 방법 — 설정값과 실제 유량 맞추기">
+<meta property="og:description" content="설정값과 실제 유량이 어긋나는 이유와, 실측으로 보정하는 캘리브레이션 절차·주기·재현성 팁.">
+<meta property="og:url" content="https://rndsetup.com/pump/atoz/flow-calibration/">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"홈","item":"https://rndsetup.com/"},
-{"@type":"ListItem","position":2,"name":"리드플루이드(LeadFluid)","item":"https://rndsetup.com/pump/leadfluid/"},
-{"@type":"ListItem","position":3,"name":"TFD 스플릿형 시린지펌프","item":"https://rndsetup.com/pump/leadfluid/tfd/"}
+{"@type":"ListItem","position":2,"name":"펌프 문제해결","item":"https://rndsetup.com/pump/atoz/"},
+{"@type":"ListItem","position":3,"name":"유량 캘리브레이션 방법","item":"https://rndsetup.com/pump/atoz/flow-calibration/"}
 ]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Product","name":"리드플루이드 TFD 스플릿형 시린지펌프","brand":{"@type":"Brand","name":"LeadFluid","alternateName":"리드플루이드"},"category":"시린지펌프(Syringe pump) · 스플릿형","image":"https://img.navimro.com/img/pi/full/K93612324.jpg","additionalProperty":[{"@type":"PropertyValue","name":"형식","value":"스플릿형(컨트롤러+실행유닛 분리) 실험실 시린지펌프"},{"@type":"PropertyValue","name":"유량 범위","value":"시린지 규격별 초미량~중유량 (pL/min~mL/min급, 사양서 기준)"},{"@type":"PropertyValue","name":"채널","value":"TFD01·02·03 단채널 / TFD04 다채널(최대 8채널)"},{"@type":"PropertyValue","name":"인증·보호","value":"CE·RoHS · IP31"}],"offers":{"@type":"AggregateOffer","priceCurrency":"KRW","lowPrice":"4134900","seller":{"@type":"Organization","name":"실험셋업연구소"},"availability":"https://schema.org/InStock","url":"https://www.navimro.com/g/3435897/"}}
-</script>
-<script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"리드플루이드 TFD 스플릿형 시린지펌프는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"컨트롤러와 실행유닛(시린지 구동부)이 분리된 스플릿형 실험실 시린지펌프입니다. 실행유닛을 좁은 공간이나 타 장비에 자유롭게 설치할 수 있어, 뇌정위장치(brain stereotaxis) 등과 결합해 정밀 미세 주입을 할 때 유리합니다."}},
-{"@type":"Question","name":"TFD01·TFD02·TFD03·TFD04는 어떻게 다른가요?","acceptedAnswer":{"@type":"Answer","text":"시린지 크기와 채널이 다릅니다. TFD01은 초미량(소용량 시린지) 정밀 주입, TFD03은 극초미량, TFD02는 표준~대용량 시린지, TFD04는 컨트롤러에 실행유닛을 여러 개 붙이는 다채널(최대 8채널) 구성입니다. 정확한 유량은 장착 시린지 규격과 모델별 사양서 기준입니다."}},
-{"@type":"Question","name":"TFD 시린지펌프는 어디에 쓰나요?","acceptedAnswer":{"@type":"Answer","text":"마이크로스피어 제조, 전기방사(electrospinning), 동물실험·뇌정위장치 결합 주입, 마이크로플루이딕 칩, 약물 전달, 질량분석기 시료 주입 등 초미량을 정밀·일정하게 주입하는 연구에 사용합니다."}},
-{"@type":"Question","name":"TFD 가격·구매·A/S는 어떻게 되나요?","acceptedAnswer":{"@type":"Answer","text":"실험셋업연구소가 리드플루이드 정품을 공급하고 국내에서 직접 A/S합니다(구매 시 3년 무상보증). 단채널 기본형부터 다채널 구성까지 가격이 달라지며, 정품은 나비엠알오에서 구매할 수 있습니다."}}
+{"@type":"Question","name":"연동펌프는 왜 설정값과 실제 유량이 다른가요?","acceptedAnswer":{"@type":"Answer","text":"연동펌프 유량은 튜브가 회전자에 눌렸다 펴지는 복원량으로 결정되는데, 튜브 마모·경도·재질, 배압(토출측 저항), 흡입 양정에 따라 회전당 실제 토출량이 달라집니다. 그래서 같은 RPM이라도 실제 유량은 카탈로그 값과 어긋나며, 실측 캘리브레이션으로 보정해야 정확해집니다."}},
+{"@type":"Question","name":"연동펌프 유량 캘리브레이션은 어떻게 하나요?","acceptedAnswer":{"@type":"Answer","text":"① 실제 사용할 튜브·유체·배관으로 세팅하고 ② 목표 RPM으로 일정 시간(예: 1~3분) 토출한 액을 저울(질량÷밀도) 또는 메스실린더로 측정해 ③ 실측 유량(mL/min)을 구하고 ④ 목표 유량÷실측 유량으로 보정계수를 내거나 장비의 캘리브레이션 기능에 실측값을 입력합니다. 2~3회 반복해 평균을 씁니다."}},
+{"@type":"Question","name":"캘리브레이션은 얼마나 자주 다시 해야 하나요?","acceptedAnswer":{"@type":"Answer","text":"튜브를 교체·재장착했을 때, 튜브가 마모돼 유량이 드리프트할 때, 유체·배압 조건이 바뀌었을 때 다시 합니다. 장시간 연속 운전에서는 튜브 피로로 유량이 서서히 줄 수 있어 주기적 재캘리브레이션 또는 유량 모니터링이 재현성에 유리합니다."}},
+{"@type":"Question","name":"저유량일수록 오차가 큰 이유는 무엇인가요?","acceptedAnswer":{"@type":"Answer","text":"저유량에서는 회전당 토출량 자체가 작아, 튜브 복원 편차·맥동·미세 누설의 상대적 비중이 커집니다. 저유량 정밀 이송이 필요하면 작은 내경 튜브·저유량 헤드를 쓰고, 반드시 사용 조건에서 실측 캘리브레이션한 값을 기준으로 삼아야 합니다."}}
 ]}
 </script>
 <link rel="stylesheet" href="/assets/site.css">
@@ -34,54 +31,49 @@
 <div id="pumplab-header"></div>
 
 <article class="sd-wrap">
-  <div class="sd-crumb"><a href="/">홈</a> › <a href="/pump/leadfluid/">리드플루이드</a> › TFD 스플릿형 시린지펌프</div>
-  <h1>리드플루이드 TFD<br>스플릿형(분리형) 시린지펌프</h1>
-  <div class="sd-meta">컨트롤러+실행유닛 분리 · 다채널 · 국내 정품·직접 A/S</div>
+  <div class="sd-crumb"><a href="/">홈</a> › <a href="/pump/atoz/">펌프 문제해결</a> › 유량 캘리브레이션</div>
+  <h1>연동펌프 유량 캘리브레이션 방법<br>— 설정값과 실제 유량 맞추기</h1>
+  <div class="sd-meta">튜브 마모·배압 보정 · 재현성 확보</div>
 
   <div class="sd-answer">
-    <b>TFD는 컨트롤러와 실행유닛이 분리된 스플릿형 시린지펌프입니다.</b> 실행유닛을 좁은 공간이나 다른 장비(예: 뇌정위장치)에 자유롭게 설치할 수 있어 정밀 미세 주입에 유리하며, TFD01·02·03 단채널과 TFD04 <b>다채널(최대 8채널)</b>로 구성합니다. 실험셋업연구소가 국내 정품을 공급하고 직접 A/S합니다.
-  </div>
-
-  <div class="sd-summary">
-    <h3>모델·사양 요약 (사양서 기준)</h3>
-    <div class="row"><span class="k">형식</span><span>스플릿형(컨트롤러+실행유닛 분리) 실험실 시린지펌프</span></div>
-    <div class="row"><span class="k">유량</span><span>시린지 규격별 <b>초미량~중유량</b> (pL/min~mL/min급)</span></div>
-    <div class="row"><span class="k">모델</span><span>TFD01(초미량)·TFD03(극초미량)·TFD02(표준~대용량)·TFD04(다채널 최대 8ch)</span></div>
-    <div class="row"><span class="k">인증·보호</span><span>CE·RoHS · IP31</span></div>
-    <div class="row"><span class="k">공급·A/S</span><span>실험셋업연구소 국내 정품·직접 수리(구매 시 3년 무상보증)</span></div>
+    <b>연동펌프는 튜브 마모·배압·재질 때문에 같은 RPM이라도 실제 유량이 카탈로그 값과 어긋납니다.</b> 실제 사용 조건에서 일정 시간 토출량을 <b>저울·메스실린더로 실측</b>해 보정계수를 내거나 장비 캘리브레이션 기능에 입력하면 유량을 맞출 수 있습니다.
   </div>
 
   <div class="sd-body">
-    <h2>스플릿(분리형)이 주는 이점</h2>
-    <p>일반 시린지펌프는 컨트롤러와 시린지 구동부가 한 몸이지만, TFD는 <b>실행유닛만 떼어 원하는 위치에 설치</b>할 수 있습니다. 그래서 뇌정위장치처럼 공간이 제한된 장비에 실행유닛을 붙이고 컨트롤러는 손 닿는 곳에 두는 식의 셋업이 가능합니다. 미세 주입 위치를 자유롭게 잡아야 하는 실험에 특히 유리합니다.</p>
-    <h2>TFD01·02·03·04 — 어떤 걸 고르나</h2>
-    <p>장착하는 <b>시린지 크기</b>와 <b>채널 수</b>로 나뉩니다. 극초미량·초미량 정밀 주입은 TFD03·TFD01, 표준~대용량은 TFD02, 여러 시린지를 동시에 구동하는 다채널은 TFD04(최대 8채널)입니다. 유량은 장착 시린지 규격에 따라 달라지므로 모델별 사양서를 기준으로 확인하세요.</p>
-    <h2>주요 용도</h2>
-    <p>마이크로스피어 제조·전기방사·동물실험·뇌정위장치 결합 주입·마이크로플루이딕 칩·약물 전달·질량분석기 시료 주입 등, 초미량을 정밀하고 일정하게 주입해야 하는 연구에 씁니다.</p>
-    <h2>국내 정품·직접 A/S</h2>
-    <p>실험셋업연구소는 리드플루이드 정품을 공급하고 본사로 보낼 필요 없이 국내에서 직접 진단·수리합니다(구매 시 3년 무상보증). 단채널·다채널 구성은 용도에 맞춰 상담해 드립니다.</p>
+    <h2>왜 설정값과 실제 유량이 다른가</h2>
+    <p>연동펌프 유량은 튜브가 눌렸다 펴지는 복원량으로 결정됩니다. 그래서 <b>튜브 경도·마모·재질, 배압(토출 저항), 흡입 양정</b>이 바뀌면 회전당 실제 토출량이 달라지고, 같은 RPM에서도 유량이 어긋납니다. 정확한 유량이 필요한 실험은 반드시 사용 조건에서 실측해 보정해야 합니다.</p>
+
+    <h2>캘리브레이션 절차</h2>
+    <div class="sd-summary">
+      <div class="row"><span class="k">1) 세팅</span><span>실제 쓸 튜브·유체·배관·배압으로 구성(공정과 동일 조건)</span></div>
+      <div class="row"><span class="k">2) 토출</span><span>목표 RPM으로 일정 시간(예: 1~3분) 토출, 시간 기록</span></div>
+      <div class="row"><span class="k">3) 측정</span><span>토출액을 저울(질량÷밀도) 또는 메스실린더로 부피 측정</span></div>
+      <div class="row"><span class="k">4) 계산</span><span>실측 유량 = 측정 부피 ÷ 시간 (mL/min)</span></div>
+      <div class="row"><span class="k">5) 보정</span><span>보정계수 = 목표 유량 ÷ 실측 유량 → 설정 보정 또는 장비 캘리브레이션 기능에 실측값 입력</span></div>
+      <div class="row"><span class="k">6) 반복</span><span>2~3회 반복 평균, 저유량일수록 측정 시간을 늘려 오차 축소</span></div>
+    </div>
+
+    <h2>다시 캘리브레이션해야 할 때</h2>
+    <p>튜브를 교체·재장착했을 때, 마모로 유량이 드리프트할 때, 유체·배압 조건이 바뀌었을 때 다시 합니다. 장시간 연속 운전에서는 튜브 피로로 유량이 서서히 줄 수 있어, <b>주기적 재캘리브레이션이나 실시간 유량 모니터링</b>이 재현성에 유리합니다. 여러 펌프를 함께 쓰면 각 채널을 개별 캘리브레이션해야 합니다.</p>
+
+    <h2>재현성을 위한 팁</h2>
+    <p>같은 로트·재질의 튜브를 쓰고, 캘리브레이션 조건(튜브·배압·온도)과 실측값을 로그로 남겨 두면 다음에 같은 조건을 재현하기 쉽습니다. 무인 장시간 운전이라면 유량·이력을 소프트웨어로 기록·재현하는 제어가 편차를 줄여줍니다.</p>
   </div>
 
   <div class="sd-bridge">
-    <h2>주입 위치·시린지 규격부터 같이 정합니다</h2>
-    <p>주입 대상·유량·시린지 규격·채널 조건을 남겨주시면 TFD 구성을 제안드립니다.</p>
-    <a href="/contact/#experiment">TFD 구성 상담 →</a>
+    <h2>유량 편차, 제어로 잡습니다</h2>
+    <p>실험셋업연구소는 리드플루이드 펌프에 제어 소프트웨어를 얹어 채널별 유량 설정·기록·재현을 지원합니다. 캘리브레이션 조건 상담도 가능합니다.</p>
+    <a href="/pump/leadfluid/">리드플루이드 펌프·제어 보기 →</a>
   </div>
 
-  <div class="sd-sources">
-    <h4>참고</h4>
-    사양 출처: LeadFluid 2025 Catalog / 사양서(TFD 시리즈).<br>
-    ※ 유량은 장착 시린지 규격·모델에 따라 달라지며, 가격은 단채널·다채널 구성별로 다릅니다.
-  </div>
-
-  <div class="sd-tags"><span>#TFD</span><span>#스플릿형시린지펌프</span><span>#분리형시린지펌프</span><span>#미세주입</span><span>#뇌정위장치</span><span>#리드플루이드</span></div>
+  <div class="sd-tags"><span>#유량캘리브레이션</span><span>#연동펌프</span><span>#유량보정</span><span>#재현성</span><span>#펌프튜브</span></div>
 
   <div class="sd-related">
     <h3>관련 콘텐츠</h3>
     <div class="sd-rel-grid">
-      <a class="sd-rc" href="/pump/leadfluid/tyd01-01/"><div class="cat">리드플루이드</div><div class="t">TYD01-01 본체일체형 시린지펌프</div><div class="d">일체형 시린지펌프 — 정밀 미량 주입.</div></a>
-      <a class="sd-rc" href="/setups/brain-electrode-tyd01"><div class="cat">논문 셋업</div><div class="t">뇌 피질 전자 텐트 전극 — TYD01-01</div><div class="d">시린지펌프로 주입 속도를 정밀 제어한 Nature Electronics 셋업.</div></a>
-      <a class="sd-rc" href="/pump/leadfluid/"><div class="cat">리드플루이드</div><div class="t">리드플루이드 펌프·모델 허브</div><div class="d">모델·스펙·유량계산기·매뉴얼·A/S.</div></a>
+      <a class="sd-rc" href="/pump/atoz/peristaltic-flow-setpoint-mismatch/"><div class="cat">문제해결</div><div class="t">유량이 설정값과 다른 이유</div><div class="d">연동펌프 유량 오차의 원인과 점검.</div></a>
+      <a class="sd-rc" href="/pump/atoz/tube-size-guide/"><div class="cat">참조</div><div class="t">튜브 규격·펌프헤드 가이드</div><div class="d">튜브 번호별 내경(mm)과 헤드 유형.</div></a>
+      <a class="sd-rc" href="/pump/leadfluid/"><div class="cat">리드플루이드</div><div class="t">리드플루이드 펌프·모델 허브</div><div class="d">모델·스펙·유량계산기·제어·A/S.</div></a>
     </div>
   </div>
 </article>

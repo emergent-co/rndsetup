@@ -390,6 +390,7 @@ CRAWLER_LINKS = [
     ('/pump/leadfluid/explosion-proof/', '리드플루이드 방폭 연동펌프 EF800·EF900 — ATEX/IECEx 방폭 지역용'),
     ('/pump/leadfluid/bq80s/', '리드플루이드 BQ80S 마이크로 정량 연동펌프 — 패널 장착·0.0035~34mL/min'),
     ('/pump/leadfluid/tfd/', '리드플루이드 TFD 스플릿형 시린지펌프 — 컨트롤러 분리형·미세주입·다채널'),
+    ('/pump/leadfluid/explosion-proof-gear/', '리드플루이드 방폭 기어펌프 FG601S-A3·W3 — 공압구동·ATEX 용제/석유화학'),
     ('/pump/leadfluid/bt301l/', '리드플루이드 BT301L 지능형 유량 연동펌프 — 0.005~1750mL/min·RS485 제어'),
     ('/pump/leadfluid/wt600f/', '리드플루이드 WT600F 분주형 대유량 연동펌프 — 0.005~6000mL/min·4모드 분주'),
     ('/pump/leadfluid/mf106/', '리드플루이드 MF106 고보호(IP66/67) 연동펌프 — 0.005~7700mL/min·방진방수'),
@@ -406,6 +407,8 @@ CRAWLER_LINKS = [
     ('/pump/select/', '펌프·튜브 선택 가이드 — 조건 입력하면 추천'),
     ('/pump/atoz/peristaltic-flow-setpoint-mismatch/', '연동펌프 유량이 설정값과 다른 이유'),
     ('/pump/atoz/tubing-crush-tear-causes/', '연동펌프 튜빙 씹힘·찢어짐 원인·해결'),
+    ('/pump/atoz/flow-calibration/', '연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정'),
+    ('/pump/atoz/tube-size-guide/', '연동펌프 튜브 규격·펌프헤드 가이드 — 번호별 내경(mm)·유량'),
     ('/pump/setups/plating-flow-calibration/', '도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)'),
     ('/setups/', '도입·논문 사례 — LeadFluid 펌프가 쓰인 연구 셋업'),
     ('/setups/heart-eshp-bt101l.html', '심장 체외 관류(ESHP) — BT101L 연동펌프 (Frontiers 2021)'),
@@ -790,6 +793,7 @@ def main():
         ('pump/leadfluid/explosion-proof/', '0.7', 'monthly'),  # 방폭 연동펌프 EF800·EF900 (무주공산 키워드)
         ('pump/leadfluid/bq80s/', '0.7', 'monthly'),  # BQ80S 마이크로 정량 (무주공산)
         ('pump/leadfluid/tfd/', '0.7', 'monthly'),  # TFD 스플릿 시린지 (무주공산)
+        ('pump/leadfluid/explosion-proof-gear/', '0.7', 'monthly'),  # 방폭 기어펌프 FG601S (무주공산)
         ('pump/leadfluid/bt103s/',    '0.8', 'monthly'),  # 모델 페이지 (분주형)
         ('pump/leadfluid/bt103s/head-replace/', '0.6', 'monthly'),  # 헤드 교체·튜브 장착 how-to
         ('pump/leadfluid/bt301l/',    '0.8', 'monthly'),  # 모델 페이지 (지능형 유량)
@@ -808,6 +812,8 @@ def main():
         ('pump/select/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
         ('pump/atoz/peristaltic-flow-setpoint-mismatch/', '0.7', 'monthly'),
         ('pump/atoz/tubing-crush-tear-causes/', '0.7', 'monthly'),
+        ('pump/atoz/flow-calibration/', '0.7', 'monthly'),  # 유량 캘리브레이션 (무주공산)
+        ('pump/atoz/tube-size-guide/', '0.7', 'monthly'),  # 튜브 규격·펌프헤드 (무주공산)
         ('faq/',          '0.7', 'monthly'),  # FAQ
         ('application/',  '0.7', 'monthly'),  # 실험 가이드 (목록)
         ('alicat/',       '0.8', 'monthly'),  # 소프트웨어 호환 장비 — ALICAT

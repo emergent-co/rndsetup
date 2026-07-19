@@ -15,6 +15,7 @@
     { t:'리드플루이드 방폭 연동펌프 EF800·EF900', u:'/pump/leadfluid/explosion-proof/', k:'방폭 방폭펌프 방폭 연동펌프 EF800 EF900 EF803 EF806 ATEX IECEx explosion proof 인화성 용제 폭발위험지역 방폭지역 리드플루이드', c:'리드플루이드' },
     { t:'리드플루이드 BQ80S 마이크로 정량 연동펌프', u:'/pump/leadfluid/bq80s/', k:'BQ80S 마이크로 정량펌프 패널장착 저유량 연동펌프 0.0035 초저유량 OEM 분석기 내장 정량 투입 리드플루이드', c:'리드플루이드' },
     { t:'리드플루이드 TFD 스플릿형 시린지펌프', u:'/pump/leadfluid/tfd/', k:'TFD TFD01 TFD02 TFD03 TFD04 스플릿 분리형 시린지펌프 미세주입 뇌정위장치 전기방사 마이크로스피어 다채널 syringe 리드플루이드', c:'리드플루이드' },
+    { t:'리드플루이드 방폭 기어펌프 FG601S-A3·W3', u:'/pump/leadfluid/explosion-proof-gear/', k:'방폭 기어펌프 FG601S FG601S-A3 FG601S-W3 공압구동 에어구동 air driven ATEX 용제 석유화학 고점도 대유량 PEEK 방폭 리드플루이드', c:'리드플루이드' },
     { t:'Masterflex·Watson-Marlow 연동펌프 국내 대안', u:'/compare/imported-peristaltic-alternative/', k:'마스터플렉스 masterflex 왓슨말로우 watson-marlow 이즈마텍 ismatec 대안 비교 갈아타기 수입 연동펌프 국내 as 제어', c:'비교' },
     { t:'ALICAT 질량유량계(MFC) 브랜드', u:'/alicat/', k:'alicat 알리캣 질량유량계 mfc mass flow controller 다기체 응답속도 rs485 modbus 소프트웨어 호환 장비', c:'호환 장비' },
     { t:'삼흥에너지(SH-Scientific) 튜브퍼니스·전기로', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 소프트웨어 호환 장비', c:'호환 장비' },
@@ -33,6 +34,8 @@
     { t:'실험 가이드 허브', u:'/application/', k:'응용별 셋업 가이드 펌프 튜브', c:'실험 가이드' },
     { t:'펌프 셋업 사례 — 실제 도입·제어·유량 보정', u:'/pump/guide/', k:'펌프 셋업 사례 도입 제어 유량 보정 도금 다펌프 튜브퍼니스 mfc 스토리', c:'펌프 셋업 사례' },
     { t:'리드플루이드 국내 A/S·정품·3년보증', u:'/pump/leadfluid/', k:'리드플루이드 leadfluid 국내 as 수리 정품 보증 신뢰 진단 품질', c:'호환 장비' },
+    { t:'연동펌프 유량 캘리브레이션 방법', u:'/pump/atoz/flow-calibration/', k:'유량 캘리브레이션 보정 calibration 연동펌프 설정값 실제유량 드리프트 저울 메스실린더 보정계수 재현성', c:'펌프를 고를 때' },
+    { t:'연동펌프 튜브 규격·펌프헤드 가이드', u:'/pump/atoz/tube-size-guide/', k:'튜브 규격 번호 내경 mm 13 14 16 25 17 18 펌프헤드 YT25 YZ35 튜브 재질 실리콘 tygon pharmed viton 연동펌프', c:'펌프를 고를 때' },
     { t:'자주 묻는 질문 FAQ', u:'/faq/', k:'질문 faq 정량펌프 연동펌프 튜브 채널 제어 수리 소프트웨어', c:'FAQ' },
     { t:'문의하기', u:'/contact/', k:'상담 수리 개발 견적 실험 문의', c:'문의하기' }
   ];
