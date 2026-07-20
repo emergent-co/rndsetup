@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="/assets/site.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  .tcg-page { font-family: 'Pretendard', 'Malgun Gothic', sans-serif; background: #f4f4f6; color: #222; padding: 32px 16px; min-height: 60vh; }
+  .tcg-page { font-family: 'Pretendard', 'Malgun Gothic', sans-serif; background: #fff; color: #222; padding: 32px 16px; min-height: 60vh; }
   .tcg-wrap { max-width: 900px; margin: 0 auto; }
   h1 { font-size: 22px; font-weight: 600; margin-bottom: 6px; }
   .sub { font-size: 14px; color: #777; margin-bottom: 20px; }
@@ -187,11 +187,13 @@
         <div id="commlist"></div>
       </div>
       <div class="donebox" id="donebox"></div>
-      <div class="rcard" id="ctaBox" style="margin-top:12px;">
-        <h2 style="font-size:15px; font-weight:600; margin-bottom:6px;">장비·견적 문의</h2>
-        <p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">실험셋업연구소는 삼흥에너지(SH Scientific) 전기로와 LeadFluid 펌프를 취급하며, 온도 스케줄과 가스 유량(MFC)을 연동하는 자동화 셋업을 지원합니다. 이 컨트롤러가 탑재된 전기로의 모델 선정·견적·납품 문의를 환영합니다. 타 제조사 장비의 컨트롤러·셋업 문의도 가능합니다.</p>
-        <p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">문의하기</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · 070-8983-2600</p>
-      </div>
+      <details class="rcard" style="margin-top:12px; padding:0;">
+        <summary id="ctaSum" style="cursor:pointer; padding:13px 18px; font-size:14px; font-weight:600; color:#555;">장비·견적 문의 — 삼흥에너지·LeadFluid 공식 대리점</summary>
+        <div id="ctaBox" style="padding:2px 18px 16px;">
+          <p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">실험셋업연구소는 삼흥에너지(SH Scientific) 전기로 공식 대리점(지역 A/S)이자 LeadFluid 공식 대리점으로, 온도 스케줄과 가스 유량(MFC)을 연동하는 자동화 셋업을 지원합니다. 이 컨트롤러가 탑재된 전기로의 모델 선정·견적·납품 문의를 환영합니다. 타 제조사 장비의 컨트롤러·셋업 문의도 가능합니다.</p>
+          <p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">문의하기</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · 070-8983-2600</p>
+        </div>
+      </details>
     </div>
   </div>
 
@@ -257,7 +259,7 @@
           <li>CVD 시스템: <code>SH-CVD-30TG150</code>, <code>SH-CVD-50TG200</code>~<code>SH-CVD-250TG600</code> (TG 전 구경·길이), <code>SH-CVD-50TS300</code>~<code>SH-CVD-120TS300</code>, <code>SH-CVD-50TH300</code>~<code>SH-CVD-120TH300</code>, <code>SH-RTCVD-100TG200</code>, <code>SH-RTCVD-100TG300</code>, <code>SH-CVD-PK</code></li>
         </ol>
         <p id="shOut">확인 출처: 삼흥에너지 공식 판매처 실험실닷컴 및 삼흥과학 제품 사양표 (2026년 7월 기준). 예: SH-FU-11MS1700 사양 "Programmable Controller(SP590)", SH-FU-31MGV·튜브로 사양 "Programmable Controller(SP570)", SH-FU-3MG 옵션 "Programmable controller(SP570)". 사양·옵션은 변경될 수 있으므로 구매 전 확인을 권장합니다.</p>
-        <p id="shCta" style="background:#f0f7ff; border-radius:8px; padding:10px 14px;">실험셋업연구소는 삼흥에너지 전기로를 취급합니다. 모델 선정이나 견적이 필요하시면 <a href="https://rndsetup.com/contact/">문의하기</a> 또는 info@rndsetup.com으로 연락주세요.</p>
+        <p id="shCta" style="background:#f0f7ff; border-radius:8px; padding:10px 14px;">실험셋업연구소는 삼흥에너지 전기로 공식 대리점(지역 A/S)입니다. 모델 선정이나 견적이 필요하시면 <a href="https://rndsetup.com/contact/">문의하기</a> 또는 info@rndsetup.com으로 연락주세요.</p>
       </div>
     </details>
     <details>
@@ -942,8 +944,9 @@ function renderComm() {
 
 const STATIC = {
 en: {
- 'ctaBox':'<h2 style="font-size:15px; font-weight:600; margin-bottom:6px;">Equipment & quotes</h2><p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">Experiment Setup Lab supplies SH Scientific furnaces and LeadFluid pumps, and builds automated setups linking temperature schedules with gas flow (MFC). Inquiries for model selection, quotes and delivery of furnaces equipped with this controller are welcome. Inquiries about controllers and setups for equipment from other manufacturers are also welcome.</p><p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">Contact</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · +82-70-8983-2600</p>',
- 'shCta':'Experiment Setup Lab supplies SH Scientific furnaces. For model selection or a quote, <a href="https://rndsetup.com/contact/">contact us</a> or email info@rndsetup.com.',
+ 'ctaSum':'Equipment & quotes — authorized SH Scientific·LeadFluid dealer',
+ 'ctaBox':'<p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">Experiment Setup Lab is an authorized SH Scientific dealer (regional A/S) and authorized LeadFluid dealer, and builds automated setups linking temperature schedules with gas flow (MFC). Inquiries for model selection, quotes and delivery of furnaces equipped with this controller are welcome. Inquiries about controllers and setups for equipment from other manufacturers are also welcome.</p><p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">Contact</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · +82-70-8983-2600</p>',
+ 'shCta':'Experiment Setup Lab is an authorized SH Scientific dealer (regional A/S). For model selection or a quote, <a href="https://rndsetup.com/contact/">contact us</a> or email info@rndsetup.com.',
  'refLabel':'Reference (click to expand)',
  'sm-faq':'Frequently asked questions (FAQ)',
  'sm-dl':'Official manual downloads (Korean·English·Chinese)',
@@ -965,8 +968,9 @@ en: {
  'tb-g3':'<ol><li>In the setting screen, move through groups with ▲; past the control group (G.CTL) the password screen (<code>PWD</code>) appears — default 0</li><li>Enter the communication group (<code>G.COM</code>, shown when the option is installed)</li><li>Protocol (<code>COM.P</code>): PCC0/PCC1 (default)/MBS.A (MODBUS ASCII)/MBS.R (MODBUS RTU) etc.</li><li>Baud rate (<code>BAUD</code>): 9600–115.2K (default 38.4K)</li><li>Parity (<code>PRTY</code>): NONE/EVEN/ODD · stop bit (<code>S.BIT</code>): 1/2 · data length (<code>D.LEN</code>): 7/8 (hidden for MODBUS)</li><li>Address (<code>ADDR</code>): 1–99, no duplicates, up to 31 units (Manual pp. I-92–93)</li></ol>'
 },
 zh: {
- 'ctaBox':'<h2 style="font-size:15px; font-weight:600; margin-bottom:6px;">设备·报价咨询</h2><p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">实验设置研究所经营SH Scientific电炉与LeadFluid泵，并提供温度曲线与气体流量（MFC）联动的自动化设置支持。欢迎咨询搭载本控制器的电炉选型、报价与供货。其他制造商设备的控制器·设置咨询也同样欢迎。</p><p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">联系我们</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · +82-70-8983-2600</p>',
- 'shCta':'实验设置研究所经营SH Scientific电炉。如需选型或报价，请<a href="https://rndsetup.com/contact/">联系我们</a>或发邮件至 info@rndsetup.com。',
+ 'ctaSum':'设备·报价咨询 — SH Scientific·LeadFluid官方代理商',
+ 'ctaBox':'<p style="font-size:13px; color:#555; line-height:1.65; margin:0 0 8px;">实验设置研究所是SH Scientific电炉官方代理商（地区售后）及LeadFluid官方代理商，并提供温度曲线与气体流量（MFC）联动的自动化设置支持。欢迎咨询搭载本控制器的电炉选型、报价与供货。其他制造商设备的控制器·设置咨询也同样欢迎。</p><p style="font-size:13px; margin:0;"><a href="https://rndsetup.com/contact/" style="color:#2f6fd0;">联系我们</a> · <a href="mailto:info@rndsetup.com" style="color:#2f6fd0;">info@rndsetup.com</a> · +82-70-8983-2600</p>',
+ 'shCta':'实验设置研究所是SH Scientific电炉官方代理商（地区售后）。如需选型或报价，请<a href="https://rndsetup.com/contact/">联系我们</a>或发邮件至 info@rndsetup.com。',
  'refLabel':'参考资料（点击展开）',
  'sm-faq':'常见问题（FAQ）',
  'sm-dl':'官方使用说明书下载（韩文·英文·中文）',
@@ -990,7 +994,7 @@ zh: {
 };
 ['en','zh'].forEach(function(l){ var s=STATIC[l]; s['sm-g1']= l==='en' ? 'Text guide — Program run · Repeat · RS485 (full procedures)' : '文字版使用方法 — 程序运行·循环·RS485（完整步骤）'; s['tb-g1']= s['tb-g1']+s['tb-g2']+'<h3>'+(l==='en'?'RS485 communication (G.COM)':'RS485通信设置（G.COM）')+'</h3>'+s['tb-g3']; });
 let koStatic = null;
-const REF_IDS = ['ctaBox','shCta','refLabel','sm-faq','sm-dl','sm-sh','sm-g1','sm-g2','sm-g3','tb-faq','tb-dl','tb-g1','tb-g2','tb-g3','shIntro','shH1','shH2','shH3','shH4','shOut','noteP'];
+const REF_IDS = ['ctaSum','ctaBox','shCta','refLabel','sm-faq','sm-dl','sm-sh','sm-g1','sm-g2','sm-g3','tb-faq','tb-dl','tb-g1','tb-g2','tb-g3','shIntro','shH1','shH2','shH3','shH4','shOut','noteP'];
 function applyRef() {
   if (!koStatic) {
     koStatic = {};

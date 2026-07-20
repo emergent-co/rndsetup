@@ -21,7 +21,7 @@
   - [MF106 고보호 연동펌프](https://rndsetup.com/pump/leadfluid/mf106/): 방진방수 IP66/67(0.005~7700 mL/min)
   - [TYD01-01 시린지펌프](https://rndsetup.com/pump/leadfluid/tyd01-01/): 나노리터급 정밀 주입(0.184 nL~83 mL/min)·RS485·WiFi·뇌 인터페이싱 논문
   - [CT3001F PEEK 기어펌프](https://rndsetup.com/pump/leadfluid/ct3001f/): 서보 브러시리스 모터 PEEK 기어 저맥동 연속 이송·CO₂ 포집 논문
-- [삼흥에너지(SH-Scientific)](https://rndsetup.com/sh-scientific/): 국내 열처리 장비(튜브퍼니스·전기로) 소개 + 제어 소프트웨어가 온도 스케줄과 MFC 가스 유량을 연동(소프트웨어 호환 장비)
+- [삼흥에너지(SH-Scientific)](https://rndsetup.com/sh-scientific/): 국내 열처리 장비(튜브퍼니스·전기로) — 실험셋업연구소가 공식 대리점(지역 A/S)으로 공급하며, 제어 소프트웨어가 온도 스케줄과 MFC 가스 유량을 연동
 - [온도컨트롤러(SP590·NOVA500E) 사용법 가이드](https://rndsetup.com/temp-controller-guide/): 가상 컨트롤러로 직접 연습하는 인터랙티브 가이드 — 전기로 온도 스케줄(상승·유지·하강)·구간 반복·HOLD·무한반복·RS485 통신 설정. 삼흥에너지 전기로 다수 모델(MoSi₂ 시리즈=SP590, 진공머플·튜브로=SP570)에 적용. 한/영/중 지원
 - [ALICAT](https://rndsetup.com/alicat/): 미국 정밀 질량유량계(MFC) 브랜드 — 초고속 응답·다기체 보정·RS485, 공급·다중 MFC 동기 제어 지원(소프트웨어 호환 장비)
 - [수입 연동펌프 대안 비교](https://rndsetup.com/compare/imported-peristaltic-alternative/): Masterflex·Watson-Marlow·ISMATEC 대비 제어SW·국내 A/S·3년 보증·가격 — 정직한 갈아타기 비교(타 브랜드 제어는 모델별 상이·문의 확인)

@@ -18,7 +18,7 @@
     { t:'리드플루이드 방폭 기어펌프 FG601S-A3·W3', u:'/pump/leadfluid/explosion-proof-gear/', k:'방폭 기어펌프 FG601S FG601S-A3 FG601S-W3 공압구동 에어구동 air driven ATEX 용제 석유화학 고점도 대유량 PEEK 방폭 리드플루이드', c:'리드플루이드' },
     { t:'Masterflex·Watson-Marlow 연동펌프 국내 대안', u:'/compare/imported-peristaltic-alternative/', k:'마스터플렉스 masterflex 왓슨말로우 watson-marlow 이즈마텍 ismatec 대안 비교 갈아타기 수입 연동펌프 국내 as 제어', c:'비교' },
     { t:'ALICAT 질량유량계(MFC) 브랜드', u:'/alicat/', k:'alicat 알리캣 질량유량계 mfc mass flow controller 다기체 응답속도 rs485 modbus 소프트웨어 호환 장비', c:'호환 장비' },
-    { t:'삼흥에너지(SH-Scientific) 튜브퍼니스·전기로', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 소프트웨어 호환 장비', c:'호환 장비' },
+    { t:'삼흥에너지(SH-Scientific) 튜브퍼니스·전기로', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 공식 대리점 지역 as', c:'호환 장비' },
     { t:'소프트웨어 제어 펌프 시스템', u:'/requests/', k:'자동화 무인 관류 채널 독립 유량 기록 재현 modbus rs485 python 스케줄 레시피 로그 다펌프 동기', c:'실험을 자동화할 때' },
     { t:'프로그래밍 제어 (Modbus·RS-485·Python)', u:'/requests/#control', k:'modbus rs485 python 시리얼 제어 자동화 스크립트 레지스터', c:'실험을 자동화할 때' },
     { t:'유량 스케줄·ramp·레시피', u:'/requests/#schedule', k:'스케줄 ramp 램프 레시피 시퀀스 프로파일 반복 저장', c:'실험을 자동화할 때' },
@@ -76,11 +76,11 @@
         ['/pump/leadfluid/', '리드플루이드 펌프·모델'],
         ['/pump/select/', '펌프·튜브 선택'],
         ['/pump/atoz/',   '문제해결'],
-        ['/pump/guide/',  '셋업 사례'],
-        ['/faq/',    '자주묻는 질문(FAQ)']
+        ['/pump/guide/',  '셋업 사례']
       ] },
     { href:'/furnace/setups/', label:'열처리', icon:'devices' },
-    { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' }
+    { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' },
+    { href:'/faq/', label:'자주묻는 질문(FAQ)', icon:'faq' }
   ];
   function matches(href){ if(href.indexOf('#') > -1) return false; return href === '/' ? path === '/' : path === href; }
   function subOnPage(href){ var i = href.indexOf('#'); if(i === -1) return false; return path === (href.slice(0, i) || '/'); }

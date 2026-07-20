@@ -119,7 +119,7 @@
         .catch(function(){ btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. 이메일로 보내주세요: info@rndsetup.com'); });
     });
   });
-  (function(){ var m={'#general':'general','#quote':'quote'}; var t=m[location.hash]; if(t){ var b=document.querySelector('.pick[data-type="'+t+'"]'); if(b) b.click(); } })();
+  (function(){ var m={'#general':'general','#quote':'quote','#experiment':'general','#repair':'general','#dev':'general'}; var t=m[location.hash]; if(t){ var b=document.querySelector('.pick[data-type="'+t+'"]'); if(b) b.click(); } })();
 </script>
 </body>
 </html>
