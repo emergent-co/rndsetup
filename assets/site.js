@@ -128,7 +128,7 @@
       '<div class="cf-inner">' +
         '<div class="cf-cols">' +
           '<div class="cf-col"><h4>바로가기</h4>' +
-            '<a href="/pump/guide/">펌프 셋업 사례</a><a href="/pump/leadfluid/">리드플루이드</a><a href="/requests/">소프트웨어 제어</a><a href="/faq/">FAQ</a></div>' +
+            '<a href="/pump/guide/">펌프 셋업 사례</a><a href="/pump/leadfluid/">리드플루이드</a><a href="/about/">회사소개</a><a href="/requests/">소프트웨어 제어</a><a href="/faq/">FAQ</a></div>' +
           '<div class="cf-col"><h4>문의</h4>' +
             '<a href="/contact/#repair">수리 문의</a><a href="/contact/#dev">개발 문의</a>' +
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +

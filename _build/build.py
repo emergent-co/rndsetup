@@ -381,6 +381,7 @@ def build_requests():
 # 크롤러용 사이트 전체 링크(푸터 div에 정적 주입 → site.js가 런타임에 대체)
 CRAWLER_LINKS = [
     ('/', '홈'),
+    ('/about/', '실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업'),
     ('/pump/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
     ('/pump/leadfluid/bt101l/', '리드플루이드 BT101L 연동펌프 (LeadFluid BT101L) — RS485 PC 제어'),
     ('/pump/leadfluid/bt103s/', '리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주'),
@@ -804,6 +805,7 @@ def main():
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기
         ('trust/',        '0.8', 'monthly'),  # 믿고 도입할 때 (신뢰·A/S)
+        ('about/',        '0.8', 'monthly'),  # 회사소개 (엔티티 앵커)
         ('pump/setups/plating-flow-calibration/', '0.8', 'monthly'),  # 도입 스토리 (도금 유량 보정)
         ('furnace/setups/', '0.8', 'monthly'),  # 퍼니스 셋업 사례 허브
         ('furnace/setups/alicat-mfc-tubefurnace/', '0.7', 'monthly'),  # 도입 스토리 (튜브퍼니스 MFC)
