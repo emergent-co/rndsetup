@@ -8,14 +8,14 @@
 
   var SEARCH_INDEX = [
     { t:'홈', u:'/', k:'소프트웨어 제어 펌프 시스템 관류', c:'페이지' },
-    { t:'리드플루이드(LeadFluid) — 정품·국내 A/S·제어', u:'/pump/leadfluid/', k:'리드플루이드 leadfluid 정품 국내 as 수리 3년보증 연동 시린지 기어 정량펌프 baoding ingersoll rand 나비엠알오 제어 소프트웨어', c:'리드플루이드' },
-    { t:'리드플루이드 BT101L 연동펌프', u:'/pump/leadfluid/bt101l/', k:'BT101L bt101 l 리드플루이드 연동펌프 지능형 rs485 modbus 도금 코팅 카테터 논문 750 mL 제어', c:'리드플루이드' },
-    { t:'리드플루이드 TYD01-01 시린지펌프', u:'/pump/leadfluid/tyd01-01/', k:'TYD01 TYD01-01 리드플루이드 시린지펌프 나노리터 정밀 주입 rs485 wifi 뇌 전극 미세유체 논문', c:'리드플루이드' },
-    { t:'리드플루이드 CT3001F PEEK 기어펌프', u:'/pump/leadfluid/ct3001f/', k:'CT3001F 리드플루이드 PEEK 기어펌프 서보 브러시리스 모터 저맥동 연속 순환 co2 포집 논문', c:'리드플루이드' },
-    { t:'리드플루이드 방폭 연동펌프 EF800·EF900', u:'/pump/leadfluid/explosion-proof/', k:'방폭 방폭펌프 방폭 연동펌프 EF800 EF900 EF803 EF806 ATEX IECEx explosion proof 인화성 용제 폭발위험지역 방폭지역 리드플루이드', c:'리드플루이드' },
-    { t:'리드플루이드 BQ80S 마이크로 정량 연동펌프', u:'/pump/leadfluid/bq80s/', k:'BQ80S 마이크로 정량펌프 패널장착 저유량 연동펌프 0.0035 초저유량 OEM 분석기 내장 정량 투입 리드플루이드', c:'리드플루이드' },
-    { t:'리드플루이드 TFD 스플릿형 시린지펌프', u:'/pump/leadfluid/tfd/', k:'TFD TFD01 TFD02 TFD03 TFD04 스플릿 분리형 시린지펌프 미세주입 뇌정위장치 전기방사 마이크로스피어 다채널 syringe 리드플루이드', c:'리드플루이드' },
-    { t:'리드플루이드 방폭 기어펌프 FG601S-A3·W3', u:'/pump/leadfluid/explosion-proof-gear/', k:'방폭 기어펌프 FG601S FG601S-A3 FG601S-W3 공압구동 에어구동 air driven ATEX 용제 석유화학 고점도 대유량 PEEK 방폭 리드플루이드', c:'리드플루이드' },
+    { t:'리드플루이드(LeadFluid) — 정품·국내 A/S·제어', u:'/leadfluid/', k:'리드플루이드 leadfluid 정품 국내 as 수리 3년보증 연동 시린지 기어 정량펌프 baoding ingersoll rand 나비엠알오 제어 소프트웨어', c:'리드플루이드' },
+    { t:'리드플루이드 BT101L 연동펌프', u:'/leadfluid/bt101l/', k:'BT101L bt101 l 리드플루이드 연동펌프 지능형 rs485 modbus 도금 코팅 카테터 논문 750 mL 제어', c:'리드플루이드' },
+    { t:'리드플루이드 TYD01-01 시린지펌프', u:'/leadfluid/tyd01-01/', k:'TYD01 TYD01-01 리드플루이드 시린지펌프 나노리터 정밀 주입 rs485 wifi 뇌 전극 미세유체 논문', c:'리드플루이드' },
+    { t:'리드플루이드 CT3001F PEEK 기어펌프', u:'/leadfluid/ct3001f/', k:'CT3001F 리드플루이드 PEEK 기어펌프 서보 브러시리스 모터 저맥동 연속 순환 co2 포집 논문', c:'리드플루이드' },
+    { t:'리드플루이드 방폭 연동펌프 EF800·EF900', u:'/leadfluid/explosion-proof/', k:'방폭 방폭펌프 방폭 연동펌프 EF800 EF900 EF803 EF806 ATEX IECEx explosion proof 인화성 용제 폭발위험지역 방폭지역 리드플루이드', c:'리드플루이드' },
+    { t:'리드플루이드 BQ80S 마이크로 정량 연동펌프', u:'/leadfluid/bq80s/', k:'BQ80S 마이크로 정량펌프 패널장착 저유량 연동펌프 0.0035 초저유량 OEM 분석기 내장 정량 투입 리드플루이드', c:'리드플루이드' },
+    { t:'리드플루이드 TFD 스플릿형 시린지펌프', u:'/leadfluid/tfd/', k:'TFD TFD01 TFD02 TFD03 TFD04 스플릿 분리형 시린지펌프 미세주입 뇌정위장치 전기방사 마이크로스피어 다채널 syringe 리드플루이드', c:'리드플루이드' },
+    { t:'리드플루이드 방폭 기어펌프 FG601S-A3·W3', u:'/leadfluid/explosion-proof-gear/', k:'방폭 기어펌프 FG601S FG601S-A3 FG601S-W3 공압구동 에어구동 air driven ATEX 용제 석유화학 고점도 대유량 PEEK 방폭 리드플루이드', c:'리드플루이드' },
     { t:'Masterflex·Watson-Marlow 연동펌프 국내 대안', u:'/compare/imported-peristaltic-alternative/', k:'마스터플렉스 masterflex 왓슨말로우 watson-marlow 이즈마텍 ismatec 대안 비교 갈아타기 수입 연동펌프 국내 as 제어', c:'비교' },
     { t:'ALICAT 질량유량계(MFC) 브랜드', u:'/alicat/', k:'alicat 알리캣 질량유량계 mfc mass flow controller 다기체 응답속도 rs485 modbus 소프트웨어 호환 장비', c:'호환 장비' },
     { t:'삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 공식 대리점 지역 as 제품 선택 가이드 견적문의 구성 종류 온도 분위기 컨트롤러 옵션 시료 공정', c:'호환 장비' },
@@ -35,7 +35,7 @@
     { t:'장기칩·오가노이드 관류', u:'/application/organ-on-chip-perfusion.html', k:'장기칩 organ on chip 오가노이드 관류 미세유체 저유량 전단응력', c:'실험 가이드' },
     { t:'실험 가이드 허브', u:'/application/', k:'응용별 셋업 가이드 펌프 튜브', c:'실험 가이드' },
     { t:'펌프 셋업 사례 — 실제 도입·제어·유량 보정', u:'/pump/guide/', k:'펌프 셋업 사례 도입 제어 유량 보정 도금 다펌프 튜브퍼니스 mfc 스토리', c:'펌프 셋업 사례' },
-    { t:'리드플루이드 국내 A/S·정품·3년보증', u:'/pump/leadfluid/', k:'리드플루이드 leadfluid 국내 as 수리 정품 보증 신뢰 진단 품질', c:'호환 장비' },
+    { t:'리드플루이드 국내 A/S·정품·3년보증', u:'/leadfluid/', k:'리드플루이드 leadfluid 국내 as 수리 정품 보증 신뢰 진단 품질', c:'호환 장비' },
     { t:'연동펌프 유량 캘리브레이션 방법', u:'/pump/atoz/flow-calibration/', k:'유량 캘리브레이션 보정 calibration 연동펌프 설정값 실제유량 드리프트 저울 메스실린더 보정계수 재현성', c:'펌프를 고를 때' },
     { t:'연동펌프 튜브 규격·펌프헤드 가이드', u:'/pump/atoz/tube-size-guide/', k:'튜브 규격 번호 내경 mm 13 14 16 25 17 18 펌프헤드 YT25 YZ35 튜브 재질 실리콘 tygon pharmed viton 연동펌프', c:'펌프를 고를 때' },
     { t:'자주 묻는 질문 FAQ', u:'/faq/', k:'질문 faq 정량펌프 연동펌프 튜브 채널 제어 수리 소프트웨어', c:'FAQ' },
@@ -68,29 +68,25 @@
     wrench:'<svg viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 0 1-4.6 4.6L5 16l3 3 4.9-4.9a3.5 3.5 0 0 0 4.6-4.6l-2.1 2.1-2-2 2.1-2.1z"/></svg>'
   };
   var NAV = [
-    { href:'/pump/leadfluid/', label:'제품', icon:'wrench', sub:[
-        ['/pump/leadfluid/', '리드플루이드 펌프'],
-        ['/alicat/',         'Alicat 질량유량계(MFC)']
-      ] },
     { href:'/sh-scientific/', label:'삼흥에너지(sh-scientific)', icon:'devices', sub:[
         ['/sh-scientific/', '퍼니스 선택 가이드'],
         ['/sh-scientific/manual/', '메뉴얼'],
         ['/sh-scientific/blog/',   '설치·A/S 블로그']
       ] },
-    { href:'/about/', label:'신뢰·회사', icon:'shield', sub:[
-        ['/about/',  '회사소개'],
-        ['/trust/',  '정품·인증·보증'],
-        ['/setups/', '논문 셋업 실적']
+    { href:'/leadfluid/', label:'리드플루이드(LeadFluid)', icon:'wrench', sub:[
+        ['/pump/select/',            '펌프 선택 가이드'],
+        ['/leadfluid/manuals/', '메뉴얼·사양서'],
+        ['/pump/guide/',             '블로그 (셋업·논문 사례)'],
+        ['/pump/atoz/',              '사용법·문제해결'],
+        ['/trust/',                  '정품·인증·보증']
       ] },
+    { href:'/alicat/', label:'Alicat MFC', icon:'gas' },
+    { href:'/about/', label:'회사소개', icon:'shield' },
     { href:'/contact/', label:'구매·문의', icon:'contact', sub:[
         ['https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=', '구매 (나비엠알오)'],
         ['/repair/',  'A/S·수리 접수'],
-        ['/contact/', '견적·문의']
-      ] },
-    { href:'/pump/leadfluid/manuals/', label:'자료실', icon:'guide', sub:[
-        ['/pump/leadfluid/manuals/', '매뉴얼·사양서'],
-        ['/pump/atoz/',              '사용법·문제해결'],
-        ['/faq/',                    'FAQ']
+        ['/contact/', '견적·문의'],
+        ['/faq/',     'FAQ']
       ] }
   ];
   function matches(href){ if(href.indexOf('#') > -1) return false; return href === '/' ? path === '/' : path === href; }
@@ -147,7 +143,7 @@
       '<div class="cf-inner">' +
         '<div class="cf-cols">' +
           '<div class="cf-col"><h4>바로가기</h4>' +
-            '<a href="/pump/leadfluid/">제품·모델</a><a href="/about/">회사소개</a><a href="/trust/">정품·인증</a><a href="/repair/">A/S·수리</a><a href="/faq/">FAQ</a></div>' +
+            '<a href="/leadfluid/">제품·모델</a><a href="/about/">회사소개</a><a href="/trust/">정품·인증</a><a href="/repair/">A/S·수리</a><a href="/faq/">FAQ</a></div>' +
           '<div class="cf-col"><h4>문의</h4>' +
             '<a href="/contact/">일반 문의</a><a href="/contact/#quote">견적 문의</a>' +
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +
@@ -267,7 +263,7 @@
     if (window.self === window.top && path.indexOf('/pump/') === 0 && !document.querySelector('.lf-sticky')) {
       var lf = document.createElement('a');
       lf.className = 'lf-sticky';
-      lf.href = '/pump/leadfluid/';
+      lf.href = '/leadfluid/';
       lf.innerHTML = '<span class="lf-name">리드플루이드(LeadFluid)</span><span class="lf-go">펌프 보기 →</span>';
       document.body.appendChild(lf);
       document.body.classList.add('has-lfsticky');

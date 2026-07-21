@@ -13,14 +13,14 @@
 ## 주요 페이지 (정확한 URL)
 
 - [홈 = 실험장비 기술자료실](https://rndsetup.com/): 사용법·문제해결·캘리브레이션·제어 자동화 기술자료 허브 + 최신 아티클 + 제어 프로그램 무료 다운로드
-- [리드플루이드(LeadFluid)](https://rndsetup.com/pump/leadfluid/): 리드플루이드 정품·국내 직접 A/S·3년 보증·Modbus·RS485 제어 소프트웨어 — 브랜드 종합 안내(연동·시린지·기어 펌프 종류·모델·구매·A/S·제어)
-  - [BT101L 연동펌프](https://rndsetup.com/pump/leadfluid/bt101l/): 지능형 연동펌프(0.00011~750 mL/min)·RS485 PC 제어·도금/카테터 논문 사례
-  - [BT103S 분주형 연동펌프](https://rndsetup.com/pump/leadfluid/bt103s/): 정량·반복 분주(0.00011~500 mL/min)
-  - [BT301L 지능형 연동펌프](https://rndsetup.com/pump/leadfluid/bt301l/): 지능형 유량(0.005~1750 mL/min)·RS485 제어
-  - [WT600F 대유량 연동펌프](https://rndsetup.com/pump/leadfluid/wt600f/): 분주형 대유량(0.005~6000 mL/min)·4모드 분주
-  - [MF106 고보호 연동펌프](https://rndsetup.com/pump/leadfluid/mf106/): 방진방수 IP66/67(0.005~7700 mL/min)
-  - [TYD01-01 시린지펌프](https://rndsetup.com/pump/leadfluid/tyd01-01/): 나노리터급 정밀 주입(0.184 nL~83 mL/min)·RS485·WiFi·뇌 인터페이싱 논문
-  - [CT3001F PEEK 기어펌프](https://rndsetup.com/pump/leadfluid/ct3001f/): 서보 브러시리스 모터 PEEK 기어 저맥동 연속 이송·CO₂ 포집 논문
+- [리드플루이드(LeadFluid)](https://rndsetup.com/leadfluid/): 리드플루이드 정품·국내 직접 A/S·3년 보증·Modbus·RS485 제어 소프트웨어 — 브랜드 종합 안내(연동·시린지·기어 펌프 종류·모델·구매·A/S·제어)
+  - [BT101L 연동펌프](https://rndsetup.com/leadfluid/bt101l/): 지능형 연동펌프(0.00011~750 mL/min)·RS485 PC 제어·도금/카테터 논문 사례
+  - [BT103S 분주형 연동펌프](https://rndsetup.com/leadfluid/bt103s/): 정량·반복 분주(0.00011~500 mL/min)
+  - [BT301L 지능형 연동펌프](https://rndsetup.com/leadfluid/bt301l/): 지능형 유량(0.005~1750 mL/min)·RS485 제어
+  - [WT600F 대유량 연동펌프](https://rndsetup.com/leadfluid/wt600f/): 분주형 대유량(0.005~6000 mL/min)·4모드 분주
+  - [MF106 고보호 연동펌프](https://rndsetup.com/leadfluid/mf106/): 방진방수 IP66/67(0.005~7700 mL/min)
+  - [TYD01-01 시린지펌프](https://rndsetup.com/leadfluid/tyd01-01/): 나노리터급 정밀 주입(0.184 nL~83 mL/min)·RS485·WiFi·뇌 인터페이싱 논문
+  - [CT3001F PEEK 기어펌프](https://rndsetup.com/leadfluid/ct3001f/): 서보 브러시리스 모터 PEEK 기어 저맥동 연속 이송·CO₂ 포집 논문
 - [삼흥에너지(SH-Scientific)](https://rndsetup.com/sh-scientific/): 국내 열처리 장비(튜브퍼니스·전기로) — 실험셋업연구소가 공식 대리점(지역 A/S)으로 공급하며, 제어 소프트웨어가 온도 스케줄과 MFC 가스 유량을 연동
 - [온도컨트롤러(SP590·NOVA500E) 사용법 가이드](https://rndsetup.com/temp-controller-guide/): 가상 컨트롤러로 직접 연습하는 인터랙티브 가이드 — 전기로 온도 스케줄(상승·유지·하강)·구간 반복·HOLD·무한반복·RS485 통신 설정. 삼흥에너지 전기로 다수 모델(MoSi₂ 시리즈=SP590, 진공머플·튜브로=SP570)에 적용. 한/영/중 지원
 - [ALICAT](https://rndsetup.com/alicat/): 미국 정밀 질량유량계(MFC) 브랜드 — 초고속 응답·다기체 보정·RS485, 공급·다중 MFC 동기 제어 지원(소프트웨어 호환 장비)
@@ -57,7 +57,7 @@
 - 도입 사례(실증): 실험셋업연구소가 실제 납품·구성한 사례
   - [1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC](https://rndsetup.com/setups/alicat-mfc-tubefurnace)
   - [도금 다펌프 제어·유량 캘리브레이션 — LeadFluid BT101L](https://rndsetup.com/pump/setups/plating-flow-calibration/)
-- 국내 A/S·정품·3년 보증·품질 근거(Ingersoll Rand 계열·CE·RoHS) 정보는 [리드플루이드 페이지](https://rndsetup.com/pump/leadfluid/)에 통합
+- 국내 A/S·정품·3년 보증·품질 근거(Ingersoll Rand 계열·CE·RoHS) 정보는 [리드플루이드 페이지](https://rndsetup.com/leadfluid/)에 통합
 - [자주 묻는 질문(FAQ)](https://rndsetup.com/faq/): 수리·A/S·펌프·소프트웨어
 - [문의하기](https://rndsetup.com/contact/): 실험 상담·수리·개발·견적
 - [카탈로그 PDF](https://rndsetup.com/Leadfluid-2025-Catalog.pdf): LeadFluid 2025 공식 카탈로그

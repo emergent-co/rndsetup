@@ -382,19 +382,19 @@ def build_requests():
 CRAWLER_LINKS = [
     ('/', '홈'),
     ('/about/', '실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업'),
-    ('/pump/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
-    ('/pump/leadfluid/bt101l/', '리드플루이드 BT101L 연동펌프 (LeadFluid BT101L) — RS485 PC 제어'),
-    ('/pump/leadfluid/bt103s/', '리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주'),
-    ('/pump/leadfluid/bt103s/head-replace/', '리드플루이드 BT103S 펌프 헤드 교체·튜브 장착 방법'),
-    ('/pump/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
-    ('/pump/leadfluid/ct3001f/', '리드플루이드 CT3001F PEEK 기어펌프 — 서보 브러시리스 모터·PEEK 기어 저맥동 연속 이송'),
-    ('/pump/leadfluid/explosion-proof/', '리드플루이드 방폭 연동펌프 EF800·EF900 — ATEX/IECEx 방폭 지역용'),
-    ('/pump/leadfluid/bq80s/', '리드플루이드 BQ80S 마이크로 정량 연동펌프 — 패널 장착·0.0035~34mL/min'),
-    ('/pump/leadfluid/tfd/', '리드플루이드 TFD 스플릿형 시린지펌프 — 컨트롤러 분리형·미세주입·다채널'),
-    ('/pump/leadfluid/explosion-proof-gear/', '리드플루이드 방폭 기어펌프 FG601S-A3·W3 — 공압구동·ATEX 용제/석유화학'),
-    ('/pump/leadfluid/bt301l/', '리드플루이드 BT301L 지능형 유량 연동펌프 — 0.005~1750mL/min·RS485 제어'),
-    ('/pump/leadfluid/wt600f/', '리드플루이드 WT600F 분주형 대유량 연동펌프 — 0.005~6000mL/min·4모드 분주'),
-    ('/pump/leadfluid/mf106/', '리드플루이드 MF106 고보호(IP66/67) 연동펌프 — 0.005~7700mL/min·방진방수'),
+    ('/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
+    ('/leadfluid/bt101l/', '리드플루이드 BT101L 연동펌프 (LeadFluid BT101L) — RS485 PC 제어'),
+    ('/leadfluid/bt103s/', '리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주'),
+    ('/leadfluid/bt103s/head-replace/', '리드플루이드 BT103S 펌프 헤드 교체·튜브 장착 방법'),
+    ('/leadfluid/tyd01-01/', '리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입'),
+    ('/leadfluid/ct3001f/', '리드플루이드 CT3001F PEEK 기어펌프 — 서보 브러시리스 모터·PEEK 기어 저맥동 연속 이송'),
+    ('/leadfluid/explosion-proof/', '리드플루이드 방폭 연동펌프 EF800·EF900 — ATEX/IECEx 방폭 지역용'),
+    ('/leadfluid/bq80s/', '리드플루이드 BQ80S 마이크로 정량 연동펌프 — 패널 장착·0.0035~34mL/min'),
+    ('/leadfluid/tfd/', '리드플루이드 TFD 스플릿형 시린지펌프 — 컨트롤러 분리형·미세주입·다채널'),
+    ('/leadfluid/explosion-proof-gear/', '리드플루이드 방폭 기어펌프 FG601S-A3·W3 — 공압구동·ATEX 용제/석유화학'),
+    ('/leadfluid/bt301l/', '리드플루이드 BT301L 지능형 유량 연동펌프 — 0.005~1750mL/min·RS485 제어'),
+    ('/leadfluid/wt600f/', '리드플루이드 WT600F 분주형 대유량 연동펌프 — 0.005~6000mL/min·4모드 분주'),
+    ('/leadfluid/mf106/', '리드플루이드 MF106 고보호(IP66/67) 연동펌프 — 0.005~7700mL/min·방진방수'),
     ('/sh-scientific/', '삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업'),
     ('/sh-scientific/manual/', '삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전'),
     ('/sh-scientific/blog/', '삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그'),
@@ -789,20 +789,20 @@ def main():
     # 메인 + 상업 funnel 페이지 (loc 경로, priority, changefreq)
     static_pages = [
         ('',              '1.0', 'weekly'),   # 홈
-        ('pump/leadfluid/',    '0.9', 'monthly'),  # 리드플루이드 브랜드 랜딩
-        ('pump/leadfluid/bt101l/',    '0.8', 'monthly'),  # 모델 페이지
-        ('pump/leadfluid/tyd01-01/',  '0.8', 'monthly'),
-        ('pump/leadfluid/ct3001f/',   '0.8', 'monthly'),
-        ('pump/leadfluid/explosion-proof/', '0.7', 'monthly'),  # 방폭 연동펌프 EF800·EF900 (무주공산 키워드)
-        ('pump/leadfluid/bq80s/', '0.7', 'monthly'),  # BQ80S 마이크로 정량 (무주공산)
-        ('pump/leadfluid/tfd/', '0.7', 'monthly'),  # TFD 스플릿 시린지 (무주공산)
-        ('pump/leadfluid/explosion-proof-gear/', '0.7', 'monthly'),  # 방폭 기어펌프 FG601S (무주공산)
-        ('pump/leadfluid/bt103s/',    '0.8', 'monthly'),  # 모델 페이지 (분주형)
-        ('pump/leadfluid/bt103s/head-replace/', '0.6', 'monthly'),  # 헤드 교체·튜브 장착 how-to
-        ('pump/leadfluid/bt301l/',    '0.8', 'monthly'),  # 모델 페이지 (지능형 유량)
-        ('pump/leadfluid/wt600f/',    '0.8', 'monthly'),  # 모델 페이지 (분주형 대유량)
-        ('pump/leadfluid/mf106/',     '0.8', 'monthly'),  # 모델 페이지 (고보호 IP66/67)
-        ('pump/leadfluid/manuals/',    '0.6', 'monthly'),  # 모델별 사용 메뉴얼 목록
+        ('leadfluid/',    '0.9', 'monthly'),  # 리드플루이드 브랜드 랜딩
+        ('leadfluid/bt101l/',    '0.8', 'monthly'),  # 모델 페이지
+        ('leadfluid/tyd01-01/',  '0.8', 'monthly'),
+        ('leadfluid/ct3001f/',   '0.8', 'monthly'),
+        ('leadfluid/explosion-proof/', '0.7', 'monthly'),  # 방폭 연동펌프 EF800·EF900 (무주공산 키워드)
+        ('leadfluid/bq80s/', '0.7', 'monthly'),  # BQ80S 마이크로 정량 (무주공산)
+        ('leadfluid/tfd/', '0.7', 'monthly'),  # TFD 스플릿 시린지 (무주공산)
+        ('leadfluid/explosion-proof-gear/', '0.7', 'monthly'),  # 방폭 기어펌프 FG601S (무주공산)
+        ('leadfluid/bt103s/',    '0.8', 'monthly'),  # 모델 페이지 (분주형)
+        ('leadfluid/bt103s/head-replace/', '0.6', 'monthly'),  # 헤드 교체·튜브 장착 how-to
+        ('leadfluid/bt301l/',    '0.8', 'monthly'),  # 모델 페이지 (지능형 유량)
+        ('leadfluid/wt600f/',    '0.8', 'monthly'),  # 모델 페이지 (분주형 대유량)
+        ('leadfluid/mf106/',     '0.8', 'monthly'),  # 모델 페이지 (고보호 IP66/67)
+        ('leadfluid/manuals/',    '0.6', 'monthly'),  # 모델별 사용 메뉴얼 목록
         ('compare/imported-peristaltic-alternative/', '0.7', 'monthly'),  # 갈아타기 비교
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
         ('contact/',      '0.8', 'monthly'),  # 문의하기

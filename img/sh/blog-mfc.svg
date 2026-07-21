@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="튜브퍼니스 MFC 셋업">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FBF2EC"/><stop offset="1" stop-color="#F1DDCD"/></linearGradient>
+    <linearGradient id="glow2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F59E0B"/><stop offset="1" stop-color="#C2410C"/></linearGradient>
+  </defs>
+  <rect width="480" height="360" fill="url(#bg2)"/>
+  <!-- 가스 실린더 -->
+  <rect x="58" y="150" width="30" height="92" rx="12" fill="#2a5a8f"/>
+  <rect x="67" y="136" width="12" height="18" rx="3" fill="#1E3A5F"/>
+  <path d="M88 176 h34" fill="none" stroke="#2a5a8f" stroke-width="4" stroke-linecap="round"/>
+  <!-- 튜브 -->
+  <rect x="118" y="168" width="300" height="34" rx="17" fill="#F3E7DC" stroke="#9A3412" stroke-width="3.5"/>
+  <!-- 박스로 -->
+  <rect x="196" y="126" width="132" height="118" rx="12" fill="#ffffff" stroke="#9A3412" stroke-width="4"/>
+  <rect x="228" y="168" width="68" height="34" rx="6" fill="url(#glow2)"/>
+  <!-- 온도 곡선 -->
+  <polyline points="128,300 172,300 216,252 320,252 372,300" fill="none" stroke="#C2410C" stroke-width="4.5" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="216" cy="252" r="5.5" fill="#C2410C"/><circle cx="320" cy="252" r="5.5" fill="#C2410C"/>
+  <line x1="118" y1="312" x2="392" y2="312" stroke="#9A3412" stroke-width="2" opacity="0.4"/>
+</svg>

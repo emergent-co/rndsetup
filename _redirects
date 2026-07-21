@@ -27,19 +27,18 @@
 /vacuum/         /alicat/   301
 /compat/guide/   /alicat/   301
 
-# 펌프 허브 단일화(2026-07) — 리드플루이드 중심. /pump/leadfluid/를 정본 허브로.
-# 되돌리려면 이 블록 삭제 + 메뉴/사이트맵 복원. (자식 /pump/select/ 등은 영향 없음)
-/leadfluid/      /pump/leadfluid/   301
-/pump/           /pump/leadfluid/   301
-/pumps/          /pump/leadfluid/   301
-/pumps/*         /pump/leadfluid/   301
+# 리드플루이드 허브를 /leadfluid/로 이전(2026-07) — 옛 /pump/leadfluid/* → /leadfluid/*
+/pump/leadfluid/*   /leadfluid/:splat   301
+/pump/leadfluid/    /leadfluid/         301
+/pump/              /leadfluid/         301
+/pumps/             /leadfluid/         301
+/pumps/*            /leadfluid/         301
 
 # 스텁 → 서버 301 승격 후 실물 삭제 (2026-07, 관리파일 정리)
 /product/                  /application/            301
 /guide/                    /pump/guide/             301
 /guide-hub/                /                        301
 /quote/                    /contact/                301
-/leadfluid/*               /pump/leadfluid/:splat   301
 /troubleshooting/*         /pump/atoz/:splat        301
 /pump/troubleshooting/*    /pump/atoz/:splat        301
 
@@ -48,6 +47,6 @@
 /sh-scientific/select      /sh-scientific/   301
 
 # 무슬래시 안전변형 (검증 중 /pumps·/product 가 홈으로 새던 것 방지)
-/pumps      /pump/leadfluid/   301
+/pumps      /leadfluid/   301
 /product    /application/      301
-/leadfluid  /pump/leadfluid/   301
+/leadfluid  /leadfluid/        301
