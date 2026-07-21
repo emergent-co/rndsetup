@@ -43,6 +43,10 @@
 /troubleshooting/*         /pump/atoz/:splat        301
 /pump/troubleshooting/*    /pump/atoz/:splat        301
 
+# 삼흥 선택가이드를 허브 루트로 통합(2026-07) — /sh-scientific/ 자체가 제품 선택 가이드.
+/sh-scientific/select/     /sh-scientific/   301
+/sh-scientific/select      /sh-scientific/   301
+
 # 무슬래시 안전변형 (검증 중 /pumps·/product 가 홈으로 새던 것 방지)
 /pumps      /pump/leadfluid/   301
 /product    /application/      301

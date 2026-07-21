@@ -18,8 +18,7 @@
     { t:'리드플루이드 방폭 기어펌프 FG601S-A3·W3', u:'/pump/leadfluid/explosion-proof-gear/', k:'방폭 기어펌프 FG601S FG601S-A3 FG601S-W3 공압구동 에어구동 air driven ATEX 용제 석유화학 고점도 대유량 PEEK 방폭 리드플루이드', c:'리드플루이드' },
     { t:'Masterflex·Watson-Marlow 연동펌프 국내 대안', u:'/compare/imported-peristaltic-alternative/', k:'마스터플렉스 masterflex 왓슨말로우 watson-marlow 이즈마텍 ismatec 대안 비교 갈아타기 수입 연동펌프 국내 as 제어', c:'비교' },
     { t:'ALICAT 질량유량계(MFC) 브랜드', u:'/alicat/', k:'alicat 알리캣 질량유량계 mfc mass flow controller 다기체 응답속도 rs485 modbus 소프트웨어 호환 장비', c:'호환 장비' },
-    { t:'삼흥에너지(SH-Scientific) 튜브퍼니스·전기로', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 공식 대리점 지역 as', c:'호환 장비' },
-    { t:'삼흥에너지 전기로·튜브퍼니스 제품 선택 가이드', u:'/sh-scientific/select/', k:'삼흥에너지 전기로 튜브퍼니스 제품 선택 가이드 견적문의 구성 종류 온도 분위기 가스 컨트롤러 옵션 시료 공정 열처리 sh scientific', c:'호환 장비' },
+    { t:'삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적', u:'/sh-scientific/', k:'삼흥에너지 sh scientific 튜브퍼니스 관상로 전기로 머플로 열처리 온도 스케줄 가스 연동 공식 대리점 지역 as 제품 선택 가이드 견적문의 구성 종류 온도 분위기 컨트롤러 옵션 시료 공정', c:'호환 장비' },
     { t:'삼흥에너지 전기로·튜브퍼니스 메뉴얼', u:'/sh-scientific/manual/', k:'삼흥에너지 전기로 튜브퍼니스 메뉴얼 사용법 승온 프로그램 온도컨트롤러 sp590 안전 주의사항 설치 열처리 sh scientific', c:'호환 장비' },
     { t:'삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그', u:'/sh-scientific/blog/', k:'삼흥에너지 전기로 튜브퍼니스 설치 as 점검 사례 블로그 설치 체크리스트 열처리 sh scientific', c:'호환 장비' },
     { t:'소프트웨어 제어 펌프 시스템', u:'/requests/', k:'자동화 무인 관류 채널 독립 유량 기록 재현 modbus rs485 python 스케줄 레시피 로그 다펌프 동기', c:'실험을 자동화할 때' },
@@ -71,11 +70,10 @@
   var NAV = [
     { href:'/pump/leadfluid/', label:'제품', icon:'wrench', sub:[
         ['/pump/leadfluid/', '리드플루이드 펌프'],
-        ['/alicat/',         'Alicat 질량유량계(MFC)'],
-        ['/sh-scientific/',  '열처리로']
+        ['/alicat/',         'Alicat 질량유량계(MFC)']
       ] },
-    { href:'/sh-scientific/select/', label:'삼흥에너지', icon:'devices', sub:[
-        ['/sh-scientific/select/', '제품 선택 가이드'],
+    { href:'/sh-scientific/', label:'삼흥에너지', icon:'devices', sub:[
+        ['/sh-scientific/', '제품 선택 가이드'],
         ['/sh-scientific/manual/', '메뉴얼'],
         ['/sh-scientific/blog/',   '설치·A/S 블로그']
       ] },

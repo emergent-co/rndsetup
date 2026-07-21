@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업 + 가스·온도 연동 | 실험셋업연구소</title>
+<title>삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적 + 열처리 셋업 | 실험셋업연구소</title>
 <meta name="description" content="삼흥에너지(SH Scientific)는 국내 열처리 실험 장비(튜브퍼니스/관상로, 박스형 전기로/머플로, 건조기 등) 제조사입니다. 튜브퍼니스 열처리에서 중요한 승온 프로파일과 가스 분위기를 정리하고, 온도컨트롤러의 온도 스케줄에 Alicat MFC 가스 유량을 자동 연동해 무인·재현 셋업을 만드는 방법을 소개합니다.">
 <meta name="keywords" content="삼흥에너지, SH Scientific, SH-Scientific, 튜브퍼니스, 관상로, 전기로, 머플로, 열처리, 승온 프로파일, 가스 분위기, 온도 스케줄, Alicat MFC, 실험셋업연구소">
 <link rel="canonical" href="https://rndsetup.com/sh-scientific/">
@@ -61,6 +61,65 @@
   .btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
   .rel{border-top:1px solid var(--line);margin-top:30px;padding-top:18px;font-size:14px;color:var(--gray)}
   .rel a{color:var(--green);text-decoration:none;font-weight:600}
+  /* 제품 선택 가이드 위젯 */
+  .shsel{margin:26px 0 6px}
+  .shsel .wrap{max-width:940px}
+  .selhd{font-family:var(--serif);font-size:22px;font-weight:700;margin:0 0 4px}
+  .selsub{font-size:14.5px;color:var(--gray);margin:0 0 4px;max-width:720px}
+  .layout{display:grid;grid-template-columns:1fr 340px;gap:22px;margin:18px 0 0;align-items:start}
+  @media(max-width:800px){.layout{grid-template-columns:1fr}}
+  .step{border:1px solid #E7E3DE;border-radius:14px;padding:18px 18px 16px;margin:0 0 14px;background:#fff}
+  .step h2{font-family:var(--serif);font-size:16.5px;font-weight:700;display:flex;align-items:center;gap:9px;margin:0 0 12px}
+  .step h2 .n{flex:0 0 24px;height:24px;border-radius:50%;background:#C2410C;color:#fff;font-size:12.5px;font-weight:800;display:flex;align-items:center;justify-content:center;font-family:var(--sans)}
+  .opts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+  @media(max-width:560px){.opts{grid-template-columns:1fr 1fr}}
+  .opt{border:1.5px solid #E7E3DE;border-radius:11px;padding:12px 11px;cursor:pointer;background:#fff;text-align:left;font-family:inherit;transition:border-color .15s,background .15s}
+  .opt:hover{border-color:#C2410C}
+  .opt.on{border-color:#C2410C;background:#FBF2EC}
+  .opt .ot{font-size:14px;font-weight:700;color:var(--ink);display:block}
+  .opt .od{font-size:11.5px;color:var(--gray);margin-top:3px;line-height:1.5;display:block}
+  .multi .hint{font-size:11.5px;color:#9C958D;margin-top:9px}
+  .side{position:sticky;top:16px}
+  .stage{position:relative;border:1px solid #E7E3DE;border-radius:14px;overflow:hidden;background:#FAF8F5;aspect-ratio:4/3}
+  .stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+  .stage img.show{opacity:1}
+  .stage .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#9C958D;font-size:13px;text-align:center;padding:16px}
+  .stage .ph svg{width:52px;height:52px;opacity:.5}
+  .badges{position:absolute;left:10px;bottom:10px;right:10px;display:flex;flex-wrap:wrap;gap:5px}
+  .badge{background:rgba(27,26,24,.82);color:#fff;font-size:11px;font-weight:700;padding:4px 9px;border-radius:20px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+  .badge.show{opacity:1;transform:none}
+  .sumcard{border:1px solid #E7E3DE;border-radius:14px;padding:15px 16px;margin-top:12px;background:#fff}
+  .sumcard h3{font-size:13px;font-weight:800;color:#9A3412;letter-spacing:.02em;margin-bottom:8px}
+  .sumrow{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:5px 0;border-bottom:1px dashed #E7E3DE}
+  .sumrow:last-child{border-bottom:0}
+  .sumrow .k{color:var(--gray)}
+  .sumrow .v{font-weight:700;text-align:right}
+  .sumrow .v.empty{color:#9C958D;font-weight:500}
+  .quote{border:1px solid #C2410C;border-radius:16px;padding:22px 20px;margin:8px 0 12px;background:linear-gradient(180deg,#fff,#FBF2EC)}
+  .quote h2{font-family:var(--serif);font-size:20px;font-weight:700;margin-bottom:4px}
+  .quote .qsub{font-size:13.5px;color:var(--gray);margin-bottom:14px}
+  .quote label{display:block;font-size:13px;font-weight:700;margin-top:14px}
+  .quote label .req{color:#C2410C;margin-left:2px}
+  .quote input,.quote textarea{width:100%;margin-top:6px;padding:11px 13px;border:1px solid #E7E3DE;border-radius:9px;font-family:inherit;font-size:15px;background:#fff}
+  .quote textarea{min-height:78px;resize:vertical}
+  .quote .fx{font-size:11.5px;color:#9C958D;margin-top:4px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:560px){.grid2{grid-template-columns:1fr}}
+  .send{margin-top:18px;width:100%;background:#C2410C;color:#fff;border:0;border-radius:11px;padding:14px;font-size:15.5px;font-weight:800;font-family:inherit;cursor:pointer}
+  .send:disabled{opacity:.6;cursor:default}
+  .qdone{display:none;border:1px solid #C2410C;background:#FBF2EC;border-radius:14px;padding:24px;text-align:center;margin:8px 0 12px}
+  .qdone.show{display:block}
+  .qdone h2{font-family:var(--serif);font-size:20px;margin-bottom:6px}
+  .pricenote{border:1px dashed #E7E3DE;border-radius:12px;padding:14px 16px;margin:6px 0 10px;font-size:13px;color:var(--gray);background:#FAF8F5}
+  .pricenote b{color:var(--ink)}
+  .sh-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:16px 0 6px}
+  @media(max-width:560px){.sh-cards{grid-template-columns:1fr}}
+  .shc{display:block;border:1px solid #E7E3DE;border-radius:14px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;background:#fff}
+  .shc:hover{border-color:#C2410C;box-shadow:0 4px 18px rgba(194,65,12,.07)}
+  .shc .ic{font-size:20px;line-height:1;margin-bottom:9px}
+  .shc .t{font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:4px}
+  .shc .d{font-size:13px;color:#6B6560;line-height:1.55}
+  .shc .go{font-size:12.5px;font-weight:800;color:#9A3412;margin-top:10px;display:inline-block}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!--HEADLD_START--><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://rndsetup.com/#org", "name": "실험셋업연구소", "alternateName": ["정량펌프연구소", "rndsetup", "emergent co."], "legalName": "실험셋업연구소", "taxID": "637-05-03629", "url": "https://rndsetup.com/", "email": "info@rndsetup.com", "telephone": "+82-70-8983-2600", "founder": {"@type": "Person", "name": "이영현"}, "sameAs": ["https://www.google.com/maps?cid=4429951187161412134", "https://www.youtube.com/@rndsetuplab", "https://www.linkedin.com/company/rndsetup/", "https://www.wikidata.org/wiki/Q140603002"], "description": "실험용 펌프·유체 제어 셋업 정보를 제공하는 곳. 어떤 펌프를 고르고 유량·스케줄을 어떻게 자동화·재현하는지, 어떤 논문이 어떤 셋업을 썼는지 정리합니다. 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프와 Alicat 질량유량계(MFC)의 제어 소프트웨어와 국내 직접 A/S(구매 시 3년 무상보증)도 지원합니다. 관류·연속배양 등 무인·정밀·재현이 필요한 실험의 셋업을 다룹니다.", "address": {"@type": "PostalAddress", "streetAddress": "북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩)", "addressLocality": "부산광역시", "addressCountry": "KR"}, "areaServed": {"@type": "Country", "name": "대한민국"}, "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "기어펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "리드플루이드(LeadFluid) 펌프", "리드플루이드 펌프 국내 직접 A/S", "실험 셋업 정보", "Alicat 질량유량계", "삼흥에너지(SH Scientific) 튜브퍼니스·전기로", "열처리로(전기로·튜브퍼니스)"], "contactPoint": {"@type": "ContactPoint", "telephone": "+82-70-8983-2600", "email": "info@rndsetup.com", "contactType": "customer support", "areaServed": "KR", "availableLanguage": "Korean"}, "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid", "alternateName": "리드플루이드"}}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Alicat 질량유량계(MFC) 공급·시스템 연동", "serviceType": "질량유량계 공급 및 제어 연동", "brand": {"@type": "Brand", "name": "Alicat Scientific"}}}]}, {"@type": "WebSite", "@id": "https://rndsetup.com/#website", "name": "실험셋업연구소", "url": "https://rndsetup.com/", "publisher": {"@id": "https://rndsetup.com/#org"}, "inLanguage": "ko"}, {"@type": "Brand", "@id": "https://rndsetup.com/#leadfluid", "name": "리드플루이드", "alternateName": ["LeadFluid", "Lead Fluid", "리드플루이드"], "sameAs": ["https://www.leadfluid.com/", "https://www.leadfluid.com.cn/", "https://www.wikidata.org/wiki/Q140602893"]}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://rndsetup.com/"}, {"@type": "ListItem", "position": 2, "name": "삼흥에너지", "item": "https://rndsetup.com/sh-scientific/"}]}</script><!--HEADLD_END--></head>
@@ -70,45 +129,137 @@
 <section class="hero">
   <div class="wrap">
     <div class="crumb"><a href="/">홈</a> › 소프트웨어 호환 장비 › 삼흥에너지</div>
-    <h1>삼흥에너지(SH-Scientific)<br>튜브퍼니스·전기로 열처리 셋업</h1>
-    <p class="lead">삼흥에너지(SH Scientific)는 국내 <b>열처리 실험 장비</b> 제조사입니다. 튜브퍼니스 열처리에서 중요한 승온 프로파일과 가스 분위기를 정리하고, <b>온도 스케줄에 Alicat MFC 가스 유량을 연동</b>해 무인·재현 셋업을 만드는 방법을 소개합니다.</p>
+    <h1>삼흥에너지(SH-Scientific)<br>전기로·튜브퍼니스</h1>
+    <p class="lead">삼흥에너지(SH Scientific)는 국내 <b>열처리 실험 장비</b>(튜브퍼니스·전기로) 제조사입니다. 아래에서 <b>원하는 구성을 골라 바로 견적</b>을 문의하고, 사용법·안전은 메뉴얼에서, 설치·A/S는 블로그에서 확인하세요.</p>
+  </div>
+</section>
+
+<section class="shsel">
+  <div class="wrap">
+    <div class="selhd">제품 선택 가이드 — 조건부터 골라보세요</div>
+    <p class="selsub">퍼니스 종류 → 사용 온도 → 분위기(가스) → 컨트롤러·옵션을 고르면 오른쪽에 구성이 정리됩니다. 마지막에 <b>다루는 시료와 공정</b>을 적어주시면 그 조건에 맞는 사양·모델을 골라 견적으로 안내드립니다.</p>
+
+    <div class="layout">
+      <div class="steps">
+
+        <div class="step" data-step="type">
+          <h2><span class="n">1</span> 퍼니스 종류</h2>
+          <div class="opts">
+            <button type="button" class="opt" data-val="관상형(튜브)퍼니스" data-img="/img/sh/furnace-tube.jpg">
+              <span class="ot">관상형(튜브)</span><span class="od">관 내부에 시료·가스 분위기 열처리. CVD·소성·환원</span></button>
+            <button type="button" class="opt" data-val="박스형 전기로(머플로)" data-img="/img/sh/furnace-box.jpg">
+              <span class="ot">박스형(머플로)</span><span class="od">챔버형 고온 소성·회화·열처리(대기 중)</span></button>
+            <button type="button" class="opt" data-val="급속승온·특수로" data-img="/img/sh/furnace-rapid.jpg">
+              <span class="ot">급속승온·특수</span><span class="od">빠른 승온·특수 형상 요구</span></button>
+          </div>
+        </div>
+
+        <div class="step" data-step="temp">
+          <h2><span class="n">2</span> 사용 온도대</h2>
+          <div class="opts">
+            <button type="button" class="opt" data-val="~1200℃급"><span class="ot">~1200℃</span><span class="od">일반 소성·건조·열처리</span></button>
+            <button type="button" class="opt" data-val="~1500℃급"><span class="ot">~1500℃</span><span class="od">세라믹·소재 소결</span></button>
+            <button type="button" class="opt" data-val="1700℃급 이상"><span class="ot">1700℃↑</span><span class="od">고온 소결·특수 소재</span></button>
+          </div>
+        </div>
+
+        <div class="step" data-step="atm">
+          <h2><span class="n">3</span> 분위기 · 가스</h2>
+          <div class="opts">
+            <button type="button" class="opt" data-val="대기(Air)" data-badge="대기"><span class="ot">대기(Air)</span><span class="od">별도 가스 없이 대기 중</span></button>
+            <button type="button" class="opt" data-val="불활성(N₂·Ar)" data-badge="불활성"><span class="ot">불활성</span><span class="od">N₂·Ar 퍼지·치환</span></button>
+            <button type="button" class="opt" data-val="환원·진공(H₂·Vac)" data-badge="환원/진공"><span class="ot">환원·진공</span><span class="od">H₂ 포함·진공 배기</span></button>
+          </div>
+        </div>
+
+        <div class="step multi" data-step="opt">
+          <h2><span class="n">4</span> 컨트롤러 · 옵션 <span style="font-size:11.5px;color:#9C958D;font-weight:500;margin-left:4px">(복수 선택)</span></h2>
+          <div class="opts">
+            <button type="button" class="opt" data-val="프로그램 온도컨트롤러" data-badge="프로그램제어"><span class="ot">프로그램 제어</span><span class="od">승온·유지·냉각 구간 스케줄</span></button>
+            <button type="button" class="opt" data-val="RS485·PC 연동" data-badge="PC연동"><span class="ot">RS485·PC 연동</span><span class="od">기록·원격 제어</span></button>
+            <button type="button" class="opt" data-val="가스 MFC 연동" data-badge="MFC연동"><span class="ot">가스 MFC 연동</span><span class="od">온도 스케줄에 유량 연동</span></button>
+            <button type="button" class="opt" data-val="진공펌프·배기" data-badge="진공"><span class="ot">진공·배기</span><span class="od">진공펌프·라인 구성</span></button>
+            <button type="button" class="opt" data-val="스탠드·거치·기타" data-badge="거치/기타"><span class="ot">스탠드·기타</span><span class="od">거치대·부속</span></button>
+          </div>
+          <div class="hint">해당되는 항목을 모두 눌러주세요. 확정은 상담에서 함께 정리합니다.</div>
+        </div>
+
+        <form class="quote" id="quoteForm">
+          <h2>이 구성으로 견적 문의</h2>
+          <p class="qsub">정확한 제안을 위해 <b>다루는 시료와 공정</b>은 꼭 적어주세요. 이 두 가지로 퍼니스 종류·최고온도·분위기 사양이 결정됩니다.</p>
+
+          <label>샘플 시료 <span class="req">*</span></label>
+          <textarea name="샘플시료" required placeholder="재질 · 형태 · 양 (예: 알루미나 분말 50g / 실리콘 웨이퍼 2인치 5장 / 리튬 양극재 슬러리 100mL)"></textarea>
+          <div class="fx">무엇을 넣고 처리하는지 — 재질, 형태(분말·벌크·박막), 대략의 양</div>
+
+          <label>사용 공정 <span class="req">*</span></label>
+          <textarea name="사용공정" required placeholder="목표 온도 · 분위기 · 승온/유지 조건 · 목적 (예: Ar 분위기에서 900℃까지 5℃/min 승온 후 2시간 유지, 환원 소성)"></textarea>
+          <div class="fx">목표 온도 · 분위기(대기/불활성/진공) · 승온·유지·냉각 조건 · 처리 목적</div>
+
+          <div class="grid2">
+            <div><label>이름 · 소속 <span class="req">*</span></label>
+              <input type="text" name="이름·소속" required placeholder="홍길동 / OO대학교 OO연구실"></div>
+            <div><label>연락처(이메일·전화) <span class="req">*</span></label>
+              <input type="text" name="연락처" required placeholder="you@lab.ac.kr / 010-0000-0000"></div>
+          </div>
+
+          <input type="hidden" name="문의유형" value="삼흥 열처리 견적">
+          <input type="hidden" name="선택구성" id="cfgField" value="">
+
+          <button class="send" type="submit">이 구성으로 견적 보내기 →</button>
+        </form>
+
+        <div class="qdone" id="quoteDone">
+          <h2>문의가 접수되었습니다</h2>
+          <p style="font-size:14.5px;color:var(--gray)">보내주신 시료·공정 조건을 검토해, 맞는 퍼니스 사양과 견적으로 회신드립니다. 급하시면 <b>info@rndsetup.com</b> 로도 연락 주세요.</p>
+        </div>
+
+        <div class="pricenote">
+          <b>구성별 가격표는 준비 중입니다.</b> 모델·구성이 확정되면 이 아래에 구성별 가격을 안내할 예정입니다. 그 전까지는 시료·공정 기준으로 견적을 드립니다.
+          <!-- PRICE_TABLE_PLACEHOLDER: 모델·가격 확정 후 구성별 가격표 삽입 -->
+        </div>
+
+        <div class="sh-cards">
+          <a class="shc" href="/sh-scientific/manual/">
+            <div class="ic">📘</div>
+            <div class="t">메뉴얼</div>
+            <div class="d">온도컨트롤러 사용법·승온 프로그램·안전 주의사항</div>
+            <span class="go">메뉴얼 보기 →</span>
+          </a>
+          <a class="shc" href="/sh-scientific/blog/">
+            <div class="ic">🔧</div>
+            <div class="t">설치·A/S 블로그</div>
+            <div class="d">실제 설치 사례와 A/S·점검 사례, 현장 노하우</div>
+            <span class="go">사례 보기 →</span>
+          </a>
+        </div>
+
+      </div><!-- /steps -->
+
+      <aside class="side">
+        <div class="stage" id="stage">
+          <img id="pvImg" alt="선택한 퍼니스 미리보기">
+          <div class="ph" id="pvPh">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><rect x="7" y="7" width="10" height="7" rx="1"/><path d="M7 18h10"/></svg>
+            퍼니스 종류를 고르면<br>여기에 표시됩니다
+          </div>
+          <div class="badges" id="badges"></div>
+        </div>
+        <div class="sumcard">
+          <h3>선택한 구성</h3>
+          <div class="sumrow"><span class="k">종류</span><span class="v empty" id="s-type">미선택</span></div>
+          <div class="sumrow"><span class="k">온도</span><span class="v empty" id="s-temp">미선택</span></div>
+          <div class="sumrow"><span class="k">분위기</span><span class="v empty" id="s-atm">미선택</span></div>
+          <div class="sumrow"><span class="k">옵션</span><span class="v empty" id="s-opt">미선택</span></div>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
 <article>
   <div class="wrap">
     <div class="ans">삼흥에너지(SH Scientific)는 <b>튜브퍼니스(관상로), 박스형 전기로(머플로), 건조기</b> 등 국내 열처리 실험 장비를 만드는 제조사입니다. 실험셋업연구소는 삼흥에너지 공식 대리점(지역 A/S)입니다. 이 페이지는 삼흥에너지 열처리 장비를 소개하고, 실험셋업연구소의 제어 소프트웨어가 <b>그 온도 스케줄과 Alicat MFC 가스 유량을 연동</b>하는 호환성·셋업 정보를 정리합니다.</div>
-
-    <style>
-      .sh-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin:24px 0 8px}
-      @media(max-width:640px){.sh-cards{grid-template-columns:1fr}}
-      .shc{display:block;border:1px solid #EAEAEA;border-radius:14px;padding:18px 18px 16px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s;background:#fff}
-      .shc:hover{border-color:#C2410C;box-shadow:0 4px 18px rgba(194,65,12,.07)}
-      .shc .ic{font-size:20px;line-height:1;margin-bottom:9px}
-      .shc .t{font-family:var(--serif);font-size:17px;font-weight:700;margin-bottom:4px}
-      .shc .d{font-size:13px;color:#6B6560;line-height:1.55}
-      .shc .go{font-size:12.5px;font-weight:800;color:#9A3412;margin-top:10px;display:inline-block}
-    </style>
-    <div class="sh-cards">
-      <a class="shc" href="/sh-scientific/select/">
-        <div class="ic">🎛️</div>
-        <div class="t">제품 선택 가이드</div>
-        <div class="d">종류·온도·분위기·옵션을 골라 구성을 정리하고 바로 견적 문의</div>
-        <span class="go">고르러 가기 →</span>
-      </a>
-      <a class="shc" href="/sh-scientific/manual/">
-        <div class="ic">📘</div>
-        <div class="t">메뉴얼</div>
-        <div class="d">온도컨트롤러 사용법·승온 프로그램·안전 주의사항</div>
-        <span class="go">메뉴얼 보기 →</span>
-      </a>
-      <a class="shc" href="/sh-scientific/blog/">
-        <div class="ic">🔧</div>
-        <div class="t">설치·A/S 블로그</div>
-        <div class="d">실제 설치 사례와 A/S·점검 사례, 현장 노하우</div>
-        <span class="go">사례 보기 →</span>
-      </a>
-    </div>
 
     <h2>삼흥에너지 열처리 장비</h2>
     <p>삼흥에너지는 실험실 열처리에 쓰이는 여러 유형의 로(爐)를 제조합니다. 대표적으로 다음과 같은 장비군이 있습니다.</p>
@@ -182,7 +333,86 @@ for _temp, a, h, hold in schedule:
   </div>
 </article>
 
-<div id="pumplab-footer"><!--CNAV_START--><nav class="crawler-nav" aria-label="사이트 전체 링크"><div class="cn-group"><h5>펌프·제어</h5><ul><li><a href="/pump/leadfluid/">리드플루이드(LeadFluid) — 정품·국내 A/S·제어</a></li><li><a href="/pump/leadfluid/bt101l/">리드플루이드 BT101L 연동펌프 (LeadFluid BT101L) — RS485 PC 제어</a></li><li><a href="/pump/leadfluid/bt103s/">리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주</a></li><li><a href="/pump/leadfluid/bt103s/head-replace/">리드플루이드 BT103S 펌프 헤드 교체·튜브 장착 방법</a></li><li><a href="/pump/leadfluid/tyd01-01/">리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입</a></li><li><a href="/pump/leadfluid/ct3001f/">리드플루이드 CT3001F PEEK 기어펌프 — 서보 브러시리스 모터·PEEK 기어 저맥동 연속 이송</a></li><li><a href="/pump/leadfluid/explosion-proof/">리드플루이드 방폭 연동펌프 EF800·EF900 — ATEX/IECEx 방폭 지역용</a></li><li><a href="/pump/leadfluid/bq80s/">리드플루이드 BQ80S 마이크로 정량 연동펌프 — 패널 장착·0.0035~34mL/min</a></li><li><a href="/pump/leadfluid/tfd/">리드플루이드 TFD 스플릿형 시린지펌프 — 컨트롤러 분리형·미세주입·다채널</a></li><li><a href="/pump/leadfluid/explosion-proof-gear/">리드플루이드 방폭 기어펌프 FG601S-A3·W3 — 공압구동·ATEX 용제/석유화학</a></li><li><a href="/pump/leadfluid/bt301l/">리드플루이드 BT301L 지능형 유량 연동펌프 — 0.005~1750mL/min·RS485 제어</a></li><li><a href="/pump/leadfluid/wt600f/">리드플루이드 WT600F 분주형 대유량 연동펌프 — 0.005~6000mL/min·4모드 분주</a></li><li><a href="/pump/leadfluid/mf106/">리드플루이드 MF106 고보호(IP66/67) 연동펌프 — 0.005~7700mL/min·방진방수</a></li><li><a href="/requests/">소프트웨어 제어</a></li><li><a href="/pump/guide/">펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업</a></li><li><a href="/pump/atoz/">펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결</a></li><li><a href="/pump/select/">펌프·튜브 선택 가이드 — 조건 입력하면 추천</a></li><li><a href="/pump/atoz/peristaltic-flow-setpoint-mismatch/">연동펌프 유량이 설정값과 다른 이유</a></li><li><a href="/pump/atoz/tubing-crush-tear-causes/">연동펌프 튜빙 씹힘·찢어짐 원인·해결</a></li><li><a href="/pump/atoz/flow-calibration/">연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정</a></li><li><a href="/pump/atoz/tube-size-guide/">연동펌프 튜브 규격·펌프헤드 가이드 — 번호별 내경(mm)·유량</a></li><li><a href="/pump/setups/plating-flow-calibration/">도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)</a></li></ul></div><div class="cn-group"><h5>실험 기법</h5><ul><li><a href="/application/flow-chemistry">flow chemistry 연속흐름 반응</a></li></ul></div><div class="cn-group"><h5>산업 분야</h5><ul><li><a href="/about/">실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업</a></li><li><a href="/sh-scientific/">삼흥에너지(SH-Scientific) 튜브퍼니스·전기로 — 열처리 셋업</a></li><li><a href="/sh-scientific/select/">삼흥에너지 전기로·튜브퍼니스 제품 선택 가이드 — 조건 고르고 견적문의</a></li><li><a href="/sh-scientific/manual/">삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전</a></li><li><a href="/sh-scientific/blog/">삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그</a></li><li><a href="/alicat/">ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어</a></li><li><a href="/application/">실험 가이드</a></li><li><a href="/application/biopharmaceutical">바이오의약 — 발효·세포배양·정제·충전</a></li><li><a href="/application/analytical-instrument">분석기기 — 컬럼 주입·시료 정량 주입</a></li><li><a href="/application/environmental">환경 — 수질·폐수 정량 투입</a></li><li><a href="/furnace/setups/">퍼니스 셋업 사례 — 튜브퍼니스·전기로 가스·온도 제어 도입 사례</a></li><li><a href="/furnace/setups/alicat-mfc-tubefurnace/">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례</a></li></ul></div><div class="cn-group"><h5>사례·신뢰</h5><ul><li><a href="/">홈</a></li><li><a href="/setups/">도입·논문 사례 — LeadFluid 펌프가 쓰인 연구 셋업</a></li><li><a href="/setups/heart-eshp-bt101l">심장 체외 관류(ESHP) — BT101L 연동펌프 (Frontiers 2021)</a></li><li><a href="/setups/damo-recirculation-bt600s">혐기성 메탄산화 반응기 순환 — BT600S 연동펌프 (Environ. Sci. Technol. 2021)</a></li><li><a href="/setups/nitrification-ph-bq50s">폐수 질산화 pH 제어 — BQ50S 정량펌프 (Bioresource Technology 2017)</a></li><li><a href="/setups/brain-electrode-tyd01">뇌 피질 인터페이싱 — TYD01-01 시린지펌프 (Nature Electronics 2024)</a></li><li><a href="/setups/catheter-heparin-bt101">혈관내 카테터 헤파린 코팅 — BT101 L 연동펌프 (Nature Communications 2024)</a></li><li><a href="/setups/co2-capture-ct3001f">연속 CO₂ 포집 — CT3001F PEEK 기어펌프 (Nature Communications 2024)</a></li><li><a href="/compare/imported-peristaltic-alternative/">Masterflex·Watson-Marlow 연동펌프 국내 대안</a></li><li><a href="/trust/">믿고 도입할 때 (국내 A/S·정품·보증)</a></li><li><a href="/faq/">자주 묻는 질문(FAQ)</a></li><li><a href="/contact/">문의하기</a></li></ul></div></nav><!--CNAV_END--></div>
+<div id="pumplab-footer"><!--CNAV_START--><nav class="crawler-nav" aria-label="사이트 전체 링크"><div class="cn-group"><h5>펌프·제어</h5><ul><li><a href="/pump/leadfluid/">리드플루이드(LeadFluid) — 정품·국내 A/S·제어</a></li><li><a href="/pump/leadfluid/bt101l/">리드플루이드 BT101L 연동펌프 (LeadFluid BT101L) — RS485 PC 제어</a></li><li><a href="/pump/leadfluid/bt103s/">리드플루이드 BT103S 분주형 연동펌프 — 정량·반복 분주</a></li><li><a href="/pump/leadfluid/bt103s/head-replace/">리드플루이드 BT103S 펌프 헤드 교체·튜브 장착 방법</a></li><li><a href="/pump/leadfluid/tyd01-01/">리드플루이드 TYD01-01 시린지펌프 — 나노리터 정밀 주입</a></li><li><a href="/pump/leadfluid/ct3001f/">리드플루이드 CT3001F PEEK 기어펌프 — 서보 브러시리스 모터·PEEK 기어 저맥동 연속 이송</a></li><li><a href="/pump/leadfluid/explosion-proof/">리드플루이드 방폭 연동펌프 EF800·EF900 — ATEX/IECEx 방폭 지역용</a></li><li><a href="/pump/leadfluid/bq80s/">리드플루이드 BQ80S 마이크로 정량 연동펌프 — 패널 장착·0.0035~34mL/min</a></li><li><a href="/pump/leadfluid/tfd/">리드플루이드 TFD 스플릿형 시린지펌프 — 컨트롤러 분리형·미세주입·다채널</a></li><li><a href="/pump/leadfluid/explosion-proof-gear/">리드플루이드 방폭 기어펌프 FG601S-A3·W3 — 공압구동·ATEX 용제/석유화학</a></li><li><a href="/pump/leadfluid/bt301l/">리드플루이드 BT301L 지능형 유량 연동펌프 — 0.005~1750mL/min·RS485 제어</a></li><li><a href="/pump/leadfluid/wt600f/">리드플루이드 WT600F 분주형 대유량 연동펌프 — 0.005~6000mL/min·4모드 분주</a></li><li><a href="/pump/leadfluid/mf106/">리드플루이드 MF106 고보호(IP66/67) 연동펌프 — 0.005~7700mL/min·방진방수</a></li><li><a href="/requests/">소프트웨어 제어</a></li><li><a href="/pump/guide/">펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업</a></li><li><a href="/pump/atoz/">펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결</a></li><li><a href="/pump/select/">펌프·튜브 선택 가이드 — 조건 입력하면 추천</a></li><li><a href="/pump/atoz/peristaltic-flow-setpoint-mismatch/">연동펌프 유량이 설정값과 다른 이유</a></li><li><a href="/pump/atoz/tubing-crush-tear-causes/">연동펌프 튜빙 씹힘·찢어짐 원인·해결</a></li><li><a href="/pump/atoz/flow-calibration/">연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정</a></li><li><a href="/pump/atoz/tube-size-guide/">연동펌프 튜브 규격·펌프헤드 가이드 — 번호별 내경(mm)·유량</a></li><li><a href="/pump/setups/plating-flow-calibration/">도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)</a></li></ul></div><div class="cn-group"><h5>실험 기법</h5><ul><li><a href="/application/flow-chemistry">flow chemistry 연속흐름 반응</a></li></ul></div><div class="cn-group"><h5>산업 분야</h5><ul><li><a href="/about/">실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업</a></li><li><a href="/sh-scientific/">삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업</a></li><li><a href="/sh-scientific/manual/">삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전</a></li><li><a href="/sh-scientific/blog/">삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그</a></li><li><a href="/alicat/">ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어</a></li><li><a href="/application/">실험 가이드</a></li><li><a href="/application/biopharmaceutical">바이오의약 — 발효·세포배양·정제·충전</a></li><li><a href="/application/analytical-instrument">분석기기 — 컬럼 주입·시료 정량 주입</a></li><li><a href="/application/environmental">환경 — 수질·폐수 정량 투입</a></li><li><a href="/furnace/setups/">퍼니스 셋업 사례 — 튜브퍼니스·전기로 가스·온도 제어 도입 사례</a></li><li><a href="/furnace/setups/alicat-mfc-tubefurnace/">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례</a></li></ul></div><div class="cn-group"><h5>사례·신뢰</h5><ul><li><a href="/">홈</a></li><li><a href="/setups/">도입·논문 사례 — LeadFluid 펌프가 쓰인 연구 셋업</a></li><li><a href="/setups/heart-eshp-bt101l">심장 체외 관류(ESHP) — BT101L 연동펌프 (Frontiers 2021)</a></li><li><a href="/setups/damo-recirculation-bt600s">혐기성 메탄산화 반응기 순환 — BT600S 연동펌프 (Environ. Sci. Technol. 2021)</a></li><li><a href="/setups/nitrification-ph-bq50s">폐수 질산화 pH 제어 — BQ50S 정량펌프 (Bioresource Technology 2017)</a></li><li><a href="/setups/brain-electrode-tyd01">뇌 피질 인터페이싱 — TYD01-01 시린지펌프 (Nature Electronics 2024)</a></li><li><a href="/setups/catheter-heparin-bt101">혈관내 카테터 헤파린 코팅 — BT101 L 연동펌프 (Nature Communications 2024)</a></li><li><a href="/setups/co2-capture-ct3001f">연속 CO₂ 포집 — CT3001F PEEK 기어펌프 (Nature Communications 2024)</a></li><li><a href="/compare/imported-peristaltic-alternative/">Masterflex·Watson-Marlow 연동펌프 국내 대안</a></li><li><a href="/trust/">믿고 도입할 때 (국내 A/S·정품·보증)</a></li><li><a href="/faq/">자주 묻는 질문(FAQ)</a></li><li><a href="/contact/">문의하기</a></li></ul></div></nav><!--CNAV_END--></div>
 <script src="/assets/site.js" defer></script>
+<script>
+(function(){
+  var sel = { type:'', temp:'', atm:'', opt:[] };
+  var img = document.getElementById('pvImg'), ph = document.getElementById('pvPh');
+  var badges = document.getElementById('badges');
+  if(!img) return;
+  function placeholderSVG(label){
+    var s = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">'
+      + '<rect width="400" height="300" fill="#FAF8F5"/>'
+      + '<rect x="120" y="90" width="160" height="120" rx="8" fill="none" stroke="#C2410C" stroke-width="3"/>'
+      + '<rect x="150" y="120" width="100" height="60" rx="4" fill="#FBF2EC" stroke="#C2410C" stroke-width="2"/>'
+      + '<text x="200" y="250" text-anchor="middle" font-family="sans-serif" font-size="18" fill="#9A3412">'+label+'</text>'
+      + '</svg>';
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(s);
+  }
+  function setImage(src, label){
+    ph.style.display='none';
+    img.onerror = function(){ img.onerror=null; img.src = placeholderSVG(label); };
+    img.classList.remove('show');
+    setTimeout(function(){ img.src = src || placeholderSVG(label); img.classList.add('show'); }, 60);
+  }
+  function renderBadges(){
+    var items = [];
+    var atmOn = document.querySelector('.step[data-step="atm"] .opt.on');
+    if(atmOn) items.push(atmOn.getAttribute('data-badge'));
+    Array.prototype.forEach.call(document.querySelectorAll('.step[data-step="opt"] .opt.on'), function(x){ items.push(x.getAttribute('data-badge')); });
+    badges.innerHTML = items.filter(Boolean).map(function(t){return '<span class="badge">'+t+'</span>';}).join('');
+    requestAnimationFrame(function(){ Array.prototype.forEach.call(badges.children,function(el,i){ setTimeout(function(){el.classList.add('show');}, i*70); }); });
+  }
+  function summary(){
+    function set(id,val){ var el=document.getElementById(id); el.textContent = val||'미선택'; el.classList.toggle('empty', !val); }
+    set('s-type', sel.type); set('s-temp', sel.temp); set('s-atm', sel.atm);
+    set('s-opt', sel.opt.length ? sel.opt.length+'개 선택' : '');
+    var parts = [];
+    if(sel.type) parts.push('종류:'+sel.type);
+    if(sel.temp) parts.push('온도:'+sel.temp);
+    if(sel.atm) parts.push('분위기:'+sel.atm);
+    if(sel.opt.length) parts.push('옵션:'+sel.opt.join('·'));
+    document.getElementById('cfgField').value = parts.join(' / ');
+  }
+  document.querySelectorAll('.step').forEach(function(step){
+    var key = step.getAttribute('data-step');
+    var multi = step.classList.contains('multi');
+    step.addEventListener('click', function(e){
+      var b = e.target.closest('.opt'); if(!b) return;
+      if(multi){
+        b.classList.toggle('on');
+        var v = b.getAttribute('data-val');
+        var i = sel.opt.indexOf(v);
+        if(i>=0) sel.opt.splice(i,1); else sel.opt.push(v);
+      } else {
+        Array.prototype.forEach.call(step.querySelectorAll('.opt'), function(x){x.classList.remove('on');});
+        b.classList.add('on');
+        sel[key] = b.getAttribute('data-val');
+        if(key==='type') setImage(b.getAttribute('data-img'), b.querySelector('.ot').textContent);
+      }
+      renderBadges(); summary();
+      if(typeof gtag==='function') gtag('event','sh_select_choice',{step:key});
+    });
+  });
+  var form = document.getElementById('quoteForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!sel.type){ alert('퍼니스 종류를 먼저 골라주세요.'); return; }
+    summary();
+    var btn = form.querySelector('.send'), txt = btn.textContent;
+    btn.disabled = true; btn.textContent = '보내는 중…';
+    fetch('https://formspree.io/f/mnjkzppj', { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} })
+      .then(function(r){
+        if(r.ok){
+          if(typeof gtag==='function') gtag('event','generate_lead',{lead_type:'sh_furnace_quote',page_path:location.pathname});
+          form.style.display='none';
+          document.getElementById('quoteDone').classList.add('show');
+        } else { btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. info@rndsetup.com 로 보내주세요.'); }
+      })
+      .catch(function(){ btn.disabled=false; btn.textContent=txt; alert('전송에 실패했습니다. info@rndsetup.com 로 보내주세요.'); });
+  });
+})();
+</script>
 </body>
 </html>
