@@ -66,21 +66,30 @@
     wrench:'<svg viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 0 1-4.6 4.6L5 16l3 3 4.9-4.9a3.5 3.5 0 0 0 4.6-4.6l-2.1 2.1-2-2 2.1-2.1z"/></svg>'
   };
   var NAV = [
-    { href:'/', label:'기술자료', icon:'guide', sub:[
-        ['/', '기술자료 허브(홈)'],
-        ['/temp-controller-guide/', '온도컨트롤러(SP590) 가이드'],
-        ['/pump/atoz/', '펌프 문제해결'],
-        ['/pump/atoz/flow-calibration/', '유량 캘리브레이션']
+    { href:'/pump/leadfluid/', label:'제품', icon:'wrench', sub:[
+        ['/pump/leadfluid/', '리드플루이드 펌프·전 모델'],
+        ['/alicat/',         'Alicat 질량유량계(MFC)'],
+        ['/sh-scientific/',  '열처리로(튜브퍼니스·전기로)'],
+        ['/pump/select/',    '펌프·튜브 선택']
       ] },
-    { href:'/pump/leadfluid/', label:'펌프', icon:'wrench', sub:[
-        ['/pump/leadfluid/', '리드플루이드 펌프·모델'],
-        ['/pump/select/', '펌프·튜브 선택'],
-        ['/pump/atoz/',   '문제해결'],
-        ['/pump/guide/',  '셋업 사례']
+    { href:'/about/', label:'신뢰·회사', icon:'shield', sub:[
+        ['/about/',  '회사소개'],
+        ['/trust/',  '정품·공식 대리점 인증'],
+        ['/repair/', '국내 직접 A/S · 3년 보증'],
+        ['/setups/', '논문·도입 셋업 실적']
       ] },
-    { href:'/furnace/setups/', label:'열처리', icon:'devices' },
-    { href:'/requests/', label:'통합 제어 소프트웨어', icon:'sw' },
-    { href:'/faq/', label:'자주묻는 질문(FAQ)', icon:'faq' }
+    { href:'/contact/', label:'구매·문의', icon:'contact', sub:[
+        ['https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=', '구매 (나비엠알오)'],
+        ['/contact/#quote', '견적 문의'],
+        ['/repair/',        '수리 접수'],
+        ['/contact/',       '연락처']
+      ] },
+    { href:'/pump/leadfluid/manuals/', label:'자료실', icon:'guide', sub:[
+        ['/pump/leadfluid/manuals/', '매뉴얼·사양서'],
+        ['/pump/atoz/',              '사용법·문제해결'],
+        ['/temp-controller-guide/',  '온도컨트롤러 가이드'],
+        ['/faq/',                    '자주묻는 질문(FAQ)']
+      ] }
   ];
   function matches(href){ if(href.indexOf('#') > -1) return false; return href === '/' ? path === '/' : path === href; }
   function subOnPage(href){ var i = href.indexOf('#'); if(i === -1) return false; return path === (href.slice(0, i) || '/'); }
@@ -126,17 +135,17 @@
 
   var FOOTER =
     '<section class="cta-band"><div class="cta-band-in">' +
-      '<div class="cta-band-t">내 펌프, 소프트웨어로 완성하세요</div>' +
+      '<div class="cta-band-t">리드플루이드 공식 대리점 · 정품 공급 · 국내 직접 A/S</div>' +
       '<div class="cta-band-btns">' +
-        '<a href="/application/pump-pc-control-modbus-rs485" data-ga="band_check">내 펌프가 제어되나요? 확인 →</a>' +
-        '<a href="/requests/" data-ga="band_sw">제어 SW 무료 받기 →</a>' +
-        '<a class="cta-band-main" href="/contact/" data-ga="band_contact">무료 견적·문의 →</a>' +
+        '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="band_navimro">구매 (나비엠알오) →</a>' +
+        '<a href="/repair/" data-ga="band_repair">A/S·수리 접수 →</a>' +
+        '<a class="cta-band-main" href="/contact/#quote" data-ga="band_quote">견적·문의 →</a>' +
       '</div></div></section>' +
     '<footer class="chrome-footer">' +
       '<div class="cf-inner">' +
         '<div class="cf-cols">' +
           '<div class="cf-col"><h4>바로가기</h4>' +
-            '<a href="/pump/guide/">펌프 셋업 사례</a><a href="/pump/leadfluid/">리드플루이드</a><a href="/about/">회사소개</a><a href="/requests/">소프트웨어 제어</a><a href="/faq/">FAQ</a></div>' +
+            '<a href="/pump/leadfluid/">제품·모델</a><a href="/about/">회사소개</a><a href="/trust/">정품·인증</a><a href="/repair/">A/S·수리</a><a href="/faq/">FAQ</a></div>' +
           '<div class="cf-col"><h4>문의</h4>' +
             '<a href="/contact/">일반 문의</a><a href="/contact/#quote">견적 문의</a>' +
             '<a href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_footer">견적·구매 (나비엠알오)</a></div>' +

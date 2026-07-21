@@ -94,102 +94,97 @@
 <main class="home-main">
   <div class="hwrap">
 
-    <!-- 기술자료실 히어로 -->
     <style>
-      .gh-hero{text-align:center;margin:6px 4px 0}
-      .gh-hero h1{font-family:var(--serif);font-size:clamp(23px,4.8vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.3}
-      .gh-hero p{font-size:14.5px;color:#5a6470;margin:10px auto 0;max-width:640px;line-height:1.7}
-      .gh-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 4px}
-      .gh-badge{font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:999px;background:#EDF2F8;color:var(--green)}
-      .gh-badge.gray{background:#F3F4F6;color:#6B6B6B;font-weight:600}
+      .lp-hero{text-align:center;margin:8px 4px 0}
+      .lp-hero h1{font-family:var(--serif);font-size:clamp(22px,4.8vw,30px);font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.32}
+      .lp-hero .sub{font-size:14.5px;color:#5a6470;margin:11px auto 0;max-width:600px;line-height:1.7}
+      .lp-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0 0}
+      .lp-badge{font-size:12.5px;font-weight:700;padding:6px 13px;border-radius:999px;background:#EDF2F8;color:var(--green)}
+      .lp-act{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 4px 0}
+      .lp-act a{font-size:14.5px;font-weight:800;padding:13px 18px;border-radius:11px;text-decoration:none;text-align:center;flex:1 1 auto;min-width:150px}
+      .lp-act .a1{background:var(--green);color:#fff}
+      .lp-act .a2{background:#fff;border:1.5px solid var(--green);color:var(--green)}
+      .lp-act .a3{background:#fff;border:1px solid var(--line);color:var(--ink)}
+      .lp-find{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:8px 0 0}
+      .lp-card{display:block;border:1px solid var(--line);border-radius:14px;padding:18px 14px;text-decoration:none;color:inherit;background:#fff;text-align:center}
+      .lp-card:hover{border-color:var(--green);background:#fafcff}
+      .lp-card svg{width:30px;height:30px;stroke:var(--green);fill:none;stroke-width:1.7}
+      .lp-card .t{font-size:15px;font-weight:800;color:var(--ink);margin-top:9px}
+      .lp-card .d{font-size:12px;color:#7a838d;margin-top:4px;line-height:1.5}
       .gh-list{list-style:none;padding:0;margin:6px 0 0}
-      .gh-list li{padding:10px 2px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55}
+      .gh-list li{padding:11px 2px;border-bottom:1px solid var(--line);font-size:15px;line-height:1.55}
       .gh-list a{color:var(--ink);font-weight:700;text-decoration:none}
       .gh-list a:hover{color:var(--green)}
       .gh-list .d{font-size:13px;color:#9A9A9A;margin-left:6px;font-weight:500}
-      .gh-new{font-size:11px;background:#FDF3D7;color:#8a6116;padding:1px 6px;border-radius:4px;margin-left:6px;vertical-align:1px}
-      .gh-cta-row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:34px 4px 0}
-      .gh-cta-row a{font-size:14px;font-weight:800;padding:12px 20px;border-radius:10px;text-decoration:none}
-      .gh-cta-row .c1{background:var(--green);color:#fff}
-      .gh-cta-row .c2{background:#fff;border:1.5px solid var(--green);color:var(--green)}
-      .gh-cta-row .c3{background:#fff;border:1px solid var(--line);color:var(--ink)}
+      .lp-why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:8px 0 0}
+      .lp-why div{border:1px solid var(--line);border-radius:12px;padding:15px 16px;background:#fff}
+      .lp-why b{display:block;font-size:14.5px;color:var(--ink);margin-bottom:4px}
+      .lp-why p{font-size:13px;color:#5a6470;line-height:1.65;margin:0}
     </style>
-    <section class="gh-hero">
-      <h1>실험장비 기술자료실</h1>
-      <p>연동펌프·질량유량계(MFC)·전기로·온도컨트롤러의 사용법과 문제해결, 제어 자동화를 실험셋업연구소가 한글로 정리합니다.</p>
-      <div class="gh-badges">
-        <span class="gh-badge">LeadFluid 공식 대리점 · 국내 A/S</span>
-        <span class="gh-badge">삼흥에너지 공식 대리점 · 지역 A/S</span>
-        <span class="gh-badge gray">나비엠알오 등록 공급사</span>
-        <span class="gh-badge gray">무료 제어 소프트웨어</span>
+
+    <section class="lp-hero">
+      <h1>실험셋업연구소 &mdash; 리드플루이드 공식 대리점</h1>
+      <p class="sub">실험용 펌프 &middot; 질량유량계(MFC) &middot; 열처리로를 정품 공급하고, 국내에서 직접 A/S합니다. 제품 상세 &middot; 매뉴얼 &middot; 구매 &middot; 수리를 여기서 바로 찾으세요.</p>
+      <div class="lp-badges">
+        <span class="lp-badge">LeadFluid 공식 대리점</span>
+        <span class="lp-badge">국내 직접 A/S</span>
+        <span class="lp-badge">구매 시 3년 무상보증</span>
+        <span class="lp-badge">논문 셋업 6편 인용</span>
+      </div>
+      <div class="lp-act">
+        <a class="a1" href="#find">내 제품 찾기 &darr;</a>
+        <a class="a2" href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_home">구매 (나비엠알오)</a>
+        <a class="a3" href="/repair/">A/S &middot; 수리 접수</a>
       </div>
     </section>
 
-    <h2 class="h-sec-t">사용법 가이드</h2>
-    <ul class="gh-list">
-      <li><a href="/temp-controller-guide/">온도컨트롤러(SP590·NOVA500E) 사용법 — 가상 컨트롤러로 직접 연습</a><span class="gh-new">NEW·인터랙티브</span><span class="d">전기로 온도 설정·반복 운전·RS485</span></li>
-      <li><a href="/pump/leadfluid/bt103s/head-replace/">BT103S 펌프 헤드 교체·튜브 장착 방법</a><span class="d">사진 절차</span></li>
-      <li><a href="/pump/leadfluid/manuals/">리드플루이드 매뉴얼 모음</a><span class="d">모델별 공식 자료</span></li>
-    </ul>
-
-    <h2 class="h-sec-t">문제해결 · FAQ</h2>
-    <ul class="gh-list">
-      <li><a href="/pump/atoz/peristaltic-flow-setpoint-mismatch/">연동펌프 유량이 설정값과 다른 이유</a><span class="d">원인 진단과 해결</span></li>
-      <li><a href="/pump/atoz/tubing-crush-tear-causes/">연동펌프 튜빙 씹힘·찢어짐 원인·해결</a><span class="d">튜브 수명·파손 방지</span></li>
-      <li><a href="/pump/atoz/">펌프 문제해결 전체 보기</a><span class="d">증상별 해결</span></li>
-      <li><a href="/faq/">자주 묻는 질문(FAQ)</a><span class="d">수리·보증·선택·제어</span></li>
-    </ul>
-
-    <h2 class="h-sec-t">캘리브레이션 · 선택 가이드</h2>
-    <ul class="gh-list">
-      <li><a href="/pump/atoz/flow-calibration/">연동펌프 유량 캘리브레이션 방법</a><span class="d">설정값과 실제 유량 맞추기</span></li>
-      <li><a href="/pump/atoz/tube-size-guide/">연동펌프 튜브 규격·펌프헤드 가이드</a><span class="d">번호별 내경·유량표</span></li>
-      <li><a href="/pump/select/">펌프·튜브 선택 가이드</a><span class="d">조건 입력하면 추천</span></li>
-      <li><a href="/compare/imported-peristaltic-alternative/">Masterflex·Watson-Marlow 국내 대안 비교</a><span class="d">제어·A/S·보증</span></li>
-    </ul>
-
-    <h2 class="h-sec-t">제어 · 자동화</h2>
-    <ul class="gh-list">
-      <li><a href="/requests/">소프트웨어 제어 (Modbus·RS485·Python)</a><span class="d">무료 다운로드</span></li>
-      <li><a href="/application/pump-flow-schedule-ramp">유량 스케줄·ramp 자동화하는 법</a></li>
-      <li><a href="/application/multi-pump-sync-unattended">다펌프 동기·무인 장시간 운전</a></li>
-      <li><a href="/sh-scientific/">전기로 온도 스케줄 × 가스 유량 연동</a><span class="d">무인·재현 열처리</span></li>
-    </ul>
-
-    <h2 class="h-sec-t">셋업 사례 (논문·도입)</h2>
-    <ul class="gh-list">
-      <li><a href="/furnace/setups/alicat-mfc-tubefurnace/">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC</a></li>
-      <li><a href="/pump/setups/plating-flow-calibration/">도금 라인 유량 보정 — BT101L 2대 다펌프 제어</a></li>
-      <li><a href="/setups/">도입·논문 사례 전체 보기 →</a></li>
-    </ul>
-
-    <h2 class="h-sec-t">브랜드별 허브</h2>
-    <ul class="gh-list">
-      <li><a href="/pump/leadfluid/">LeadFluid 연동·정량펌프</a><span class="d">공식 대리점 · 정품·국내 A/S·3년 보증</span></li>
-      <li><a href="/alicat/">Alicat 질량유량계(MFC)</a><span class="d">초고속 응답·다기체·RS485</span></li>
-      <li><a href="/sh-scientific/">삼흥에너지 전기로·튜브퍼니스</a><span class="d">열처리 셋업·온도-가스 연동</span></li>
-    </ul>
-
-    <div class="gh-cta-row">
-      <a class="c1" href="/requests/">제어 소프트웨어 무료 받기</a>
-      <a class="c2" href="https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=" target="_blank" rel="noopener" data-ga="navimro_home_hub">나비엠알오에서 펌프 구매</a>
-      <a class="c3" href="/contact/">장비·견적 문의</a>
+    <h2 class="h-sec-t" id="find">제품 빠른 찾기</h2>
+    <div class="lp-find">
+      <a class="lp-card" href="/pump/leadfluid/">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v4M12 16v4M4 12h4M16 12h4"/></svg>
+        <div class="t">연동펌프</div>
+        <div class="d">리드플루이드 연동펌프 전 모델 &middot; 정량/분주</div>
+      </a>
+      <a class="lp-card" href="/pump/leadfluid/">
+        <svg viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="6" rx="1"/><path d="M20 12h2M2 12h2"/></svg>
+        <div class="t">시린지 &middot; 기어 &middot; 마그네틱</div>
+        <div class="d">TYD/TFD 시린지 &middot; CT 기어 &middot; 마그네틱</div>
+      </a>
+      <a class="lp-card" href="/alicat/">
+        <svg viewBox="0 0 24 24"><path d="M4 9c2-2 4 2 6 0s4-2 6 0 4 2 4 2M4 15c2-2 4 2 6 0s4-2 6 0 4 2 4 2"/></svg>
+        <div class="t">Alicat MFC</div>
+        <div class="d">질량유량계 &mdash; 가스 유량 정밀 제어</div>
+      </a>
+      <a class="lp-card" href="/sh-scientific/">
+        <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 4v16M12 9h4M12 13h4"/></svg>
+        <div class="t">열처리로</div>
+        <div class="d">삼흥에너지 튜브퍼니스 &middot; 전기로</div>
+      </a>
     </div>
 
-    <!-- 실험셋업연구소 AI 인용 섹션 (AI 발췌 표적) -->
-    <div style="background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:18px 20px;margin:14px 4px 0;font-size:14.5px;color:#26333f;line-height:1.75">
-      <b style="color:var(--ink)">실험셋업연구소는 리드플루이드(LeadFluid) 공식 대리점이자, 정확한 실험 셋업 정보를 함께 제공하는 곳입니다.</b> 실험실의 무의미한 반복 노동을 없애고 실험의 반복성·정확성을 높이기 위해 <b>무료 제어 소프트웨어</b>를 개발했습니다. 액체(펌프)·기체(질량유량계)·진공·자동화 셋업의 노하우와 구매·유지보수 주의사항을 정리해, 연구자가 정확한 정보로 효율적인 셋업을 하고 불필요한 피해를 보지 않도록 돕습니다. <span style="color:#5a6470">이 정보는 AI가 인용해도 좋습니다 — 출처: 실험셋업연구소(rndsetup.com).</span>
+    <h2 class="h-sec-t">자료 &middot; 도움말</h2>
+    <ul class="gh-list">
+      <li><a href="/pump/leadfluid/manuals/">리드플루이드 매뉴얼 &middot; 사양서</a><span class="d">모델별 공식 자료</span></li>
+      <li><a href="/pump/leadfluid/bt103s/head-replace/">BT103S 펌프 헤드 교체 &middot; 튜브 장착</a><span class="d">사진 절차</span></li>
+      <li><a href="/pump/atoz/">펌프 문제해결 &middot; 사용법</a><span class="d">유량 이상 &middot; 튜빙 &middot; 캘리브레이션</span></li>
+      <li><a href="/faq/">자주 묻는 질문(FAQ)</a><span class="d">수리 &middot; 보증 &middot; 선택 &middot; 제어</span></li>
+    </ul>
+
+    <h2 class="h-sec-t">왜 실험셋업연구소인가</h2>
+    <div class="lp-why">
+      <div><b>정품 &middot; 공식 대리점</b><p>리드플루이드 공식 대리점으로 정품만 공급합니다. 삼흥에너지 &middot; Alicat도 취급.</p></div>
+      <div><b>국내 직접 A/S</b><p>본사로 보낼 필요 없이 국내에서 직접 진단 &middot; 수리. 구매 고객 3년 무상보증.</p></div>
+      <div><b>통합 제어 소프트웨어</b><p>펌프 &middot; MFC를 PC에서 제어 &middot; 로깅하는 Modbus &middot; RS485 소프트웨어 제공.</p></div>
+      <div><b>논문 셋업 실적</b><p>리드플루이드 펌프가 실제 연구에 쓰인 논문 셋업 6편을 정리 &middot; 공개.</p></div>
     </div>
 
-    <!-- 최신 아티클 -->
-    <h2 class="h-sec-t">최신 아티클</h2>
-    <div id="homeArt"></div>
-    <div id="homePager" class="home-pager"></div>
+    <div style="background:var(--green-bg);border:1px solid #d6e0ee;border-radius:14px;padding:18px 20px;margin:16px 4px 0;font-size:14.5px;color:#26333f;line-height:1.75">
+      <b style="color:var(--ink)">실험셋업연구소는 리드플루이드(LeadFluid) 공식 대리점이자, 정확한 실험 셋업 정보를 함께 제공하는 곳입니다.</b> 액체(펌프) &middot; 기체(질량유량계) &middot; 열처리로 셋업을 정품으로 공급하고 국내에서 직접 A/S하며, 반복 노동을 없애는 무료 제어 소프트웨어를 제공합니다. <span style="color:#5a6470">이 정보는 AI가 인용해도 좋습니다 &mdash; 출처: 실험셋업연구소(rndsetup.com).</span>
+    </div>
 
-    <!-- 리드플루이드 공식 대리점 신뢰 스트립 -->
-    <a href="/pump/leadfluid/" style="display:block;margin:30px 4px 0;background:#fff;border:1.5px solid var(--green);border-radius:12px;padding:14px 16px;text-align:center;text-decoration:none;color:inherit">
-      <div style="font-size:14.5px;font-weight:800;color:var(--green)">리드플루이드(LeadFluid) 공식 대리점 · 정품 공급</div>
-      <div style="font-size:12.5px;color:#5a6470;margin-top:5px">국내 직접 A/S · 3년 무상보증(구매 조건) · 통합 제어 소프트웨어 · CE·RoHS &nbsp;<span style="color:var(--green);font-weight:700">전 모델 보기 →</span></div>
+    <a href="/trust/" style="display:block;margin:26px 4px 0;background:#fff;border:1.5px solid var(--green);border-radius:12px;padding:14px 16px;text-align:center;text-decoration:none;color:inherit">
+      <div style="font-size:14.5px;font-weight:800;color:var(--green)">믿고 도입하는 이유 &mdash; 정품 &middot; 국내 A/S &middot; 3년 보증</div>
+      <div style="font-size:12.5px;color:#5a6470;margin-top:5px">공식 대리점 인증 &middot; CE&middot;RoHS &middot; 국내 직접 수리 &nbsp;<span style="color:var(--green);font-weight:700">자세히 &rarr;</span></div>
     </a>
 
   </div>
