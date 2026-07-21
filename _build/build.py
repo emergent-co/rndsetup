@@ -405,9 +405,9 @@ CRAWLER_LINKS = [
     ('/application/analytical-instrument.html', '분석기기 — 컬럼 주입·시료 정량 주입'),
     ('/application/environmental.html', '환경 — 수질·폐수 정량 투입'),
     ('/application/flow-chemistry.html', 'flow chemistry 연속흐름 반응'),
-    ('/pump/guide/', '펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업'),
+    ('/leadfluid/blog/', '펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업'),
     ('/pump/atoz/', '펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결'),
-    ('/pump/select/', '펌프·튜브 선택 가이드 — 조건 입력하면 추천'),
+    ('/leadfluid/select/', '펌프·튜브 선택 가이드 — 조건 입력하면 추천'),
     ('/pump/atoz/peristaltic-flow-setpoint-mismatch/', '연동펌프 유량이 설정값과 다른 이유'),
     ('/pump/atoz/tubing-crush-tear-causes/', '연동펌프 튜빙 씹힘·찢어짐 원인·해결'),
     ('/pump/atoz/flow-calibration/', '연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정'),
@@ -811,9 +811,9 @@ def main():
         ('pump/setups/plating-flow-calibration/', '0.8', 'monthly'),  # 도입 스토리 (도금 유량 보정)
         ('furnace/setups/', '0.8', 'monthly'),  # 퍼니스 셋업 사례 허브
         ('furnace/setups/alicat-mfc-tubefurnace/', '0.7', 'monthly'),  # 도입 스토리 (튜브퍼니스 MFC)
-        ('pump/guide/', '0.8', 'weekly'),
+        ('leadfluid/blog/', '0.8', 'weekly'),
         ('pump/atoz/', '0.8', 'weekly'),
-        ('pump/select/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
+        ('leadfluid/select/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
         ('pump/atoz/peristaltic-flow-setpoint-mismatch/', '0.7', 'monthly'),
         ('pump/atoz/tubing-crush-tear-causes/', '0.7', 'monthly'),
         ('pump/atoz/flow-calibration/', '0.7', 'monthly'),  # 유량 캘리브레이션 (무주공산)

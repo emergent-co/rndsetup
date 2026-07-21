@@ -34,7 +34,7 @@
     { t:'flow chemistry 연속흐름 반응', u:'/application/flow-chemistry.html', k:'flow chemistry 연속흐름 반응 시린지 유량비 체류시간 마그네틱 유기용매', c:'실험 가이드' },
     { t:'장기칩·오가노이드 관류', u:'/application/organ-on-chip-perfusion.html', k:'장기칩 organ on chip 오가노이드 관류 미세유체 저유량 전단응력', c:'실험 가이드' },
     { t:'실험 가이드 허브', u:'/application/', k:'응용별 셋업 가이드 펌프 튜브', c:'실험 가이드' },
-    { t:'펌프 셋업 사례 — 실제 도입·제어·유량 보정', u:'/pump/guide/', k:'펌프 셋업 사례 도입 제어 유량 보정 도금 다펌프 튜브퍼니스 mfc 스토리', c:'펌프 셋업 사례' },
+    { t:'펌프 셋업 사례 — 실제 도입·제어·유량 보정', u:'/leadfluid/blog/', k:'펌프 셋업 사례 도입 제어 유량 보정 도금 다펌프 튜브퍼니스 mfc 스토리', c:'펌프 셋업 사례' },
     { t:'리드플루이드 국내 A/S·정품·3년보증', u:'/leadfluid/', k:'리드플루이드 leadfluid 국내 as 수리 정품 보증 신뢰 진단 품질', c:'호환 장비' },
     { t:'연동펌프 유량 캘리브레이션 방법', u:'/pump/atoz/flow-calibration/', k:'유량 캘리브레이션 보정 calibration 연동펌프 설정값 실제유량 드리프트 저울 메스실린더 보정계수 재현성', c:'펌프를 고를 때' },
     { t:'연동펌프 튜브 규격·펌프헤드 가이드', u:'/pump/atoz/tube-size-guide/', k:'튜브 규격 번호 내경 mm 13 14 16 25 17 18 펌프헤드 YT25 YZ35 튜브 재질 실리콘 tygon pharmed viton 연동펌프', c:'펌프를 고를 때' },
@@ -74,18 +74,15 @@
         ['/sh-scientific/blog/',   '설치·A/S 블로그']
       ] },
     { href:'/leadfluid/', label:'리드플루이드(LeadFluid)', icon:'wrench', sub:[
-        ['/pump/select/',            '펌프 선택 가이드'],
+        ['/leadfluid/select/',  '펌프 선택 가이드'],
         ['/leadfluid/manuals/', '메뉴얼·사양서'],
-        ['/pump/guide/',             '블로그 (셋업·논문 사례)'],
-        ['/pump/atoz/',              '사용법·문제해결'],
-        ['/trust/',                  '정품·인증·보증']
+        ['/leadfluid/blog/',    '블로그 (셋업·사례)']
       ] },
     { href:'/alicat/', label:'Alicat MFC', icon:'gas' },
     { href:'/about/', label:'회사소개', icon:'shield' },
     { href:'/contact/', label:'구매·문의', icon:'contact', sub:[
         ['https://www.navimro.com/s/?x=0&y=0&q=leadfluid&disp=0&keyword=', '구매 (나비엠알오)'],
-        ['/repair/',  'A/S·수리 접수'],
-        ['/contact/', '견적·문의'],
+        ['/contact/', '견적·A/S 문의'],
         ['/faq/',     'FAQ']
       ] }
   ];

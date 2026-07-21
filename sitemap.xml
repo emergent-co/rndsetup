@@ -139,7 +139,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://rndsetup.com/pump/guide/</loc>
+    <loc>https://rndsetup.com/leadfluid/blog/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
@@ -151,7 +151,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://rndsetup.com/pump/select/</loc>
+    <loc>https://rndsetup.com/leadfluid/select/</loc>
     <lastmod>2026-07-22</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
