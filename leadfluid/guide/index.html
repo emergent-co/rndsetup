@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>리드플루이드 펌프 선택 가이드 — 조건 고르면 맞는 모델 추천 + 전체 사양 | 실험셋업연구소</title>
 <meta name="description" content="펌프 종류·유량·용도·옵션을 골라가면 맞는 리드플루이드 펌프 모델을 추천하고, 유량·특징 사양을 바로 확인·문의할 수 있습니다. 연동·시린지·기어·방폭 펌프 11종 전체 사양표 포함 — 실험셋업연구소.">
-<link rel="canonical" href="https://rndsetup.com/leadfluid/select/">
+<link rel="canonical" href="https://rndsetup.com/leadfluid/guide/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="리드플루이드 펌프 선택 가이드 — 조건 고르면 맞는 모델 추천">
 <meta property="og:description" content="종류·유량·용도·옵션을 고르면 맞는 모델 추천 + 전체 사양표 + 바로 문의.">
-<meta property="og:url" content="https://rndsetup.com/leadfluid/select/">
+<meta property="og:url" content="https://rndsetup.com/leadfluid/guide/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
 {"@type":"ListItem","position":1,"name":"홈","item":"https://rndsetup.com/"},
 {"@type":"ListItem","position":2,"name":"리드플루이드(LeadFluid)","item":"https://rndsetup.com/leadfluid/"},
-{"@type":"ListItem","position":3,"name":"펌프 선택 가이드","item":"https://rndsetup.com/leadfluid/select/"}
+{"@type":"ListItem","position":3,"name":"펌프 선택 가이드","item":"https://rndsetup.com/leadfluid/guide/"}
 ]}
 </script>
 <style>
@@ -114,6 +114,20 @@
   .minq{border:1px solid var(--line);color:var(--navy);font-weight:700;font-size:13.5px;padding:10px 16px;border-radius:9px}
   .specmore{font-size:13px;color:var(--gray);margin-top:14px}
   .specmore a{color:var(--navy-2);font-weight:700}
+  .calcbox{border:1px solid var(--line);border-radius:12px;margin:16px 0 0;background:#fff;overflow:hidden}
+  .calcbox>summary{list-style:none;cursor:pointer;padding:14px 16px;font-weight:800;color:var(--navy)}
+  .calcbox>summary::-webkit-details-marker{display:none}
+  .calcbox>summary::after{content:" ▾";color:var(--gray-2)}
+  .cbin{padding:0 16px 16px}
+  .cbf{margin:12px 0}
+  .cbf label{display:block;font-size:13px;font-weight:700;margin-bottom:6px}
+  .cbf select{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;font-family:inherit;font-size:14px}
+  .cbrow{display:flex;align-items:center;gap:12px}
+  .cbrow input[type=range]{flex:1;accent-color:var(--navy)}
+  .cbval{min-width:74px;text-align:right;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+  .cbout{background:var(--navy-bg);border:1px solid #cfe0f0;border-radius:10px;padding:14px;text-align:center;margin-top:6px}
+  .cbout .big{font-family:var(--serif);font-size:28px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+  .cbnote{font-size:11.5px;color:var(--gray-2);margin-top:10px;line-height:1.6}
 </style>
 <link rel="stylesheet" href="/assets/site.css">
 <!--HEADLD_START--><script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://rndsetup.com/#org", "name": "실험셋업연구소", "alternateName": ["정량펌프연구소", "rndsetup", "emergent co."], "legalName": "실험셋업연구소", "taxID": "637-05-03629", "url": "https://rndsetup.com/", "email": "info@rndsetup.com", "telephone": "+82-70-8983-2600", "founder": {"@type": "Person", "name": "이영현"}, "sameAs": ["https://www.google.com/maps?cid=4429951187161412134", "https://www.youtube.com/@rndsetuplab", "https://www.linkedin.com/company/rndsetup/", "https://www.wikidata.org/wiki/Q140603002"], "description": "실험용 펌프·유체 제어 셋업 정보를 제공하는 곳. 어떤 펌프를 고르고 유량·스케줄을 어떻게 자동화·재현하는지, 어떤 논문이 어떤 셋업을 썼는지 정리합니다. 리드플루이드(LeadFluid) 정량·연동(페리스탈틱)·시린지·기어펌프와 Alicat 질량유량계(MFC)의 제어 소프트웨어와 국내 직접 A/S(구매 시 3년 무상보증)도 지원합니다. 관류·연속배양 등 무인·정밀·재현이 필요한 실험의 셋업을 다룹니다.", "address": {"@type": "PostalAddress", "streetAddress": "북구 화명대로 20, 8층 801-123호 (화명동, 대성빌딩)", "addressLocality": "부산광역시", "addressCountry": "KR"}, "areaServed": {"@type": "Country", "name": "대한민국"}, "knowsAbout": ["실험실 정량펌프", "연동펌프(페리스탈틱 펌프)", "시린지펌프", "기어펌프", "질량유량계(MFC)", "Modbus·RS-485 펌프 제어", "관류배양", "연속배양(chemostat)", "리드플루이드(LeadFluid) 펌프", "리드플루이드 펌프 국내 직접 A/S", "실험 셋업 정보", "Alicat 질량유량계", "삼흥에너지(SH Scientific) 튜브퍼니스·전기로", "열처리로(전기로·튜브퍼니스)"], "contactPoint": {"@type": "ContactPoint", "telephone": "+82-70-8983-2600", "email": "info@rndsetup.com", "contactType": "customer support", "areaServed": "KR", "availableLanguage": "Korean"}, "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "LeadFluid 정량·연동·시린지펌프 제어 시스템 공급·A/S", "serviceType": "실험실 펌프 시스템 공급 및 소프트웨어 제어", "brand": {"@type": "Brand", "name": "LeadFluid", "alternateName": "리드플루이드"}}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Alicat 질량유량계(MFC) 공급·시스템 연동", "serviceType": "질량유량계 공급 및 제어 연동", "brand": {"@type": "Brand", "name": "Alicat Scientific"}}}]}, {"@type": "WebSite", "@id": "https://rndsetup.com/#website", "name": "실험셋업연구소", "url": "https://rndsetup.com/", "publisher": {"@id": "https://rndsetup.com/#org"}, "inLanguage": "ko"}, {"@type": "Brand", "@id": "https://rndsetup.com/#leadfluid", "name": "리드플루이드", "alternateName": ["LeadFluid", "Lead Fluid", "리드플루이드"], "sameAs": ["https://www.leadfluid.com/", "https://www.leadfluid.com.cn/", "https://www.wikidata.org/wiki/Q140602893"]}]}</script><!--HEADLD_END--></head>
@@ -269,10 +283,23 @@
       <div class="mbtns"><a class="mbuy" href="https://www.navimro.com/s/b-18090/" target="_blank" rel="noopener">나비엠알오에서 구매 →</a><a class="minq" href="/contact/">이 모델 문의 →</a></div></div></details>
 
     <p class="specmore">사용 매뉴얼·사양서 다운로드는 <a href="/leadfluid/manuals/">매뉴얼·사양서 자료실 →</a></p>
+
+    <details class="calcbox">
+      <summary>유량 계산기 — 튜브·RPM으로 유량 추정</summary>
+      <div class="cbin">
+        <div class="cbf"><label>튜브 규격(내경)</label>
+          <select id="cTube"><option value="0.8">13# · 0.8mm</option><option value="1.6">14# · 1.6mm</option><option value="3.2" selected>16# · 3.2mm</option><option value="4.8">25# · 4.8mm</option><option value="6.4">17# · 6.4mm</option><option value="7.9">18# · 7.9mm</option></select></div>
+        <div class="cbf"><label>회전수(RPM)</label><div class="cbrow"><input type="range" id="cRpm" min="1" max="600" value="100"><span class="cbval"><span id="cRpmv">100</span> rpm</span></div></div>
+        <div class="cbf"><label>펌프 헤드</label>
+          <select id="cHead"><option value="60">저유량 소형</option><option value="95" selected>표준(Easy-Load·YZ)</option><option value="120">대유량 대형</option></select></div>
+        <div class="cbout"><div style="font-size:12px;color:var(--navy-2);font-weight:700">추정 유량</div><div class="big"><span id="cFlow">—</span> <span style="font-size:.5em">mL/min</span></div><div style="font-size:12px;color:#3a5b70">약 <span id="cLhr">—</span> L/h</div></div>
+        <div class="cbnote">추정치입니다 — 실제 유량은 튜브 재질·경도·배압에 따라 달라지니 실측 캘리브레이션으로 보정하세요.</div>
+      </div>
+    </details>
   </section>
 </div>
 
-<div id="pumplab-footer"><!--CNAV_START--><nav class="crawler-nav" aria-label="사이트 전체 링크"><div class="cn-group"><h5>펌프·제어</h5><ul><li><a href="/leadfluid/">리드플루이드(LeadFluid) — 정품·국내 A/S·제어</a></li><li><a href="/requests/">소프트웨어 제어</a></li><li><a href="/leadfluid/blog/">펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업</a></li><li><a href="/pump/atoz/">펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결</a></li><li><a href="/leadfluid/select/">펌프·튜브 선택 가이드 — 조건 입력하면 추천</a></li><li><a href="/pump/atoz/peristaltic-flow-setpoint-mismatch/">연동펌프 유량이 설정값과 다른 이유</a></li><li><a href="/pump/atoz/tubing-crush-tear-causes/">연동펌프 튜빙 씹힘·찢어짐 원인·해결</a></li><li><a href="/pump/atoz/flow-calibration/">연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정</a></li><li><a href="/pump/atoz/tube-size-guide/">연동펌프 튜브 규격·펌프헤드 가이드 — 번호별 내경(mm)·유량</a></li><li><a href="/pump/setups/plating-flow-calibration/">도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)</a></li></ul></div><div class="cn-group"><h5>실험 기법</h5><ul><li><a href="/application/flow-chemistry">flow chemistry 연속흐름 반응</a></li></ul></div><div class="cn-group"><h5>산업 분야</h5><ul><li><a href="/about/">실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업</a></li><li><a href="/sh-scientific/">삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업</a></li><li><a href="/sh-scientific/manual/">삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전</a></li><li><a href="/sh-scientific/blog/">삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그</a></li><li><a href="/alicat/">ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어</a></li><li><a href="/application/">실험 가이드</a></li><li><a href="/application/biopharmaceutical">바이오의약 — 발효·세포배양·정제·충전</a></li><li><a href="/application/analytical-instrument">분석기기 — 컬럼 주입·시료 정량 주입</a></li><li><a href="/application/environmental">환경 — 수질·폐수 정량 투입</a></li><li><a href="/furnace/setups/">퍼니스 셋업 사례 — 튜브퍼니스·전기로 가스·온도 제어 도입 사례</a></li><li><a href="/furnace/setups/alicat-mfc-tubefurnace/">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례</a></li></ul></div><div class="cn-group"><h5>사례·신뢰</h5><ul><li><a href="/">홈</a></li><li><a href="/setups/">도입·논문 사례 — LeadFluid 펌프가 쓰인 연구 셋업</a></li><li><a href="/setups/heart-eshp-bt101l">심장 체외 관류(ESHP) — BT101L 연동펌프 (Frontiers 2021)</a></li><li><a href="/setups/damo-recirculation-bt600s">혐기성 메탄산화 반응기 순환 — BT600S 연동펌프 (Environ. Sci. Technol. 2021)</a></li><li><a href="/setups/nitrification-ph-bq50s">폐수 질산화 pH 제어 — BQ50S 정량펌프 (Bioresource Technology 2017)</a></li><li><a href="/setups/brain-electrode-tyd01">뇌 피질 인터페이싱 — TYD01-01 시린지펌프 (Nature Electronics 2024)</a></li><li><a href="/setups/catheter-heparin-bt101">혈관내 카테터 헤파린 코팅 — BT101 L 연동펌프 (Nature Communications 2024)</a></li><li><a href="/setups/co2-capture-ct3001f">연속 CO₂ 포집 — CT3001F PEEK 기어펌프 (Nature Communications 2024)</a></li><li><a href="/compare/imported-peristaltic-alternative/">Masterflex·Watson-Marlow 연동펌프 국내 대안</a></li><li><a href="/trust/">믿고 도입할 때 (국내 A/S·정품·보증)</a></li><li><a href="/faq/">자주 묻는 질문(FAQ)</a></li><li><a href="/contact/">문의하기</a></li></ul></div></nav><!--CNAV_END--></div>
+<div id="pumplab-footer"><!--CNAV_START--><nav class="crawler-nav" aria-label="사이트 전체 링크"><div class="cn-group"><h5>펌프·제어</h5><ul><li><a href="/requests/">소프트웨어 제어</a></li><li><a href="/leadfluid/blog/">펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업</a></li><li><a href="/pump/atoz/">펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결</a></li><li><a href="/leadfluid/guide/">펌프·튜브 선택 가이드 — 조건 입력하면 추천</a></li><li><a href="/pump/atoz/peristaltic-flow-setpoint-mismatch/">연동펌프 유량이 설정값과 다른 이유</a></li><li><a href="/pump/atoz/tubing-crush-tear-causes/">연동펌프 튜빙 씹힘·찢어짐 원인·해결</a></li><li><a href="/pump/atoz/flow-calibration/">연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정</a></li><li><a href="/pump/atoz/tube-size-guide/">연동펌프 튜브 규격·펌프헤드 가이드 — 번호별 내경(mm)·유량</a></li><li><a href="/pump/setups/plating-flow-calibration/">도금 라인 유량 보정 셋업 — BT101L 2대 다펌프 제어(도입 스토리)</a></li></ul></div><div class="cn-group"><h5>실험 기법</h5><ul><li><a href="/application/flow-chemistry">flow chemistry 연속흐름 반응</a></li></ul></div><div class="cn-group"><h5>산업 분야</h5><ul><li><a href="/about/">실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업</a></li><li><a href="/sh-scientific/guide/">삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업</a></li><li><a href="/sh-scientific/manual/">삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전</a></li><li><a href="/sh-scientific/blog/">삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그</a></li><li><a href="/alicat/">ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어</a></li><li><a href="/application/">실험 가이드</a></li><li><a href="/application/biopharmaceutical">바이오의약 — 발효·세포배양·정제·충전</a></li><li><a href="/application/analytical-instrument">분석기기 — 컬럼 주입·시료 정량 주입</a></li><li><a href="/application/environmental">환경 — 수질·폐수 정량 투입</a></li><li><a href="/furnace/setups/">퍼니스 셋업 사례 — 튜브퍼니스·전기로 가스·온도 제어 도입 사례</a></li><li><a href="/furnace/setups/alicat-mfc-tubefurnace/">1500℃ 튜브퍼니스 가스 분위기 제어 — Alicat MFC 도입 사례</a></li></ul></div><div class="cn-group"><h5>사례·신뢰</h5><ul><li><a href="/">홈</a></li><li><a href="/setups/">도입·논문 사례 — LeadFluid 펌프가 쓰인 연구 셋업</a></li><li><a href="/setups/heart-eshp-bt101l">심장 체외 관류(ESHP) — BT101L 연동펌프 (Frontiers 2021)</a></li><li><a href="/setups/damo-recirculation-bt600s">혐기성 메탄산화 반응기 순환 — BT600S 연동펌프 (Environ. Sci. Technol. 2021)</a></li><li><a href="/setups/nitrification-ph-bq50s">폐수 질산화 pH 제어 — BQ50S 정량펌프 (Bioresource Technology 2017)</a></li><li><a href="/setups/brain-electrode-tyd01">뇌 피질 인터페이싱 — TYD01-01 시린지펌프 (Nature Electronics 2024)</a></li><li><a href="/setups/catheter-heparin-bt101">혈관내 카테터 헤파린 코팅 — BT101 L 연동펌프 (Nature Communications 2024)</a></li><li><a href="/setups/co2-capture-ct3001f">연속 CO₂ 포집 — CT3001F PEEK 기어펌프 (Nature Communications 2024)</a></li><li><a href="/compare/imported-peristaltic-alternative/">Masterflex·Watson-Marlow 연동펌프 국내 대안</a></li><li><a href="/trust/">믿고 도입할 때 (국내 A/S·정품·보증)</a></li><li><a href="/faq/">자주 묻는 질문(FAQ)</a></li><li><a href="/contact/">문의하기</a></li></ul></div></nav><!--CNAV_END--></div>
 <script src="/assets/site.js" defer></script>
 <script>
 (function(){
@@ -373,6 +400,12 @@
     var d=document.querySelector(a.getAttribute('href'));
     if(d){ d.open=true; d.scrollIntoView({behavior:'smooth',block:'center'}); }
   });
+  (function(){
+    var id=document.getElementById('cTube'),rp=document.getElementById('cRpm'),hd=document.getElementById('cHead');
+    if(!id)return;
+    function calc(){var ID=parseFloat(id.value),R=parseFloat(rp.value),L=parseFloat(hd.value);document.getElementById('cRpmv').textContent=R;var mlrev=Math.PI*Math.pow(ID/2,2)*L/1000,q=mlrev*R;document.getElementById('cFlow').textContent=q>=100?q.toFixed(0):q.toFixed(1);document.getElementById('cLhr').textContent=(q*60/1000).toFixed(2);}
+    [id,rp,hd].forEach(function(el){el.addEventListener('input',calc)});calc();
+  })();
   renderProg();show(0);
 })();
 </script>

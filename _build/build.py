@@ -382,8 +382,7 @@ def build_requests():
 CRAWLER_LINKS = [
     ('/', '홈'),
     ('/about/', '실험셋업연구소 회사소개 — 리드플루이드 공식 대리점·실험 펌프·유체제어 셋업'),
-    ('/leadfluid/', '리드플루이드(LeadFluid) — 정품·국내 A/S·제어'),
-    ('/sh-scientific/', '삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업'),
+    ('/sh-scientific/guide/', '삼흥에너지(SH-Scientific) 전기로·튜브퍼니스 — 제품 선택·견적·열처리 셋업'),
     ('/sh-scientific/manual/', '삼흥에너지 전기로·튜브퍼니스 메뉴얼 — 사용법·승온 프로그램·안전'),
     ('/sh-scientific/blog/', '삼흥에너지 전기로·튜브퍼니스 설치·A/S 블로그'),
     ('/alicat/', 'ALICAT 질량유량계(MFC) — 정밀 가스 유량 제어'),
@@ -395,7 +394,7 @@ CRAWLER_LINKS = [
     ('/application/flow-chemistry.html', 'flow chemistry 연속흐름 반응'),
     ('/leadfluid/blog/', '펌프 셋업 사례 — 실제 도입·제어·유량 보정 셋업'),
     ('/pump/atoz/', '펌프 문제해결 — 유량 이상·튜빙 파손·멈춤 증상별 해결'),
-    ('/leadfluid/select/', '펌프·튜브 선택 가이드 — 조건 입력하면 추천'),
+    ('/leadfluid/guide/', '펌프·튜브 선택 가이드 — 조건 입력하면 추천'),
     ('/pump/atoz/peristaltic-flow-setpoint-mismatch/', '연동펌프 유량이 설정값과 다른 이유'),
     ('/pump/atoz/tubing-crush-tear-causes/', '연동펌프 튜빙 씹힘·찢어짐 원인·해결'),
     ('/pump/atoz/flow-calibration/', '연동펌프 유량 캘리브레이션 방법 — 설정값·실제 유량 보정'),
@@ -595,7 +594,7 @@ BREADCRUMB_SECTIONS = {
     'gas': ('기체', '/gas/'),
     'vacuum': ('진공', '/vacuum/'),
     'alicat': ('ALICAT', '/alicat/'),
-    'sh-scientific': ('삼흥에너지', '/sh-scientific/'),
+    'sh-scientific': ('삼흥에너지', '/sh-scientific/guide/'),
     'guide': ('실험 셋업 가이드', '/guide/'),
 }
 
@@ -777,7 +776,6 @@ def main():
     # 메인 + 상업 funnel 페이지 (loc 경로, priority, changefreq)
     static_pages = [
         ('',              '1.0', 'weekly'),   # 홈
-        ('leadfluid/',    '0.9', 'monthly'),  # 리드플루이드 브랜드 랜딩
         ('leadfluid/manuals/',    '0.6', 'monthly'),  # 모델별 사용 메뉴얼 목록
         ('compare/imported-peristaltic-alternative/', '0.7', 'monthly'),  # 갈아타기 비교
         ('requests/',     '0.6', 'weekly'),   # 소프트웨어(개발 요청)
@@ -789,7 +787,7 @@ def main():
         ('furnace/setups/alicat-mfc-tubefurnace/', '0.7', 'monthly'),  # 도입 스토리 (튜브퍼니스 MFC)
         ('leadfluid/blog/', '0.8', 'weekly'),
         ('pump/atoz/', '0.8', 'weekly'),
-        ('leadfluid/select/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
+        ('leadfluid/guide/', '0.7', 'monthly'),   # 펌프·튜브 선택 위저드   # 트러블슈팅 허브
         ('pump/atoz/peristaltic-flow-setpoint-mismatch/', '0.7', 'monthly'),
         ('pump/atoz/tubing-crush-tear-causes/', '0.7', 'monthly'),
         ('pump/atoz/flow-calibration/', '0.7', 'monthly'),  # 유량 캘리브레이션 (무주공산)
@@ -797,7 +795,7 @@ def main():
         ('faq/',          '0.7', 'monthly'),  # FAQ
         ('application/',  '0.7', 'monthly'),  # 실험 가이드 (목록)
         ('alicat/',       '0.8', 'monthly'),  # 소프트웨어 호환 장비 — ALICAT
-        ('sh-scientific/','0.9', 'monthly'),  # 삼흥 허브 = 제품 선택 가이드(견적 funnel)
+        ('sh-scientific/guide/','0.9', 'monthly'),  # 삼흥 허브 = 제품 선택 가이드(견적 funnel)
         ('sh-scientific/manual/','0.7', 'monthly'),  # 삼흥 메뉴얼
         ('sh-scientific/blog/','0.7', 'weekly'),  # 삼흥 설치·A/S 블로그
         ('sh-scientific/blog/furnace-install-checklist/','0.6', 'monthly'),  # 설치 체크리스트
