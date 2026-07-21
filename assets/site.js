@@ -74,6 +74,11 @@
         ['/alicat/',         'Alicat 질량유량계(MFC)'],
         ['/sh-scientific/',  '열처리로']
       ] },
+    { href:'/sh-scientific/select/', label:'삼흥에너지', icon:'devices', sub:[
+        ['/sh-scientific/select/', '제품 선택 가이드'],
+        ['/sh-scientific/manual/', '메뉴얼'],
+        ['/sh-scientific/blog/',   '설치·A/S 블로그']
+      ] },
     { href:'/about/', label:'신뢰·회사', icon:'shield', sub:[
         ['/about/',  '회사소개'],
         ['/trust/',  '정품·인증·보증'],
