@@ -1,4 +1,4 @@
-# 실험셋업연구소 GitHub Pages Deploy Script
+﻿# 실험셋업연구소 GitHub Pages Deploy Script
 # Usage:
 #   .\deploy.ps1                    (auto commit message)
 #   .\deploy.ps1 "commit message"
@@ -89,6 +89,10 @@ if (-not (Test-Path ".git")) {
     git reset --soft origin/main
     Write-Host "[OK] Remote history connected" -ForegroundColor Green
 }
+
+# --- .git 잠금 정리 (index.lock 반복 방지) ---
+Remove-Item .git\index.lock -Force -ErrorAction SilentlyContinue
+Remove-Item .git\*.lock     -Force -ErrorAction SilentlyContinue
 
 # .gitignore
 if (-not (Test-Path ".gitignore")) {
